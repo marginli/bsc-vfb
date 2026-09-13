@@ -1,0 +1,137 @@
+{
+  "probe": "dataset_sizes",
+  "part": "PART 4",
+  "question": "每一套資料集實際有幾顆神經元？哪些是同一套的不同版本？",
+  "url": {
+    "endpoint": "https://pdb.virtualflybrain.org/db/neo4j/tx/commit",
+    "cypher": "MATCH (i:Individual)-[:has_source]->(d:DataSet) RETURN d.short_form AS id, d.label AS label, count(DISTINCT i) AS n ORDER BY n DESC LIMIT 25"
+  },
+  "note": "同一套資料的新舊版本會各佔一列（BANC 626 與 888、hemibrain 1.0.1 與 1.2.1、male CNS 0.9 與 1.0）——**這些數字不能相加**，而且重疊組織的資料集（FAFB／FlyWire／hemibrain）也不能相加。",
+  "data": [
+    {
+      "id": "Berg2025a",
+      "label": "Male CNS version 1.0 connectome neurons from Berg et al. (2025).",
+      "n": 166413
+    },
+    {
+      "id": "Berg2025",
+      "label": "Male CNS version 0.9 connectome neurons from Berg et al. (2025).",
+      "n": 166401
+    },
+    {
+      "id": "Dorkenwald2023",
+      "label": "FlyWire connectome neurons",
+      "n": 139255
+    },
+    {
+      "id": "Bates2025",
+      "label": "Brain and Nerve Cord (BANC) version 626 connectome neurons from Bates et al. (2025).",
+      "n": 80003
+    },
+    {
+      "id": "Bates2026",
+      "label": "Brain and Nerve Cord (BANC) version 888 connectome neurons from Bates et al. (2026).",
+      "n": 64546
+    },
+    {
+      "id": "Nern2024",
+      "label": "Optic Lobe connectome neurons from optic_lobe:v1.0.1, Nern et al., 2024",
+      "n": 53402
+    },
+    {
+      "id": "Takemura2023",
+      "label": "Male Adult Nerve Cord (MANC) connectome neurons",
+      "n": 23759
+    },
+    {
+      "id": "Xu2020NeuronsV1point2point1",
+      "label": "JRC_FlyEM_Hemibrain neurons Version 1.2.1",
+      "n": 22705
+    },
+    {
+      "id": "Xu2020Neurons",
+      "label": "JRC_FlyEM_Hemibrain neurons Version 1.0.1",
+      "n": 21242
+    },
+    {
+      "id": "Dickson_VT",
+      "label": "Dickson lab VT line collection - VDRC images",
+      "n": 18016
+    },
+    {
+      "id": "Gen1MCFOTirian2017",
+      "label": "MCFO images of VT-GAL4 lines from Tirian et al., 2017",
+      "n": 16965
+    },
+    {
+      "id": "Chiang2010",
+      "label": "FlyCircuit 1.0 - single neurons (Chiang2010)",
+      "n": 16127
+    },
+    {
+      "id": "Gen1MCFOJenett2012",
+      "label": "MCFO images of GMR-GAL4 lines from Jenett et al., 2012",
+      "n": 15861
+    },
+    {
+      "id": "FlyLightGen1Set2019",
+      "label": "FlyLight - Gen1 GAL4/LexA collection (exported 2019)",
+      "n": 13587
+    },
+    {
+      "id": "TrumanWood2018",
+      "label": "Truman Larval Flip-Out Collection",
+      "n": 12238
+    },
+    {
+      "id": "Dickson2017",
+      "label": "Dickson lab VT lines - FlyLight/Janelia images (2017)",
+      "n": 5378
+    },
+    {
+      "id": "Jenett2012",
+      "label": "FlyLight - GMR GAL4 collection (Jenett2012)",
+      "n": 3469
+    },
+    {
+      "id": "WindingPedigo2023",
+      "label": "EM L1 Winding, Pedigo et al., 2023",
+      "n": 3066
+    },
+    {
+      "id": "SplitShuai2023",
+      "label": "Split-GAL4 lines from Shuai et al., 2023",
+      "n": 2960
+    },
+    {
+      "id": "Aso2014",
+      "label": "MBONs and split-GAL4 lines that target them (Aso2014)",
+      "n": 2699
+    },
+    {
+      "id": "Maniates_Selvin2020",
+      "label": "EM FANC Phelps et al 2020",
+      "n": 2029
+    },
+    {
+      "id": "SplitSterne2021",
+      "label": "Split-GAL4 lines from Sterne et al., 2021",
+      "n": 1677
+    },
+    {
+      "id": "Zheng2020",
+      "label": "EM FAFB Zheng et al 2020 (published 2022)",
+      "n": 1507
+    },
+    {
+      "id": "Zhao2023",
+      "label": "EM FAFB Zhao et al., 2023",
+      "n": 1194
+    },
+    {
+      "id": "SplitMeissner2024",
+      "label": "Split-GAL4 lines from Meissner et al., 2024",
+      "n": 1084
+    }
+  ]
+}

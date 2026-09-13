@@ -1,0 +1,81 @@
+VFB 探針抓取紀錄
+============================================================
+API   https://v3-cached.virtualflybrain.org
+執行  2026-09-13T11:08:00+00:00（UTC）
+
+連線資料集與版本（label 裡的版本號就是要標在頁面上的）：
+  BANC   BANC888                            BANC web interface v888
+  fw     flywire783                         FlyWire web interface v783
+  ol     neuprint_JRC_OpticLobe_v1_0_1      Neuprint web interface - JRC_Optic-Lobe:v1.0.1
+  mv     neuprint_JRC_Manc_1_2_1            Neuprint web interface - MANC:v1.2.1
+  hb     neuprint_JRC_Hemibrain_1point2point1 Neuprint web interface - hemibrain:v1.2.1
+  mc     male_cns_v1_0                      Neuprint web interface - male-cns:v1.0
+  fafb   catmaid_fafb                       VFB CATMAID Adult Brain (FAFB)
+  l1em   catmaid_l1em                       VFB CATMAID L1 CNS
+
+template：10 套（搜尋回傳 16 列，同義詞各佔一列）
+  VFB_00017894   JFRC2                        分區  58　授權 CC-BY-NC-SA_4.0
+  VFB_00030786   adult brain template Ito20   分區  75　授權 CC-BY_4.0
+  VFB_00049000   L3 CNS template - Wood2018   分區 255　授權 CC-BY_4.0
+  VFB_00050000   L1 larval CNS ssTEM - Card   分區   0　授權 CC-BY_4.0
+  VFB_00100000   COURT2018VNS                 分區  22　授權 CC-BY_4.0
+  VFB_00101384   JRCFIB2018Fum                分區  97　授權 CC-BY_4.0
+  VFB_00101567   JRC2018U                     分區  46　授權 CC-BY-NC-SA_4.0
+  VFB_00110000   Adult Head (McKellar2020)    分區  18　授權 CC-BY_4.0
+  VFB_00120000   Adult T1 Leg (Kuan2020)      分區   4　授權 CC-BY_4.0
+  VFB_00200000   JRCVNC2018U                  分區  21　授權 CC-BY-NC-SA_4.0
+
+（知識庫裡的 Template 節點有 20 個，比搜尋看得到的 10 套多——多的是 VFBc_00017894、VFBc_00030786、VFBc_00049000、VFBc_00050000、VFBc_00100000、VFBc_00101384、VFBc_00101567、VFBc_00110000、VFBc_00120000、VFBc_00200000 這類附屬影像。頁面上講「有幾套」時用搜尋那一組。）
+
+資料集實際的神經元數（Cypher 算的不重複顆數，前 12 名）：
+  ※ 同一套資料的新舊版本各佔一列，重疊組織的資料集也各佔一列——都不能相加。
+  Berg2025a                        166413　Male CNS version 1.0 connectome neurons from B
+  Berg2025                         166401　Male CNS version 0.9 connectome neurons from B
+  Dorkenwald2023                   139255　FlyWire connectome neurons
+  Bates2025                         80003　Brain and Nerve Cord (BANC) version 626 connec
+  Bates2026                         64546　Brain and Nerve Cord (BANC) version 888 connec
+  Nern2024                          53402　Optic Lobe connectome neurons from optic_lobe:
+  Takemura2023                      23759　Male Adult Nerve Cord (MANC) connectome neuron
+  Xu2020NeuronsV1point2point1       22705　JRC_FlyEM_Hemibrain neurons Version 1.2.1
+  Xu2020Neurons                     21242　JRC_FlyEM_Hemibrain neurons Version 1.0.1
+  Dickson_VT                        18016　Dickson lab VT line collection - VDRC images
+  Gen1MCFOTirian2017                16965　MCFO images of VT-GAL4 lines from Tirian et al
+  Chiang2010                        16127　FlyCircuit 1.0 - single neurons (Chiang2010)
+
+FlyCircuit（Chiang2010）——「幾筆」跟「幾顆」不是同一件事：
+  神經元（Cypher 算的不重複顆數）　16,127
+  REST 回報的列數　　　　　　　　　68,698（平均每顆 4.26 列）
+  REST 實際翻得到的列數　　　　　　50,000（被翻頁上限擋住）
+
+腦區例子 FBbt_00003748 的現成查詢與筆數：
+  ListAllAvailableImages              4　List all available images of medulla
+  NeuronsPartHere                   471　Neurons with some part in medulla
+  NeuronsSynaptic                   464　Neurons with synaptic terminals in medulla
+  NeuronsPresynapticHere            262　Neurons with presynaptic terminals in medulla
+  NeuronsPostsynapticHere           333　Neurons with postsynaptic terminals in medulla
+  PartsOf                            28　Parts of medulla
+  TractsNervesInnervatingHere         3　Tracts/nerves innervating medulla
+  LineageClonesIn                     7　Lineage clones found in medulla
+  ImagesNeurons                  226524　Images of neurons with some part in medulla
+  TransgeneExpressionHere          2337　Transgene expression in medulla
+
+各探針最後一次成功抓取的時間：
+  templates              2026-09-13T11:07:07+00:00  e45b3e7cdd6c8087
+  template_detail        2026-09-13T11:07:30+00:00  7378a2ac07cca814
+  facets                 2026-09-13T11:07:31+00:00  800e6ad4fe770d63
+  search_medulla         2026-09-13T11:07:32+00:00  3781e0f9e8bbad1f
+  terminfo_region        2026-09-13T11:08:00+00:00  1454c80208c03747
+  hierarchy_region       2026-09-13T11:07:35+00:00  c89b716569acf9dc
+  queries_for_region     2026-09-13T11:07:35+00:00  a73046247f0a5b04
+  counts_region          2026-09-13T11:07:43+00:00  73ccf724d714fb60
+  connectome_datasets    2026-09-13T11:07:43+00:00  ba8536816773094a
+  connectivity_example   2026-09-13T11:07:46+00:00  8adca7a5a9c8d53d
+  flycircuit_dataset     2026-09-13T11:07:46+00:00  d7259f1f695dc963
+  nblast_example         2026-09-13T11:07:51+00:00  abd968d0513428b5
+  service                2026-09-13T11:07:53+00:00  6c95b97af876c3ca
+  flycircuit_images      2026-09-13T07:50:04+00:00  519f054a30a54924
+  dataset_sizes          2026-09-13T11:07:49+00:00  05b5bf5e5be3b12b
+  templates_pdb          2026-09-13T11:07:50+00:00  a1bcd6dc6f73f4f7
+
+頁面上引用這裡的任何數字時，要一併標明「哪一套資料、哪一版、哪一天抓的」。
+重跑本程式後若有檔案內容變動，程式會列出來——那就是要回頭複查的清單。

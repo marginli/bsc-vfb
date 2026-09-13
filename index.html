@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Virtual Fly Brain 專題課程</title>
+<link rel="stylesheet" href="assets/vfb.css">
+</head>
+<body>
+<header class="hero">
+  <p class="eyebrow">BSC 專題課程</p>
+  <h1>怎麼用 Virtual Fly Brain</h1>
+  <p class="subtitle">把你手上的問題，變成這個網站上一串問得出答案的查詢</p>
+</header>
+
+<div class="wrap">
+
+  <p><a href="https://www.virtualflybrain.org/">Virtual Fly Brain</a> 是果蠅神經系統的知識庫。它把電子顯微鏡重建的連線、螢光顯微鏡拍的影像、單顆神經元的形態、單細胞的基因表現放在<b>同一組座標</b>與<b>同一套詞彙</b>底下，所以你可以問「這個腦區裡有哪些神經元」而不必管那些資料原本出自哪一篇論文。</p>
+
+  <p>多數人第一次用它，會把它當成找圖的網站：在搜尋框打一個字串、拿到幾十筆看不懂的結果、然後離開。<b>這門課要換掉的就是這個用法。</b></p>
+
+  <dl class="intro">
+    <dt>給誰看</dt>
+    <dd>有研究資料、想用 AI 處理它、但沒寫過程式的人。前五個部分全部在瀏覽器裡做得完，不用安裝、不用登入。</dd>
+    <dt>怎麼教</dt>
+    <dd>每一個部分從一個真的研究問題開始。關鍵的每一步都寫三層：<b>網站上怎麼點</b>、<b>同一件事的程式寫法</b>、<b>同一件事怎麼問 AI</b>。你可以只讀第一層。</dd>
+    <dt>數字怎麼來的</dt>
+    <dd>頁面上每一個數字都由 <code>scripts/vfb_probe.py</code> 向 VFB 的公開介面查回來、存成檔案，圖說裡會標明抓取日期。網站的資料會更新，數字跟著會變——變了也查得出來是哪一個變了。</dd>
+  </dl>
+
+  <div class="btns">
+    <a class="btn" href="part1-templates.html">
+      <span class="no">PART 1</span>
+      <span class="t">座標系：template 與 registration</span>
+      <p class="s">別人的資料憑什麼可以跟你的疊在一起。平均腦、對位的三個階段、跨座標系要付的誤差。</p>
+      <p class="m">含三張自製的分區地圖與一次自己做的橋接對位</p>
+    </a>
+    <a class="btn c2 soon">
+      <span class="no">PART 2</span>
+      <span class="t">把一個名字問清楚</span>
+      <p class="s">搜尋、Term Info、以及一件最多人不知道的事：VFB 查的是本體論裡的詞，不是字串。</p>
+      <p class="m">尚未發布</p>
+    </a>
+    <a class="btn c3 soon">
+      <span class="no">PART 3</span>
+      <span class="t">從腦區找到神經元</span>
+      <p class="s">現成查詢、結果表、三維檢視與切片檢視。</p>
+      <p class="m">尚未發布</p>
+    </a>
+    <a class="btn c4 soon">
+      <span class="no">PART 4</span>
+      <span class="t">連線體</span>
+      <p class="s">八套連線資料、版本與棄用，以及為什麼那些神經元數目不能相加。</p>
+      <p class="m">尚未發布</p>
+    </a>
+    <a class="btn c5 soon">
+      <span class="no">PART 5</span>
+      <span class="t">形態比對：NBLAST 與 FlyCircuit</span>
+      <p class="s">相似度分數怎麼讀，以及拿原始資料驗證 VFB 說得對不對。</p>
+      <p class="m">尚未發布</p>
+    </a>
+    <a class="btn soon">
+      <span class="no">PART 6</span>
+      <span class="t">接到程式與 AI</span>
+      <p class="s">批次下載、VFB_connect，以及 VFB 自己架的那台 MCP 伺服器。</p>
+      <p class="m">尚未發布</p>
+    </a>
+  </div>
+
+  <h2>這門課不教什麼</h2>
+  <p><b>不教你自己做對位。</b>PART 1 會講對位是什麼、會出什麼錯，但不教 CMTK 或 elastix 怎麼用——那是另一門課。<b>也不是操作手冊。</b>網站的介面會改版，按鈕會搬位置；這門課教的是問題怎麼問，那件事不會隨改版失效。</p>
+</div>
+
+<div class="foot">
+  BSC 專題課程　·　教學用途，非營利　·　
+  引用的資料與影像各自標明來源與授權，網站內容引用自 <a href="https://www.virtualflybrain.org/">virtualflybrain.org</a>
+</div>
+</body>
+</html>

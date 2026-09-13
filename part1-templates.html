@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PART 1 座標系：template 與 registration｜VFB 專題課程</title>
+<link rel="stylesheet" href="assets/vfb.css">
+</head>
+<body>
+<div class="crumb"><a href="index.html">VFB 專題課程</a> ／ PART 1</div>
+<header class="hero">
+  <p class="eyebrow">PART 1</p>
+  <h1>座標系：template 與 registration</h1>
+  <p class="subtitle">別人的資料憑什麼可以跟你的疊在一起——以及疊起來之後，哪些話可以說、哪些不能說</p>
+</header>
+
+<div class="wrap">
+
+  <div class="pager top">
+    <a href="index.html">← 回首頁</a>
+    <span>PART 2　把一個名字問清楚（尚未發布）</span>
+  </div>
+
+  <nav class="toc">
+    <h2>本頁章節</h2>
+    <ol>
+      <li><a href="#s1">你在 VFB 上看到的那顆腦，是哪一隻果蠅的？</a></li>
+      <li><a href="#s2">template 是兩件事</a></li>
+      <li><a href="#s3">VFB 有十套 template，不是一套</a></li>
+      <li><a href="#s4">registration 實際上在做什麼</a></li>
+      <li><a href="#s5">對位出來的位置是估計值，不是量測值</a></li>
+      <li><a href="#s6">跨 template：bridging，以及我們自己做過一次</a></li>
+      <li><a href="#s7">動手做</a></li>
+    </ol>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s1"><span class="pt">1</span>你在 VFB 上看到的那顆腦，是哪一隻果蠅的？</h2>
+
+  <p><b>不是任何一隻。</b>Virtual Fly Brain 預設顯示的那顆成蟲腦叫 JRC2018Unisex，它是<b>六十二隻果蠅的腦平均出來的</b>（把每一顆再左右翻一次，一共 124 張影像）——世界上沒有一隻果蠅長成那個樣子。</p>
+
+  <p>這件事不是冷知識，它是整個網站能運作的原因。VFB 自己的說明是這樣寫的：</p>
+
+  <blockquote>
+    <p lang="en">Registering to a single individual’s brain bakes that individual’s idiosyncrasies into every result. Modern templates are therefore <b>averages</b>, built by groupwise registration of many samples so that no one animal dominates.</p>
+    <p class="figsrc">出自 VFB 說明文件〈Registration〉，<code>virtualflybrain.org/docs/concepts/registration/</code>，2026-09-13 讀取。</p>
+  </blockquote>
+
+  <p>白話說：如果拿某一隻果蠅的腦當基準，那隻果蠅碰巧比較胖、比較歪、切片時被壓到的地方，就會變成後面每一個人的測量誤差。所以大家改成用「平均腦」。</p>
+
+  <div class="note">
+    <b>這一頁要回答的問題：</b>你手上有一顆自己染出來的神經元，想知道別人做過沒有。要回答這個問題，得先把你的神經元跟別人的放在同一個空間裡比——<b>而那兩顆神經元來自兩隻不同的果蠅，腦的大小、形狀、擺放角度都不一樣。</b>這一整頁講的就是這件事怎麼辦到，以及辦到之後有哪些話還是不能說。
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s2"><span class="pt">2</span>template 是兩件事</h2>
+
+  <p>「template」這個字在 VFB 上同時指兩樣東西，分開講比較不會亂：</p>
+
+  <div class="defcard">
+    <h4>一、對位的基準</h4>
+    <p>一顆標準腦的三維影像。每一張要放進 VFB 的影像，都會先被變形、對到這顆標準腦上，之後大家就共用同一組座標。</p>
+    <h4>二、畫上去的分區地圖</h4>
+    <p>有人在這顆標準腦上把腦區一塊一塊塗好顏色，於是「這個位置屬於哪個腦區」有了現成答案。VFB 把這些塗好的區塊叫 <b>painted domain</b>（畫上去的區域）。</p>
+  </div>
+
+  <p>VFB 的原話把兩件事寫在同一句裡：</p>
+
+  <blockquote>
+    <p lang="en">Canonical templates not only allow for spatial alignment of image data but also are often painted to make a reference atlas of anatomical regions.</p>
+    <p class="figsrc">出自 VFB 說明文件〈Templates〉，<code>virtualflybrain.org/docs/concepts/templates/</code>，2026-09-13 讀取。</p>
+  </blockquote>
+
+  <p>下面三張圖是同一份分區地圖的三個角度。用的不是 VFB 的 template，而是另一套叫 <b>FCWB</b> 的標準腦——這是 FlyCircuit 那批果蠅神經元當年用的基準，它的檔案可以免費下載，所以我們能自己把圖畫出來，而不必去抓網站上的截圖。<b>FCWB 不在 VFB 的 template 清單裡</b>，這件事本身很重要，第 6 節會回來講。</p>
+
+  <p><b>先講方位用語，三張圖都會用到。</b>果蠅趴著的時候，<b>背側</b>是腦的上面、<b>腹側</b>是下面；<b>前側</b>是靠近觸角與口器那一端，<b>後側</b>是另一端；<b>中線</b>是把腦分成左右兩半的那條分界。這幾個詞講的是果蠅身上的方向，跟圖擺在畫面上的哪一邊是兩回事——後者由「站在哪裡看」決定。</p>
+
+  <div class="terms">
+    <div class="term"><span class="w">體素<span class="en">voxel</span></span>
+      <p>三維影像裡的一個小方格，相當於平面照片的一個像素。這三張圖的體素邊長是 1 微米。</p></div>
+    <div class="term"><span class="w">神經氈<span class="en">neuropil</span></span>
+      <p>腦裡由神經纖維與突觸（神經元之間傳遞訊號的接點）密集堆成、看得出邊界的區塊。果蠅腦的「腦區」講的幾乎都是這種東西，細胞本體聚集的外層不算。</p></div>
+  </div>
+
+  <div class="figpair three">
+    <figure>
+      <div class="imgbox"><img src="assets/p1-view-front.png" alt="果蠅腦分區地圖的正視圖，左右兩側各一片大面積的視葉，中央是彼此相鄰的多個中央腦區，下方是一塊較大的腹側區域，共看得見 56 個分區。"></div>
+      <figcaption><span class="ab">A</span><b>站在前方，往後看</b>背側在上，果蠅的右腦在畫面左側。這個角度看得見 56 個分區，兩側最大的那兩片是視葉。</figcaption>
+    </figure>
+    <figure>
+      <div class="imgbox"><img src="assets/p1-view-side.png" alt="果蠅右半腦的矢狀視圖，由中線往外看，呈上下狹長形，可見十餘個彼此相鄰的中央腦區，共看得見 34 個分區。"></div>
+      <figcaption><span class="ab">B</span><b>把左半腦拿掉，站在中線往右看</b>背側在上，前側在畫面左側。看得見 34 個分區。不先把左半腦拿掉的話，最靠近的那片視葉會把整顆腦整個擋住。</figcaption>
+    </figure>
+    <figure>
+      <div class="imgbox"><img src="assets/p1-view-top.png" alt="果蠅腦分區地圖的頂視圖，呈左右寬扁形，兩端是視葉，中央偏上為成對的背側腦區，共看得見 48 個分區。"></div>
+      <figcaption><span class="ab">C</span><b>站在背側，往腹側看</b>前側在上，果蠅的右腦在畫面右側——<b>跟 A 相反</b>，因為換了一個站的位置。看得見 48 個分區。</figcaption>
+    </figure>
+  </div>
+  <p class="figsrc">三張圖由 <code>scripts/make_part1_figures.py</code> 算出，共用同一份標籤體積。這份地圖一共 75 個標籤：34 個腦區左右各一，加上 7 個橫跨中線（腦左右對稱的那條分界）、不分左右的區，34×2＋7＝75。<b>顏色只是為了讓相鄰的區塊分得開，不代表任何分類</b>，所以不放圖例。模板 FCWB（Ostrovsky &amp; Jefferis 2014，CC0）；分區 FCWBNP（natverse，GPL-3；分區出自 Ito et al. 2014, <i>Neuron</i> 81:755–765）。</p>
+
+  <div class="callout">
+    <b>三張圖的「站在哪裡看」是分別指定的，不是「沿某個軸投影」講得完的（<b>投影</b>就是把三維的東西壓扁成一張平面圖）。</b>攝影機站在軸的哪一端，決定了哪一面擋住哪一面——同一個軸，從前面看與從後面看會得到兩張完全不同、而且都很像真的圖。所以 A、B、C 的標題寫的是站的位置，不是軸。這三張圖擺得對不對，是<b>用程式量出來的</b>：產圖程式會在成品畫面上量幾個方位明確的腦區落在第幾列第幾行：蕈狀體的萼該在顎神經節上方、觸角葉該在萼前方、兩片視葉該分在兩側——這三組關係在任何一顆果蠅腦上都成立，所以拿它們當標準答案。對不上就中止，不產圖。
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s3"><span class="pt">3</span>VFB 有十套 template，不是一套</h2>
+
+  <p>多數人用 VFB 只會遇到 JRC2018Unisex，於是以為「標準腦」就是那一顆。實際上站上登記在案、可以拿來對位的 template 有<b>十套</b>：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>編號</th><th>名稱</th><th>涵蓋什麼</th><th>畫了幾個分區</th><th>授權</th></tr>
+    <tr><td>VFB_00101567</td><td><b>JRC2018Unisex</b></td><td>成蟲腦（現行標準）</td><td>46</td><td>CC-BY-NC-SA 4.0</td></tr>
+    <tr><td>VFB_00200000</td><td><b>JRC2018UnisexVNC</b></td><td>成蟲腹神經索</td><td>21</td><td>CC-BY-NC-SA 4.0</td></tr>
+    <tr><td>VFB_00017894</td><td>JFRC2</td><td>成蟲腦（較早的標準）</td><td>58</td><td>CC-BY-NC-SA 4.0</td></tr>
+    <tr><td>VFB_00030786</td><td>Ito2014</td><td>成蟲腦（腦區命名法的官方模板）</td><td>75</td><td>CC-BY 4.0</td></tr>
+    <tr><td>VFB_00101384</td><td>JRCFIB2018Fum</td><td>成蟲腦（hemibrain 電顯資料自己的空間）</td><td>97</td><td>CC-BY 4.0</td></tr>
+    <tr><td>VFB_00049000</td><td>Wood2018</td><td>三齡幼蟲中樞神經系統</td><td>255</td><td>CC-BY 4.0</td></tr>
+    <tr><td>VFB_00050000</td><td>Seymour（L1 ssTEM）</td><td>一齡幼蟲中樞神經系統</td><td>0</td><td>CC-BY 4.0</td></tr>
+    <tr><td>VFB_00100000</td><td>Court2018</td><td>成蟲腹神經系統</td><td>22</td><td>CC-BY 4.0</td></tr>
+    <tr><td>VFB_00110000</td><td>McKellar2020</td><td>成蟲頭部</td><td>18</td><td>CC-BY 4.0</td></tr>
+    <tr><td>VFB_00120000</td><td>Kuan2020</td><td>成蟲前足</td><td>4</td><td>CC-BY 4.0</td></tr>
+  </table>
+  </div>
+  <p class="figsrc">2026-09-13 由 <code>scripts/vfb_probe.py</code> 抓取，原始輸出在 <code>out/templates.json</code> 與 <code>out/template_detail.json</code>。分區數用兩種算法各算一次——一種是數分區清單（扣掉代表整顆腦自己的那一格），一種是直接跑站上的 <i>Painted domains</i> 查詢——十套的兩個數字都一致。授權取自 VFB 的知識庫，每一套 template 各對到唯一一個授權。</p>
+
+  <div class="callout">
+    <b>如果你在網站上看到的授權跟這張表不一樣，以這張表為準。</b>網站的資訊面板那一欄我們實測過會變動——同一個 template 連問五次，有三次回 CC-BY 4.0、兩次回 CC-BY-SA 4.0。知識庫裡每一套 template 只連到<b>一個</b>授權，連問三次都一樣，所以本課以知識庫為準。真要用在正式場合的話，回頭查那套 template 原始論文的授權聲明，那才是最終依據。
+  </div>
+
+  <p><b>要挑一套來用的話：成蟲腦就挑 JRC2018Unisex。</b>它是 VFB 現在的預設，新進來的資料都往它對；本課往後凡是沒有特別說明的成蟲腦，指的都是它。</p>
+
+  <p>為什麼要十套？因為<b>問題不同，基準就不同</b>。研究腹神經索的人對不到腦的 template 上；研究幼蟲的人對不到成蟲的；而 hemibrain 那批電顯資料在自己的空間裡重建，它有自己的一套座標。十套裡有三套根本不是腦——腹神經索、頭部、前足各一套。</p>
+
+  <div class="note">
+    <b>本課往後講「有幾套 template」，一律指這十套。</b>VFB 背後存放所有資料的那個資料庫（本課往後叫它<b>知識庫</b>）裡，另外有十個編號以 <code>VFBc_</code> 開頭的項目也標著 template，那是每一套 template 的附屬影像，搜尋時不會被當成可以選的基準。兩個數字都對，只是回答的問題不同；需要提到那十個的時候，本課會寫明它們是附屬影像。
+  </div>
+
+  <div class="callout">
+    <b>JFRC2 與 Ito2014 是兩套不同的 template，不是同一套的兩個名字。</b>有些地方把它們寫成「JFRC2／Ito2014」，很容易讀成別名。它們的編號不同（VFB_00017894 對 VFB_00030786）、畫上去的分區數不同（58 對 75）、連授權都不同（CC-BY-NC-SA 4.0 對 CC-BY 4.0）。
+  </div>
+
+  <p>授權那一欄值得看一眼，因為它分成乾淨的兩群：<b>JRC2018 那一家（成蟲腦、腹神經索）與 JFRC2 帶 NC</b>，也就是禁止商業使用；<b>其餘七套都是 CC-BY 4.0</b>，註明出處就可以用。本課是非營利教學，用哪一套都沒問題，但你如果打算把圖放進要收費的東西裡，這一欄要先看。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s4"><span class="pt">4</span>registration 實際上在做什麼</h2>
+
+  <p><b>registration（對位）</b>是把你那張影像「變形」到 template 上的那一步。VFB 的定義是：</p>
+
+  <blockquote>
+    <p lang="en">Registration is the step that fixes this: computing a spatial transformation that maps each sample onto a common template.</p>
+    <p class="figsrc">出自〈Registration〉，2026-09-13 讀取。</p>
+  </blockquote>
+
+  <p>它不是一步做完的，而是三個階段，一個比一個自由：</p>
+
+  <figure class="fig">
+    <svg viewBox="0 0 880 250" role="img" aria-label="三階段對位示意圖：第一階段剛體只做旋轉與平移，第二階段仿射再加上縮放與斜切，第三階段非剛體讓局部各自變形，虛線的標準腦輪廓在三階段中固定不動。">
+      <defs>
+        <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#8b98a5"/>
+        </marker>
+      </defs>
+
+      <g transform="translate(20,30)">
+        <text x="0" y="0" font-size="13" font-weight="700" fill="#2563eb">1　剛體</text>
+        <text x="0" y="18" font-size="12" fill="#5a6b7b">只准旋轉與平移</text>
+        <path d="M30,60 C10,60 5,95 30,112 C60,132 150,132 180,112 C205,95 200,60 180,60 C150,45 60,45 30,60 Z"
+              fill="none" stroke="#c7d2de" stroke-width="2" stroke-dasharray="5 4"/>
+        <path d="M48,52 C30,58 28,92 54,107 C86,125 168,120 192,97 C214,78 206,46 186,48 C156,36 74,40 48,52 Z"
+              fill="rgba(37,99,235,.16)" stroke="#2563eb" stroke-width="2"/>
+        <text x="0" y="160" font-size="12" fill="#5a6b7b">位置正了，大小還不對</text>
+      </g>
+
+      <line x1="240" y1="130" x2="285" y2="130" stroke="#8b98a5" stroke-width="1.6" marker-end="url(#ar)"/>
+
+      <g transform="translate(310,30)">
+        <text x="0" y="0" font-size="13" font-weight="700" fill="#9333ea">2　仿射</text>
+        <text x="0" y="18" font-size="12" fill="#5a6b7b">再加上縮放與斜切</text>
+        <path d="M30,60 C10,60 5,95 30,112 C60,132 150,132 180,112 C205,95 200,60 180,60 C150,45 60,45 30,60 Z"
+              fill="none" stroke="#c7d2de" stroke-width="2" stroke-dasharray="5 4"/>
+        <path d="M32,59 C13,61 9,94 33,110 C62,129 149,129 179,111 C203,94 199,61 180,61 C151,47 60,47 32,59 Z"
+              fill="rgba(147,51,234,.16)" stroke="#9333ea" stroke-width="2"/>
+        <text x="0" y="160" font-size="12" fill="#5a6b7b">整體對上了，細節還沒</text>
+      </g>
+
+      <line x1="530" y1="130" x2="575" y2="130" stroke="#8b98a5" stroke-width="1.6" marker-end="url(#ar)"/>
+
+      <g transform="translate(600,30)">
+        <text x="0" y="0" font-size="13" font-weight="700" fill="#16a34a">3　非剛體</text>
+        <text x="0" y="18" font-size="12" fill="#5a6b7b">每個局部各自變形</text>
+        <path d="M30,60 C10,60 5,95 30,112 C60,132 150,132 180,112 C205,95 200,60 180,60 C150,45 60,45 30,60 Z"
+              fill="rgba(22,163,74,.16)" stroke="#16a34a" stroke-width="2"/>
+        <path d="M30,60 C10,60 5,95 30,112 C60,132 150,132 180,112 C205,95 200,60 180,60 C150,45 60,45 30,60 Z"
+              fill="none" stroke="#c7d2de" stroke-width="2" stroke-dasharray="5 4"/>
+        <g stroke="#16a34a" stroke-width="1" opacity=".45">
+          <path d="M55,50 C58,75 52,100 56,125" fill="none"/>
+          <path d="M90,46 C94,74 88,102 92,130" fill="none"/>
+          <path d="M125,46 C129,74 123,102 127,130" fill="none"/>
+          <path d="M160,50 C164,75 158,100 162,125" fill="none"/>
+        </g>
+        <text x="0" y="160" font-size="12" fill="#5a6b7b">貼合了，代價是算很久</text>
+      </g>
+
+      <text x="20" y="228" font-size="12" fill="#8b98a5">虛線：標準腦的輪廓，三個階段都不動。實線：你那一張影像。</text>
+    </svg>
+    <figcaption><b>對位的三個階段。</b>第一階段只准整塊轉動與搬移，用來修正玻片上擺放的角度；第二階段多了縮放與斜切，用來修正整體的大小與比例；第三階段讓每個局部各自變形，才真正把腦區一個一個貼上去。<b>真正費時、也真正會出錯的是第三階段。</b>
+    <span class="figsrc">示意圖，非真實資料。階段的名稱與順序出自 VFB 說明文件〈Registration〉。</span></figcaption>
+  </figure>
+
+  <p>這裡有一件學員多半沒想過的事：<b>對位不是照著你想看的東西對的。</b></p>
+
+  <blockquote>
+    <p lang="en">Registration is driven by a <b>reference channel</b> rather than by the signal you care about. In fly work that is usually a neuropil counterstain — anti-Bruchpilot (nc82) is the standard — which looks broadly the same in every animal and therefore gives the algorithm something stable to match. The transformation computed from that channel is then applied to the signal channel.</p>
+    <p class="figsrc">出自〈Registration〉，2026-09-13 讀取。</p>
+  </blockquote>
+
+  <p>白話說：你拍的那張影像通常有兩個頻道。一個是你要的訊號（你標記的那顆神經元），另一個是<b>參考頻道</b>——整顆腦的背景染色。果蠅這一行慣用的染色叫 nc82，它認的是突觸裡一個叫 Bruchpilot 的蛋白，所以染出來的正好是所有神經氈的輪廓——<b>而且每一隻果蠅的這個輪廓都長得差不多，程式才有一個穩定的東西可以對。</b>電腦是拿這個背景去跟標準腦比對，算出一個變形；<b>算好之後，那個變形才被套到你要的那個訊號上</b>——你那顆神經元是跟著一起被移到新的位置的。</p>
+
+  <p>這代表：<b>背景染得好不好，決定了你的神經元被放到哪裡</b>，而這跟你的神經元本身染得好不好沒有關係。VFB 自己對進來的影像用的是 CMTK 這套軟體，先做九個自由度的對位（也就是三個方向的旋轉、平移、縮放各一組，共九個可調的數），再做非剛體。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s5"><span class="pt">5</span>對位出來的位置是估計值，不是量測值</h2>
+
+  <p>這一節只有三句話，但它們是整個 VFB 最容易被誤用的三句。三句都是 VFB 自己寫的。</p>
+
+  <blockquote>
+    <p lang="en">A registered neuron is an estimate. Its position in template space is where the warp put it, not where it was in its own brain. Fine structures — thin neurites, small boutons — move most.</p>
+  </blockquote>
+
+  <p><b>第一句：那顆神經元的位置是算出來的，不是量到的。</b>你在畫面上看到它穿過某個腦區，意思是「變形程式把它放在那裡」。愈細的構造被搬動得愈多——細的神經突（神經元伸出去的細長分支）、小的膨大處（纖維上突觸聚集而鼓起來的小球），正是誤差最大的地方。</p>
+
+  <blockquote>
+    <p lang="en">Accuracy is not uniform. Registration is generally better in large, well-stained neuropils than at the brain surface, in the optic lobes, or anywhere the sample was torn or compressed during dissection.</p>
+  </blockquote>
+
+  <p><b>第二句：準確度在腦裡各處不一樣。</b>大塊、染得清楚的神經氈最準；腦的表面、視葉、以及解剖時被撕到或壓到的地方最不準。所以「誤差大約多少微米」這種話，沒有指定位置就沒有意義。</p>
+
+  <div class="danger">
+    <p lang="en"><b>Overlap is not contact.</b> Two registered objects occupying the same template voxels are near each other in a common space. That is a hypothesis about connectivity, not evidence of a synapse; for that you need EM (connectivity data).</p>
+    <p><b>第三句，也是最重要的一句：重疊不等於接觸。</b>兩顆神經元在畫面上佔到同一批體素，只表示它們在這個共同空間裡靠得很近。那是一個<b>關於連線的假設</b>，不是突觸的證據。一個 1 微米的體素，跟一個突觸的尺度差了將近一百倍——在同一個體素裡，可以是貼著，也可以是隔著好幾層別的東西擦身而過。</p>
+  </div>
+
+  <p>這三句合起來，決定了你在 VFB 上看到一張漂亮的疊圖之後，可以說什麼：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>看到的現象</th><th>可以說</th><th>不可以說</th></tr>
+    <tr><td>兩顆神經元在畫面上交錯</td><td>它們在同一個腦區裡有共同的分布範圍，值得進一步查連線資料</td><td>它們接觸／它們之間有突觸</td></tr>
+    <tr><td>一顆神經元的末梢落在某個腦區邊界外一點點</td><td>在這個對位的誤差範圍內，它可能屬於也可能不屬於這個區</td><td>它不屬於這個區</td></tr>
+    <tr><td>兩顆來自不同資料集的神經元長得幾乎一樣</td><td>形態相近，而且是在同一個 template 空間裡比的</td><td>它們是同一型（這要等 PART 5 的判準）</td></tr>
+  </table>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s6"><span class="pt">6</span>跨 template：bridging，以及我們自己做過一次</h2>
+
+  <p>第 3 節說 VFB 有十套 template。那麼問題來了：<b>掛在不同 template 上的資料，怎麼放在一起看？</b></p>
+
+  <p>答案叫 <b>bridging registration（橋接對位）</b>——兩套 template 之間的轉換。VFB 說得很直接：</p>
+
+  <blockquote>
+    <p lang="en">Data on VFB arrives registered to whichever standard its producers used — JRC2018 unisex, JRC2018F or M, JFRC2, or a connectome’s own space such as the hemibrain, FAFB or MANC — and the only way to put a FlyWire neuron next to a split-GAL4 expression pattern is to bridge between them.</p>
+    <p class="figsrc">出自 VFB 說明文件〈Bridging Registrations〉，<code>virtualflybrain.org/docs/concepts/bridging/</code>，2026-09-13 讀取。</p>
+  </blockquote>
+
+  <p>這件事在 VFB 上看不見，因為它已經做完了。但痕跡找得到：FlyCircuit 那批單神經元一共 <b>16,127 顆</b>，在 VFB 上<b>每一顆都有兩個版本</b>，一個在 JFRC2 空間、一個在 JRC2018Unisex 空間。後者就是橋接的產物。</p>
+
+  <p class="figsrc">16,127 這個數字由 <code>scripts/vfb_probe.py</code> 從 VFB 的知識庫算出（2026-09-13），原始輸出在 <code>out/flycircuit_images.json</code>。兩個 template 版本的比例，是在該查詢翻得到的前五萬列裡各佔一半。</p>
+
+  <h3>每一跳都是近似</h3>
+
+  <blockquote>
+    <p lang="en">Each bridge is an approximation, and a four-hop route applies four of them in series. … A comparison made within one space is stronger evidence than one made across a long path — and since the route is computed rather than declared, it is worth looking at how long it is before trusting a fine-grained result.</p>
+    <p class="figsrc">出自〈Bridging Registrations〉，2026-09-13 讀取。</p>
+  </blockquote>
+
+  <p>「四跳」是什麼意思：兩套 template 之間不一定有直接的轉換，常常要經過中間的空間轉手。每轉一次，誤差就疊一次。所以<b>同一個空間裡做的比較，比跨空間的比較可信</b>。而且路線是程式自己挑的、不是寫死的，所以 VFB 特別提醒：在相信一個很細緻的結果之前，先去看看它走了幾跳。</p>
+
+  <h3>跨座標系第一個會踩的坑：軸的方向</h3>
+
+  <p>在講誤差之前，先看一個更基本的問題。下面兩張圖是<b>同一份分區地圖</b>，只是存在兩個不同的座標系裡；兩張用<b>完全一樣</b>的繪圖設定畫出來：</p>
+
+  <div class="figpair">
+    <figure>
+      <img src="assets/p1-frame-fcwb.png" alt="果蠅腦分區地圖，FCWB 座標系，背側在上：中央腦區在上半部，較大的腹側區域在下方。">
+      <figcaption><span class="ab">A</span><b>FCWB 座標系</b>擺出來是正的：背側在上、腹側在下。</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/p1-frame-fc12.png" alt="同一份果蠅腦分區地圖，FC12_warp 座標系，用同一組繪圖設定畫出來後上下顛倒：較大的腹側區域跑到上方。">
+      <figcaption><span class="ab">B</span><b>FC12_warp 座標系</b>同一份資料、同一套畫法，出來是上下顛倒的，而且看到的是後面那一面。</figcaption>
+    </figure>
+  </div>
+  <p class="figsrc">兩張圖由 <code>scripts/make_part1_figures.py</code> 產生，分區資料完全相同，只差在存檔時用的座標系。<b>兩張不能拿來比大小</b>：同一顆腦在 FCWB 裡左右寬 536 微米、在 FC12_warp 裡寬 886 微米（差 1.65 倍），而網頁把兩張縮到同寬了。這個倍率跟後面解出來的轉換是對得上的——那個轉換的三軸縮放是 0.626、0.605、0.406，第一項的倒數正好約 1.6。</p>
+
+  <p>差別在哪裡？把兩個檔案的軸量一遍就知道：兩邊的第一個軸都是左右、而且方向一致，但<b>第二個軸（背腹）與第三個軸（前後）方向相反</b>。</p>
+
+  <div class="callout">
+    <b>這種錯不會報錯。</b>程式照樣跑完，圖照樣畫出來，而且畫出來的是一顆看起來很正常的果蠅腦——只是上下顛倒。用眼睛看一張果蠅腦的投影圖，是看不出上下顛倒的。所以本專題的規矩是：<b>每次讀進一個新的座標系，先用幾個方位明確的腦區把三個軸的方向量一遍</b>，量完才畫圖。
+  </div>
+
+  <h3>我們自己橋接過一次，所以講得出誤差有多大</h3>
+
+  <p>FCWB 這套標準腦不在 VFB 的十套裡。我們手上另有一批 FlyCircuit 神經元存在第三個座標系（本課叫它 FC12_warp），要跟 FCWB 的分區地圖一起用，就得自己做一次橋接。做法是：找 515 顆<b>兩邊都有</b>的神經元，每顆取一個<b>質心</b>（整顆神經元所有點的平均位置，可以想成它的重心），用這 515 組對應解出一個<b>仿射</b>轉換——也就是第 4 節那三個階段裡的第二階段，只准旋轉、平移、縮放、斜切，不做局部變形。</p>
+
+  <p>解出來之後，把每一顆的質心轉過去，量它跟真正位置差多少——這個差距叫<b>殘差</b>：</p>
+
+  <figure class="fig">
+    <img src="assets/p1-bridge-residual.png" alt="橋接誤差的直方圖，橫軸為殘差微米數 0 到 40，分布集中在 10 微米以內，中位數約 5.7 微米的位置有一條紅色實線，第 90 百分位約 13.6 微米處有一條橘色虛線。">
+    <figcaption><b>515 顆神經元的橋接殘差。</b>紅色實線是中位數 <b>5.74 微米</b>，橘色虛線是第 90 百分位 <b>13.57 微米</b>；<b>81.6%</b> 的神經元落在 10 微米以內。橫軸畫到 40 微米為止，<b>另有 13 顆超出這個範圍（最大 206.5 微米），全部併進最右邊那一格</b>——所以最右邊那根柱子不是「有 13 顆剛好是 40 微米」，而是「有 13 顆在 40 微米以上」。那些是配對本身出了問題的個案。
+    <span class="figsrc">由 <code>scripts/make_part1_figures.py</code> 算出，轉換取自本專案 D03 的 <code>D03_fc_to_fcwb_affine.json</code>。</span></figcaption>
+  </figure>
+
+  <p>這 515 顆裡有 80% 被拿去解那十二個參數、20%（103 顆）留著不用。<b>留著不用的那組中位數是 4.73 微米</b>——比被擬合過的那組（5.89 微米）還低一點，表示這個轉換沒有把自己過度貼合到手上這批資料。</p>
+
+  <div class="plain">
+    <b>白話：</b>把一顆神經元從一個座標系搬到另一個座標系，位置大約會跑掉五到六微米，十顆裡有八顆在十微米以內。果蠅腦前後只有一百多微米厚，所以這個誤差不算小——它比一個突觸大了兩個數量級，但比一個腦區小一個數量級。<b>拿它來說「這顆神經元屬於哪個腦區」通常沒問題，拿它來說「這兩顆有沒有碰到」就完全不行。</b>
+  </div>
+
+  <p>還有一個順手的自我檢查：解出來的平移量第一項是 <b>282.6 微米</b>，而 FCWB 這顆腦的中線位置獨立量出來是 <b>282.3 微米</b>。兩個數字是分別得到的，對得上就表示這個轉換至少沒有整體歪掉。</p>
+
+  <p>最後把三個空間並排，這一節的重點就清楚了：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>空間</th><th>誰在用</th><th>在 VFB 上？</th></tr>
+    <tr><td><b>JRC2018Unisex</b></td><td>VFB 現在的預設；FlyWire、male CNS 等新資料</td><td>是（現行標準）</td></tr>
+    <tr><td><b>JFRC2</b></td><td>較早的資料，包括 VFB 上的 FlyCircuit</td><td>是</td></tr>
+    <tr><td><b>FCWB</b></td><td>FlyCircuit 原本的參考腦　<b>← 本頁三張分區地圖用的是這一套</b></td><td><b>否</b></td></tr>
+    <tr><td><b>FC12_warp</b></td><td>本課手上那批 FlyCircuit 體積資料</td><td><b>否</b></td></tr>
+  </table>
+  </div>
+
+  <p><b>同一批 FlyCircuit 神經元，散在四個座標系裡。</b>這不是特例，這是常態——你自己的資料多半也不在 VFB 的任何一個空間裡。知道這件事，以及知道橋接要付出多少誤差，是用 VFB 之前該先有的準備。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s7"><span class="pt">7</span>動手做</h2>
+
+  <p>這一份不用安裝任何東西，也不用登入。打開 <a href="https://www.virtualflybrain.org/">virtualflybrain.org</a> 跟著做。</p>
+
+  <ol>
+    <li><b>找一套 template。</b>在搜尋框輸入 <code>JRC2018Unisex</code>，點進結果。資訊面板（Term Info）裡會出現它的編號 VFB_00101567。</li>
+    <li><b>看它的分區。</b>在同一個面板裡找到名為 <i>Painted domains for JRC2018U</i> 的查詢並執行它。回傳的每一列都是畫在這顆標準腦上的一個腦區，一共 46 列——跟上面那張表對得上。</li>
+    <li><b>換一套 template。</b>搜尋 <code>JFRC2</code>，做同樣的事。比較兩邊的分區數目。</li>
+    <li><b>看一顆神經元掛在哪個 template 上。</b>隨便點開一顆神經元，看它的資訊面板裡寫的是哪一套 template。如果它同時有兩筆，那兩筆就是本頁第 6 節說的橋接產物。</li>
+  </ol>
+
+  <div class="note">
+    <b>如果你看到的跟這裡寫的不一樣，先別急著懷疑自己。</b>本頁的數字是 2026 年 9 月 13 日抓的。VFB 的資料會更新，分區可能重畫、資料集會換版，數目因此改變是正常的。要確認自己看到的是哪一版，可以在網站上查該筆資料的來源資料集名稱——那裡會帶版本號。<b>會變的是數目，不會變的是這一頁講的那些關係</b>：template 是平均腦、對位是照參考頻道做的、位置是估計值、重疊不是接觸、每一次橋接都要付誤差。
+  </div>
+
+  <div class="pager">
+    <a href="index.html">← 回首頁</a>
+    <span>PART 2　把一個名字問清楚（尚未發布）</span>
+  </div>
+</div>
+
+<div class="foot">
+  VFB 專題課程　PART 1　·　本頁引用的 VFB 說明文件與資料皆於 2026-09-13 讀取　·　
+  真實資料圖由本課自行計算，資料來源與授權標於各圖說
+</div>
+</body>
+</html>

@@ -1,0 +1,205 @@
+{
+  "probe": "template_detail",
+  "part": "PART 1",
+  "question": "每一套 template 的 ID、描述、畫了幾個分區、授權是什麼？",
+  "url": {
+    "VFB_00017894": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00017894",
+    "VFB_00030786": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00030786",
+    "VFB_00049000": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00049000",
+    "VFB_00050000": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00050000",
+    "VFB_00100000": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00100000",
+    "VFB_00101384": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00101384",
+    "VFB_00101567": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00101567",
+    "VFB_00110000": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00110000",
+    "VFB_00120000": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00120000",
+    "VFB_00200000": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00200000",
+    "licences": {
+      "endpoint": "https://pdb.virtualflybrain.org/db/neo4j/tx/commit",
+      "cypher": "MATCH (t:Template) WHERE NOT t.short_form STARTS WITH 'VFBc' MATCH (t)-[*1..2]-(l:License) RETURN t.short_form AS id, collect(DISTINCT l.label) AS lics"
+    }
+  },
+  "note": "painted_domains 是 Domains 欄的筆數減一（扣掉代表 template 自己的那格）；painted_domains_query 是直接跑 PaintedDomains 查詢拿到的 count。兩個算法互為交叉檢查。　這一輪十套全部一致。　授權以知識庫（licence 欄）為準，REST 那一欄不穩定；這一輪 ['VFB_00030786', 'VFB_00049000', 'VFB_00100000'] 兩邊不同。",
+  "data": [
+    {
+      "id": "VFB_00017894",
+      "name": "JFRC2",
+      "symbol": "JFRC2",
+      "description": "An adult brain template created by Arnim Jenett (Janelia Research Campus) and painted according the the BrainName standard by Arnim Jenett, Kazunori Shinomiya and Kei Ito (Tokyo University) from a staining with the neuropil marker nc82. The image was captured at 20x magnification. The voxel size is 0.62x0.62x0.62 micron.",
+      "types": "adult brain",
+      "domain_entries": 59,
+      "painted_domains": 58,
+      "painted_domains_query": 58,
+      "two_counts_agree": true,
+      "licence": "CC-BY-NC-SA_4.0",
+      "licence_count_in_kb": 1,
+      "licence_reported_by_rest": [
+        "CC-BY-NC-SA_4.0"
+      ],
+      "has_nrrd": true,
+      "has_obj": true
+    },
+    {
+      "id": "VFB_00030786",
+      "name": "adult brain template Ito2014",
+      "symbol": "",
+      "description": "The official template for the BrainName nomnclature and accompanying painted domains for the Brain Name nomenclature (Ito et al., 2014).  This ticolor brain feautres a presynaptic marker (n-syb-GFP, green), a post synaptic marker (GABA receptor targeted Rdl-HA receptor, blue) and a cytoplasmic marker (Cytoplasmic DsRed, red).",
+      "types": "adult brain",
+      "domain_entries": 76,
+      "painted_domains": 75,
+      "painted_domains_query": 75,
+      "two_counts_agree": true,
+      "licence": "CC-BY_4.0",
+      "licence_count_in_kb": 1,
+      "licence_reported_by_rest": [
+        "CC-BY-SA_4.0"
+      ],
+      "has_nrrd": true,
+      "has_obj": true
+    },
+    {
+      "id": "VFB_00049000",
+      "name": "L3 CNS template - Wood2018",
+      "symbol": "",
+      "description": "The L3 CNS template from Wood2018 is a confocal template created using images of the Ventral Nerve Cord (VNC) and Central Brain (CB) regions of Drosophila melanogaster third instar larvae. The template images neuroglian (BP-104) staining, emphasising the neuronal tracts.",
+      "types": "larval central nervous system",
+      "domain_entries": 256,
+      "painted_domains": 255,
+      "painted_domains_query": 255,
+      "two_counts_agree": true,
+      "licence": "CC-BY_4.0",
+      "licence_count_in_kb": 1,
+      "licence_reported_by_rest": [
+        "CC-BY-SA_4.0"
+      ],
+      "has_nrrd": true,
+      "has_obj": true
+    },
+    {
+      "id": "VFB_00050000",
+      "name": "L1 larval CNS ssTEM - Cardona/Janelia",
+      "symbol": "",
+      "description": "The \"Seymour\" dataset is a high-resolution 3D electron microscopy dataset of the entire central nervous system (CNS) of a Drosophila larva (L1 stage) acquired using serial section transmission electron microscopy (ssTEM).",
+      "types": "larval central nervous system",
+      "domain_entries": 0,
+      "painted_domains": 0,
+      "painted_domains_query": 0,
+      "two_counts_agree": true,
+      "licence": "CC-BY_4.0",
+      "licence_count_in_kb": 1,
+      "licence_reported_by_rest": [
+        "CC-BY_4.0",
+        "CC-BY-SA_4.0"
+      ],
+      "has_nrrd": true,
+      "has_obj": true
+    },
+    {
+      "id": "VFB_00100000",
+      "name": "COURT2018VNS",
+      "symbol": "COURT2018VNS",
+      "description": "The adult VNS template by Court et al. (2018) is a three-dimensional atlas of the ventral nerve cord (VNC) of adult Drosophila melanogaster. It consists of a series of annotated confocal microscopy images that have been aligned and registered to a common coordinate system.",
+      "types": "adult ventral nerve cord",
+      "domain_entries": 23,
+      "painted_domains": 22,
+      "painted_domains_query": 22,
+      "two_counts_agree": true,
+      "licence": "CC-BY_4.0",
+      "licence_count_in_kb": 1,
+      "licence_reported_by_rest": [
+        "CC-BY-SA_4.0"
+      ],
+      "has_nrrd": true,
+      "has_obj": true
+    },
+    {
+      "id": "VFB_00101384",
+      "name": "JRCFIB2018Fum",
+      "symbol": "JRCFIB2018Fum",
+      "description": "Synapse segmentation from JRC_FlyEM_Hemibrain (V1 Jan 2020).",
+      "types": "adult brain",
+      "domain_entries": 97,
+      "painted_domains": 97,
+      "painted_domains_query": 97,
+      "two_counts_agree": true,
+      "licence": "CC-BY_4.0",
+      "licence_count_in_kb": 1,
+      "licence_reported_by_rest": [
+        "CC-BY_4.0"
+      ],
+      "has_nrrd": true,
+      "has_obj": true
+    },
+    {
+      "id": "VFB_00101567",
+      "name": "JRC2018U",
+      "symbol": "JRC2018U",
+      "description": "Janelia 2018 unisex, averaged adult brain template",
+      "types": "adult brain",
+      "domain_entries": 47,
+      "painted_domains": 46,
+      "painted_domains_query": 46,
+      "two_counts_agree": true,
+      "licence": "CC-BY-NC-SA_4.0",
+      "licence_count_in_kb": 1,
+      "licence_reported_by_rest": [
+        "CC-BY-NC-SA_4.0"
+      ],
+      "has_nrrd": true,
+      "has_obj": true
+    },
+    {
+      "id": "VFB_00110000",
+      "name": "Adult Head (McKellar2020)",
+      "symbol": "",
+      "description": "The Adult Head (McKellar2020) is a template for the Drosophila melanogaster adult brain based on cuticle autofluorescence imaging. The imaging was performed with the proboscis pointing downwards, with the eyes cropped out of the image at the sides.",
+      "types": "adult head",
+      "domain_entries": 19,
+      "painted_domains": 18,
+      "painted_domains_query": 18,
+      "two_counts_agree": true,
+      "licence": "CC-BY_4.0",
+      "licence_count_in_kb": 1,
+      "licence_reported_by_rest": [
+        "CC-BY_4.0"
+      ],
+      "has_nrrd": true,
+      "has_obj": true
+    },
+    {
+      "id": "VFB_00120000",
+      "name": "Adult T1 Leg (Kuan2020)",
+      "symbol": "",
+      "description": "The adult Drosophila melanogaster (fruit fly) leg was used as a sample to study neural circuits at the nanoscale level. The fruit fly leg has five segments that contain various types of neurons responsible for sensing and controlling movement. To image and reconstruct the leg's neural circuits at nanoscale resolution, X-ray holographic nano-tomography was used. This technique involves imaging the leg from multiple angles using a high-resolution X-ray microscope, followed by using computational algorithms to reconstruct the 3D structure of the leg's neural circuits. As a result, individual neurons and their connections within the leg were visualized and analyzed.",
+      "types": "prothoracic leg",
+      "domain_entries": 4,
+      "painted_domains": 4,
+      "painted_domains_query": 4,
+      "two_counts_agree": true,
+      "licence": "CC-BY_4.0",
+      "licence_count_in_kb": 1,
+      "licence_reported_by_rest": [
+        "CC-BY_4.0"
+      ],
+      "has_nrrd": true,
+      "has_obj": true
+    },
+    {
+      "id": "VFB_00200000",
+      "name": "JRCVNC2018U",
+      "symbol": "JRCVNC2018U",
+      "description": "JRC2018UnisexVNC is a 3D template of the ventral nerve cord (VNC) of the adult fruit fly Drosophila melanogaster. This template was created by combining confocal microscopy images of multiple male and female flies, resulting in a unisex template that includes the neuropils and all motor and sensory neurons.",
+      "types": "adult ventral nerve cord",
+      "domain_entries": 22,
+      "painted_domains": 21,
+      "painted_domains_query": 21,
+      "two_counts_agree": true,
+      "licence": "CC-BY-NC-SA_4.0",
+      "licence_count_in_kb": 1,
+      "licence_reported_by_rest": [
+        "CC-BY-NC-SA_4.0"
+      ],
+      "has_nrrd": true,
+      "has_obj": true
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.DS_Store
+
+# 說明文件的本機快取，quote_audit.py 會自己重抓；也不適合把別人的整頁 HTML 放進公開 repo
+out/_quotes/
+
+# 內部規劃文件，不公開
+vfb_plan.docx
+make_vfb_plan.py

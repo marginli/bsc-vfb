@@ -1,0 +1,101 @@
+{
+  "probe": "connectivity_example",
+  "part": "PART 4",
+  "question": "同一對細胞型的連線，在不同資料集裡長什麼樣？",
+  "url": "https://v3-cached.virtualflybrain.org/query_connectivity?upstream_type=LPLC2&downstream_type=giant%20fiber%20neuron",
+  "note": "by_data_source 分開統計，就是為了讓「不同資料集不是同一個數字」看得見。",
+  "data": {
+    "upstream_type": "LPLC2",
+    "downstream_type": "giant fiber neuron",
+    "pair_count": 275,
+    "by_data_source": {
+      "flywire783→flywire783": {
+        "pairs": 99,
+        "total_weight": 844,
+        "max_weight": 16
+      },
+      "male_cns_v0_9→male_cns_v0_9": {
+        "pairs": 176,
+        "total_weight": 4836,
+        "max_weight": 64
+      }
+    },
+    "sample": [
+      {
+        "upstream_class": "lobula plate-lobula columnar neuron LPLC2",
+        "upstream_class_id": "FBbt_00111763",
+        "upstream_neuron_id": "VFB_fw002311",
+        "upstream_neuron_name": "LO.PVLP.957 (FlyWire:720575940635307639)",
+        "weight": 8,
+        "downstream_neuron_id": "VFB_fw036981",
+        "downstream_neuron_name": "PVLP.44 (FlyWire:720575940622838154)",
+        "downstream_class": "giant fiber neuron",
+        "downstream_class_id": "FBbt_00004020",
+        "up_data_source": "flywire783",
+        "up_accession": "720575940635307639",
+        "down_data_source": "flywire783",
+        "down_accession": "720575940622838154"
+      },
+      {
+        "upstream_class": "lobula plate-lobula columnar neuron LPLC2",
+        "upstream_class_id": "FBbt_00111763",
+        "upstream_neuron_id": "VFB_fw014299",
+        "upstream_neuron_name": "LO.PVLP.833 (FlyWire:720575940655750305)",
+        "weight": 9,
+        "downstream_neuron_id": "VFB_fw036981",
+        "downstream_neuron_name": "PVLP.44 (FlyWire:720575940622838154)",
+        "downstream_class": "giant fiber neuron",
+        "downstream_class_id": "FBbt_00004020",
+        "up_data_source": "flywire783",
+        "up_accession": "720575940655750305",
+        "down_data_source": "flywire783",
+        "down_accession": "720575940622838154"
+      },
+      {
+        "upstream_class": "lobula plate-lobula columnar neuron LPLC2",
+        "upstream_class_id": "FBbt_00111763",
+        "upstream_neuron_id": "VFB_fw015348",
+        "upstream_neuron_name": "LO.PVLP.834 (FlyWire:720575940607845250)",
+        "weight": 11,
+        "downstream_neuron_id": "VFB_fw036981",
+        "downstream_neuron_name": "PVLP.44 (FlyWire:720575940622838154)",
+        "downstream_class": "giant fiber neuron",
+        "downstream_class_id": "FBbt_00004020",
+        "up_data_source": "flywire783",
+        "up_accession": "720575940607845250",
+        "down_data_source": "flywire783",
+        "down_accession": "720575940622838154"
+      },
+      {
+        "upstream_class": "lobula plate-lobula columnar neuron LPLC2",
+        "upstream_class_id": "FBbt_00111763",
+        "upstream_neuron_id": "VFB_fw014728",
+        "upstream_neuron_name": "LO.PVLP.659 (FlyWire:720575940630831185)",
+        "weight": 7,
+        "downstream_neuron_id": "VFB_fw036981",
+        "downstream_neuron_name": "PVLP.44 (FlyWire:720575940622838154)",
+        "downstream_class": "giant fiber neuron",
+        "downstream_class_id": "FBbt_00004020",
+        "up_data_source": "flywire783",
+        "up_accession": "720575940630831185",
+        "down_data_source": "flywire783",
+        "down_accession": "720575940622838154"
+      },
+      {
+        "upstream_class": "lobula plate-lobula columnar neuron LPLC2",
+        "upstream_class_id": "FBbt_00111763",
+        "upstream_neuron_id": "VFB_fw013578",
+        "upstream_neuron_name": "LO.PVLP.1198 (FlyWire:720575940612560680)",
+        "weight": 5,
+        "downstream_neuron_id": "VFB_fw036981",
+        "downstream_neuron_name": "PVLP.44 (FlyWire:720575940622838154)",
+        "downstream_class": "giant fiber neuron",
+        "downstream_class_id": "FBbt_00004020",
+        "up_data_source": "flywire783",
+        "up_accession": "720575940612560680",
+        "down_data_source": "flywire783",
+        "down_accession": "720575940622838154"
+      }
+    ]
+  }
+}

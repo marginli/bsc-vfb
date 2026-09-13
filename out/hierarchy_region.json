@@ -1,0 +1,98 @@
+{
+  "probe": "hierarchy_region",
+  "part": "PART 2",
+  "question": "part_of 與 subclass_of 是兩張不同的圖，差在哪？",
+  "url": {
+    "part_of": "https://v3-cached.virtualflybrain.org/get_hierarchy?id=FBbt_00003748&max_depth=1&relationship=part_of",
+    "subclass_of": "https://v3-cached.virtualflybrain.org/get_hierarchy?id=FBbt_00003748&max_depth=1&relationship=subclass_of"
+  },
+  "note": "已去掉回應裡的 html 欄位（整頁 HTML，會把 diff 淹掉）。",
+  "data": {
+    "part_of": {
+      "id": "FBbt_00003748",
+      "label": "medulla",
+      "relationship": "part_of",
+      "descendants": [
+        {
+          "id": "FBbt_00111364",
+          "label": "adult chandelier glial cell"
+        },
+        {
+          "id": "FBbt_00111365",
+          "label": "adult distal medulla astrocyte-like glial cell"
+        },
+        {
+          "id": "FBbt_00049499",
+          "label": "adult distal medulla ensheathing glial cell"
+        },
+        {
+          "id": "FBbt_00049496",
+          "label": "adult medulla astrocyte-like glial cell"
+        },
+        {
+          "id": "FBbt_00049497",
+          "label": "adult medulla ensheathing glial cell"
+        },
+        {
+          "id": "FBbt_00005738",
+          "label": "adult medulla neuropil associated glial cell"
+        },
+        {
+          "id": "FBbt_00111363",
+          "label": "adult serpentine glial cell"
+        },
+        {
+          "id": "FBbt_00049500",
+          "label": "adult serpentine medulla ensheathing glial cell"
+        },
+        {
+          "id": "FBbt_00100528",
+          "label": "distal medulla glial cell"
+        },
+        {
+          "id": "FBbt_00003757",
+          "label": "inner medulla"
+        },
+        {
+          "id": "FBbt_00045002",
+          "label": "medulla dorsal rim area"
+        },
+        {
+          "id": "FBbt_00048343",
+          "label": "medulla layer"
+        },
+        {
+          "id": "FBbt_00003756",
+          "label": "medulla serpentine layer"
+        },
+        {
+          "id": "FBbt_00045001",
+          "label": "plexiform medulla"
+        }
+      ],
+      "ancestors": [
+        {
+          "id": "FBbt_00003701",
+          "label": "adult optic lobe"
+        },
+        {
+          "id": "FBbt_00053384",
+          "label": "adult primary visual center"
+        },
+        {
+          "id": "FBbt_00040005",
+          "label": "synaptic neuropil"
+        }
+      ],
+      "display": "Part of (ancestors):\nadult optic lobe (FBbt_00003701)\n    └── medulla (FBbt_00003748)\nadult primary visual center (FBbt_00053384)\n    └── medulla (FBbt_00003748)\nsynaptic neuropil (FBbt_00040005)\n    └── medulla (FBbt_00003748)\n\nHas parts (descendants):\nmedulla (FBbt_00003748)\n    ├── adult chandelier glial cell (FBbt_00111364)\n    ├── adult distal medulla astrocyte-like glial cell (FBbt_00111365)\n    ├── adult distal medulla ensheathing glial cell (FBbt_00049499)\n    ├── adult medulla astrocyte-like glial cell (FBbt_00049496)\n    ├── adult medulla ensheathing glial cell (FBbt_00049497)\n    ├── adult medulla neuropil associated glial cell (FBbt_00005738)\n    ├── adult serpentine glial cell (FBbt_00111363)\n    ├── adult serpentine medulla ensheathing glial cell (FBbt_00049500)\n    ├── ... (5 more)\n    └── plexiform medulla (FBbt_00045001)"
+    },
+    "subclass_of": {
+      "id": "FBbt_00003748",
+      "label": "medulla",
+      "relationship": "subclass_of",
+      "descendants": [],
+      "ancestors": [],
+      "display": "Subtypes (descendants):\nmedulla (FBbt_00003748)"
+    }
+  }
+}

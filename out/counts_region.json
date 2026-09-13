@@ -1,0 +1,353 @@
+{
+  "probe": "counts_region",
+  "part": "PART 3",
+  "question": "那些現成查詢各自會回傳幾筆？",
+  "url": {
+    "ListAllAvailableImages": "https://v3-cached.virtualflybrain.org/run_query?id=FBbt_00003748&query_type=ListAllAvailableImages&limit=3",
+    "NeuronsPartHere": "https://v3-cached.virtualflybrain.org/run_query?id=FBbt_00003748&query_type=NeuronsPartHere&limit=3",
+    "NeuronsSynaptic": "https://v3-cached.virtualflybrain.org/run_query?id=FBbt_00003748&query_type=NeuronsSynaptic&limit=3",
+    "NeuronsPresynapticHere": "https://v3-cached.virtualflybrain.org/run_query?id=FBbt_00003748&query_type=NeuronsPresynapticHere&limit=3",
+    "NeuronsPostsynapticHere": "https://v3-cached.virtualflybrain.org/run_query?id=FBbt_00003748&query_type=NeuronsPostsynapticHere&limit=3",
+    "PartsOf": "https://v3-cached.virtualflybrain.org/run_query?id=FBbt_00003748&query_type=PartsOf&limit=3",
+    "TractsNervesInnervatingHere": "https://v3-cached.virtualflybrain.org/run_query?id=FBbt_00003748&query_type=TractsNervesInnervatingHere&limit=3",
+    "LineageClonesIn": "https://v3-cached.virtualflybrain.org/run_query?id=FBbt_00003748&query_type=LineageClonesIn&limit=3",
+    "ImagesNeurons": "https://v3-cached.virtualflybrain.org/run_query?id=FBbt_00003748&query_type=ImagesNeurons&limit=3",
+    "TransgeneExpressionHere": "https://v3-cached.virtualflybrain.org/run_query?id=FBbt_00003748&query_type=TransgeneExpressionHere&limit=3"
+  },
+  "note": "count 是這支查詢的總列數。注意它是列數不是個數——見 flycircuit_images。",
+  "data": [
+    {
+      "query": "ListAllAvailableImages",
+      "label": "List all available images of medulla",
+      "count": 4,
+      "columns": [
+        "id",
+        "label",
+        "parent",
+        "template",
+        "tags",
+        "source",
+        "source_id",
+        "dataset",
+        "license",
+        "thumbnail"
+      ],
+      "sample": [
+        {
+          "id": "VFB_00102107",
+          "label": "ME on JRC2018Unisex adult brain",
+          "template": "JRC2018U"
+        },
+        {
+          "id": "VFB_00101385",
+          "label": "ME(R) on JRC_FlyEM_Hemibrain",
+          "template": "JRCFIB2018Fum"
+        },
+        {
+          "id": "VFB_00030810",
+          "label": "medulla on adult brain template Ito2014",
+          "template": "adult brain template Ito2014"
+        }
+      ]
+    },
+    {
+      "query": "NeuronsPartHere",
+      "label": "Neurons with some part in medulla",
+      "count": 471,
+      "columns": [
+        "id",
+        "label",
+        "tags",
+        "template",
+        "technique",
+        "thumbnail"
+      ],
+      "sample": [
+        {
+          "id": "FBbt_00110069",
+          "label": "Dm8b",
+          "template": "JRC2018U",
+          "technique": "serial block face SEM (SBFSEM)"
+        },
+        {
+          "id": "FBbt_00003806",
+          "label": "Tm18",
+          "template": "",
+          "technique": ""
+        },
+        {
+          "id": "FBbt_00003807",
+          "label": "Tm19",
+          "template": "",
+          "technique": ""
+        }
+      ]
+    },
+    {
+      "query": "NeuronsSynaptic",
+      "label": "Neurons with synaptic terminals in medulla",
+      "count": 464,
+      "columns": [
+        "id",
+        "label",
+        "tags",
+        "template",
+        "technique",
+        "thumbnail"
+      ],
+      "sample": [
+        {
+          "id": "FBbt_00110069",
+          "label": "Dm8b",
+          "template": "JRC2018U",
+          "technique": "serial block face SEM (SBFSEM)"
+        },
+        {
+          "id": "FBbt_00003806",
+          "label": "Tm18",
+          "template": "",
+          "technique": ""
+        },
+        {
+          "id": "FBbt_00003807",
+          "label": "Tm19",
+          "template": "",
+          "technique": ""
+        }
+      ]
+    },
+    {
+      "query": "NeuronsPresynapticHere",
+      "label": "Neurons with presynaptic terminals in medulla",
+      "count": 262,
+      "columns": [
+        "id",
+        "label",
+        "tags",
+        "template",
+        "technique",
+        "thumbnail"
+      ],
+      "sample": [
+        {
+          "id": "FBbt_00110069",
+          "label": "Dm8b",
+          "template": "JRC2018U",
+          "technique": "serial block face SEM (SBFSEM)"
+        },
+        {
+          "id": "FBbt_00003806",
+          "label": "Tm18",
+          "template": "",
+          "technique": ""
+        },
+        {
+          "id": "FBbt_00003807",
+          "label": "Tm19",
+          "template": "",
+          "technique": ""
+        }
+      ]
+    },
+    {
+      "query": "NeuronsPostsynapticHere",
+      "label": "Neurons with postsynaptic terminals in medulla",
+      "count": 333,
+      "columns": [
+        "id",
+        "label",
+        "tags",
+        "template",
+        "technique",
+        "thumbnail"
+      ],
+      "sample": [
+        {
+          "id": "FBbt_00003806",
+          "label": "Tm18",
+          "template": "",
+          "technique": ""
+        },
+        {
+          "id": "FBbt_00003807",
+          "label": "Tm19",
+          "template": "",
+          "technique": ""
+        },
+        {
+          "id": "FBbt_00003809",
+          "label": "Tm21",
+          "template": "",
+          "technique": ""
+        }
+      ]
+    },
+    {
+      "query": "PartsOf",
+      "label": "Parts of medulla",
+      "count": 28,
+      "columns": [
+        "id",
+        "label",
+        "tags",
+        "template",
+        "technique",
+        "thumbnail"
+      ],
+      "sample": [
+        {
+          "id": "FBbt_00003750",
+          "label": "medulla layer M1",
+          "template": "JRC2018U",
+          "technique": "computer graphic"
+        },
+        {
+          "id": "FBbt_00003754",
+          "label": "medulla layer M5",
+          "template": "JRC2018U",
+          "technique": "computer graphic"
+        },
+        {
+          "id": "FBbt_00003758",
+          "label": "medulla layer M8",
+          "template": "JRC2018U",
+          "technique": "computer graphic"
+        }
+      ]
+    },
+    {
+      "query": "TractsNervesInnervatingHere",
+      "label": "Tracts/nerves innervating medulla",
+      "count": 3,
+      "columns": [
+        "id",
+        "label",
+        "tags",
+        "template",
+        "technique",
+        "thumbnail"
+      ],
+      "sample": [
+        {
+          "id": "FBbt_00003922",
+          "label": "second optic chiasma",
+          "template": "",
+          "technique": ""
+        },
+        {
+          "id": "FBbt_00005810",
+          "label": "first optic chiasma",
+          "template": "",
+          "technique": ""
+        },
+        {
+          "id": "FBbt_00007427",
+          "label": "posterior optic commissure",
+          "template": "adult brain template Ito2014",
+          "technique": "computer graphic"
+        }
+      ]
+    },
+    {
+      "query": "LineageClonesIn",
+      "label": "Lineage clones found in medulla",
+      "count": 7,
+      "columns": [
+        "id",
+        "label",
+        "tags",
+        "template",
+        "technique",
+        "thumbnail"
+      ],
+      "sample": [
+        {
+          "id": "FBbt_00050167",
+          "label": "adult LALv1 lineage clone",
+          "template": "JRC2018U",
+          "technique": "confocal microscopy"
+        },
+        {
+          "id": "FBbt_00050013",
+          "label": "adult VPNl&d1 lineage clone",
+          "template": "JFRC2",
+          "technique": "confocal microscopy"
+        },
+        {
+          "id": "FBbt_00050019",
+          "label": "adult DM1 lineage clone",
+          "template": "JFRC2",
+          "technique": "confocal microscopy"
+        }
+      ]
+    },
+    {
+      "query": "ImagesNeurons",
+      "label": "Images of neurons with some part in medulla",
+      "count": 226524,
+      "columns": [
+        "id",
+        "label",
+        "tags",
+        "template",
+        "technique",
+        "thumbnail"
+      ],
+      "sample": [
+        {
+          "id": "VFB_jrmc10fc",
+          "label": "T4a_R (MaleCNS:100855)",
+          "template": "JRC2018U",
+          "technique": "serial block face SEM (SBFSEM)"
+        },
+        {
+          "id": "VFB_jrmc10fb",
+          "label": "T4a_L (MaleCNS:97069)",
+          "template": "JRCVNC2018U",
+          "technique": "serial block face SEM (SBFSEM)"
+        },
+        {
+          "id": "VFB_jrmc10fa",
+          "label": "T4a_L (MaleCNS:150592)",
+          "template": "JRCVNC2018U",
+          "technique": "serial block face SEM (SBFSEM)"
+        }
+      ]
+    },
+    {
+      "query": "TransgeneExpressionHere",
+      "label": "Transgene expression in medulla",
+      "count": 2337,
+      "columns": [
+        "id",
+        "name",
+        "expressed_in",
+        "pubs",
+        "tags",
+        "template",
+        "technique",
+        "thumbnail"
+      ],
+      "sample": [
+        {
+          "id": "VFBexp_FBti0182065",
+          "name": "Mi{GT-GAL4}DIP-β[MI01971-GAL4] expression pattern",
+          "template": "",
+          "technique": ""
+        },
+        {
+          "id": "VFBexp_FBti0145260",
+          "name": "Mi{MIC}dpr10[MI03557] expression pattern",
+          "template": "",
+          "technique": ""
+        },
+        {
+          "id": "VFBexp_FBti0143533",
+          "name": "PBac{544.SVS-1}B4[CPTI100035] expression pattern",
+          "template": "JFRC2",
+          "technique": "confocal microscopy"
+        }
+      ]
+    }
+  ]
+}

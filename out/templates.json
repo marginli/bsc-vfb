@@ -1,0 +1,53 @@
+{
+  "probe": "templates",
+  "part": "PART 1",
+  "question": "VFB 一共有幾套 template？分別是哪些？",
+  "url": "https://v3-cached.virtualflybrain.org/search?query=%2A&filter_types=Template&limit=100",
+  "note": "搜尋回傳的列數比 template 的套數多，因為同義詞各佔一列。",
+  "data": {
+    "search_rows": 16,
+    "distinct_templates": 10,
+    "templates": [
+      {
+        "id": "VFB_00017894",
+        "label": "adult brain template JFRC2"
+      },
+      {
+        "id": "VFB_00030786",
+        "label": "adult brain template Ito2014"
+      },
+      {
+        "id": "VFB_00049000",
+        "label": "L3 CNS template - Wood2018"
+      },
+      {
+        "id": "VFB_00050000",
+        "label": "L1 larval CNS ssTEM - Cardona/Janelia"
+      },
+      {
+        "id": "VFB_00100000",
+        "label": "adult VNS template - Court2018"
+      },
+      {
+        "id": "VFB_00101384",
+        "label": "JRC_FlyEM_Hemibrain"
+      },
+      {
+        "id": "VFB_00101567",
+        "label": "JRC2018Unisex"
+      },
+      {
+        "id": "VFB_00110000",
+        "label": "Adult Head (McKellar2020)"
+      },
+      {
+        "id": "VFB_00120000",
+        "label": "Adult T1 Leg (Kuan2020)"
+      },
+      {
+        "id": "VFB_00200000",
+        "label": "JRC2018UnisexVNC"
+      }
+    ]
+  }
+}

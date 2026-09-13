@@ -1,0 +1,946 @@
+{
+  "probe": "facets",
+  "part": "PART 2",
+  "question": "搜尋可以用哪些類別來篩選？各有多少筆？",
+  "url": "https://v3-cached.virtualflybrain.org/facets",
+  "note": "facets 的 docs 數是全站統計，會隨資料更新而變動——不要寫死在正文裡。",
+  "data": {
+    "count": 233,
+    "total": 233,
+    "contains": null,
+    "facets": [
+      {
+        "name": "entity",
+        "docs": 741026
+      },
+      {
+        "name": "anatomy",
+        "docs": 660572
+      },
+      {
+        "name": "nervous_system",
+        "docs": 625912
+      },
+      {
+        "name": "individual",
+        "docs": 618665
+      },
+      {
+        "name": "has_image",
+        "docs": 608546
+      },
+      {
+        "name": "adult",
+        "docs": 606480
+      },
+      {
+        "name": "cell",
+        "docs": 542748
+      },
+      {
+        "name": "neuron",
+        "docs": 540158
+      },
+      {
+        "name": "vfb",
+        "docs": 528290
+      },
+      {
+        "name": "has_neuron_connectivity",
+        "docs": 488110
+      },
+      {
+        "name": "cholinergic",
+        "docs": 294948
+      },
+      {
+        "name": "visual_system",
+        "docs": 292918
+      },
+      {
+        "name": "nblast",
+        "docs": 261728
+      },
+      {
+        "name": "secondary_neuron",
+        "docs": 171383
+      },
+      {
+        "name": "class",
+        "docs": 122360
+      },
+      {
+        "name": "gabaergic",
+        "docs": 103210
+      },
+      {
+        "name": "glutamatergic",
+        "docs": 94191
+      },
+      {
+        "name": "expression_pattern",
+        "docs": 74336
+      },
+      {
+        "name": "expression_pattern_fragment",
+        "docs": 63359
+      },
+      {
+        "name": "sensory_neuron",
+        "docs": 62261
+      },
+      {
+        "name": "feature",
+        "docs": 46998
+      },
+      {
+        "name": "neuronbridge",
+        "docs": 44696
+      },
+      {
+        "name": "larva",
+        "docs": 23355
+      },
+      {
+        "name": "has_region_connectivity",
+        "docs": 22587
+      },
+      {
+        "name": "primary_neuron",
+        "docs": 21503
+      },
+      {
+        "name": "histaminergic",
+        "docs": 20968
+      },
+      {
+        "name": "dopaminergic",
+        "docs": 20236
+      },
+      {
+        "name": "mechanosensory_system",
+        "docs": 20177
+      },
+      {
+        "name": "nblastexp",
+        "docs": 18367
+      },
+      {
+        "name": "peptidergic",
+        "docs": 17962
+      },
+      {
+        "name": "gene",
+        "docs": 17893
+      },
+      {
+        "name": "lineage_mbp",
+        "docs": 17793
+      },
+      {
+        "name": "chemosensory_system",
+        "docs": 17084
+      },
+      {
+        "name": "flycircuit",
+        "docs": 16128
+      },
+      {
+        "name": "split",
+        "docs": 13995
+      },
+      {
+        "name": "hasscrnaseq",
+        "docs": 13387
+      },
+      {
+        "name": "olfactory_system",
+        "docs": 11214
+      },
+      {
+        "name": "pub",
+        "docs": 5894
+      },
+      {
+        "name": "fafb",
+        "docs": 5637
+      },
+      {
+        "name": "l1em",
+        "docs": 5043
+      },
+      {
+        "name": "has_subclass",
+        "docs": 4838
+      },
+      {
+        "name": "motor_neuron",
+        "docs": 4485
+      },
+      {
+        "name": "enzyme",
+        "docs": 3733
+      },
+      {
+        "name": "serotonergic",
+        "docs": 3568
+      },
+      {
+        "name": "gustatory_system",
+        "docs": 3399
+      },
+      {
+        "name": "cluster",
+        "docs": 3290
+      },
+      {
+        "name": "lineage_dm6_cm3",
+        "docs": 3263
+      },
+      {
+        "name": "lineage_mbp4",
+        "docs": 3211
+      },
+      {
+        "name": "lineage_mbp1",
+        "docs": 3142
+      },
+      {
+        "name": "lineage_dm4_cm4",
+        "docs": 3096
+      },
+      {
+        "name": "lineage_mbp2",
+        "docs": 3080
+      },
+      {
+        "name": "proprioceptive_system",
+        "docs": 2898
+      },
+      {
+        "name": "lineage_mbp3",
+        "docs": 2819
+      },
+      {
+        "name": "sense_organ",
+        "docs": 2744
+      },
+      {
+        "name": "lineage_all1_balc",
+        "docs": 2618
+      },
+      {
+        "name": "lineage_dm1_dpmm1",
+        "docs": 2544
+      },
+      {
+        "name": "lineage_vpnd2",
+        "docs": 2365
+      },
+      {
+        "name": "lineage_dl1_cp2",
+        "docs": 2245
+      },
+      {
+        "name": "lineage_dm3_dpmpm2",
+        "docs": 2053
+      },
+      {
+        "name": "muscle",
+        "docs": 1956
+      },
+      {
+        "name": "lineage_dm2_dpmpm1",
+        "docs": 1807
+      },
+      {
+        "name": "lineage_vlpl2_blav2",
+        "docs": 1649
+      },
+      {
+        "name": "lineage_eba1_dalv2",
+        "docs": 1645
+      },
+      {
+        "name": "lineage_vpnd1_bld6",
+        "docs": 1588
+      },
+      {
+        "name": "fanc",
+        "docs": 1472
+      },
+      {
+        "name": "auditory_system",
+        "docs": 1350
+      },
+      {
+        "name": "lineage_lalv1_bamv1",
+        "docs": 1303
+      },
+      {
+        "name": "lineage_aotuv4_dalcl2",
+        "docs": 1292
+      },
+      {
+        "name": "lineage_aotuv3_dalcl1",
+        "docs": 1277
+      },
+      {
+        "name": "lineage_alad1_bamv3",
+        "docs": 1245
+      },
+      {
+        "name": "lineage_lhl4_bld1",
+        "docs": 1181
+      },
+      {
+        "name": "lineage_alv1_bala1",
+        "docs": 1169
+      },
+      {
+        "name": "lineage_crea2_dalcm1",
+        "docs": 1164
+      },
+      {
+        "name": "lineage_lala1_balp2",
+        "docs": 1126
+      },
+      {
+        "name": "lineage_0_mnb",
+        "docs": 1058
+      },
+      {
+        "name": "lineage_slpad1_dpll3",
+        "docs": 1050
+      },
+      {
+        "name": "lineage_lhp2_dplp1",
+        "docs": 1030
+      },
+      {
+        "name": "synaptic_neuropil",
+        "docs": 1018
+      },
+      {
+        "name": "lineage_dl2_cp3",
+        "docs": 951
+      },
+      {
+        "name": "lineage_vpnv1",
+        "docs": 951
+      },
+      {
+        "name": "lineage_smpad2",
+        "docs": 948
+      },
+      {
+        "name": "lineage_crea1_bamd1",
+        "docs": 909
+      },
+      {
+        "name": "lineage_vpnd3",
+        "docs": 893
+      },
+      {
+        "name": "lineage_vlpa1_dall2",
+        "docs": 848
+      },
+      {
+        "name": "dna_binding",
+        "docs": 828
+      },
+      {
+        "name": "transcription_factor",
+        "docs": 814
+      },
+      {
+        "name": "lineage_vlpa2_dalv1",
+        "docs": 783
+      },
+      {
+        "name": "lineage_vpnp3",
+        "docs": 764
+      },
+      {
+        "name": "lineage_lhl2_dplal2",
+        "docs": 760
+      },
+      {
+        "name": "transporter",
+        "docs": 747
+      },
+      {
+        "name": "lineage_slppl1_dpll1",
+        "docs": 743
+      },
+      {
+        "name": "lineage_weda2_balp3",
+        "docs": 714
+      },
+      {
+        "name": "lineage_lhl1_bld4",
+        "docs": 700
+      },
+      {
+        "name": "lineage_lhp1_blp4",
+        "docs": 695
+      },
+      {
+        "name": "lineage_allv1_balp4",
+        "docs": 693
+      },
+      {
+        "name": "lineage_dm5_cm1",
+        "docs": 692
+      },
+      {
+        "name": "synaptic_neuropil_subdomain",
+        "docs": 680
+      },
+      {
+        "name": "lineage_smppv2_cp1",
+        "docs": 672
+      },
+      {
+        "name": "lineage_alv2_bala2",
+        "docs": 670
+      },
+      {
+        "name": "lineage_smpad1",
+        "docs": 667
+      },
+      {
+        "name": "lineage_vpnp1_bld5",
+        "docs": 665
+      },
+      {
+        "name": "lineage_wedd1_dald",
+        "docs": 665
+      },
+      {
+        "name": "lineage_psp3_dpml1",
+        "docs": 663
+      },
+      {
+        "name": "neuron_projection_bundle",
+        "docs": 663
+      },
+      {
+        "name": "octopaminergic",
+        "docs": 635
+      },
+      {
+        "name": "lineage_slpav1_blal1",
+        "docs": 618
+      },
+      {
+        "name": "lineage_aotuv1_dalcm2",
+        "docs": 597
+      },
+      {
+        "name": "lineage_vlpl4_bld3",
+        "docs": 590
+      },
+      {
+        "name": "receptor",
+        "docs": 589
+      },
+      {
+        "name": "lineage_weda1_balv",
+        "docs": 583
+      },
+      {
+        "name": "lineage_slpal1_dplal1",
+        "docs": 576
+      },
+      {
+        "name": "lineage_vpnp2",
+        "docs": 576
+      },
+      {
+        "name": "lineage_flaa2_bamas1",
+        "docs": 559
+      },
+      {
+        "name": "lineage_smppd1_dplc1",
+        "docs": 554
+      },
+      {
+        "name": "lineage_vpnv2",
+        "docs": 550
+      },
+      {
+        "name": "lineage_slpav2_bld2",
+        "docs": 548
+      },
+      {
+        "name": "hygrosensory_system",
+        "docs": 536
+      },
+      {
+        "name": "lineage_sipa1_blad2",
+        "docs": 536
+      },
+      {
+        "name": "lineage_trdl",
+        "docs": 533
+      },
+      {
+        "name": "lineage_lha2_blva1",
+        "docs": 528
+      },
+      {
+        "name": "regulator",
+        "docs": 521
+      },
+      {
+        "name": "neuroblast",
+        "docs": 517
+      },
+      {
+        "name": "lineage_slppm1_dplm1",
+        "docs": 515
+      },
+      {
+        "name": "lineage_psa1_bamv2",
+        "docs": 514
+      },
+      {
+        "name": "lineage_smpad3_damd1",
+        "docs": 510
+      },
+      {
+        "name": "rna_binding",
+        "docs": 508
+      },
+      {
+        "name": "lineage_lhd2_dplm2",
+        "docs": 505
+      },
+      {
+        "name": "lineage_psp2_cm5",
+        "docs": 501
+      },
+      {
+        "name": "lineage_trdm",
+        "docs": 501
+      },
+      {
+        "name": "thermosensory_system",
+        "docs": 497
+      },
+      {
+        "name": "lineage_slpal2_dplal3",
+        "docs": 496
+      },
+      {
+        "name": "lineage_vlpd1_dplam",
+        "docs": 486
+      },
+      {
+        "name": "lineage_clp1_dplc4",
+        "docs": 477
+      },
+      {
+        "name": "lineage_lha3_blva2",
+        "docs": 476
+      },
+      {
+        "name": "lineage_crel1_dalv3",
+        "docs": 464
+      },
+      {
+        "name": "small_molecule_binding",
+        "docs": 463
+      },
+      {
+        "name": "lineage_lha1_blad1",
+        "docs": 462
+      },
+      {
+        "name": "lineage_lhd1_dpld",
+        "docs": 438
+      },
+      {
+        "name": "lineage_vlpp1_blp2",
+        "docs": 428
+      },
+      {
+        "name": "structural_molecule",
+        "docs": 422
+      },
+      {
+        "name": "lineage_smppv1_dpmpl1",
+        "docs": 411
+      },
+      {
+        "name": "ion_channel",
+        "docs": 401
+      },
+      {
+        "name": "lineage_vlpp2_dpmpl3",
+        "docs": 400
+      },
+      {
+        "name": "lineage_smppm1_dpmm2",
+        "docs": 392
+      },
+      {
+        "name": "clone",
+        "docs": 364
+      },
+      {
+        "name": "lineage_slppl3_blva2c",
+        "docs": 352
+      },
+      {
+        "name": "lineage_slppm3_dplc3",
+        "docs": 352
+      },
+      {
+        "name": "lineage_flaa3_bamas2",
+        "docs": 351
+      },
+      {
+        "name": "lineage_aotuv2_dall1",
+        "docs": 334
+      },
+      {
+        "name": "synaptic_neuropil_domain",
+        "docs": 304
+      },
+      {
+        "name": "cytoskeleton_binding",
+        "docs": 296
+      },
+      {
+        "name": "lineage_pbp1_cm6",
+        "docs": 291
+      },
+      {
+        "name": "lineage_sipp1_dpmpl2",
+        "docs": 287
+      },
+      {
+        "name": "tyraminergic",
+        "docs": 287
+      },
+      {
+        "name": "nociceptive_system",
+        "docs": 272
+      },
+      {
+        "name": "lineage_slppl2_cp6",
+        "docs": 269
+      },
+      {
+        "name": "lineage_slpav3_blva2a",
+        "docs": 267
+      },
+      {
+        "name": "glial_cell",
+        "docs": 256
+      },
+      {
+        "name": "lineage_slpal5_blad5",
+        "docs": 256
+      },
+      {
+        "name": "lineage_wedd2_bamd2",
+        "docs": 252
+      },
+      {
+        "name": "lineage_clp2_cp4",
+        "docs": 240
+      },
+      {
+        "name": "lineage_vesa2_balp1",
+        "docs": 229
+      },
+      {
+        "name": "lineage_psp1_dpml2",
+        "docs": 228
+      },
+      {
+        "name": "lineage_vesa1_bala3",
+        "docs": 221
+      },
+      {
+        "name": "lineage_slppm2_dplc2",
+        "docs": 213
+      },
+      {
+        "name": "dataset",
+        "docs": 210
+      },
+      {
+        "name": "stage",
+        "docs": 210
+      },
+      {
+        "name": "lineage_lhp3_cp5",
+        "docs": 202
+      },
+      {
+        "name": "metal_ion_binding",
+        "docs": 174
+      },
+      {
+        "name": "lipid_binding",
+        "docs": 147
+      },
+      {
+        "name": "lineage_smppd2_dplc6",
+        "docs": 139
+      },
+      {
+        "name": "gpcr",
+        "docs": 117
+      },
+      {
+        "name": "ligand",
+        "docs": 117
+      },
+      {
+        "name": "lineage_lhl3_blva2b",
+        "docs": 115
+      },
+      {
+        "name": "assay",
+        "docs": 108
+      },
+      {
+        "name": "sample",
+        "docs": 108
+      },
+      {
+        "name": "chaperone",
+        "docs": 94
+      },
+      {
+        "name": "lineage_flaa1_bala4",
+        "docs": 82
+      },
+      {
+        "name": "neuromere",
+        "docs": 79
+      },
+      {
+        "name": "calcium_binding",
+        "docs": 78
+      },
+      {
+        "name": "cell_adhesion",
+        "docs": 73
+      },
+      {
+        "name": "peptide_or_protein_hormone_receptor",
+        "docs": 71
+      },
+      {
+        "name": "olfactory_receptor",
+        "docs": 65
+      },
+      {
+        "name": "gustatory_receptor",
+        "docs": 64
+      },
+      {
+        "name": "odorant_binding",
+        "docs": 56
+      },
+      {
+        "name": "neuropeptide",
+        "docs": 50
+      },
+      {
+        "name": "neurotransmitter_receptor",
+        "docs": 45
+      },
+      {
+        "name": "carbohydrate_binding",
+        "docs": 42
+      },
+      {
+        "name": "ganglion",
+        "docs": 35
+      },
+      {
+        "name": "synaptic_neuropil_block",
+        "docs": 31
+      },
+      {
+        "name": "gmc",
+        "docs": 25
+      },
+      {
+        "name": "glutamate_receptor",
+        "docs": 24
+      },
+      {
+        "name": "scrnaseq_dataset",
+        "docs": 24
+      },
+      {
+        "name": "hormone",
+        "docs": 21
+      },
+      {
+        "name": "lineage_blp3",
+        "docs": 15
+      },
+      {
+        "name": "acetylcholine_receptor",
+        "docs": 13
+      },
+      {
+        "name": "photoreceptor",
+        "docs": 12
+      },
+      {
+        "name": "mechanosensory_ion_channel",
+        "docs": 11
+      },
+      {
+        "name": "property",
+        "docs": 10
+      },
+      {
+        "name": "template",
+        "docs": 10
+      },
+      {
+        "name": "lineage_slppm4",
+        "docs": 8
+      },
+      {
+        "name": "gaba_receptor",
+        "docs": 7
+      },
+      {
+        "name": "license",
+        "docs": 7
+      },
+      {
+        "name": "lineage_smpad4",
+        "docs": 7
+      },
+      {
+        "name": "octopamine_receptor",
+        "docs": 7
+      },
+      {
+        "name": "lineage_slpal3_blad3",
+        "docs": 6
+      },
+      {
+        "name": "lineage_vlpl1",
+        "docs": 5
+      },
+      {
+        "name": "preferred_root",
+        "docs": 5
+      },
+      {
+        "name": "serotonin_receptor",
+        "docs": 5
+      },
+      {
+        "name": "dopamine_receptor",
+        "docs": 4
+      },
+      {
+        "name": "lineage_slpal4",
+        "docs": 4
+      },
+      {
+        "name": "lineage_vpnd4",
+        "docs": 4
+      },
+      {
+        "name": "lineage_vpnv3",
+        "docs": 4
+      },
+      {
+        "name": "tyramine_receptor",
+        "docs": 4
+      },
+      {
+        "name": "lineage_lha4",
+        "docs": 3
+      },
+      {
+        "name": "channel",
+        "docs": 2
+      },
+      {
+        "name": "histamine_receptor",
+        "docs": 2
+      },
+      {
+        "name": "lineage_blad4",
+        "docs": 2
+      },
+      {
+        "name": "lineage_blp5",
+        "docs": 2
+      },
+      {
+        "name": "lineage_blva3",
+        "docs": 2
+      },
+      {
+        "name": "lineage_blva4",
+        "docs": 2
+      },
+      {
+        "name": "lineage_cm2",
+        "docs": 2
+      },
+      {
+        "name": "lineage_damd2",
+        "docs": 2
+      },
+      {
+        "name": "lineage_damd3",
+        "docs": 2
+      },
+      {
+        "name": "lineage_damv1",
+        "docs": 2
+      },
+      {
+        "name": "lineage_damv2",
+        "docs": 2
+      },
+      {
+        "name": "lineage_dplcv",
+        "docs": 2
+      },
+      {
+        "name": "lineage_dpmm3",
+        "docs": 2
+      },
+      {
+        "name": "lineage_trco",
+        "docs": 2
+      },
+      {
+        "name": "lineage_trvl",
+        "docs": 2
+      },
+      {
+        "name": "lineage_trvm",
+        "docs": 2
+      },
+      {
+        "name": "annotationproperty",
+        "docs": 1
+      },
+      {
+        "name": "thermosensory_ion_channel",
+        "docs": 1
+      }
+    ]
+  }
+}

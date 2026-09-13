@@ -1,0 +1,59 @@
+{
+  "probe": "queries_for_region",
+  "part": "PART 3",
+  "question": "一個腦區的面板會給你哪些現成查詢？",
+  "url": "https://v3-cached.virtualflybrain.org/get_term_info?id=FBbt_00003748",
+  "note": "這張表就是 PART 3 要教的「入口」——它由資料決定，不是寫死的功能表。",
+  "data": [
+    {
+      "query": "ListAllAvailableImages",
+      "label": "List all available images of medulla",
+      "function": "get_instances"
+    },
+    {
+      "query": "NeuronsPartHere",
+      "label": "Neurons with some part in medulla",
+      "function": "get_neurons_with_part_in"
+    },
+    {
+      "query": "NeuronsSynaptic",
+      "label": "Neurons with synaptic terminals in medulla",
+      "function": "get_neurons_with_synapses_in"
+    },
+    {
+      "query": "NeuronsPresynapticHere",
+      "label": "Neurons with presynaptic terminals in medulla",
+      "function": "get_neurons_with_presynaptic_terminals_in"
+    },
+    {
+      "query": "NeuronsPostsynapticHere",
+      "label": "Neurons with postsynaptic terminals in medulla",
+      "function": "get_neurons_with_postsynaptic_terminals_in"
+    },
+    {
+      "query": "PartsOf",
+      "label": "Parts of medulla",
+      "function": "get_parts_of"
+    },
+    {
+      "query": "TractsNervesInnervatingHere",
+      "label": "Tracts/nerves innervating medulla",
+      "function": "get_tracts_nerves_innervating_here"
+    },
+    {
+      "query": "LineageClonesIn",
+      "label": "Lineage clones found in medulla",
+      "function": "get_lineage_clones_in"
+    },
+    {
+      "query": "ImagesNeurons",
+      "label": "Images of neurons with some part in medulla",
+      "function": "get_images_neurons"
+    },
+    {
+      "query": "TransgeneExpressionHere",
+      "label": "Transgene expression in medulla",
+      "function": "get_transgene_expression_here"
+    }
+  ]
+}

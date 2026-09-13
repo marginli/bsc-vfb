@@ -1,0 +1,49 @@
+{
+  "probe": "connectome_datasets",
+  "part": "PART 4",
+  "question": "VFB 現在有哪幾套連線資料？版本是多少？",
+  "url": "https://v3-cached.virtualflybrain.org/list_connectome_datasets",
+  "note": "label 裡帶著版本號（例：FlyWire v783）——頁面上每個連線數字都要標它。",
+  "data": [
+    {
+      "label": "BANC web interface v888",
+      "symbol": "BANC",
+      "short_form": "BANC888"
+    },
+    {
+      "label": "FlyWire web interface v783",
+      "symbol": "fw",
+      "short_form": "flywire783"
+    },
+    {
+      "label": "Neuprint web interface - JRC_Optic-Lobe:v1.0.1",
+      "symbol": "ol",
+      "short_form": "neuprint_JRC_OpticLobe_v1_0_1"
+    },
+    {
+      "label": "Neuprint web interface - MANC:v1.2.1",
+      "symbol": "mv",
+      "short_form": "neuprint_JRC_Manc_1_2_1"
+    },
+    {
+      "label": "Neuprint web interface - hemibrain:v1.2.1",
+      "symbol": "hb",
+      "short_form": "neuprint_JRC_Hemibrain_1point2point1"
+    },
+    {
+      "label": "Neuprint web interface - male-cns:v1.0",
+      "symbol": "mc",
+      "short_form": "male_cns_v1_0"
+    },
+    {
+      "label": "VFB CATMAID Adult Brain (FAFB)",
+      "symbol": "fafb",
+      "short_form": "catmaid_fafb"
+    },
+    {
+      "label": "VFB CATMAID L1 CNS",
+      "symbol": "l1em",
+      "short_form": "catmaid_l1em"
+    }
+  ]
+}

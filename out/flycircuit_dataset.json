@@ -1,0 +1,39 @@
+{
+  "probe": "flycircuit_dataset",
+  "part": "PART 5",
+  "question": "FlyCircuit 這套資料在 VFB 上的授權與引用要求是什麼？",
+  "url": "https://v3-cached.virtualflybrain.org/get_term_info?id=Chiang2010",
+  "note": "授權是逐筆掛在資料上的，不是全站一句話——types/tool.md 的〈著作權〉。",
+  "data": {
+    "name": "FlyCircuit 1.0 - single neurons (Chiang2010)",
+    "id": "Chiang2010",
+    "meta": {
+      "Name": "[FlyCircuit 1.0 - single neurons (Chiang2010)](Chiang2010)",
+      "Description": "",
+      "Comment": "",
+      "Link": "[http://www.flycircuit.tw/v1.1/modules.php?name=introduction&parent=introduction&op=introduction](http://www.flycircuit.tw/v1.1/modules.php?name=introduction&parent=introduction&op=introduction)"
+    },
+    "licences": [
+      {
+        "label": "FlyCircuit License",
+        "source": "",
+        "iri": "http://virtualflybrain.org/reports/VFBlicense_FlyCircuit_License"
+      }
+    ],
+    "publications": [
+      {
+        "title": "Chiang et al., 2011, Curr. Biol. 21(1): 1--11",
+        "short_form": "FBrf0212704",
+        "microref": "[Chiang et al., 2011](FBrf0212704)",
+        "refs": [
+          "http://www.ncbi.nlm.nih.gov/pubmed/?term=21129968",
+          "http://flybase.org/reports/FBrf0212704",
+          "https://doi.org/10.1016/j.cub.2010.11.056"
+        ]
+      }
+    ],
+    "queries": [
+      "DatasetImages"
+    ]
+  }
+}

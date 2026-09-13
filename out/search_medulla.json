@@ -1,0 +1,229 @@
+{
+  "probe": "search_medulla",
+  "part": "PART 2",
+  "question": "在搜尋框打 medulla 會拿到什麼？",
+  "url": "https://v3-cached.virtualflybrain.org/search?query=medulla&limit=10",
+  "note": "同一個 FBbt 會因為正式名與同義詞各出現一次——這就是「搜尋的是詞不是字串」。",
+  "data": {
+    "query": "medulla",
+    "rows": [
+      {
+        "label": "medulla (FBbt_00003748)",
+        "short_form": "FBbt_00003748",
+        "facets_annotation": [
+          "Entity",
+          "Class",
+          "Adult",
+          "Anatomy",
+          "Nervous_system",
+          "Synaptic_neuropil",
+          "Synaptic_neuropil_domain",
+          "Visual_system"
+        ],
+        "unique_facets": [
+          "Nervous_system",
+          "Adult",
+          "Visual_system",
+          "Synaptic_neuropil_domain"
+        ],
+        "id": "http://purl.obolibrary.org/obo/FBbt_00003748",
+        "original_label": "medulla"
+      },
+      {
+        "label": "optic medulla (medulla)",
+        "short_form": "FBbt_00003748",
+        "facets_annotation": [
+          "Entity",
+          "Class",
+          "Adult",
+          "Anatomy",
+          "Nervous_system",
+          "Synaptic_neuropil",
+          "Synaptic_neuropil_domain",
+          "Visual_system"
+        ],
+        "unique_facets": [
+          "Nervous_system",
+          "Adult",
+          "Visual_system",
+          "Synaptic_neuropil_domain"
+        ],
+        "id": "http://purl.obolibrary.org/obo/FBbt_00003748",
+        "original_label": "medulla"
+      },
+      {
+        "label": "medulla cortex (cell body rind of adult medulla)",
+        "short_form": "FBbt_00100205",
+        "facets_annotation": [
+          "Entity",
+          "Class",
+          "Adult",
+          "Anatomy",
+          "Nervous_system",
+          "Visual_system"
+        ],
+        "unique_facets": [
+          "Nervous_system",
+          "Adult",
+          "Visual_system"
+        ],
+        "id": "http://purl.obolibrary.org/obo/FBbt_00100205",
+        "original_label": "cell body rind of adult medulla"
+      },
+      {
+        "label": "medulla proper (plexiform medulla)",
+        "short_form": "FBbt_00045001",
+        "facets_annotation": [
+          "Entity",
+          "Class",
+          "Adult",
+          "Anatomy",
+          "Nervous_system",
+          "Synaptic_neuropil",
+          "Synaptic_neuropil_subdomain",
+          "Visual_system"
+        ],
+        "unique_facets": [
+          "Nervous_system",
+          "Adult",
+          "Visual_system",
+          "Synaptic_neuropil_subdomain"
+        ],
+        "id": "http://purl.obolibrary.org/obo/FBbt_00045001",
+        "original_label": "plexiform medulla"
+      },
+      {
+        "label": "larval medulla (medulla anlage)",
+        "short_form": "FBbt_00001935",
+        "facets_annotation": [
+          "Entity",
+          "Class",
+          "Anatomy",
+          "Larva",
+          "Nervous_system"
+        ],
+        "unique_facets": [
+          "Nervous_system",
+          "Larva"
+        ],
+        "id": "http://purl.obolibrary.org/obo/FBbt_00001935",
+        "original_label": "medulla anlage"
+      },
+      {
+        "label": "medulla layer 2 (medulla layer M2)",
+        "short_form": "FBbt_00003751",
+        "facets_annotation": [
+          "Entity",
+          "Class",
+          "Adult",
+          "Anatomy",
+          "Nervous_system",
+          "Synaptic_neuropil",
+          "Synaptic_neuropil_subdomain",
+          "Visual_system"
+        ],
+        "unique_facets": [
+          "Nervous_system",
+          "Adult",
+          "Visual_system",
+          "Synaptic_neuropil_subdomain"
+        ],
+        "id": "http://purl.obolibrary.org/obo/FBbt_00003751",
+        "original_label": "medulla layer M2"
+      },
+      {
+        "label": "medulla layer 3 (medulla layer M3)",
+        "short_form": "FBbt_00003752",
+        "facets_annotation": [
+          "Entity",
+          "Class",
+          "Adult",
+          "Anatomy",
+          "Nervous_system",
+          "Synaptic_neuropil",
+          "Synaptic_neuropil_subdomain",
+          "Visual_system"
+        ],
+        "unique_facets": [
+          "Nervous_system",
+          "Adult",
+          "Visual_system",
+          "Synaptic_neuropil_subdomain"
+        ],
+        "id": "http://purl.obolibrary.org/obo/FBbt_00003752",
+        "original_label": "medulla layer M3"
+      },
+      {
+        "label": "medulla layer 4 (medulla layer M4)",
+        "short_form": "FBbt_00003753",
+        "facets_annotation": [
+          "Entity",
+          "Class",
+          "Adult",
+          "Anatomy",
+          "Nervous_system",
+          "Synaptic_neuropil",
+          "Synaptic_neuropil_subdomain",
+          "Visual_system"
+        ],
+        "unique_facets": [
+          "Nervous_system",
+          "Adult",
+          "Visual_system",
+          "Synaptic_neuropil_subdomain"
+        ],
+        "id": "http://purl.obolibrary.org/obo/FBbt_00003753",
+        "original_label": "medulla layer M4"
+      },
+      {
+        "label": "medulla layer 5 (medulla layer M5)",
+        "short_form": "FBbt_00003754",
+        "facets_annotation": [
+          "Entity",
+          "Class",
+          "Adult",
+          "Anatomy",
+          "Nervous_system",
+          "Synaptic_neuropil",
+          "Synaptic_neuropil_subdomain",
+          "Visual_system"
+        ],
+        "unique_facets": [
+          "Nervous_system",
+          "Adult",
+          "Visual_system",
+          "Synaptic_neuropil_subdomain"
+        ],
+        "id": "http://purl.obolibrary.org/obo/FBbt_00003754",
+        "original_label": "medulla layer M5"
+      },
+      {
+        "label": "medulla layer 6 (medulla layer M6)",
+        "short_form": "FBbt_00003755",
+        "facets_annotation": [
+          "Entity",
+          "Class",
+          "Adult",
+          "Anatomy",
+          "Nervous_system",
+          "Synaptic_neuropil",
+          "Synaptic_neuropil_subdomain",
+          "Visual_system"
+        ],
+        "unique_facets": [
+          "Nervous_system",
+          "Adult",
+          "Visual_system",
+          "Synaptic_neuropil_subdomain"
+        ],
+        "id": "http://purl.obolibrary.org/obo/FBbt_00003755",
+        "original_label": "medulla layer M6"
+      }
+    ],
+    "count": 1537,
+    "distinct_terms": 494,
+    "unique": false,
+    "solr_num_found": 494,
+    "rows_fetched": 494
+  }
+}

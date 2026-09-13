@@ -1,0 +1,130 @@
+{
+  "source": "本機 D03（FCWB CC0；FCWBNP natverse GPL-3／Ito et al. 2014）",
+  "script": "scripts/make_part1_figures.py",
+  "regions": {
+    "labels": 75,
+    "base_names": 41,
+    "paired": 34,
+    "midline_only": 7
+  },
+  "axes": {
+    "FCWB": {
+      "tag": "FCWB",
+      "axis_leftright": 0,
+      "axis_dorsoventral": 1,
+      "axis_anteroposterior": 2,
+      "low_is_right": true,
+      "low_is_dorsal": true,
+      "low_is_anterior": true
+    },
+    "FC12_warp": {
+      "tag": "FC12_warp",
+      "axis_leftright": 0,
+      "axis_dorsoventral": 1,
+      "axis_anteroposterior": 2,
+      "low_is_right": true,
+      "low_is_dorsal": false,
+      "low_is_anterior": false
+    }
+  },
+  "views": {
+    "front": {
+      "file": "p1-view-front.png",
+      "size": [
+        1120,
+        580
+      ],
+      "visible_regions": 56,
+      "right_half_only": false,
+      "checks": {
+        "背側在上": true,
+        "右腦在左": true
+      }
+    },
+    "side": {
+      "file": "p1-view-side.png",
+      "size": [
+        234,
+        580
+      ],
+      "visible_regions": 34,
+      "right_half_only": true,
+      "checks": {
+        "背側在上": true,
+        "前側在左": true
+      }
+    },
+    "top": {
+      "file": "p1-view-top.png",
+      "size": [
+        1120,
+        234
+      ],
+      "visible_regions": 48,
+      "right_half_only": false,
+      "checks": {
+        "前側在上": true,
+        "右腦在右": true
+      }
+    }
+  },
+  "frames": {
+    "fcwb": {
+      "file": "p1-frame-fcwb.png",
+      "size": [
+        1120,
+        580
+      ],
+      "shape": [
+        565,
+        328,
+        109
+      ],
+      "labelled_extent_um": [
+        536,
+        266,
+        93
+      ]
+    },
+    "fc12": {
+      "file": "p1-frame-fc12.png",
+      "size": [
+        1814,
+        928
+      ],
+      "shape": [
+        956,
+        611,
+        311
+      ],
+      "labelled_extent_um": [
+        886,
+        441,
+        229
+      ]
+    }
+  },
+  "bridge": {
+    "file": "p1-bridge-residual.png",
+    "n_pairs": 515,
+    "median_um": 5.74,
+    "p90_um": 13.57,
+    "max_um": 206.51,
+    "frac_under_10um": 0.816,
+    "xmax_um": 40.0,
+    "n_over_xmax": 13,
+    "n_heldout": 103,
+    "heldout_median_um": 4.73,
+    "heldout_p90_um": 13.19,
+    "fitted_median_um": 5.89,
+    "singular_values": [
+      0.626,
+      0.605,
+      0.406
+    ],
+    "det": 0.154,
+    "midline_from_fit_um": 282.6,
+    "midline_measured_um": 282.3,
+    "pointcloud_holdout_median_um": 2.92
+  }
+}

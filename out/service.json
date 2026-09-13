@@ -1,0 +1,26 @@
+{
+  "probe": "service",
+  "part": "PART 6",
+  "question": "這兩支 API 現在活著嗎？",
+  "url": {
+    "health": "https://v3-cached.virtualflybrain.org/health",
+    "status": "https://v3-cached.virtualflybrain.org/status",
+    "pdb": {
+      "endpoint": "https://pdb.virtualflybrain.org/db/neo4j/tx/commit",
+      "cypher": "RETURN 1 AS ok"
+    }
+  },
+  "note": "已刻意丟掉 /status 裡的快取與連線計數——那是遙測，不是教材要引的數字。",
+  "data": {
+    "health": "OK",
+    "status_health": {
+      "nginx": true,
+      "upstream": true
+    },
+    "upstream": {
+      "host": "vfbquery.virtualflybrain.org",
+      "port": 80
+    },
+    "pdb_reachable": true
+  }
+}

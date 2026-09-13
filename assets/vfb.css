@@ -1,0 +1,219 @@
+/* VFB 專題課程共用樣式 — 沿用 BSC online_course 與 LPU 專題的視覺慣例 */
+:root{
+  --ink:#1b2733; --soft:#5a6b7b; --faint:#8b98a5;
+  --bg:#ffffff; --panel:#f7f8fa; --border:#e4e8ee;
+  --accent:#2563eb; --accent-soft:#eff4ff;
+  --maxw:920px; --radius:12px;
+  --green:#16a34a; --blue:#2563eb; --purple:#9333ea; --amber:#d97706; --red:#dc2626;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:-apple-system,"Segoe UI","Noto Sans TC","Microsoft JhengHei","PingFang TC",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.85; font-size:16.5px; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px 110px}
+header.hero{max-width:var(--maxw); margin:0 auto; padding:54px 22px 22px}
+.eyebrow{color:var(--accent); font-weight:700; font-size:13px; letter-spacing:.08em; text-transform:uppercase; margin:0 0 10px}
+h1{font-size:33px; line-height:1.3; margin:0 0 12px; letter-spacing:-.01em; text-wrap:balance}
+.subtitle{font-size:18px; color:var(--soft); margin:0 0 8px}
+h2{font-size:25px; margin:60px 0 8px; padding-top:16px; border-top:2px solid var(--border); line-height:1.35; text-wrap:balance}
+h2 .pt{color:var(--accent); font-size:15px; display:block; font-weight:700; letter-spacing:.05em; margin-bottom:2px}
+h3{font-size:19px; margin:36px 0 10px; text-wrap:balance}
+h4{font-size:16px; margin:22px 0 6px}
+p{margin:12px 0}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
+code{background:var(--panel); border:1px solid var(--border); border-radius:5px; padding:1px 6px; font-family:"Cascadia Code",Consolas,Menlo,monospace; font-size:.86em}
+pre{background:#0f1622; color:#e6edf3; border-radius:10px; padding:16px 18px; overflow-x:auto; font-size:13.5px; line-height:1.6}
+pre code{background:none; border:none; color:inherit; padding:0}
+ul,ol{padding-left:22px}
+li{margin:7px 0}
+blockquote{margin:16px 0; padding:10px 18px; border-left:4px solid var(--accent); background:var(--accent-soft); border-radius:0 8px 8px 0}
+
+/* ── 首頁：三個按鈕 ── */
+.intro{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:18px 24px; font-size:15.5px; margin:26px 0}
+.intro dt{font-weight:700; margin-top:12px}
+.intro dt:first-child{margin-top:0}
+.intro dd{margin:2px 0 0; color:var(--soft)}
+.btns{display:grid; gap:16px; margin:34px 0 10px}
+@media(min-width:640px){.btns{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:940px){.btns{grid-template-columns:repeat(3,1fr)}}
+a.btn{
+  display:flex; flex-direction:column; gap:8px;
+  border:1px solid var(--border); border-left:5px solid var(--accent);
+  border-radius:var(--radius); background:var(--panel);
+  padding:22px 22px 24px; color:var(--ink); text-decoration:none;
+  transition:box-shadow .15s ease, transform .15s ease, background .15s ease;
+}
+a.btn:hover{background:#fff; box-shadow:0 10px 28px rgba(16,24,40,.10); transform:translateY(-2px); text-decoration:none}
+a.btn .no{font-size:12px; font-weight:700; letter-spacing:.08em; color:var(--accent)}
+a.btn .t{font-size:20px; font-weight:700; line-height:1.4}
+a.btn .s{font-size:14.5px; color:var(--soft); line-height:1.7; margin:0}
+a.btn .m{font-size:13px; color:var(--faint); margin:6px 0 0}
+a.btn.c2{border-left-color:var(--purple)}
+a.btn.c2 .no{color:var(--purple)}
+a.btn.c3{border-left-color:var(--green)}
+a.btn.c3 .no{color:var(--green)}
+a.btn.c4{border-left-color:var(--amber)}
+a.btn.c4 .no{color:var(--amber)}
+a.btn.c5{border-left-color:var(--red)}
+a.btn.c5 .no{color:var(--red)}
+a.btn.soon{background:#fbfbfc; border-style:dashed}
+a.btn.soon .t{color:var(--soft)}
+
+.statgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:20px 0}
+.stat{border:1px solid var(--border); border-radius:10px; padding:14px 16px; background:var(--panel)}
+.stat .v{font-size:26px; font-weight:700; color:var(--accent); font-variant-numeric:tabular-nums; line-height:1.2}
+.stat .k{font-size:13px; color:var(--soft); margin-top:3px}
+
+.tblwrap{overflow-x:auto; margin:18px 0}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--border); padding:9px 12px; text-align:left; vertical-align:top}
+th{background:var(--panel); font-weight:700}
+
+.callout{background:#fffbeb; border:1px solid #fde68a; border-left:4px solid var(--amber); border-radius:0 8px 8px 0; padding:12px 16px; margin:18px 0; font-size:15px}
+.note{background:var(--accent-soft); border:1px solid #c7dbff; border-radius:8px; padding:12px 16px; margin:18px 0; font-size:15px}
+.danger{background:#fef2f2; border:1px solid #fecaca; border-left:4px solid var(--red); border-radius:0 8px 8px 0; padding:12px 16px; margin:18px 0; font-size:15px}
+.fixed{background:rgba(34,197,94,.07); border:1px solid #bbf7d0; border-left:4px solid var(--green); border-radius:0 8px 8px 0; padding:12px 16px; margin:18px 0; font-size:15px}
+.fixed b{color:#15803d}
+.draft{background:#f5f3ff; border:1px solid #ddd6fe; border-left:4px solid var(--purple); border-radius:0 8px 8px 0; padding:12px 16px; margin:22px 0; font-size:15px}
+
+.crumb{max-width:var(--maxw); margin:0 auto; padding:20px 22px 0; font-size:14px; color:var(--faint)}
+.foot{max-width:var(--maxw); margin:0 auto; padding:28px 22px; color:var(--faint); font-size:13px; border-top:1px solid var(--border)}
+.pager{display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; margin:56px 0 0; padding-top:20px; border-top:1px solid var(--border); font-size:15px}
+
+/* 待填內容的佔位段落 */
+.todo{border:1px dashed var(--border); border-radius:10px; padding:14px 18px; margin:14px 0; background:#fcfcfd; color:var(--soft); font-size:14.5px}
+.todo b{color:var(--ink)}
+.todo ul{margin:8px 0 0}
+nav.toc{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:18px 26px; margin:28px 0}
+nav.toc h2{border:none; margin:0 0 8px; padding:0; font-size:18px}
+nav.toc ol{margin:6px 0 0}
+nav.toc a{color:var(--ink)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto} a.btn:hover{transform:none}}
+
+/* ── 圖 ── */
+.fig{margin:26px 0}
+.fig img{display:block; width:100%; height:auto; border:1px solid var(--border); border-radius:10px; background:#fff}
+.fig.narrow img{max-width:330px; margin:0 auto}
+.fig figcaption{font-size:14px; color:var(--soft); line-height:1.7; margin-top:11px}
+.fig figcaption b{color:var(--ink)}
+.figsrc{display:block; margin-top:7px; color:var(--faint); font-size:12.5px}
+/* 並排的兩張圖：各自帶說明，窄螢幕自動上下堆疊 */
+.figpair{display:grid; gap:18px; margin:26px 0}
+@media(min-width:680px){.figpair{grid-template-columns:1fr 1fr}}
+.figpair figure{margin:0}
+.figpair img{display:block; width:100%; height:auto; border:1px solid var(--border);
+  border-radius:10px; background:#fff}
+.figpair figcaption{margin-top:10px; font-size:14px; line-height:1.7; color:var(--soft)}
+.figpair figcaption b{display:block; color:var(--ink); font-size:15px; margin-bottom:1px}
+.figpair .ab{display:inline-block; font-size:11.5px; font-weight:700; letter-spacing:.06em;
+  color:var(--accent); background:var(--accent-soft); border-radius:5px;
+  padding:1px 8px; margin-bottom:7px}
+/* 色塊圖例 */
+.key{display:flex; flex-wrap:wrap; gap:9px 20px; margin:16px 0 0; padding:13px 16px;
+  list-style:none; font-size:14px; background:var(--panel); border:1px solid var(--border);
+  border-radius:9px}
+.key li{display:flex; align-items:center; gap:7px; margin:0}
+.key i{width:13px; height:13px; border-radius:3px; flex:none}
+/* 定義卡 */
+.defcard{border:1px solid #c7dbff; background:var(--accent-soft); border-radius:12px; padding:6px 24px 18px; margin:24px 0}
+.defcard h4{color:var(--accent); font-size:14px; letter-spacing:.04em; margin:16px 0 4px}
+.defcard p{margin:4px 0}
+/* 名詞卡 */
+.terms{display:grid; gap:12px; margin:20px 0}
+@media(min-width:700px){.terms{grid-template-columns:1fr 1fr}}
+.term{border:1px solid var(--border); border-radius:10px; padding:13px 17px; background:var(--panel)}
+.term .w{font-weight:700; font-size:15.5px}
+.term .en{color:var(--faint); font-weight:400; font-size:13.5px; margin-left:5px}
+.term p{margin:5px 0 0; font-size:14.5px; color:var(--soft); line-height:1.7}
+/* 案例列 */
+.cases{display:grid; gap:12px; margin:20px 0}
+.case{display:flex; gap:14px; border:1px solid var(--border); border-radius:10px; padding:13px 16px; background:#fff}
+.case .badge{flex:none; font-size:12px; font-weight:700; border-radius:999px; padding:3px 11px; height:fit-content; white-space:nowrap}
+.case .badge.one{background:rgba(37,99,235,.12); color:#1d4ed8}
+.case .badge.two{background:rgba(147,51,234,.12); color:#7e22ce}
+.case .badge.hub{background:rgba(217,119,6,.16); color:#b45309}
+.case .bd{font-size:14.5px; line-height:1.75}
+.case .bd b{display:block; margin-bottom:2px; font-size:15.5px}
+
+/* ── PART 2：流程圖、公式、步驟 ── */
+.fig svg{display:block; width:100%; height:auto; border:1px solid var(--border);
+  border-radius:10px; background:#fff}
+.formula{background:var(--panel); border:1px solid var(--border); border-radius:10px;
+  padding:14px 20px; margin:16px 0; font-size:16px; text-align:center;
+  font-family:"Cambria Math",Cambria,Georgia,serif; overflow-x:auto}
+.formula .sub{font-size:13px; color:var(--soft); font-family:inherit;
+  display:block; margin-top:8px; text-align:left}
+.plain{border-left:3px solid var(--green); background:rgba(34,197,94,.06);
+  border-radius:0 8px 8px 0; padding:11px 16px; margin:16px 0; font-size:15.5px}
+.plain b{color:#15803d}
+.stepmeta{display:flex; flex-wrap:wrap; gap:8px 20px; margin:6px 0 0; padding:0;
+  list-style:none; font-size:13.5px; color:var(--faint)}
+.gap{border:1px solid #fde68a; background:#fffbeb; border-radius:10px;
+  padding:6px 20px 14px; margin:22px 0}
+.gap h4{color:#b45309; margin:14px 0 4px; font-size:15px}
+.gap p{margin:4px 0; font-size:15px}
+svg text{font-family:-apple-system,"Segoe UI","Noto Sans TC","Microsoft JhengHei",
+  "PingFang TC",Roboto,Helvetica,Arial,sans-serif}
+
+/* PART 3：可直接複製的指令框 */
+.prompt{border:1px solid #cbd5e1; border-left:5px solid #334155; background:#f8fafc;
+  border-radius:10px; padding:16px 20px 18px; margin:14px 0 18px}
+.prompt .lbl{font-size:12px; font-weight:700; letter-spacing:.06em; color:#475569; margin:0 0 8px}
+.prompt pre{margin:0; padding:0; background:none; border-radius:0; overflow:visible;
+  white-space:pre-wrap; word-break:break-word;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Noto Sans TC",monospace;
+  font-size:14.5px; line-height:1.9; color:#0f172a}
+.cmd{border-top:2px solid var(--border); margin:44px 0 0; padding-top:22px}
+.cmd h3{margin:0 0 4px}
+.cmd .meta{font-size:13px; color:var(--faint); margin:0 0 14px}
+.cmd h4{font-size:15px; margin:18px 0 6px; color:var(--ink)}
+
+/* ── PART 5：讀程式 ── */
+pre .cm{color:#7f93a8}                                    /* 註解 */
+pre .hl{display:block; margin:0 -18px; padding:0 18px 0 15px;
+  background:rgba(96,165,250,.20); box-shadow:inset 3px 0 0 #60a5fa}
+pre b{color:#fff}
+.filecard{display:grid; gap:12px; margin:22px 0}
+@media(min-width:760px){.filecard{grid-template-columns:repeat(3,1fr)}}
+.filecard .f{border:1px solid var(--border); border-radius:10px; padding:13px 16px; background:var(--panel)}
+.filecard .f .nm{font-family:"Cascadia Code",Consolas,Menlo,monospace; font-size:14.5px; font-weight:700}
+.filecard .f .role{display:block; font-size:12px; letter-spacing:.06em; color:var(--accent); font-weight:700; margin:7px 0 3px}
+.filecard .f p{margin:0; font-size:14px; color:var(--soft); line-height:1.7}
+.ask{border:1px solid var(--border); border-left:4px solid var(--accent); background:#fff;
+  border-radius:0 10px 10px 0; padding:11px 18px; margin:20px 0}
+.ask .q{font-weight:700; font-size:16px; margin:0 0 3px}
+.ask p{margin:3px 0; font-size:14.5px; color:var(--soft)}
+.lineno{font-family:"Cascadia Code",Consolas,Menlo,monospace; font-size:13px; color:var(--faint); white-space:nowrap}
+
+/* 頁首的前後連結：跟頁尾同一組，只是線畫在下面 */
+.pager.top{margin:26px 0 4px; padding:0 0 18px;
+  border-top:none; border-bottom:1px solid var(--border); font-size:14.5px}
+
+/* ── VFB 專題新增 ── */
+/* 三張並排的視圖：窄螢幕一欄、中等兩欄、寬螢幕三欄 */
+@media(min-width:680px){.figpair.three{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.figpair.three{grid-template-columns:repeat(3,1fr)}}
+/* 三張圖的長寬比差很多（正視圖扁、側視圖窄長、頂視圖很扁），
+   所以給每張一個等高的框、圖在框裡置中——這樣三段圖說會從同一條線開始，
+   讀者才不會以為某一張「比較重要」或漏看某一段。 */
+.figpair.three figure{display:flex; flex-direction:column}
+.figpair.three .imgbox{height:320px; display:flex; align-items:center;
+  justify-content:center; border:1px solid var(--border); border-radius:10px;
+  background:#fff; padding:8px}
+.figpair.three .imgbox img{max-height:100%; width:auto; max-width:100%;
+  border:none; border-radius:0}
+/* 英文引文：跟中文段落拉開，讓讀者一眼認出這是原文 */
+blockquote p[lang="en"]{font-size:15px; line-height:1.75; margin:4px 0}
+blockquote .figsrc{margin-top:8px}
+.danger p[lang="en"]{font-size:14.5px; line-height:1.7; color:var(--soft); margin:2px 0 8px}
+
+/* .figpair 的圖說：只有開頭那個 <b> 當標題獨佔一行。
+   原本的規則對所有 <b> 生效，句子中間一加粗體就會被硬斷行。 */
+.figpair figcaption b{display:inline}
+.figpair figcaption > b:first-child{display:block; color:var(--ink);
+  font-size:15px; margin-bottom:1px}

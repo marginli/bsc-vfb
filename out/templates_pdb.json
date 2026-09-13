@@ -1,0 +1,108 @@
+{
+  "probe": "templates_pdb",
+  "part": "PART 1",
+  "question": "知識庫裡登記為 template 的有幾個？跟搜尋看到的一樣嗎？",
+  "url": {
+    "endpoint": "https://pdb.virtualflybrain.org/db/neo4j/tx/commit",
+    "cypher": "MATCH (t:Template) RETURN t.short_form AS id, t.label AS label ORDER BY id"
+  },
+  "note": "兩個數字不一樣，而且兩個都對——差的是 VFBc_ 開頭那幾個，它們是同一套 template 的附屬影像，搜尋不會把它們當成可選的 template。頁面上要講「有幾套 template」時，用搜尋看得到的那一組。",
+  "data": {
+    "pdb_total": 20,
+    "search_total": 10,
+    "only_in_pdb": [
+      "VFBc_00017894",
+      "VFBc_00030786",
+      "VFBc_00049000",
+      "VFBc_00050000",
+      "VFBc_00100000",
+      "VFBc_00101384",
+      "VFBc_00101567",
+      "VFBc_00110000",
+      "VFBc_00120000",
+      "VFBc_00200000"
+    ],
+    "templates": [
+      {
+        "id": "VFB_00017894",
+        "label": "adult brain template JFRC2"
+      },
+      {
+        "id": "VFB_00030786",
+        "label": "adult brain template Ito2014"
+      },
+      {
+        "id": "VFB_00049000",
+        "label": "L3 CNS template - Wood2018"
+      },
+      {
+        "id": "VFB_00050000",
+        "label": "L1 larval CNS ssTEM - Cardona/Janelia"
+      },
+      {
+        "id": "VFB_00100000",
+        "label": "adult VNS template - Court2018"
+      },
+      {
+        "id": "VFB_00101384",
+        "label": "JRC_FlyEM_Hemibrain"
+      },
+      {
+        "id": "VFB_00101567",
+        "label": "JRC2018Unisex"
+      },
+      {
+        "id": "VFB_00110000",
+        "label": "Adult Head (McKellar2020)"
+      },
+      {
+        "id": "VFB_00120000",
+        "label": "Adult T1 Leg (Kuan2020)"
+      },
+      {
+        "id": "VFB_00200000",
+        "label": "JRC2018UnisexVNC"
+      },
+      {
+        "id": "VFBc_00017894",
+        "label": "JFRC2_template_c"
+      },
+      {
+        "id": "VFBc_00030786",
+        "label": "BrainName standard - Ito half brain c"
+      },
+      {
+        "id": "VFBc_00049000",
+        "label": "L3 CNS template - Wood2018_c"
+      },
+      {
+        "id": "VFBc_00050000",
+        "label": "L1 larval CNS ssTEM - Cardona/Janelia_c"
+      },
+      {
+        "id": "VFBc_00100000",
+        "label": "adult VNS template - Court2018_c"
+      },
+      {
+        "id": "VFBc_00101384",
+        "label": "JRC_FlyEM_Hemibrain_c"
+      },
+      {
+        "id": "VFBc_00101567",
+        "label": "JRC2018Unisex_c"
+      },
+      {
+        "id": "VFBc_00110000",
+        "label": "Adult Head (McKellar2020)_c"
+      },
+      {
+        "id": "VFBc_00120000",
+        "label": "Adult T1 Leg (Kuan2020)_c"
+      },
+      {
+        "id": "VFBc_00200000",
+        "label": "JRC2018UnisexVNC_c"
+      }
+    ]
+  }
+}

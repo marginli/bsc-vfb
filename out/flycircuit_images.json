@@ -1,0 +1,42 @@
+{
+  "probe": "flycircuit_images",
+  "part": "PART 5",
+  "question": "FlyCircuit 在 VFB 上有幾顆神經元？API 回報的「幾筆」又是什麼？",
+  "url": {
+    "rest": "https://v3-cached.virtualflybrain.org/run_query?id=Chiang2010&query_type=DatasetImages&limit=5000&offset=0",
+    "pdb": {
+      "endpoint": "https://pdb.virtualflybrain.org/db/neo4j/tx/commit",
+      "cypher": "MATCH (i:Individual)-[:has_source]->(:DataSet {short_form: 'Chiang2010'}) RETURN count(DISTINCT i) AS n"
+    }
+  },
+  "note": "兩件事要分開：**neurons_exact 才是神經元數**（Cypher 算的）；REST 的 count 是列數——同一顆神經元對位到兩套 template、又掛在好幾個類別底下，所以一顆佔了四列多。而且 REST 翻頁到五萬列就停，不報錯只回空陣列，所以 distinct_ids_in_fetched_rows 只是「前五萬列裡的」，不是總數。",
+  "data": {
+    "neurons_exact": 16127,
+    "rest_reported_count": 68698,
+    "rest_rows_fetched": 50000,
+    "rest_truncated": true,
+    "distinct_ids_in_fetched_rows": 11723,
+    "rows_per_neuron": 4.26,
+    "rows_by_template": {
+      "JFRC2": 25000,
+      "JRC2018U": 25000
+    },
+    "rows_by_type_top15": {
+      "expression pattern fragment": 23446,
+      "adult neuron": 15002,
+      "adult fruitless MB neuron": 980,
+      "alpha/beta core Kenyon cell": 944,
+      "adult gamma Kenyon cell": 636,
+      "alpha/beta surface Kenyon cell": 564,
+      "antennal lobe projection neuron of ALl1 lineage": 428,
+      "adult ALl1 lineage neuron": 428,
+      "adult DM6 lineage neuron": 420,
+      "medial antennal lobe tract projection neuron": 382,
+      "lobula columnar neuron LC12": 316,
+      "adult multiglomerular antennal lobe projection neuron": 302,
+      "adult multiglomerular antennal lobe projection neuron vPN": 250,
+      "mediolateral antennal lobe tract projection neuron": 250,
+      "antennal mechanosensory and motor center AMMC-IVLP projection neuron 2": 244
+    }
+  }
+}
