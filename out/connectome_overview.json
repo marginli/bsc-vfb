@@ -1,0 +1,255 @@
+{
+  "probe": "connectome_overview",
+  "part": "PART 4",
+  "question": "站上那八套連線資料是怎麼被選出來的？版本與棄用長什麼樣？",
+  "url": {
+    "rest_list": "https://v3-cached.virtualflybrain.org/list_connectome_datasets",
+    "kb": "https://pdb.virtualflybrain.org/db/neo4j/tx/commit"
+  },
+  "note": "八套 = dense ∧ is_data_source（每次重跑都會重驗這個等式）。『舊版還在』與『明確退役』是兩種不同的狀態，連線在不在是關鍵差別。",
+  "data": {
+    "listed_by_rest": [
+      "BANC888",
+      "catmaid_fafb",
+      "catmaid_l1em",
+      "flywire783",
+      "male_cns_v1_0",
+      "neuprint_JRC_Hemibrain_1point2point1",
+      "neuprint_JRC_Manc_1_2_1",
+      "neuprint_JRC_OpticLobe_v1_0_1"
+    ],
+    "dense_and_current": {
+      "BANC888": "BANC web interface v888",
+      "catmaid_fafb": "VFB CATMAID Adult Brain (FAFB)",
+      "catmaid_l1em": "VFB CATMAID L1 CNS",
+      "flywire783": "FlyWire web interface v783",
+      "male_cns_v1_0": "Neuprint web interface - male-cns:v1.0",
+      "neuprint_JRC_Hemibrain_1point2point1": "Neuprint web interface - hemibrain:v1.2.1",
+      "neuprint_JRC_Manc_1_2_1": "Neuprint web interface - MANC:v1.2.1",
+      "neuprint_JRC_OpticLobe_v1_0_1": "Neuprint web interface - JRC_Optic-Lobe:v1.0.1"
+    },
+    "dense_including_old_versions": {
+      "BANC626": "BANC web interface v626",
+      "BANC888": "BANC web interface v888",
+      "catmaid_fafb": "VFB CATMAID Adult Brain (FAFB)",
+      "catmaid_l1em": "VFB CATMAID L1 CNS",
+      "flywire783": "FlyWire web interface v783",
+      "male_cns_v0_9": "Neuprint web interface - male-cns:v0.9",
+      "male_cns_v1_0": "Neuprint web interface - male-cns:v1.0",
+      "neuprint_JRC_Hemibrain_1point2point1": "Neuprint web interface - hemibrain:v1.2.1",
+      "neuprint_JRC_Manc_1_2_1": "Neuprint web interface - MANC:v1.2.1",
+      "neuprint_JRC_OpticLobe_v1_0_1": "Neuprint web interface - JRC_Optic-Lobe:v1.0.1"
+    },
+    "old_versions_still_dense": [
+      "BANC626",
+      "male_cns_v0_9"
+    ],
+    "explicitly_deprecated": {
+      "neuprint_JRC_Hemibrain_1point0point1": "Neuprint web interface - hemibrain:v1.0.1"
+    },
+    "site_flags": {
+      "BANC626": {
+        "dense": true,
+        "is_data_source": false,
+        "deprecated": false
+      },
+      "BANC888": {
+        "dense": true,
+        "is_data_source": true,
+        "deprecated": false
+      },
+      "catmaid_fafb": {
+        "dense": true,
+        "is_data_source": true,
+        "deprecated": false
+      },
+      "catmaid_fanc": {
+        "dense": false,
+        "is_data_source": true,
+        "deprecated": false
+      },
+      "catmaid_l1em": {
+        "dense": true,
+        "is_data_source": true,
+        "deprecated": false
+      },
+      "flywire783": {
+        "dense": true,
+        "is_data_source": true,
+        "deprecated": false
+      },
+      "male_cns_v0_9": {
+        "dense": true,
+        "is_data_source": false,
+        "deprecated": false
+      },
+      "male_cns_v1_0": {
+        "dense": true,
+        "is_data_source": true,
+        "deprecated": false
+      },
+      "neuprint_JRC_Hemibrain_1point0point1": {
+        "dense": false,
+        "is_data_source": false,
+        "deprecated": true
+      },
+      "neuprint_JRC_Hemibrain_1point2point1": {
+        "dense": true,
+        "is_data_source": true,
+        "deprecated": false
+      },
+      "neuprint_JRC_Manc_1_2_1": {
+        "dense": true,
+        "is_data_source": true,
+        "deprecated": false
+      },
+      "neuprint_JRC_OpticLobe_v1_0_1": {
+        "dense": true,
+        "is_data_source": true,
+        "deprecated": false
+      }
+    },
+    "flag_meanings": {
+      "dense": "整幅密集重建（不是挑幾條描繪）",
+      "is_data_source": "現行版本",
+      "deprecated": "明確退役"
+    },
+    "eight_equals_dense_and_current": true,
+    "n_datasets_with_connectivity_in_kb": 60,
+    "version_pairs": [
+      {
+        "dataset": "Berg2025a",
+        "label": "Male CNS version 1.0 connectome neurons from Berg et al. (2025).",
+        "neurons": 166413,
+        "neurons_with_connectivity": 163962,
+        "outgoing_edges": 15265098
+      },
+      {
+        "dataset": "Berg2025",
+        "label": "Male CNS version 0.9 connectome neurons from Berg et al. (2025).",
+        "neurons": 166401,
+        "neurons_with_connectivity": 163946,
+        "outgoing_edges": 15264230
+      },
+      {
+        "dataset": "Dorkenwald2023",
+        "label": "FlyWire connectome neurons",
+        "neurons": 139255,
+        "neurons_with_connectivity": 135867,
+        "outgoing_edges": 7595968
+      },
+      {
+        "dataset": "Bates2025",
+        "label": "Brain and Nerve Cord (BANC) version 626 connectome neurons from Bates et al. (2025).",
+        "neurons": 80003,
+        "neurons_with_connectivity": 76617,
+        "outgoing_edges": 1616169
+      },
+      {
+        "dataset": "Bates2026",
+        "label": "Brain and Nerve Cord (BANC) version 888 connectome neurons from Bates et al. (2026).",
+        "neurons": 64546,
+        "neurons_with_connectivity": 61602,
+        "outgoing_edges": 1266716
+      },
+      {
+        "dataset": "Nern2024",
+        "label": "Optic Lobe connectome neurons from optic_lobe:v1.0.1, Nern et al., 2024",
+        "neurons": 53402,
+        "neurons_with_connectivity": 51918,
+        "outgoing_edges": 3957844
+      },
+      {
+        "dataset": "Takemura2023",
+        "label": "Male Adult Nerve Cord (MANC) connectome neurons",
+        "neurons": 23759,
+        "neurons_with_connectivity": 23258,
+        "outgoing_edges": 3105275
+      },
+      {
+        "dataset": "Xu2020NeuronsV1point2point1",
+        "label": "JRC_FlyEM_Hemibrain neurons Version 1.2.1",
+        "neurons": 22705,
+        "neurons_with_connectivity": 22535,
+        "outgoing_edges": 3392973
+      },
+      {
+        "dataset": "Xu2020Neurons",
+        "label": "JRC_FlyEM_Hemibrain neurons Version 1.0.1",
+        "neurons": 21242,
+        "neurons_with_connectivity": 0,
+        "outgoing_edges": 0
+      },
+      {
+        "dataset": "Maniates_Selvin2020",
+        "label": "EM FANC Phelps et al 2020",
+        "neurons": 2029,
+        "neurons_with_connectivity": 0,
+        "outgoing_edges": 0
+      }
+    ],
+    "medulla_individuals_by_dataset": [
+      {
+        "dataset": "Berg2025a",
+        "label": "Male CNS version 1.0 connectome neurons from Berg et al. (2025).",
+        "individuals": 83777
+      },
+      {
+        "dataset": "Berg2025",
+        "label": "Male CNS version 0.9 connectome neurons from Berg et al. (2025).",
+        "individuals": 83776
+      },
+      {
+        "dataset": "Dorkenwald2023",
+        "label": "FlyWire connectome neurons",
+        "individuals": 72630
+      },
+      {
+        "dataset": "Nern2024",
+        "label": "Optic Lobe connectome neurons from optic_lobe:v1.0.1, Nern et al., 2024",
+        "individuals": 41931
+      },
+      {
+        "dataset": "Bates2025",
+        "label": "Brain and Nerve Cord (BANC) version 626 connectome neurons from Bates et al. (2025).",
+        "individuals": 21725
+      },
+      {
+        "dataset": "Bates2026",
+        "label": "Brain and Nerve Cord (BANC) version 888 connectome neurons from Bates et al. (2026).",
+        "individuals": 16988
+      },
+      {
+        "dataset": "Zhao2023",
+        "label": "EM FAFB Zhao et al., 2023",
+        "individuals": 1193
+      },
+      {
+        "dataset": "Xu2020NeuronsV1point2point1",
+        "label": "JRC_FlyEM_Hemibrain neurons Version 1.2.1",
+        "individuals": 592
+      },
+      {
+        "dataset": "Kind2021",
+        "label": "EM FAFB Kind et al. 2021",
+        "individuals": 286
+      },
+      {
+        "dataset": "Chiang2010",
+        "label": "FlyCircuit 1.0 - single neurons (Chiang2010)",
+        "individuals": 98
+      },
+      {
+        "dataset": "Takemura2023",
+        "label": "Male Adult Nerve Cord (MANC) connectome neurons",
+        "individuals": 8
+      },
+      {
+        "dataset": "Morimoto2020",
+        "label": "EM FAFB Morimoto et al 2020",
+        "individuals": 2
+      }
+    ],
+    "n_neuron_classes_in_medulla": 471
+  }
+}

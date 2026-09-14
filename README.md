@@ -12,6 +12,7 @@
 | `part1-templates.html` | PART 1　座標系：template 與 registration |
 | `part2-names.html` | PART 2　把一個名字問清楚 |
 | `part3-queries.html` | PART 3　從腦區找到神經元 |
+| `part4-connectomes.html` | PART 4　連線體 |
 | `assets/` | 共用樣式與所有圖檔 |
 | `scripts/vfb_probe.py` | **API 探針**：把教材用到的查詢向 VFB 跑一遍，存進 `out/` |
 | `scripts/browser_probe.py` | **畫面探針**：用真的瀏覽器把學員會看到的畫面拍一遍，存進 `out/ui/` |

@@ -787,6 +787,102 @@ def _query_overlaps():
 
 
 # ── PART 4：連線體 ──────────────────────────────────────────────
+@probe("connectome_overview", "PART 4",
+       "站上那八套連線資料是怎麼被選出來的？版本與棄用長什麼樣？",
+       needs=("connectome_datasets",))
+def _connectome_overview():
+    """PART 4 的骨幹。三件事都用知識庫算，因為 REST 只給得出那八套的名字。
+
+    **八套的判準是實測出來的，不是猜的**：知識庫裡的 Site 節點有三個旗標——
+    `dense`（整幅密集重建）、`is_data_source`（現行版本）、`deprecated`（明確退役）。
+    `dense ∧ is_data_source` 算出來**剛好就是 REST 回的那八套，不多不少**。
+    這一支每次重跑都會再驗一次那個等式（`eight_equals_dense_and_current`）。
+
+    由此分得出三種狀態，而它們在頁面上要分開講：
+      · 現行     dense ＋ is_data_source
+      · 舊版還在 dense、沒有 is_data_source（連線**還在**：BANC626、male-cns v0.9）
+      · 明確退役 deprecated（連線**被拿掉**：只有 hemibrain v1.0.1）
+    """
+    listed = {d["short_form"] for d in json.loads(
+        (OUT / "connectome_datasets.json").read_text("utf-8"))["data"]}
+
+    def sites(cond):
+        return {r[0]: r[1] for r in cypher(
+            "MATCH (s:Site) WHERE %s RETURN s.short_form, s.label ORDER BY s.short_form"
+            % cond)[1]}
+
+    dense_current = sites("s.is_data_source AND s.dense")
+    dense_all = sites("s.dense")
+    deprecated = sites("s.deprecated")
+
+    # 把旗標的**名字與逐站的值**存下來。頁面上會指名這三個旗標，
+    # 不存的話那個宣稱就無從追回（`field_audit.py` 會叫）。
+    flags = {}
+    for sf in sorted(set(dense_all) | set(deprecated) | {"catmaid_fanc"}):
+        r = cypher("MATCH (s:Site {short_form:'%s'}) "
+                   "RETURN s.dense, s.is_data_source, s.deprecated" % sf)[1]
+        d_, i_, x_ = (r[0] if r else (None, None, None))
+        flags[sf] = {"dense": bool(d_), "is_data_source": bool(i_),
+                     "deprecated": bool(x_)}
+
+    # 每一套資料集：神經元、有連線的神經元、連線邊
+    def ds_stats(short_forms):
+        lit = "[" + ",".join(f"'{x}'" for x in short_forms) + "]"
+        q = ("MATCH (n:Individual)-[:has_source]->(d:DataSet) WHERE d.short_form IN %s "
+             "OPTIONAL MATCH (n)-[c:synapsed_to]->() "
+             "RETURN d.short_form AS ds, d.label AS label, count(DISTINCT n) AS neurons, "
+             "count(DISTINCT CASE WHEN c IS NOT NULL THEN n END) AS with_conn, "
+             "count(c) AS out_edges ORDER BY neurons DESC" % lit)
+        return [{"dataset": r[0], "label": r[1], "neurons": r[2],
+                 "neurons_with_connectivity": r[3], "outgoing_edges": r[4]}
+                for r in cypher(q)[1]]
+
+    versions = ds_stats(["Xu2020Neurons", "Xu2020NeuronsV1point2point1",
+                         "Berg2025", "Berg2025a", "Bates2025", "Bates2026",
+                         "Takemura2023", "Dorkenwald2023", "Nern2024",
+                         "Maniates_Selvin2020"])
+
+    # 知識庫裡到底有幾套資料集帶連線——跟那八套的落差是 PART 4 第 2 節
+    n_with_conn = cypher(
+        "MATCH (:Individual)-[:synapsed_to]->(:Individual) "
+        "WITH 1 AS x LIMIT 1 "
+        "MATCH (n:Individual)-[:has_source]->(d:DataSet) WHERE (n)-[:synapsed_to]-() "
+        "RETURN count(DISTINCT d)")[1][0][0]
+
+    # PART 3 那份 medulla 清單，底下的個體來自哪幾套
+    rows = json.loads((OUT / "query_overlaps.json").read_text("utf-8"))["data"]
+    _, _, r2, _ = paged("/run_query",
+                        {"id": EX_REGION, "query_type": "NeuronsPartHere"}, page=2000)
+    ids = sorted({strip_markup(x.get("id", "")) for x in r2})
+    lit = "[" + ",".join(f"'{i}'" for i in ids) + "]"
+    by_ds = [{"dataset": r[0], "label": r[1], "individuals": r[2]} for r in cypher(
+        "MATCH (c:Class) WHERE c.short_form IN %s "
+        "MATCH (i:Individual)-[:INSTANCEOF]->(c)-[:SUBCLASSOF*0..0]->(c) "
+        "MATCH (i)-[:has_source]->(d:DataSet) "
+        "RETURN d.short_form, d.label, count(DISTINCT i) AS n ORDER BY n DESC LIMIT 12"
+        % lit)[1]]
+
+    return {"url": {"rest_list": url_of("/list_connectome_datasets"), "kb": PDB},
+            "data": {
+                "listed_by_rest": sorted(listed),
+                "dense_and_current": dense_current,
+                "dense_including_old_versions": dense_all,
+                "old_versions_still_dense": sorted(set(dense_all) - set(dense_current)),
+                "explicitly_deprecated": deprecated,
+                "site_flags": flags,
+                "flag_meanings": {
+                    "dense": "整幅密集重建（不是挑幾條描繪）",
+                    "is_data_source": "現行版本",
+                    "deprecated": "明確退役"},
+                "eight_equals_dense_and_current": set(dense_current) == listed,
+                "n_datasets_with_connectivity_in_kb": n_with_conn,
+                "version_pairs": versions,
+                "medulla_individuals_by_dataset": by_ds,
+                "n_neuron_classes_in_medulla": len(ids)},
+            "note": ("八套 = dense ∧ is_data_source（每次重跑都會重驗這個等式）。"
+                     "『舊版還在』與『明確退役』是兩種不同的狀態，連線在不在是關鍵差別。")}
+
+
 @probe("connectome_datasets", "PART 4", "VFB 現在有哪幾套連線資料？版本是多少？")
 def _connectome_datasets():
     url, d = fetch("/list_connectome_datasets")

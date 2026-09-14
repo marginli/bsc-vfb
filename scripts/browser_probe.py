@@ -86,6 +86,8 @@ EX_REGION_NAME = "medulla"     # PART 2 的主例
 EX_REGION = "FBbt_00003748"    # medulla 這個「類別」本身（跟 vfb_probe.py 同一個例子）
 EX_REGION_INDIV = "VFB_00102107"  # 它畫在 JRC2018Unisex 上的那一個「個體」
 QUERY_LABEL = "Neurons with some part in medulla"   # PART 3 主要示範的那一支現成查詢
+EX_CONNECTOME_NEURON = "VFB_jrmc375t"   # Cm7_L (MaleCNS:41280)：PART 4 的例子，
+                                        # 它的 Source 欄同時列著 male-cns 的兩個版本
 
 PROBES: dict[str, dict] = {}
 
@@ -802,6 +804,38 @@ def _template_symbols(pw):
     return {"site": V2, "by_template": out,
             "note": ("`Name` 那一欄的值後面跟著方括號裡的編號，"
                      "例如 `JRC2018Unisex [VFB_00101567]`——那就是畫面上的原樣。")}
+
+
+@probe("terminfo_v2_connectome_neuron", "PART 4",
+       "一顆連線體神經元的 Term Info：同一顆會同時列出資料集的哪幾個版本")
+def _terminfo_v2_connectome_neuron(pw):
+    """PART 4 的作業單要學員親眼看到「版本並排」這件事，而它就在這一頁上：
+    同一顆神經元的 `Source` 欄同時列著 v0.9 與 v1.0 兩筆，`License` 也是兩筆。
+
+    **這是「同一隻果蠅在站上出現兩次」最短的證據**——不必比對數字，看一欄就知道。
+    """
+    b, pg = new_page(pw)
+    try:
+        pg.goto(f"{V2}?id={EX_CONNECTOME_NEURON}", wait_until="domcontentloaded",
+                timeout=90000)
+        pg.wait_for_timeout(32000)
+        lines = panel_lines(pg, "#vfbterminfowidget")
+        shot(pg, "terminfo_v2_connectome_neuron")
+        names = ["Symbol", "Name", "Classification", "Relationships", "Query For",
+                 "Graphs For", "Description", "Comment", "Cross References",
+                 "Source", "License", "Licenses", "Aligned To", "Downloads"]
+        f = fields_from_lines(lines, names)
+        return {
+            "site": V2, "id": EX_CONNECTOME_NEURON,
+            "url": f"{V2}?id={EX_CONNECTOME_NEURON}",
+            "field_order_on_screen": [ln for ln in lines if ln in names],
+            "fields": f,
+            "n_sources_listed": len(f.get("Source") or []),
+            "n_licenses_listed": len(f.get("License") or []),
+            "all_lines": lines,
+        }
+    finally:
+        b.close()
 
 
 @probe("search_v3", "PART 2",

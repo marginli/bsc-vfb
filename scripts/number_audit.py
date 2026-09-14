@@ -43,6 +43,8 @@ EXEMPT = {
            "引文（見該段的出處行），不是探針抓的數字，所以 out/ 裡沒有。",
     "1.65": "886 ÷ 536 ＝ 1.65 倍。兩個被除數都在 out/part1_figures.json 的 "
             "frames.*.labelled_extent_um 裡，比值是頁面上當場算的。",
+    "15,457": "80,003 − 64,546 ＝ 15,457（BANC 兩個版本的差）。兩個被減數都在 "
+             "out/connectome_overview.json 的 version_pairs 裡，差值是頁面上當場算的。",
     "481": "226,524 ÷ 471 ≈ 481 倍。兩個被除數都在 out/counts_region.json 裡"
            "（ImagesNeurons 與 NeuronsPartHere 的 count），比值是頁面上當場算的。",
     "1.6": "1 ÷ 0.626 ≈ 1.6。0.626 是 D03 那個仿射轉換的第一軸縮放，"

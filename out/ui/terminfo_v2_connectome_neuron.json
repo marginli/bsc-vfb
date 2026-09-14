@@ -1,0 +1,123 @@
+{
+  "probe": "terminfo_v2_connectome_neuron",
+  "part": "PART 4",
+  "question": "一顆連線體神經元的 Term Info：同一顆會同時列出資料集的哪幾個版本",
+  "site": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto",
+  "id": "VFB_jrmc375t",
+  "url": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto?id=VFB_jrmc375t",
+  "field_order_on_screen": [
+    "Name",
+    "Classification",
+    "Relationships",
+    "Query For",
+    "Graphs For",
+    "Description",
+    "Comment",
+    "Cross References",
+    "Source",
+    "License",
+    "Aligned To",
+    "Downloads"
+  ],
+  "fields": {
+    "Name": [
+      "Cm7_L (MaleCNS:41280) [VFB_jrmc375t]",
+      "Visual system",
+      "Nervous system",
+      "Glutamatergic",
+      "Adult"
+    ],
+    "Classification": [
+      "adult central medulla intrinsic neuron Cm7",
+      "adult glutamatergic neuron",
+      "Thumbnail"
+    ],
+    "Relationships": [
+      "86%  capable of: glutamate secretion, neurotransmission",
+      "has soma location: left side of organism",
+      "is part of: adult nervous system"
+    ],
+    "Query For": [
+      "189Neurons connected to Cm7_L (MaleCNS:41280)",
+      "9Connectivity per region for Cm7_L (MaleCNS:41280)"
+    ],
+    "Graphs For": [
+      "Show location of Cm7_L (MaleCNS:41280)",
+      "Show classification of Cm7_L (MaleCNS:41280)",
+      "Add Neuron To Circuit Browser Query",
+      "Add Cm7_L (MaleCNS:41280) to Circuit Browser Query"
+    ],
+    "Description": [],
+    "Comment": [
+      "male-cns annotations: superclass - ol_intrinsic, type - Cm7, flywireType - Sm09."
+    ],
+    "Cross References": [
+      "Neuprint web interface - male-cns:v1.0",
+      "Neuprint web interface - male-cns:v0.9"
+    ],
+    "Source": [
+      "Male CNS version 0.9 connectome neurons from Berg et al. (2025).",
+      "Male CNS version 1.0 connectome neurons from Berg et al. (2025)."
+    ],
+    "License": [
+      "CC-BY_4.0",
+      "CC-BY_4.0"
+    ],
+    "Aligned To": [
+      "JRC2018U"
+    ],
+    "Downloads": [
+      "Mesh (OBJ): VFB_jrmc375t_mesh.obj",
+      "Skeleton (SWC): VFB_jrmc375t.swc",
+      "Signal (NRRD): VFB_jrmc375t.nrrd",
+      "Remember to cite: citations.bibtex",
+      "The license shown above applies to this data."
+    ]
+  },
+  "n_sources_listed": 2,
+  "n_licenses_listed": 2,
+  "all_lines": [
+    "Name",
+    "Cm7_L (MaleCNS:41280) [VFB_jrmc375t]",
+    "Visual system",
+    "Nervous system",
+    "Glutamatergic",
+    "Adult",
+    "Classification",
+    "adult central medulla intrinsic neuron Cm7",
+    "adult glutamatergic neuron",
+    "Thumbnail",
+    "Relationships",
+    "86%  capable of: glutamate secretion, neurotransmission",
+    "has soma location: left side of organism",
+    "is part of: adult nervous system",
+    "Query For",
+    "189Neurons connected to Cm7_L (MaleCNS:41280)",
+    "9Connectivity per region for Cm7_L (MaleCNS:41280)",
+    "Graphs For",
+    "Show location of Cm7_L (MaleCNS:41280)",
+    "Show classification of Cm7_L (MaleCNS:41280)",
+    "Add Neuron To Circuit Browser Query",
+    "Add Cm7_L (MaleCNS:41280) to Circuit Browser Query",
+    "Description",
+    "Comment",
+    "male-cns annotations: superclass - ol_intrinsic, type - Cm7, flywireType - Sm09.",
+    "Cross References",
+    "Neuprint web interface - male-cns:v1.0",
+    "Neuprint web interface - male-cns:v0.9",
+    "Source",
+    "Male CNS version 0.9 connectome neurons from Berg et al. (2025).",
+    "Male CNS version 1.0 connectome neurons from Berg et al. (2025).",
+    "License",
+    "CC-BY_4.0",
+    "CC-BY_4.0",
+    "Aligned To",
+    "JRC2018U",
+    "Downloads",
+    "Mesh (OBJ): VFB_jrmc375t_mesh.obj",
+    "Skeleton (SWC): VFB_jrmc375t.swc",
+    "Signal (NRRD): VFB_jrmc375t.nrrd",
+    "Remember to cite: citations.bibtex",
+    "The license shown above applies to this data."
+  ]
+}

@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PART 4 連線體｜VFB 專題課程</title>
+<link rel="stylesheet" href="assets/vfb.css">
+</head>
+<body>
+<div class="crumb"><a href="index.html">VFB 專題課程</a> ／ PART 4</div>
+<header class="hero">
+  <p class="eyebrow">PART 4</p>
+  <h1>連線體</h1>
+  <p class="subtitle">你要說「這個腦區有 N 條神經元」——這一部分講 N 從哪裡來，以及它為什麼不能用加的</p>
+</header>
+
+<div class="wrap">
+
+  <div class="pager top">
+    <a href="part3-queries.html">← PART 3　從腦區找到神經元</a>
+    <span>PART 5　形態比對（尚未發布）</span>
+  </div>
+
+  <nav class="toc">
+    <h2>本頁章節</h2>
+    <ol>
+      <li><a href="#s1">你那份清單上的神經元，來自幾份重建？</a></li>
+      <li><a href="#s2">八套連線資料，以及知識庫裡的另外六十套</a></li>
+      <li><a href="#s3">判準是「有沒有連線」</a></li>
+      <li><a href="#s4">同一份重建站兩次：版本與棄用</a></li>
+      <li><a href="#s5">為什麼不能相加</a></li>
+      <li><a href="#s6">要寫進方法段的話，該寫什麼</a></li>
+      <li><a href="#s7">動手做</a></li>
+    </ol>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s1"><span class="pt">1</span>你那份清單上的神經元，來自幾份重建？</h2>
+
+  <p><a href="part3-queries.html">PART 3</a> 做出了一份清單：medulla 這個腦區裡有 <b>471 種</b>神經元。點開結果表 <code>Images</code> 那一欄，裡面是一條一條真的重建出來的神經元。<b>那些重建是誰做的？</b></p>
+
+  <p>把那 471 種底下登記的個體，照它們出自哪一套資料集分一次：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>資料集</th><th>是什麼</th><th>個體數</th></tr>
+    <tr><td><code>Berg2025a</code></td><td>Male CNS 連線體　<b>v1.0</b></td><td>83,777</td></tr>
+    <tr><td><code>Berg2025</code></td><td>Male CNS 連線體　<b>v0.9</b>　<span class="k">← 同一份重建的前一版</span></td><td>83,776</td></tr>
+    <tr><td><code>Dorkenwald2023</code></td><td>FlyWire 連線體</td><td>72,630</td></tr>
+    <tr><td><code>Nern2024</code></td><td>視葉連線體 optic_lobe v1.0.1</td><td>41,931</td></tr>
+    <tr><td><code>Bates2025</code></td><td>BANC 連線體　<b>v626</b></td><td>21,725</td></tr>
+    <tr><td><code>Bates2026</code></td><td>BANC 連線體　<b>v888</b>　<span class="k">← 同一份重建的後一版</span></td><td>16,988</td></tr>
+  </table>
+  </div>
+
+  <p><b>前兩名是同一份重建的兩個版本，數目只差一個。</b>第五、第六名又是一對。光是這兩對，就佔掉前六名的六成以上——<b>而它們並排站在同一份清單裡，看起來像六份互相獨立的資料。</b></p>
+
+  <div class="note">
+    <b>這一部分要換掉的觀念：「站上有多少條神經元」不是一個可以直接引用的數字。</b>它是好幾份重建疊出來的，其中有些是同一份的不同版本，有些涵蓋同一塊組織。<b>要用它，就得先知道它由哪些部分組成。</b>
+  </div>
+
+  <div class="callout">
+    <b>上面那張依資料集分的表，它的個體數跟 PART 3 那個 226,524 不是同一個量。</b>PART 3 那個是 <i>Images of neurons…</i> 這支查詢回的<b>列數</b>；這裡是知識庫裡「這 471 種底下登記了幾個個體」。兩個都對，量的不是同一件事——<b>本課不去湊平它們</b>，只要求每次引用時說明是哪一個。這是 <a href="part3-queries.html#s2">PART 3 第 2 節</a>那條規矩的第三次出現。
+  </div>
+
+  <p class="figsrc">上表出自 <code>out/connectome_overview.json</code> 的 <code>medulla_individuals_by_dataset</code>（<code>scripts/vfb_probe.py</code>，2026-09-14）——它先取回 <i>Neurons with some part in medulla</i> 的 471 個編號，再到知識庫裡數每一套資料集底下有幾個個體。表上只列前六名。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s2"><span class="pt">2</span>八套連線資料，以及知識庫裡的另外六十套</h2>
+
+  <p>站上有一份「連線資料集」的清單，上面是<b>八套</b>：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>短名</th><th>站台</th><th>涵蓋什麼</th></tr>
+    <tr><td><code>mc</code></td><td>Neuprint — male-cns:v1.0</td><td>成蟲雄性中樞神經系統</td></tr>
+    <tr><td><code>fw</code></td><td>FlyWire web interface v783</td><td>成蟲腦</td></tr>
+    <tr><td><code>BANC</code></td><td>BANC web interface v888</td><td>成蟲腦 ＋ 腹神經索</td></tr>
+    <tr><td><code>ol</code></td><td>Neuprint — JRC_Optic-Lobe:v1.0.1</td><td>視葉</td></tr>
+    <tr><td><code>mv</code></td><td>Neuprint — MANC:v1.2.1</td><td>成蟲雄性腹神經索</td></tr>
+    <tr><td><code>hb</code></td><td>Neuprint — hemibrain:v1.2.1</td><td>成蟲腦的一半</td></tr>
+    <tr><td><code>fafb</code></td><td>VFB CATMAID Adult Brain (FAFB)</td><td>成蟲腦</td></tr>
+    <tr><td><code>l1em</code></td><td>VFB CATMAID L1 CNS</td><td>一齡幼蟲中樞神經系統</td></tr>
+  </table>
+  </div>
+
+  <p><b>但知識庫裡帶著連線的資料集有 60 套。</b>多出來的五十幾套不是漏掉的——它們是另一種東西：</p>
+
+  <div class="terms">
+    <div class="term">
+      <div class="w">那八套</div>
+      <p><b>整幅密集重建</b>，而且各自有一個線上介面可以去。動輒幾萬到十幾萬條神經元。</p>
+    </div>
+    <div class="term">
+      <div class="w">另外那些</div>
+      <p><b>逐篇論文描繪出來的</b>。幾十到幾百條，針對一個特定的迴路。例如 <i>EM FAFB Zhao et al., 2023</i>（在 medulla 的清單裡排第七，1,193 個個體）。</p>
+    </div>
+  </div>
+
+  <p>那八套是怎麼被挑出來的？知識庫給每一個站台掛了旗標，其中兩個決定了這件事：<code>dense</code>（整幅密集重建）與 <code>is_data_source</code>（現行版本）。<b>兩個都有的，實測剛好就是那八套，不多不少</b>——這個等式每次重跑探針都會再驗一次。</p>
+
+  <p class="figsrc">八套的清單出自 <code>out/connectome_datasets.json</code>；旗標與那個等式出自 <code>out/connectome_overview.json</code> 的 <code>eight_equals_dense_and_current</code>；60 這個數字出自同一支探針的 <code>n_datasets_with_connectivity_in_kb</code>（在知識庫裡數「底下的神經元有連線邊」的資料集）。皆由 <code>scripts/vfb_probe.py</code> 於 2026-09-14 抓取。<b>「涵蓋什麼」那一欄是照各站台的名稱寫的</b>，不是探針查出來的。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s3"><span class="pt">3</span>判準是「有沒有連線」</h2>
+
+  <p>VFB 上有些電子顯微鏡重建，<b>有神經元但沒有連線</b>。它們不會出現在那份八套的清單裡，而這件事會讓人找不到東西——你在說明文件上讀到某套資料，到清單裡卻看不到它。</p>
+
+  <p>兩個實際的例子，並排看最清楚：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>資料集</th><th>神經元</th><th>其中有連線的</th><th>連線邊</th></tr>
+    <tr><td>FANC（<code>Maniates_Selvin2020</code>）</td><td>2,029</td><td><b>0</b></td><td><b>0</b></td></tr>
+    <tr><td>hemibrain <b>v1.0.1</b>（<code>Xu2020Neurons</code>）</td><td>21,242</td><td><b>0</b></td><td><b>0</b></td></tr>
+    <tr><td>hemibrain <b>v1.2.1</b>（<code>Xu2020NeuronsV1point2point1</code>）</td><td>22,705</td><td>22,535</td><td>3,392,973</td></tr>
+    <tr><td>FlyWire（<code>Dorkenwald2023</code>）</td><td>139,255</td><td>135,867</td><td>7,595,968</td></tr>
+  </table>
+  </div>
+
+  <p><b>FANC 有兩千多條神經元的形態，一條連線都沒有。</b>所以它在站上找得到、可以看、可以下載，但它不是一套連線資料——**能問「這顆神經元連到誰」的，只有有連線邊的那些。**</p>
+
+  <div class="plain">
+    <b>白話。</b>「重建出一條神經元的形狀」跟「標出它跟誰形成突觸」是兩件不同的工作，後者貴得多。所以會有「形狀有了、連線還沒有」這個中間狀態，而站上的清單只收完成後者的。
+  </div>
+
+  <p class="figsrc">四列數字出自 <code>out/connectome_overview.json</code> 的 <code>version_pairs</code>（<code>scripts/vfb_probe.py</code>，2026-09-14）：每一套都在知識庫裡數「底下有幾個個體、其中幾個帶著連線邊、一共幾條邊」。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s4"><span class="pt">4</span>同一份重建站兩次：版本與棄用</h2>
+
+  <p>連線體會改版。重建會被校對、合併、修正，於是同一份資料出現 v0.9、v1.0 這樣的版本。<b>而 VFB 不會把舊版丟掉。</b></p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>資料集</th><th>神經元</th><th>連線邊</th><th>站台旗標</th></tr>
+    <tr><td>male-cns <b>v0.9</b></td><td>166,401</td><td>15,264,230</td><td><code>dense</code></td></tr>
+    <tr><td>male-cns <b>v1.0</b></td><td>166,413</td><td>15,265,098</td><td><code>dense</code> ＋ <code>is_data_source</code></td></tr>
+    <tr><td>BANC <b>v626</b></td><td>80,003</td><td>1,616,169</td><td><code>dense</code></td></tr>
+    <tr><td>BANC <b>v888</b></td><td>64,546</td><td>1,266,716</td><td><code>dense</code> ＋ <code>is_data_source</code></td></tr>
+    <tr><td>hemibrain <b>v1.0.1</b></td><td>21,242</td><td>0</td><td><code>deprecated</code></td></tr>
+    <tr><td>hemibrain <b>v1.2.1</b></td><td>22,705</td><td>3,392,973</td><td><code>dense</code> ＋ <code>is_data_source</code></td></tr>
+  </table>
+  </div>
+
+  <p>三種狀態，要分開看：</p>
+
+  <ol>
+    <li><b>現行版本</b>——同時有 <code>dense</code> 與 <code>is_data_source</code>。就是第 2 節那八套。</li>
+    <li><b>舊版但還在</b>——只有 <code>dense</code>，沒有 <code>is_data_source</code>。<b>連線還在、還查得到</b>。目前有兩套：BANC v626 與 male-cns v0.9。</li>
+    <li><b>明確退役</b>——標著 <code>deprecated</code>。目前<b>只有一套</b>：hemibrain v1.0.1，而且它的<b>連線被拿掉了</b>（神經元還在，見<a href="#s3">第 3 節</a>那張表）。</li>
+  </ol>
+
+  <div class="danger">
+    <b>新版不一定比較大。</b>BANC 從 v626 到 v888，神經元從 80,003 <b>掉到</b> 64,546，少了 15,457 條。<b>本課不解釋為什麼</b>——那要問做那份重建的人。這裡要記住的是操作上的後果：<b>換一個版本，你的數字會變，而且可能是往下變。</b>所以引用的時候一定要寫明版本；只寫「BANC 有幾條神經元」等於沒寫。
+  </div>
+
+  <p class="figsrc">六列數字與旗標出自 <code>out/connectome_overview.json</code>（<code>version_pairs</code>、<code>dense_including_old_versions</code>、<code>old_versions_still_dense</code>、<code>explicitly_deprecated</code>），<code>scripts/vfb_probe.py</code>，2026-09-14。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s5"><span class="pt">5</span>為什麼不能相加</h2>
+
+  <p>前面四節湊起來，就是這一節的答案。<b>站上那些神經元數目不能相加，有兩個各自獨立的理由</b>，而它們常常同時發生：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th></th><th>理由</th><th>在<a href="#s1">第 1 節</a>那張表上長什麼樣</th></tr>
+    <tr><td>一</td><td><b>同一份重建的兩個版本並排</b>。加起來是把同一批神經元數兩次。</td><td>male-cns v1.0 的 83,777 ＋ v0.9 的 83,776；BANC v626 的 21,725 ＋ v888 的 16,988</td></tr>
+    <tr><td>二</td><td><b>不同的重建涵蓋同一塊組織</b>。加起來不是「這個腦區有幾條神經元」，而是「我們手上有幾條來自不同重建的神經元」。</td><td>FlyWire 的 72,630 與視葉連線體的 41,931，兩套都含 medulla</td></tr>
+  </table>
+  </div>
+
+  <p>理由一是<b>重複</b>，理由二是<b>換了問題</b>。第一個可以靠選版本解決；第二個不行——<b>只要你把兩套獨立的重建加起來，得到的數字就不再回答「這個腦區有幾條神經元」這個問題了。</b></p>
+
+  <div class="note">
+    <b>那該怎麼辦？</b>選一套，說清楚是哪一套、哪一版。想要跨資料集的結論，就分開報告每一套的數字，而不是把它們加起來——<b>兩套資料各自算出來的答案一致，本身就是一個結果</b>；把它們混成一個數字，反而把那個結果丟掉了。
+  </div>
+
+  <p class="figsrc">表上的六個數字全部出自 <a href="#s1">第 1 節</a>那張表（<code>out/connectome_overview.json</code> 的 <code>medulla_individuals_by_dataset</code>）。「兩套都含 medulla」這件事就是它們出現在那張表上的原因——那張表數的正是 medulla 的神經元。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s6"><span class="pt">6</span>要寫進方法段的話，該寫什麼</h2>
+
+  <p>這門課走到這裡，一個從 VFB 拿到的數字要交代的東西已經湊齊了。五件，缺一件讀者就重跑不出來：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th></th><th>要寫</th><th>不寫會怎樣</th><th>哪裡教的</th></tr>
+    <tr><td>1</td><td><b>哪一支查詢</b></td><td>「471 種」跟「464 種」差的不是誤差，是定義</td><td><a href="part3-queries.html#s2">PART 3 第 2 節</a></td></tr>
+    <tr><td>2</td><td><b>種類還是個體</b></td><td>471 與 226,524 差了將近五百倍</td><td><a href="part2-names.html#s3">PART 2 第 3 節</a></td></tr>
+    <tr><td>3</td><td><b>哪一套資料、哪一版</b></td><td>BANC 換一版少 15,457 條</td><td><a href="#s4">本頁第 4 節</a></td></tr>
+    <tr><td>4</td><td><b>哪一天抓的</b></td><td>資料會更新，數字跟著變</td><td><a href="part1-templates.html#s7">PART 1 作業單</a></td></tr>
+    <tr><td>5</td><td><b>授權與該引哪一篇</b></td><td>授權逐筆不同，而且要引原始資料的論文</td><td><a href="part2-names.html#s3">PART 2 第 3 節</a></td></tr>
+  </table>
+  </div>
+
+  <p>前四件在站上都查得到，第五件在該筆資料的資訊面板底下（<code>License</code> 欄與 <code>Downloads</code> 區的 <code>citations.bibtex</code>）。<b>把這五件寫出來，你的數字別人就重跑得出來；少一件，就重跑不出來。</b></p>
+
+  <p class="figsrc">這一節的數字全部是前面出現過的，不是新查的：471 與 464 出自 <code>out/query_overlaps.json</code>、226,524 出自 <code>out/counts_region.json</code>（兩者都在 <a href="part3-queries.html#s2">PART 3 第 2 節</a>）、15,457 是本頁<a href="#s4">第 4 節</a>那兩個版本相減（80,003 − 64,546，兩個都在 <code>out/connectome_overview.json</code>）。皆由 <code>scripts/vfb_probe.py</code> 於 2026-09-14 抓取。</p>
+
+  <div class="callout">
+    <b>這一節沒有新的數字</b>——它把前面三個部分教過的東西收成一張可以照著填的表。這也是這門課的目的：<b>不是教你點哪個按鈕，是教你把一個數字交代清楚。</b>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s7"><span class="pt">7</span>動手做</h2>
+
+  <p>三步，不用安裝也不用登入。做完你會親眼看到「同一份重建站兩次」。</p>
+
+  <ol>
+    <li><b>打開一顆連線體神經元。</b>網址：<a href="https://virtualflybrain.org/reports/VFB_jrmc375t">virtualflybrain.org/reports/VFB_jrmc375t</a>。這是 <a href="part3-queries.html#s3">PART 3 第 3 節</a>那一列 <i>Cm7</i> 底下的其中一條。<br><b>去哪裡確認你到對地方了</b>：檢視器（<code>v2.virtualflybrain.org</code>）的 <b>Term Info</b> 分頁，<code>Name</code> 欄寫著 <code>Cm7_L (MaleCNS:41280) [VFB_jrmc375t]</code>。</li>
+
+    <li><b>看它的來源。</b>同一個面板往下捲到 <b><code>Source</code></b> 欄。<br><b>看到什麼算對</b>：<b>兩列</b>，一列寫 <code>Male CNS version 0.9 connectome neurons from Berg et al. (2025).</code>，另一列 <code>version 1.0</code>。底下的 <b><code>License</code></b> 欄也是兩列（都是 <code>CC-BY_4.0</code>），<b><code>Cross References</code></b> 則連到兩個 neuprint 站台（<i>male-cns:v1.0</i> 與 <i>male-cns:v0.9</i>）。<br><b>這一顆神經元同時屬於兩個版本——<a href="#s4">第 4 節</a>那件事，就在這一欄上。</b></li>
+
+    <li><b>回頭看它是哪一「種」。</b>同一個面板的 <b><code>Classification</code></b> 欄寫著 <i>adult central medulla intrinsic neuron Cm7</i>。<br><b>看到什麼算對</b>：那就是 <a href="part3-queries.html">PART 3</a> 結果表上 <code>Name</code> 欄那個 <i>Cm7</i> 的全名。<b>一個是種類、一個是個體</b>（<a href="part2-names.html#s3">PART 2 第 3 節</a>），而你剛剛從個體走回了種類。</li>
+  </ol>
+
+  <p class="figsrc">這一節指名的每一個欄位名與它的現值，都由 <code>scripts/browser_probe.py</code> 在 2026-09-14 用真的瀏覽器把這三步做過一遍拍下來，原始輸出在 <code>out/ui/terminfo_v2_connectome_neuron.json</code>。</p>
+
+  <div class="note">
+    <b>數字跟你看到的不一樣是正常的。</b>本頁的數字是 2026 年 9 月 14 日抓的。連線體改版很快——<b>會變的是數目，不會變的是這一頁講的那些關係</b>：判準是有沒有連線、舊版不會被丟掉、新版不一定比較大、以及不能相加的那兩個理由。
+  </div>
+
+  <div class="pager">
+    <a href="part3-queries.html">← PART 3　從腦區找到神經元</a>
+    <span>PART 5　形態比對（尚未發布）</span>
+  </div>
+</div>
+
+<div class="foot">
+  VFB 專題課程　PART 4　·　本頁引用的 VFB 資料與畫面皆於 2026-09-14 讀取　·　
+  頁面上每個數字都對得回 <code>out/</code> 底下的探針輸出
+</div>
+</body>
+</html>
