@@ -20,6 +20,15 @@
     "Adult"
   ],
   "ticked_a_row": true,
+  "viewer_tabs_on_screen": [
+    "3D Viewer",
+    "Circuit Browser",
+    "Layers",
+    "Slice Viewer",
+    "Template ROI Browser",
+    "Term Context",
+    "Term Info"
+  ],
   "layers_after_ticking_one_row": [
     "Controls\tName\tType\tThumbnail",
     "JRC2018Unisex",

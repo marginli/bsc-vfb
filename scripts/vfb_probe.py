@@ -485,7 +485,7 @@ def _worksheet():
                                   if q.get("query") == "PaintedDomains"), None),
             "VFB_00017894": next((q["label"] for q in ti_j.get("Queries") or []
                                   if q.get("query") == "PaintedDomains"), None)},
-        "第4步：Term Info 的 Aligned to 欄（＝Images 的鍵）": {
+        "第4步：Term Info 的 Aligned To 欄（＝Images 的鍵；畫面上列的是短名）": {
             EX_NEURON_LM: sorted((n.get("Images") or {}).keys())},
         "授權方框：Term Info 的 Licenses 欄": {
             "VFB_00101567": [x["label"] for x in licences_of(ti_t)]},

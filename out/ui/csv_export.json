@@ -1,0 +1,25 @@
+{
+  "probe": "csv_export",
+  "part": "PART 3 第 6 節與作業單第 4 步",
+  "question": "按 Download results (CSV) 拿到的是畫面上那幾列，還是整份結果？",
+  "site": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto",
+  "query_label": "Neurons with some part in medulla",
+  "by_case": {
+    "no_filter": {
+      "filter_typed": null,
+      "suggested_filename": "471_Neurons_with_some_part_in_medulla.csv",
+      "header": "\"id\",\"name\",\"gross_type\",\"template\",\"technique\",\"images\"",
+      "n_data_rows": 471,
+      "first_row": "\"FBbt_00110069\",\"[Dm8b](FBbt_00110069)\",\"Adult; Nervous_system; Neuron; Visual_system\",\"[JRC2018U](VFB_00101567)\",\"serial block face SEM (SBFSEM)\",\"https://www.virtualflybrain.org/data/VFB/i/jrmc/2z52/VFB_00101567/thumbnail.png\""
+    },
+    "filtered": {
+      "filter_typed": "Cm7",
+      "suggested_filename": "471_Neurons_with_some_part_in_medulla.csv",
+      "header": "\"id\",\"name\",\"gross_type\",\"template\",\"technique\",\"images\"",
+      "n_data_rows": 471,
+      "first_row": "\"FBbt_00110069\",\"[Dm8b](FBbt_00110069)\",\"Adult; Nervous_system; Neuron; Visual_system\",\"[JRC2018U](VFB_00101567)\",\"serial block face SEM (SBFSEM)\",\"https://www.virtualflybrain.org/data/VFB/i/jrmc/2z52/VFB_00101567/thumbnail.png\""
+    }
+  },
+  "filter_changes_download": false,
+  "note": "篩選**不影響**下載：兩次拿到的列數一樣，檔名也一樣。CSV 的表頭是第三組欄名——跟畫面上的欄名、跟 API 回的鍵名都不同。"
+}

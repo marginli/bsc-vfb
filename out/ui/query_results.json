@@ -67,6 +67,6 @@
     "Cm31a_L (MaleCNS:11059) aligned to JRC2018U",
     "Cm3_R (MaleCNS:77308) aligned to JRC2018U"
   ],
-  "n_carousel_elements": 15,
-  "has_filter_box": true
+  "n_carousel_elements": 21,
+  "filter_box_placeholder": "Filter Results"
 }

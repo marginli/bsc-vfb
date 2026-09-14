@@ -201,8 +201,24 @@
   <p>清單做好了要帶走。結果表底下有四個動作：<i>Refine query</i>、<i>New query</i>、<i>Delete results</i>、<b><i>Download results (CSV)</i></b>。最後那個就是把整份清單存成檔案。</p>
 
   <div class="callout">
-    <b>CSV 裡是結果表那幾欄，不是影像。</b>你拿到的是名字、分類標籤、對位到哪套標準腦、拍攝方式——一份可以貼進試算表、可以給程式讀的清單。<b>影像要另外一顆一顆下載。</b>
+    <b>拿到的是整份結果，不是畫面上那幾列。</b>就算你先用 <code>Filter Results</code> 篩到只剩一列，按下去拿到的<b>仍然是全部 471 列</b>，連檔名都還是 <code>471_Neurons_with_some_part_in_medulla.csv</code>。<b>篩選是看的，下載是全部。</b>要只匯出一部分，得用 <i>Refine query</i> 重新問一次，而不是篩。
   </div>
+
+  <p>CSV 裡是結果表那幾欄，<b>不是影像</b>——影像要另外一顆一顆下載。另外要有心理準備：<b>CSV 的欄名是第三組寫法</b>。同一件事，你已經遇過三種名字：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>畫面上的欄名</th><th>CSV 的欄名</th><th>程式介面回的鍵</th></tr>
+    <tr><td><code>Name</code></td><td><code>name</code></td><td><code>label</code></td></tr>
+    <tr><td><code>Gross_Type</code></td><td><code>gross_type</code></td><td><code>tags</code></td></tr>
+    <tr><td><code>Template_Space</code></td><td><code>template</code></td><td><code>template</code></td></tr>
+    <tr><td><code>Imaging_Technique</code></td><td><code>technique</code></td><td><code>technique</code></td></tr>
+    <tr><td><code>Images</code></td><td><code>images</code></td><td><code>thumbnail</code></td></tr>
+    <tr><td>（畫面上沒有這一欄）</td><td><code>id</code></td><td><code>id</code></td></tr>
+  </table>
+  </div>
+
+  <p><b>CSV 比畫面多給你一欄 <code>id</code></b>——那是編號，也就是 <a href="part2-names.html#s4">PART 2 第 4 節</a>說「要指名一個東西就用它」的那個。<b>拿 CSV 去做下一步時，用 <code>id</code> 那一欄，不要用名字。</b>另外，CSV 裡好幾欄的值帶著連結語法，例如 <code>[Dm8b](FBbt_00110069)</code>——要用之前得先拆開。</p>
 
   <p>單一顆神經元的檔案在它自己的資訊面板底下，<code>Downloads</code> 那一區：</p>
 
@@ -221,7 +237,7 @@
     <b>那一區底下有一句話：「The license shown above applies to this data.」</b>——授權是<b>逐筆</b>的，寫在同一個面板的 <code>License</code> 欄裡，而它每一筆可能不一樣（<a href="part2-names.html#s3">PART 2 第 3 節</a>）。<b>下載之前看一眼那一欄，並且照 <code>citations.bibtex</code> 引用原始資料的論文</b>，不是引用 VFB。同一個面板的 <code>Source</code> 欄會告訴你這筆資料出自哪一套、哪一版。
   </div>
 
-  <p class="figsrc">四個動作按鈕出自 <code>out/ui/query_results.json</code>；<code>Downloads</code> 區的檔案清單與那句授權說明，出自 <code>out/ui/terminfo_v2_neuron.json</code>。兩者皆由 <code>scripts/browser_probe.py</code> 於 2026-09-14 拍攝。</p>
+  <p class="figsrc">四個動作按鈕出自 <code>out/ui/query_results.json</code>；<code>Downloads</code> 區的檔案清單與那句授權說明，出自 <code>out/ui/terminfo_v2_neuron.json</code>。<b>「篩選不影響下載」與 CSV 的欄名，是真的按下去下載了兩次量出來的</b>（一次不篩、一次篩成一列，兩次都拿到 471 列、同一個檔名），出自 <code>out/ui/csv_export.json</code>；程式介面那一欄的鍵名出自 <code>out/counts_region.json</code>。皆由 <code>scripts/browser_probe.py</code> 於 2026-09-14 取得。</p>
 
   <!-- ══════════════════════════════════════════════════════ -->
   <h2 id="s7"><span class="pt">7</span>動手做</h2>
@@ -235,7 +251,7 @@
 
     <li><b>跑出清單，然後篩一次。</b>點 <i>Neurons with some part in medulla</i>。<br><b>看到什麼算對</b>：畫面上方換成結果表，標題是 <code>471 Neurons with some part in medulla</code>，表頭五欄依序是 <code>Name</code>、<code>Gross_Type</code>、<code>Template_Space</code>、<code>Imaging_Technique</code>、<code>Images</code>。<br>接著在表格上方的 <b><code>Filter Results</code></b> 框裡打 <code>Cm7</code>，看著列數變少——<b>然後回頭看標題</b>，它還是 471。<a href="#s4">第 4 節</a>說的就是這件事。</li>
 
-    <li><b>把一列放進檢視器，再把清單帶走。</b>先看一眼 <b><code>Layers</code></b> 面板：現在只有 <i>JRC2018Unisex</i> 一列。接著在結果表裡勾選任一列右下角的方框。<br><b>看到什麼算對</b>：<code>Layers</code> 多出一列，名字長得像 <i>Cm7_L (MaleCNS:41280)</i>——那是一條真的神經元，不是一個種類。<br>最後按結果表底下的 <b><i>Download results (CSV)</i></b>，拿到你的清單。</li>
+    <li><b>把一列放進檢視器，再把清單帶走。</b>先看一眼 <b><code>Layers</code></b> 面板：現在只有 <i>JRC2018Unisex</i> 一列。接著在結果表裡勾選任一列右下角的方框。<br><b>看到什麼算對</b>：<code>Layers</code> 多出一列，名字長得像 <i>Cm7_L (MaleCNS:41280)</i>——那是一條真的神經元，不是一個種類。<br>最後按結果表底下的 <b><i>Download results (CSV)</i></b>。<br><b>看到什麼算對</b>：檔名是 <code>471_Neurons_with_some_part_in_medulla.csv</code>，裡面有 <b>471 列</b>——<b>不是你第 3 步篩剩的那一列</b>。<a href="#s6">第 6 節</a>說的就是這件事：篩選是看的，下載是全部。</li>
   </ol>
 
   <p class="figsrc">這一節每一步指名的欄位名、徽章數字與畫面上的字串，都由 <code>scripts/browser_probe.py</code> 在 2026-09-14 用真的瀏覽器把這四步做過一遍拍下來，原始輸出在 <code>out/ui/</code>（<code>terminfo_v2_region.json</code>、<code>query_results.json</code>、<code>viewer_state.json</code>）。</p>

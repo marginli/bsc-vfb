@@ -556,9 +556,13 @@ def _query_results(pw):
             "actions_at_bottom": actions,
             "images_cells_first_rows": images_cells,
             "n_carousel_elements": carousel,
-            "has_filter_box": pg.evaluate(
-                """() => [...document.querySelectorAll('input')].some(
-                     e => /Filter/i.test(e.placeholder || ''))"""),
+            # 頁面上會逐字引用這個 placeholder，所以要把原文存下來，
+            # 不能只存一個 True——`field_audit.py` 對不回去就會叫。
+            "filter_box_placeholder": pg.evaluate(
+                """() => { const e = [...document.querySelectorAll('input')].find(
+                       x => /Filter/i.test(x.placeholder || '') && x.getClientRects().length
+                            && (x.placeholder || '').length > 6);
+                   return e ? e.placeholder : null; }"""),
         }
     finally:
         b.close()
@@ -616,12 +620,22 @@ def _viewer_state(pw):
                 cb[0].click(); return true; }""")
         pg.wait_for_timeout(25000)
         after = layers()
+        # 頁面上會指名 `Slice Viewer`、`3D Viewer` 這些分頁，所以把可見的分頁名存起來
+        tabs = pg.evaluate(
+            """() => { const seen = new Set();
+                for (const e of document.querySelectorAll('*')) {
+                    if (!e.getClientRects().length || e.children.length) continue;
+                    const t = (e.innerText || '').trim();
+                    if (/^(Slice Viewer|3D Viewer|3D Canvas|Layers|Term Info|Term Context"""
+            """|Template ROI Browser|Circuit Browser|Neuroglass Viewer)$/.test(t)) seen.add(t); }
+                return [...seen].sort(); }""")
         shot(pg, "viewer_state")
         return {
             "site": V2, "region": EX_REGION, "query_label": QUERY_LABEL,
             "layers_on_load": before,
             "layers_after_running_query": mid,
             "ticked_a_row": ticked,
+            "viewer_tabs_on_screen": tabs,
             "layers_after_ticking_one_row": after,
             "note": ("Layers 面板列的就是「檢視器裡現在有什麼」。"
                      "跑完查詢它不會變——**結果表的縮圖不等於載入**；"
@@ -704,6 +718,90 @@ def _painted_domains(pw):
     return {"site": V2, "by_template": out,
             "note": ("這一支是「作業單每一步都要有人照著做一次」那條規矩的執行者："
                      "它不只讀徽章，而是真的把查詢點下去，再讀結果表的標題。")}
+
+
+@probe("csv_export", "PART 3 第 6 節與作業單第 4 步",
+       "按 Download results (CSV) 拿到的是畫面上那幾列，還是整份結果？")
+def _csv_export(pw):
+    """作業單第 3 步叫學員把結果篩成一列，第 4 步叫他按下載——
+    **那他拿到的是 1 列還是 471 列？** 這件事推不出來，只能真的按下去看。
+
+    答案是 471：**篩選不影響下載**，連檔名都還是 `471_…csv`。
+    順帶照出第三組欄名——CSV 的表頭跟畫面上的欄名又不一樣。
+    """
+    out = {}
+    for tag, filt in (("no_filter", None), ("filtered", "Cm7")):
+        b = pw.chromium.launch(executable_path=CHROME, headless=True, args=ARGS)
+        pg = b.new_page(viewport={"width": 1700, "height": 1050}, accept_downloads=True)
+        try:
+            pg.goto(f"{V2}?id={EX_REGION}", wait_until="domcontentloaded", timeout=90000)
+            pg.wait_for_timeout(32000)
+            pg.evaluate(
+                """(label) => { const el = [...document.querySelectorAll('*')].filter(
+                       e => e.children.length === 0 && (e.innerText || '').trim().includes(label));
+                   const e = el[el.length - 1];
+                   e.scrollIntoView({block: 'center'}); e.click(); }""", QUERY_LABEL)
+            pg.wait_for_timeout(22000)
+            if filt:
+                fb = pg.locator("input[placeholder='Filter Results']").first
+                fb.wait_for(state="visible", timeout=15000)
+                fb.click()
+                fb.type(filt, delay=180)
+                pg.wait_for_timeout(7000)
+            with pg.expect_download(timeout=60000) as dl:
+                pg.evaluate(
+                    """() => { const el = [...document.querySelectorAll('*')].filter(
+                           e => e.children.length === 0 && /Download/.test(e.innerText || ''));
+                       const e = el[el.length - 1];
+                       e.scrollIntoView({block: 'center'}); e.click(); }""")
+            d = dl.value
+            tmp = SHOTS.parent / f"_tmp_{tag}.csv"
+            SHOTS.mkdir(parents=True, exist_ok=True)
+            d.save_as(str(tmp))
+            lines = [ln for ln in tmp.read_text("utf-8", errors="replace").splitlines()
+                     if ln.strip()]
+            tmp.unlink()
+            out[tag] = {
+                "filter_typed": filt,
+                "suggested_filename": d.suggested_filename,
+                "header": lines[0] if lines else None,
+                "n_data_rows": max(0, len(lines) - 1),
+                "first_row": lines[1] if len(lines) > 1 else None,
+            }
+        finally:
+            b.close()
+    same = out["no_filter"]["n_data_rows"] == out["filtered"]["n_data_rows"]
+    return {"site": V2, "query_label": QUERY_LABEL, "by_case": out,
+            "filter_changes_download": not same,
+            "note": ("篩選**不影響**下載：兩次拿到的列數一樣，檔名也一樣。"
+                     "CSV 的表頭是第三組欄名——跟畫面上的欄名、跟 API 回的鍵名都不同。")}
+
+
+@probe("template_symbols", "PART 2 第 4 節",
+       "Symbol 跟 Name 不一樣的那五套 template，畫面上的兩欄各寫什麼")
+def _template_symbols(pw):
+    """PART 2 第 4 節那張表列了十套 template 的 `Name` 與 `Symbol`，
+    但那張表是用 API 產的（REST 頂層的 `Name` ＝ 畫面上的 `Symbol`）。
+    **那個對應關係只在兩套上親眼驗過**，其餘是外推——
+    `field_audit.py` 的 ⚠ 那一桶就是這樣叫出來的。這一支把五套都拍一遍。
+    """
+    ids = ["VFB_00101567", "VFB_00200000", "VFB_00101384",
+           "VFB_00017894", "VFB_00100000"]
+    out = {}
+    for tid in ids:
+        b, pg = new_page(pw)
+        try:
+            pg.goto(f"{V2}?id={tid}", wait_until="domcontentloaded", timeout=90000)
+            pg.wait_for_timeout(30000)
+            lines = panel_lines(pg, "#vfbterminfowidget")
+            f = fields_from_lines(lines, ["Symbol", "Name", "Classification"])
+            out[tid] = {"symbol_on_screen": (f.get("Symbol") or [None])[0],
+                        "name_on_screen": (f.get("Name") or [None])[0]}
+        finally:
+            b.close()
+    return {"site": V2, "by_template": out,
+            "note": ("`Name` 那一欄的值後面跟著方括號裡的編號，"
+                     "例如 `JRC2018Unisex [VFB_00101567]`——那就是畫面上的原樣。")}
 
 
 @probe("search_v3", "PART 2",

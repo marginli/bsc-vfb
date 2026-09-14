@@ -1,0 +1,29 @@
+{
+  "probe": "template_symbols",
+  "part": "PART 2 第 4 節",
+  "question": "Symbol 跟 Name 不一樣的那五套 template，畫面上的兩欄各寫什麼",
+  "site": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto",
+  "by_template": {
+    "VFB_00101567": {
+      "symbol_on_screen": "JRC2018U",
+      "name_on_screen": "JRC2018Unisex [VFB_00101567]"
+    },
+    "VFB_00200000": {
+      "symbol_on_screen": "JRCVNC2018U",
+      "name_on_screen": "JRC2018UnisexVNC [VFB_00200000]"
+    },
+    "VFB_00101384": {
+      "symbol_on_screen": "JRCFIB2018Fum",
+      "name_on_screen": "JRC_FlyEM_Hemibrain [VFB_00101384]"
+    },
+    "VFB_00017894": {
+      "symbol_on_screen": "JFRC2",
+      "name_on_screen": "adult brain template JFRC2 [VFB_00017894]"
+    },
+    "VFB_00100000": {
+      "symbol_on_screen": "COURT2018VNS",
+      "name_on_screen": "adult VNS template - Court2018 [VFB_00100000]"
+    }
+  },
+  "note": "`Name` 那一欄的值後面跟著方括號裡的編號，例如 `JRC2018Unisex [VFB_00101567]`——那就是畫面上的原樣。"
+}

@@ -1,16 +1,29 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""內容稽核：規範第 10 節的第 10、11、12 道——這三道要人看，程式只負責「抽出來」。
+"""內容稽核：規範第 10 節那幾道「要人看、程式只負責抽出來」的檢查。
 
-    10  每個術語的第一次出現，那個位置有沒有定義
-    11  列著多個可選值的表，有沒有標「我們用哪一個／論文說的是哪一個」
-    12  口語與擬人的說法（判準：它在不在「白話」框裡）
+    10  每個術語的第一次出現，那個位置有沒有定義        → terms
+    11  列著多個可選值的表，有沒有標「我們用哪一個」    → tables
+    12  口語與擬人的說法（判準：它在不在「白話」框裡）  → slang
+     5  指涉詞有沒有指名對象                            → refs
+
+  `refs` 是 2026-09-14 補的，來源是 _notes 第 45 條：使用者抓到
+  「那四支『神經元』查詢」沒指名是哪四支——而**六道稽核一道都沒響**，
+  因為規範第 10 節第 5 道當時完全沒有程式在守。
+
+  **為什麼自己複查抓不到**：寫的人腦子裡有那張表，「那四支」讀起來完全清楚。
+  所以這一道的定位是**抽出來給人看**，不判對錯——跟上面三道一樣。
+
+  **同一輪還試過第二種抽法「未綁定的簡稱」，兩種設計都失敗，已移除**（_notes 第 46 條）。
+  不要再做一次：失敗的原因不是實作，是這個專題的頁面本來就會在表格裡
+  用中文描述每一列，所以簡稱其實早就鬆散地綁住了。
 
   用法：
-    python3 scripts/content_audit.py terms  how-to-draw-lpu.html
-    python3 scripts/content_audit.py tables how-to-draw-lpu.html
-    python3 scripts/content_audit.py slang  how-to-draw-lpu.html
-    python3 scripts/content_audit.py nums   how-to-draw-lpu.html   （第 4 節：抽出所有數字與上下文）
+    python3 scripts/content_audit.py terms     part3-queries.html
+    python3 scripts/content_audit.py tables    part3-queries.html
+    python3 scripts/content_audit.py slang     part3-queries.html
+    python3 scripts/content_audit.py refs      part3-queries.html
+    python3 scripts/content_audit.py nums      part3-queries.html   （第 4 節：抽數字與上下文）
 
   換一個專題時，改 TERMS 與 SLANG 兩份清單即可。
 """
@@ -33,6 +46,12 @@ SLANG = ["餵進去", "爆掉", "一堆", "沒有身分", "隨手", "擋光", "�
 
 MARK = re.compile(r"本專題採用|我們用的|論文的字面|指令指定用這個|← ")
 
+# 指涉詞：這些話把讀者指向「別的地方」，而讀者在長頁面上找不到那個地方。
+# 規矩是一律寫成「上面〈某某小標〉那張表」這種指得到的形式。
+REFS = [r"那\s*[一二三四五六七八九十百幾兩]+\s*[支個張條節處張]",
+        r"這\s*[一二三四五六七八九十百幾兩]+\s*[支個張條節處]",
+        r"上面那", r"下面那", r"前面那", r"剛剛那", r"上一節", r"下一節",
+        r"上表", r"下表", r"上圖", r"下圖", r"這張表", r"那張表", r"這一段"]
 
 def text_of(path, keep_pre=False):
     s = io.open(path, encoding="utf-8").read()
@@ -75,6 +94,17 @@ def slang(path):
     print(f"\n（{n} 處。判準：它在不在「白話」框裡——在框裡是刻意的比喻，在正文裡讀者會照字面讀。）")
 
 
+def refs(path):
+    t = text_of(path)
+    n = 0
+    for pat in REFS:
+        for m in re.finditer(pat, t):
+            print(f"【{m.group(0)}】…{t[max(0, m.start() - 60):m.end() + 60]}…")
+            n += 1
+    print(f"\n（{n} 處。逐條問一次：**它指的那個東西，在這一句裡叫得出名字嗎？**"
+          f"叫不出來就寫成「上面〈某某小標〉那張表」。）")
+
+
 def nums(path):
     t = text_of(path)
     for m in re.finditer(r"(?<![\w.])(\d[\d,]*(?:\.\d+)?%?)", t):
@@ -89,4 +119,5 @@ if __name__ == "__main__":
         os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "*.html")))
     for f in files:
         print(f"══════ {os.path.basename(f)} ══════")
-        {"terms": terms, "tables": tables, "slang": slang, "nums": nums}[mode](f)
+        {"terms": terms, "tables": tables, "slang": slang, "nums": nums,
+         "refs": refs}[mode](f)

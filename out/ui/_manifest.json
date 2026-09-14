@@ -41,21 +41,31 @@
       "fetched_at": "2026-09-14T03:44:48+00:00"
     },
     "query_results": {
-      "sha256": "bdbf3c5d36723173",
-      "seconds": 73.2,
-      "fetched_at": "2026-09-14T04:33:29+00:00"
+      "sha256": "76ea98cc3b9d3e9c",
+      "seconds": 74.9,
+      "fetched_at": "2026-09-14T05:25:48+00:00"
     },
     "viewer_state": {
-      "sha256": "84119d57e73aeb46",
-      "seconds": 88.0,
-      "fetched_at": "2026-09-14T04:27:38+00:00"
+      "sha256": "cde02aab24302461",
+      "seconds": 86.8,
+      "fetched_at": "2026-09-14T05:27:15+00:00"
     },
     "painted_domains": {
       "sha256": "8f6aa3ab590035d8",
       "seconds": 124.6,
       "fetched_at": "2026-09-14T05:05:33+00:00"
+    },
+    "csv_export": {
+      "sha256": "aeb26027b9b0bf4f",
+      "seconds": 132.1,
+      "fetched_at": "2026-09-14T05:23:40+00:00"
+    },
+    "template_symbols": {
+      "sha256": "b4557431603d8051",
+      "seconds": 186.1,
+      "fetched_at": "2026-09-14T05:30:59+00:00"
     }
   },
-  "run_at": "2026-09-14T05:05:33+00:00",
+  "run_at": "2026-09-14T05:30:59+00:00",
   "note": "這裡記的是**畫面**，不是資料庫。介面改版時這些檔案會變，而那正是要回頭複查介面描述的信號（types/tool.md〈這一型的時效〉）。"
 }

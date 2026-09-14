@@ -10,25 +10,43 @@
 |---|---|
 | `index.html` | 課程首頁 |
 | `part1-templates.html` | PART 1　座標系：template 與 registration |
+| `part2-names.html` | PART 2　把一個名字問清楚 |
+| `part3-queries.html` | PART 3　從腦區找到神經元 |
 | `assets/` | 共用樣式與所有圖檔 |
-| `scripts/vfb_probe.py` | **探針**：把教材用到的查詢向 VFB 跑一遍，存進 `out/` |
+| `scripts/vfb_probe.py` | **API 探針**：把教材用到的查詢向 VFB 跑一遍，存進 `out/` |
+| `scripts/browser_probe.py` | **畫面探針**：用真的瀏覽器把學員會看到的畫面拍一遍，存進 `out/ui/` |
 | `scripts/make_part1_figures.py` | PART 1 的六張真實資料圖 |
-| `scripts/*_audit.py` | 六道稽核 |
+| `scripts/*_audit.py` | 七道稽核 |
 | `out/` | 探針的原始輸出。**頁面上每個數字都對得回這裡** |
+| `out/ui/` | 畫面探針的輸出。**頁面上每個介面名字都對得回這裡** |
 | `_notes/` | 修正紀錄（給教材設計者，不部署） |
 
 ## 這門課的兩條規矩
 
-**一、頁面上每一個數字，都要有一支存下來的 API 輸出可以對回去。**
-所以有 `scripts/vfb_probe.py`。VFB 換版之後重跑一次，程式會列出哪些檔案的內容變了
-——那就是要回頭複查的清單。這條規矩由 `scripts/number_audit.py` 把關：
-它逐一比對頁面上的每個數字，並檢查每一節都有出處行。
-**它的天花板要知道**——它查的是「這個數字出現過沒有」，不是「出現在對的地方」，
-所以改完數字要用 `--where` 掃一眼對上的來源對不對。
+**一、頁面上每一個數字、每一個介面名字，都要有一支存下來的探針輸出可以對回去。**
 
-`scripts/ui_claim_audit.py` 管另一半：介面描述無法自動驗真假，
-所以它只查**有沒有把讀者需要的座標寫出來**——在哪一個網域、去哪一個欄位看、
-這句話什麼時候成立，以及**不准寫「你會看到幾筆」**（那是介面的性質，不是資料的性質）。
+探針有兩支，分工要記住——**「資料庫裡有什麼」跟「學員螢幕上有什麼」是兩件事**：
+
+| | 問什麼 | 輸出 |
+|---|---|---|
+| `scripts/vfb_probe.py` | API：資料庫裡有什麼 | `out/*.json` |
+| `scripts/browser_probe.py` | 真的瀏覽器：學員螢幕上有什麼 | `out/ui/*.json` ＋ 截圖（不進版控） |
+
+VFB 換版之後兩支都重跑，程式會列出哪些檔案的內容變了——那就是要回頭複查的清單。
+
+三道稽核分別守住它的三個面向：
+
+- **`number_audit.py`**：頁面上每個數字都對得回 `out/`（含 `out/ui/`），
+  且每一節都有出處行。**天花板**：它查的是「這個數字出現過沒有」，
+  不是「出現在對的地方」，所以改完數字要用 `--where` 掃一眼。
+- **`field_audit.py`**：頁面上 `<code>` 包起來的每個介面名字，對回探針拍到的字串，
+  分成**畫面上有／只有 API 有／兩邊都沒有**三桶。**中間那桶是重點**——
+  把 API 的欄位名當成畫面上的欄位名，是這個專題犯過最多次的錯（一輪六處）。
+  **天花板**：跨版本的張冠李戴它抓不到（v2 叫 `License`、v3 叫 `Licenses`，兩個都在）。
+- **`ui_claim_audit.py`**：介面描述無法自動驗真假，所以它只查
+  **有沒有把讀者需要的座標寫出來**——在哪一個網域、去哪一個欄位看、這句話什麼時候成立。
+  另外，**要寫畫面上的列數，那一節就得指名某一支 `out/….json` 並標擷取日期**；
+  沒有探針撐著就不准寫，因為「幾筆」是介面的性質，不是資料的性質。
 
 **二、介面會改版，問題不會。**
 所以能給網址的地方就給網址，不描述介面；非描述不可的時候，
@@ -42,16 +60,20 @@
 ## 怎麼重跑
 
 ```bash
-python3 scripts/vfb_probe.py            # 跑探針（約 40 秒）
+python3 scripts/vfb_probe.py            # API 探針（約 40 秒）
+python3 scripts/browser_probe.py        # 畫面探針（約 12 分鐘，會開無頭瀏覽器）
 python3 scripts/vfb_probe.py --full     # 連要翻幾萬列的那支一起跑（約 85 秒）
 python3 scripts/make_part1_figures.py   # 重畫 PART 1 的圖（需要本機 BSC_plan/D03）
 python3 scripts/page_audit.py            # 標籤、連結、錨點、中英夾雜
 python3 scripts/number_audit.py         # 每個數字對回 out/；每一節有沒有出處行
 python3 scripts/number_audit.py --where part1-templates.html   # 印出數字對到哪一支探針
 python3 scripts/ui_claim_audit.py        # 介面描述：日期、網域、欄位名，以及不准講筆數
+python3 scripts/field_audit.py          # 介面名字對回 out/ui/（畫面上有／只有 API 有／兩邊都沒有）
+python3 scripts/field_audit.py --where part3-queries.html
 python3 scripts/quote_audit.py          # 英文引文逐條對回 VFB 說明文件
 python3 scripts/svg_audit.py *.html     # SVG 元素有沒有超出 viewBox
 python3 scripts/content_audit.py terms part1-templates.html
+python3 scripts/content_audit.py refs  part3-queries.html   # 指涉詞有沒有指名對象
 ```
 
 ## 資料來源與授權

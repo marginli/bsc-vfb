@@ -142,7 +142,7 @@
 
   <p>整個知識庫的尺度也是同一個道理：登記在案的東西共 741,026 個，其中類別 122,360 個、個體 618,665 個。<b>個體比類別多五倍</b>，因為同一個概念會被畫在很多顆腦上、被很多套資料集各自登記一次。</p>
 
-  <p class="figsrc">並排表的欄位與值，出自 <code>out/ui/terminfo_v2_region.json</code>（類別那一欄）與 <code>out/ui/terminfo_v2_individual.json</code>（個體那一欄）——兩支都是 <code>scripts/browser_probe.py</code> 在 2026-09-14 用真的瀏覽器拍的。個體數出自 <code>out/terminfo_individual.json</code>（該檔的個體數用知識庫的 Cypher 查詢算，<b>不是</b>用介面的 <code>Examples</code> 欄——那一欄實測不穩定，同一個編號連問五次會交替回三套與四套）。有影像的 4 個出自 <code>out/counts_region.json</code> 的 <code>ListAllAvailableImages</code>。全站三個總數出自 <code>out/facets.json</code>。以上皆由 <code>scripts/vfb_probe.py</code> 於 2026-09-14 抓取。<b>全站總數會隨資料更新而變</b>，這裡標出來是要給你一個量級，不是一個常數。</p>
+  <p class="figsrc">並排表的欄位與值，出自 <code>out/ui/terminfo_v2_region.json</code>（類別那一欄）與 <code>out/ui/terminfo_v2_individual.json</code>（個體那一欄）——兩支都是 <code>scripts/browser_probe.py</code> 在 2026-09-14 用真的瀏覽器拍的。個體數出自 <code>out/terminfo_individual.json</code>（該檔的個體數用知識庫的 Cypher 查詢算，<b>不是</b>用 REST 回的 <code>Examples</code> 欄（<b>那是 API 的欄位，畫面上沒有這一欄</b>）——那一欄實測不穩定，同一個編號連問五次會交替回三套與四套）。有影像的 4 個出自 <code>out/counts_region.json</code> 的 <code>ListAllAvailableImages</code>。全站三個總數出自 <code>out/facets.json</code>。以上皆由 <code>scripts/vfb_probe.py</code> 於 2026-09-14 抓取。<b>全站總數會隨資料更新而變</b>，這裡標出來是要給你一個量級，不是一個常數。</p>
 
   <!-- ══════════════════════════════════════════════════════ -->
   <h2 id="s4"><span class="pt">4</span>同一個東西有三個名字</h2>
@@ -176,7 +176,7 @@
     <b>本課的規矩：要指名一個東西，一律用 <code>ID</code>。</b>名字會因為你站在哪一個欄位、哪一個介面而不同，編號不會。這也是為什麼 <a href="part1-templates.html#s7">PART 1 的作業單</a>每一步都給 <code>reports/&lt;編號&gt;</code> 的網址，而不是叫你去搜尋框打名字。
   </div>
 
-  <p class="figsrc">十套的 <code>Name</code> 與 <code>Symbol</code> 出自 <code>out/template_names.json</code>（<code>scripts/vfb_probe.py</code>，2026-09-14）。三個欄位在畫面上的位置與寫法，出自 <code>out/ui/terminfo_v2_template.json</code> 與 <code>out/ui/terminfo_v3_template.json</code>（<code>scripts/browser_probe.py</code> 拍攝，2026-09-14）。</p>
+  <p class="figsrc">十套的 <code>Name</code> 與 <code>Symbol</code> 出自 <code>out/template_names.json</code>（<code>scripts/vfb_probe.py</code>，2026-09-14）；<b>兩欄不一樣的那五套，另外用真的瀏覽器把畫面上的兩欄各拍了一次</b>，五套全部一致（<code>out/ui/template_symbols.json</code>）。三個欄位在畫面上的位置與寫法，出自 <code>out/ui/terminfo_v2_template.json</code> 與 <code>out/ui/terminfo_v3_template.json</code>（<code>scripts/browser_probe.py</code> 拍攝，2026-09-14）。</p>
 
   <!-- ══════════════════════════════════════════════════════ -->
   <h2 id="s5"><span class="pt">5</span>三個搜尋框，三種行為</h2>
