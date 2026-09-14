@@ -1,0 +1,42 @@
+{
+ "Dm3": [
+  "distal medullary amacrine neuron Dm3c",
+  "distal medullary amacrine neuron Dm3a",
+  "distal medullary amacrine neuron Dm3b"
+ ],
+ "LC10": [
+  "adult lobula visual projection neuron LoVP76",
+  "lobula columnar neuron LC10B",
+  "lobula columnar neuron LC10A"
+ ],
+ "Cm11": [
+  "medulla tangential intrinsic neuron 2"
+ ],
+ "Dm15_has_no_subclass": true,
+ "Dm15_parents": [
+  "distal medullary amacrine neuron",
+  "optic lobe wide-field columnar neuron"
+ ],
+ "cells_in_this_dataset": {
+  "Dm3": 401,
+  "Dm3a": 601,
+  "Dm3b": 571,
+  "Dm3c": 0,
+  "Dm15": 242
+ },
+ "overlap_Dm3_with_Dm3ab": 0,
+ "neurons_with_both_a_leaf_type_and_a_transmitter_generic": {
+  "adult cholinergic neuron": 4063,
+  "adult glutamatergic neuron": 1111,
+  "adult GABAergic neuron": 626
+ },
+ "example_neuron_with_two_classes": [
+  "Mi10_R (JRC_OpticLobe:67399)",
+  [
+   "GABA-Chol neuron",
+   "medulla intrinsic neuron Mi10",
+   "adult cholinergic neuron"
+  ]
+ ],
+ "note": "分類學上位（Dm3 之於 Dm3a／Dm3b）**不會**讓細胞被數兩次——重疊是 0；會重複的是橫切的屬性（神經傳導物質）。兩種泛稱要分開講。"
+}

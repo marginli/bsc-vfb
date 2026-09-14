@@ -138,17 +138,36 @@
 
   <div class="gap">
     <h4>什麼是「泛稱」、什麼是「末端類別」</h4>
-    <p><b>VFB 的類別不是一張平表，是一棵有上下位關係的樹。</b>這 844 個類別不在同一層：</p>
+    <p><b>VFB 的類別不是一張平表，是一棵由粗到細的樹</b>——往下每一層都是<b>更細的分法</b>。這 844 個類別不在同一層：</p>
+
+<pre>adult neuron                              <span class="cm">最粗</span>
+   └─ adult optic lobe intrinsic neuron
+        └─ distal medullary amacrine neuron
+<span class="hl">             ├─ Dm15   <span class="cm">← 底下沒東西了，再也分不下去 → <b>末端類別</b>（＝一個細胞型）</span></span>
+             └─ Dm3    <span class="cm">← 底下還站著更細的 → <b>泛稱</b></span>
+                  ├─ Dm3a   <span class="cm">601 顆</span>
+                  ├─ Dm3b   <span class="cm">571 顆</span>
+                  └─ Dm3c   <span class="cm">0 顆（這套資料裡沒有）</span></pre>
+
     <ul>
-      <li><b>末端類別（821 個）</b>——在這 844 個裡<b>底下沒有別的類別</b>。這才是「一個細胞型」，例如 <code>distal medullary amacrine neuron Dm15</code>、<code>medulla intrinsic neuron Mi1</code>、<code>lobula columnar neuron LC6</code>。</li>
-      <li><b>泛稱（23 個）</b>——底下<b>還站著這 844 個裡的別的類別</b>。它有兩種味道：<b>分類學上位</b>（<code>adult visual projection neuron</code> 底下有 367 個、<code>lobula columnar neuron</code> 底下有 41 個），以及<b>橫切的屬性</b>（<code>adult cholinergic neuron</code> 底下有 277 個——那是神經傳導物質，不是形態型）。</li>
+      <li><b>末端類別（821 個）</b>——<b>再也分不下去的那一層</b>：在這 844 個裡，沒有任何一個更細的類別掛在它底下。<b>這才是「一個細胞型」</b>，例如 <code>Dm15</code>、<code>Mi1</code>、<code>LC6</code>。</li>
+      <li><b>泛稱（23 個）</b>——<b>底下還站著更細的類別</b>。<code>Dm3</code> 底下有 <code>Dm3a</code>／<code>Dm3b</code>／<code>Dm3c</code>；<code>LC10</code> 底下有 <code>LC10A</code>、<code>LC10B</code>、<code>LoVP76</code>。</li>
     </ul>
-    <p><b>為什麼非排掉不可。</b>把 844 個全當成型，顆數加總是 <b>59,739</b>，比神經元總數 53,402 多 <b>6,337</b>——因為同一顆被數了不只一次。光是 <code>adult cholinergic neuron</code> 自己就直接掛著 <b>4,069</b> 顆，而那 4,069 顆同時也各自屬於 <code>Mi1</code>、<code>Tm3</code> 之類。<b>「顆數加總超過神經元總數」就是分型規則有問題的警訊</b>，<a href="part7-agent-prompts.html#s4">指令 4</a> 第 1 項要 AI 先算的就是這個。</p>
-    <p><b>最值得看的是邊界案例。</b><code>lobula columnar neuron LC10</code>（底下 5 個）、<code>distal medullary amacrine neuron Dm3</code>（底下 2 個）、<code>adult central medulla neuron Cm11</code>（底下 1 個）——<b>這些看起來已經是型了，卻被判成泛稱</b>，因為 VFB 又把它們細分了一層。<b>「什麼算一個細胞型」在這裡沒有客觀答案</b>，而這正是 <a href="part7-agent-prompts.html#s3">PART 7 第 3 節</a>那個②號決定的由來。</p>
+
+    <p><b>兩種泛稱，只有一種會讓細胞被數兩次——這點要分清楚。</b></p>
+    <div class="tblwrap">
+    <table>
+      <tr><th>泛稱的種類</th><th>例子</th><th>會不會重複數</th></tr>
+      <tr><td><b>分類學上位</b><br>（更粗的分法）</td><td><code>Dm3</code> 之於 <code>Dm3a</code>／<code>Dm3b</code></td><td><b>不會。</b>實際查過：<b>沒有任何一顆</b>同時掛在 <code>Dm3</code> 與 <code>Dm3a</code>／<code>Dm3b</code> 底下。那 401 顆 <code>Dm3</code> 是<b>沒有再細分到 a／b 的那些</b>。<br><b>但它仍然不能算一個型</b>——那等於在同一份清單裡<b>同時用粗細兩種分型標準</b>。</td></tr>
+      <tr><td><b>橫切的屬性</b><br>（不是形態，是性質）</td><td><code>adult cholinergic neuron</code>（神經傳導物質）</td><td><b>會，而且這才是重複的來源。</b><b>4,063</b> 顆神經元<b>既有自己的細胞型、又掛在它底下</b>。例如 <code>Mi10_R</code> 同時是 <i>medulla intrinsic neuron Mi10</i> 與 <i>adult cholinergic neuron</i>。</td></tr>
+    </table>
+    </div>
+    <p><b>所以為什麼非排掉不可。</b>把 844 個全當成型，顆數加總是 <b>59,739</b>，比神經元總數 53,402 多 <b>6,337</b>——多出來的就是上表第二列那種。<b>「顆數加總超過神經元總數」就是分型規則有問題的警訊</b>，<a href="part7-agent-prompts.html#s4">指令 4</a> 第 1 項要 AI 先算的就是這個。</p>
+    <p><b>最值得看的是邊界案例。</b><code>LC10</code>、<code>Dm3</code>、<code>Cm11</code> 這幾個——<b>這些名字看起來已經是細胞型了，卻被判成泛稱</b>，因為 VFB 又往下細分了一層。<b>所以「什麼算一個細胞型」在這裡沒有客觀答案</b>：<code>Dm3</code> 到底是一個型還是三個型，取決於你採信哪一版的分型，而這正是 <a href="part7-agent-prompts.html#s3">PART 7 第 3 節</a>那個②號決定的由來。</p>
     <p><b>我們這條規則自己也有一個邊界要講明：</b>判斷「底下有沒有別的類別」時<b>只看這 844 個之內</b>。某個類別在整個 VFB 本體論裡還有下位，但那些下位在這套資料裡一顆神經元都沒有，它在這裡仍算末端。<b>這是我們的選擇，不是資料告訴我們的。</b></p>
   </div>
 
-  <p class="figsrc">23 個泛稱的完整清單、各自底下有幾個類別、以及各自直接掛了幾顆，出自 <code>out/recompute/vfb.json</code> 的 <code>generic_classes</code>；配對總數 59,739 出自同檔的 <code>instanceof_pairs</code>。2026-09-14。</p>
+  <p class="figsrc">23 個泛稱的完整清單、各自底下有幾個類別、以及各自直接掛了幾顆，出自 <code>out/recompute/vfb.json</code> 的 <code>generic_classes</code>；配對總數 59,739 出自同檔的 <code>instanceof_pairs</code>。樹狀圖裡的子類、每個型的顆數、<code>Dm3</code> 與 <code>Dm3a／Dm3b</code> 的重疊數（<b>0</b>）、以及 4,063／<code>Mi10_R</code> 那個例子，出自 <code>out/recompute/class_tree_examples.json</code>（同一支唯讀知識庫查來）。2026-09-14。</p>
 
   <div class="gap">
     <h4>那個 22 個百分點的差距，是這一輪最實用的一個發現</h4>
@@ -398,7 +417,7 @@
   <p>照<a href="part7-agent-prompts.html#s4">指令 10</a>整理出來的，是三支程式加一份說明：</p>
 
   <div class="filecard">
-    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　441 行</span><p>取論文的靶、取 VFB 那一側、逐列比對。<b>所有自己決定的參數集中在開頭的 <code>PARAMS</code></b></p></div>
+    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　505 行</span><p>取論文的靶、取 VFB 那一側、逐列比對。<b>所有自己決定的參數集中在開頭的 <code>PARAMS</code></b></p></div>
     <div class="f"><span class="nm">make_figure.py</span><span class="role">產圖　91 行</span><p>畫<a href="#s3">第 3 節</a>那張圖</p></div>
     <div class="f"><span class="nm">cross_check.py</span><span class="role">旁證　168 行</span><p>同一個數字問三條路，把不一樣的地方攤開</p></div>
   </div>

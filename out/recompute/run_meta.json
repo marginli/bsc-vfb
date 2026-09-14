@@ -1,7 +1,7 @@
 {
  "what": "PART 8 那一輪實跑的環境與計時",
  "files": {
-  "recompute.py": 441,
+  "recompute.py": 505,
   "make_figure.py": 91,
   "cross_check.py": 168,
   "README.md": 52
@@ -37,8 +37,8 @@
   "only_in_vfb": 192
  },
  "code_lines": {
-  "total_py": 700,
-  "comment_or_docstring": 140,
+  "total_py": 764,
+  "comment_or_docstring": 149,
   "pct": 20,
   "how": "tokenize 數 COMMENT 與 docstring 佔掉的行；三支 .py 合計，不含 README.md"
  }

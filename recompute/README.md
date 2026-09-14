@@ -28,6 +28,7 @@ python3 cross_check.py                 # 換兩條路再問一次，約 55 秒
 | `out/vfb.json` | VFB 那一側：資料集底下的神經元、類別、兩種比對鍵各自的計數 |
 | `out/compare.json` | 逐列比對：對得上幾筆、顆數相同幾筆、三類對不上的完整清單 |
 | `out/figure.json` | 圖上的點數（對角線上／偏離） |
+| `out/class_tree_examples.json` | 「末端類別」與「泛稱」的實例；含一條被查出來是錯的直覺 |
 | `out/scatter.png` | 逐型散點圖，以及 21 筆差異的大小 |
 | `out/cross_check.json` | 同一個數字問三條路的結果，以及**還沒解掉**的那一條 |
 | `out/fetched_at.txt` | 抓取時間與每一個關鍵數字 |

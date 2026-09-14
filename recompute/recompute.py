@@ -297,6 +297,64 @@ def resolve_by_body_id(target: dict, vfb: dict, only_paper: list,
                     for name, c in merged.items() if c > 1}}}
 
 
+def class_tree_examples() -> dict:
+    """PART 8 那張樹狀圖用到的實例——說明「末端類別」與「泛稱」的差別。
+
+    **這一支存在的理由是一個被查出來是錯的直覺。**
+    直覺：把泛稱也當成型，細胞會被數兩次（一次算在 Dm3a，一次算在 Dm3）。
+    實際查：**Dm3 與 Dm3a／Dm3b 沒有任何一顆神經元同時掛在兩邊**（重疊 0）。
+    真正造成重複的是**橫切的屬性**——4,063 顆神經元既有自己的細胞型，
+    又掛在「膽鹼性神經元」底下。兩種泛稱要分開講。
+    """
+    ds = PARAMS["vfb_dataset"]
+
+    def kids(sf):
+        return [r[1] for r in cypher(
+            "MATCH (:Class {short_form:'%s'})<-[:SUBCLASSOF]-(b:Class) "
+            "RETURN b.short_form, b.label" % sf)]
+
+    def cells(sf):
+        return cypher(
+            "MATCH (n:Individual)-[:has_source]->(:DataSet {short_form:'%s'}) "
+            "MATCH (n)-[:INSTANCEOF]->(:Class {short_form:'%s'}) "
+            "RETURN count(n)" % (ds, sf))[0][0]
+
+    DM3, DM3A, DM3B, DM3C = ("FBbt_00003770", "FBbt_00052303",
+                             "FBbt_00052304", "FBbt_00053403")
+    DM15, LC10, CM11 = "FBbt_00111276", "FBbt_00100482", "FBbt_20007247"
+    NT = ["FBbt_00058205", "FBbt_00058207", "FBbt_00058208"]   # 三種傳導物質泛稱
+
+    return {
+        "Dm3": kids(DM3), "LC10": kids(LC10), "Cm11": kids(CM11),
+        "Dm15_has_no_subclass": not kids(DM15),
+        "Dm15_parents": [r[1] for r in cypher(
+            "MATCH (:Class {short_form:'%s'})-[:SUBCLASSOF]->(b:Class) "
+            "RETURN b.short_form, b.label" % DM15)],
+        "cells_in_this_dataset": {"Dm3": cells(DM3), "Dm3a": cells(DM3A),
+                                  "Dm3b": cells(DM3B), "Dm3c": cells(DM3C),
+                                  "Dm15": cells(DM15)},
+        "overlap_Dm3_with_Dm3ab": cypher(
+            "MATCH (n:Individual)-[:has_source]->(:DataSet {short_form:'%s'}) "
+            "MATCH (n)-[:INSTANCEOF]->(:Class {short_form:'%s'}) "
+            "MATCH (n)-[:INSTANCEOF]->(c:Class) WHERE c.short_form IN ['%s','%s'] "
+            "RETURN count(DISTINCT n)" % (ds, DM3, DM3A, DM3B))[0][0],
+        "neurons_with_both_a_leaf_type_and_a_transmitter_generic": {
+            r[0]: r[1] for r in cypher(
+                "MATCH (n:Individual)-[:has_source]->(:DataSet {short_form:'%s'}) "
+                "MATCH (n)-[:INSTANCEOF]->(g:Class), (n)-[:INSTANCEOF]->(l:Class) "
+                "WHERE g.short_form IN ['%s'] AND g<>l "
+                "RETURN g.label, count(DISTINCT n) "
+                "ORDER BY count(DISTINCT n) DESC" % (ds, "','".join(NT)))},
+        "example_neuron_with_two_classes": cypher(
+            "MATCH (n:Individual)-[:has_source]->(:DataSet {short_form:'%s'}) "
+            "WHERE n.label STARTS WITH 'Mi10_R' WITH n LIMIT 1 "
+            "MATCH (n)-[:INSTANCEOF]->(c:Class) "
+            "RETURN n.label, collect(c.label)" % ds)[0],
+        "note": "分類學上位（Dm3 之於 Dm3a／Dm3b）**不會**讓細胞被數兩次——重疊是 0；"
+                "會重複的是橫切的屬性（神經傳導物質）。兩種泛稱要分開講。",
+    }
+
+
 def compare(target: dict, vfb: dict) -> dict:
     """逐列比對。**兩個鍵都算一次**，因為命中率的差距本身是結果的一部分。"""
     paper = target["by_instance"]
@@ -424,7 +482,13 @@ def main() -> int:
           f"（最大差 {cmp['delta_max']}）")
     print(f"   只在論文 {len(cmp['only_in_paper'])}　只在 VFB {len(cmp['only_in_vfb'])}")
 
-    for name, obj in (("target", target), ("vfb", vfb), ("compare", cmp)):
+    print("④ 取樹狀圖的實例…")
+    tree = class_tree_examples()
+    print(f"   Dm3 與 Dm3a／Dm3b 的重疊：{tree['overlap_Dm3_with_Dm3ab']} 顆"
+          f"（分類學上位不會重複數）")
+
+    for name, obj in (("target", target), ("vfb", vfb), ("compare", cmp),
+                      ("class_tree_examples", tree)):
         (OUT / f"{name}.json").write_text(
             json.dumps(obj, ensure_ascii=False, indent=1) + "\n", "utf-8")
     (OUT / "fetched_at.txt").write_text(
