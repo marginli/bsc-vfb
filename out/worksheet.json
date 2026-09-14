@@ -6,12 +6,20 @@
     "search:JRC2018Unisex": "https://v3-cached.virtualflybrain.org/search?query=JRC2018Unisex&limit=300",
     "term_info:VFB_00101567": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00101567",
     "painted:VFB_00101567": "https://v3-cached.virtualflybrain.org/run_query?id=VFB_00101567&query_type=PaintedDomains&limit=1",
+    "solr_site:JRC2018Unisex": "https://solr.virtualflybrain.org/solr/ontology/select?json=%7B%22params%22%3A+%7B%22q%22%3A+%22JRC2018Unisex%22%2C+%22q.op%22%3A+%22OR%22%2C+%22defType%22%3A+%22edismax%22%2C+%22mm%22%3A+%2245%25%22%2C+%22qf%22%3A+%22label%5E110+synonym%5E100+label_autosuggest+synonym_autosuggest+shortform_autosuggest%22%2C+%22indent%22%3A+%22true%22%2C+%22fl%22%3A+%22short_form%2Clabel%2Csynonym%2Cid%2Cfacets_annotation%2Cunique_facets%22%2C+%22start%22%3A+%220%22%2C+%22pf%22%3A+%22label%5E250+synonym%5E120%22%2C+%22ps%22%3A+%220%22%2C+%22fq%22%3A+%5B%22%28short_form%3AVFB%2A+OR+short_form%3AFB%2A+OR+facets_annotation%3ADataSet+OR+facets_annotation%3Apub%29+AND+NOT+short_form%3AVFBc_%2A%22%2C+%22NOT+facets_annotation%3ADeprecated%22%5D%2C+%22rows%22%3A+%22500%22%2C+%22wt%22%3A+%22json%22%2C+%22bq%22%3A+%22short_form%3AVFBexp%2A%5E10.0+short_form%3AVFB%2A%5E50.0+facets_annotation%3AClass%5E200.0+short_form%3AFBbt%2A%5E150.0+short_form%3AFBbt_00003982%5E2+facets_annotation%3ADeprecated%5E0.001+facets_annotation%3ADataSet%5E500.0+facets_annotation%3Apub%5E100.0%22%7D%7D",
     "search:JFRC2": "https://v3-cached.virtualflybrain.org/search?query=JFRC2&limit=300",
     "term_info:VFB_00017894": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00017894",
     "painted:VFB_00017894": "https://v3-cached.virtualflybrain.org/run_query?id=VFB_00017894&query_type=PaintedDomains&limit=1",
+    "solr_site:JFRC2": "https://solr.virtualflybrain.org/solr/ontology/select?json=%7B%22params%22%3A+%7B%22q%22%3A+%22JFRC2%22%2C+%22q.op%22%3A+%22OR%22%2C+%22defType%22%3A+%22edismax%22%2C+%22mm%22%3A+%2245%25%22%2C+%22qf%22%3A+%22label%5E110+synonym%5E100+label_autosuggest+synonym_autosuggest+shortform_autosuggest%22%2C+%22indent%22%3A+%22true%22%2C+%22fl%22%3A+%22short_form%2Clabel%2Csynonym%2Cid%2Cfacets_annotation%2Cunique_facets%22%2C+%22start%22%3A+%220%22%2C+%22pf%22%3A+%22label%5E250+synonym%5E120%22%2C+%22ps%22%3A+%220%22%2C+%22fq%22%3A+%5B%22%28short_form%3AVFB%2A+OR+short_form%3AFB%2A+OR+facets_annotation%3ADataSet+OR+facets_annotation%3Apub%29+AND+NOT+short_form%3AVFBc_%2A%22%2C+%22NOT+facets_annotation%3ADeprecated%22%5D%2C+%22rows%22%3A+%22500%22%2C+%22wt%22%3A+%22json%22%2C+%22bq%22%3A+%22short_form%3AVFBexp%2A%5E10.0+short_form%3AVFB%2A%5E50.0+facets_annotation%3AClass%5E200.0+short_form%3AFBbt%2A%5E150.0+short_form%3AFBbt_00003982%5E2+facets_annotation%3ADeprecated%5E0.001+facets_annotation%3ADataSet%5E500.0+facets_annotation%3Apub%5E100.0%22%7D%7D",
+    "docsite_palette": {
+      "JRC2018Unisex": "https://solr.virtualflybrain.org/solr/ontology/select?q=JRC2018Unisex&q.op=OR&defType=edismax&mm=45%25&qf=label%5E110+synonym%5E100+label_autosuggest+synonym_autosuggest+shortform_autosuggest&pf=label%5E250+synonym%5E120&ps=0&fl=short_form%2Clabel%2Csynonym%2Cunique_facets&bq=short_form%3AVFBexp%2A%5E10.0+short_form%3AVFB%2A%5E50.0+facets_annotation%3AClass%5E200.0+short_form%3AFBbt%2A%5E150.0+short_form%3AFBbt_00003982%5E2+facets_annotation%3ADeprecated%5E0.001+facets_annotation%3ADataSet%5E500.0+facets_annotation%3Apub%5E100.0&rows=40&start=0&wt=json&fq=%28short_form%3AVFB%2A+OR+short_form%3AFB%2A+OR+facets_annotation%3ADataSet+OR+facets_annotation%3Apub%29+AND+NOT+short_form%3AVFBc_%2A&fq=NOT+facets_annotation%3ADeprecated",
+      "JRC2018unisex": "https://solr.virtualflybrain.org/solr/ontology/select?q=JRC2018unisex&q.op=OR&defType=edismax&mm=45%25&qf=label%5E110+synonym%5E100+label_autosuggest+synonym_autosuggest+shortform_autosuggest&pf=label%5E250+synonym%5E120&ps=0&fl=short_form%2Clabel%2Csynonym%2Cunique_facets&bq=short_form%3AVFBexp%2A%5E10.0+short_form%3AVFB%2A%5E50.0+facets_annotation%3AClass%5E200.0+short_form%3AFBbt%2A%5E150.0+short_form%3AFBbt_00003982%5E2+facets_annotation%3ADeprecated%5E0.001+facets_annotation%3ADataSet%5E500.0+facets_annotation%3Apub%5E100.0&rows=40&start=0&wt=json&fq=%28short_form%3AVFB%2A+OR+short_form%3AFB%2A+OR+facets_annotation%3ADataSet+OR+facets_annotation%3Apub%29+AND+NOT+short_form%3AVFBc_%2A&fq=NOT+facets_annotation%3ADeprecated",
+      "JRC2018Uni": "https://solr.virtualflybrain.org/solr/ontology/select?q=JRC2018Uni&q.op=OR&defType=edismax&mm=45%25&qf=label%5E110+synonym%5E100+label_autosuggest+synonym_autosuggest+shortform_autosuggest&pf=label%5E250+synonym%5E120&ps=0&fl=short_form%2Clabel%2Csynonym%2Cunique_facets&bq=short_form%3AVFBexp%2A%5E10.0+short_form%3AVFB%2A%5E50.0+facets_annotation%3AClass%5E200.0+short_form%3AFBbt%2A%5E150.0+short_form%3AFBbt_00003982%5E2+facets_annotation%3ADeprecated%5E0.001+facets_annotation%3ADataSet%5E500.0+facets_annotation%3Apub%5E100.0&rows=40&start=0&wt=json&fq=%28short_form%3AVFB%2A+OR+short_form%3AFB%2A+OR+facets_annotation%3ADataSet+OR+facets_annotation%3Apub%29+AND+NOT+short_form%3AVFBc_%2A&fq=NOT+facets_annotation%3ADeprecated",
+      "JRC2018": "https://solr.virtualflybrain.org/solr/ontology/select?q=JRC2018&q.op=OR&defType=edismax&mm=45%25&qf=label%5E110+synonym%5E100+label_autosuggest+synonym_autosuggest+shortform_autosuggest&pf=label%5E250+synonym%5E120&ps=0&fl=short_form%2Clabel%2Csynonym%2Cunique_facets&bq=short_form%3AVFBexp%2A%5E10.0+short_form%3AVFB%2A%5E50.0+facets_annotation%3AClass%5E200.0+short_form%3AFBbt%2A%5E150.0+short_form%3AFBbt_00003982%5E2+facets_annotation%3ADeprecated%5E0.001+facets_annotation%3ADataSet%5E500.0+facets_annotation%3Apub%5E100.0&rows=40&start=0&wt=json&fq=%28short_form%3AVFB%2A+OR+short_form%3AFB%2A+OR+facets_annotation%3ADataSet+OR+facets_annotation%3Apub%29+AND+NOT+short_form%3AVFBc_%2A&fq=NOT+facets_annotation%3ADeprecated"
+    },
     "term_info:VFB_00005010": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00005010"
   },
-  "note": "作業單第 1、4 步：學員打進去的字串不一定是該詞的正式名字，而且搜尋結果絕大多數是「畫在這套 template 上的東西」而不是 template 本身——所以作業單要給 report_url 當保險，不能只寫「點進結果」。rows_named_on_this_template 是照**名字**分的（學員在畫面上只有名字可用），neuropil_typed_rows 是照型別分的，兩個數字本來就不同：顎神經節那種的型別不是 Synaptic_neuropil，名字卻一樣帶「on …」。rows_not_named_on_it_detail 要能逐列交代完——搜尋 JRC2018Unisex 會連 JRC2018UnisexVNC（另一套 template）一起撈回來。第 5 步：example_neuron 對位到 n_templates 套 template。",
+  "note": "作業單第 1、4 步：學員打進去的字串不一定是該詞的正式名字，而且搜尋結果絕大多數是「畫在這套 template 上的東西」而不是 template 本身——所以作業單要給 report_url 當保險，不能只寫「點進結果」。rows_named_on_this_template 是照**名字**分的（學員在畫面上只有名字可用），neuropil_typed_rows 是照型別分的，兩個數字本來就不同：顎神經節那種的型別不是 Synaptic_neuropil，名字卻一樣帶「on …」。rows_not_named_on_it_detail 要能逐列交代完——搜尋 JRC2018Unisex 會連 JRC2018UnisexVNC（另一套 template）一起撈回來。第 5 步：example_neuron 對位到 n_templates 套 template。　**三條路三個數字**：REST /search 的 search_rows、網站搜尋框打的 SOLR 的 solr_num_found、以及前端 explode 後的 solr_exploded_rows，同一個字串三個都不一樣。所以頁面上**不要寫學員會看到幾筆**——我們量得到的沒有一個是螢幕上那個數字。",
   "data": {
     "steps": [
       {
@@ -58,7 +66,24 @@
         "all_rows_accounted_for": true,
         "painted_domains_query_label": "Painted domains for JRC2018U",
         "painted_domains_count": 46,
-        "report_url": "https://virtualflybrain.org/reports/VFB_00101567"
+        "report_url": "https://virtualflybrain.org/reports/VFB_00101567",
+        "solr_num_found": 47,
+        "solr_exploded_rows": 148,
+        "solr_target_first_ranks": [
+          0,
+          1,
+          2
+        ],
+        "solr_top8_as_displayed": [
+          "JRC2018Unisex",
+          "VFB_00101567 (JRC2018Unisex)",
+          "JRC2018U (JRC2018Unisex)",
+          "ME on JRC2018Unisex adult brain",
+          "VFB_00102107 (ME on JRC2018Unisex adult brain)",
+          "medulla on JRC2018Unisex adult brain (ME on JRC2018Unisex adult brain)",
+          "LO on JRC2018Unisex adult brain",
+          "VFB_00102109 (LO on JRC2018Unisex adult brain)"
+        ]
       },
       {
         "typed_into_search_box": "JFRC2",
@@ -94,9 +119,82 @@
         "all_rows_accounted_for": true,
         "painted_domains_query_label": "Painted domains for JFRC2",
         "painted_domains_count": 58,
-        "report_url": "https://virtualflybrain.org/reports/VFB_00017894"
+        "report_url": "https://virtualflybrain.org/reports/VFB_00017894",
+        "solr_num_found": 60,
+        "solr_exploded_rows": 189,
+        "solr_target_first_ranks": [
+          2,
+          3,
+          4
+        ],
+        "solr_top8_as_displayed": [
+          "BrainName neuropils on adult brain JFRC2 (Jenett, Shinomya)",
+          "JenettShinomya_BrainName (BrainName neuropils on adult brain JFRC2 (Jenett, Shinomya))",
+          "adult brain template JFRC2",
+          "VFB_00017894 (adult brain template JFRC2)",
+          "JFRC2 (adult brain template JFRC2)",
+          "epaulette on adult brain template JFRC2",
+          "VFB_00030599 (epaulette on adult brain template JFRC2)",
+          "EPA - painted domain JFRC2 (epaulette on adult brain template JFRC2)"
+        ]
       }
     ],
+    "docsite_search_box": {
+      "where": "www.virtualflybrain.org 首頁的搜尋框（命令面板）",
+      "asks_solr_for": 40,
+      "shows_on_screen": 8,
+      "reranks_by": "跟你打的字是否完全相同（編號→正式名→同義詞→其餘）",
+      "spellings": [
+        {
+          "typed": "JRC2018Unisex",
+          "is_exact_label": true,
+          "target_rank_within_40": 0,
+          "target_visible_in_top8": true,
+          "top8_labels": [
+            "JRC2018Unisex",
+            "ME on JRC2018Unisex adult brain",
+            "LO on JRC2018Unisex adult brain",
+            "BU on JRC2018Unisex adult brain",
+            "WED on JRC2018Unisex adult brain",
+            "RUB on JRC2018Unisex adult brain",
+            "ATL on JRC2018Unisex adult brain",
+            "VES on JRC2018Unisex adult brain"
+          ]
+        },
+        {
+          "typed": "JRC2018unisex",
+          "is_exact_label": false,
+          "target_rank_within_40": null,
+          "target_visible_in_top8": false,
+          "top8_labels": [
+            "ME on JRC2018Unisex adult brain",
+            "LO on JRC2018Unisex adult brain",
+            "BU on JRC2018Unisex adult brain",
+            "WED on JRC2018Unisex adult brain",
+            "RUB on JRC2018Unisex adult brain",
+            "ATL on JRC2018Unisex adult brain",
+            "VES on JRC2018Unisex adult brain",
+            "EPA on JRC2018Unisex adult brain"
+          ]
+        },
+        {
+          "typed": "JRC2018Uni",
+          "is_exact_label": false,
+          "target_rank_within_40": null,
+          "target_visible_in_top8": false,
+          "top8_labels": []
+        },
+        {
+          "typed": "JRC2018",
+          "is_exact_label": false,
+          "target_rank_within_40": null,
+          "target_visible_in_top8": false,
+          "top8_labels": [
+            "JRC 2018 templates & ROIs"
+          ]
+        }
+      ]
+    },
     "example_neuron": {
       "id": "VFB_00005010",
       "name": "Cha-F-100205",

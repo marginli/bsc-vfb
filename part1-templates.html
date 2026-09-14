@@ -337,28 +337,28 @@
   <!-- ══════════════════════════════════════════════════════ -->
   <h2 id="s7"><span class="pt">7</span>動手做</h2>
 
-  <p>這一份不用安裝任何東西，也不用登入。打開 <a href="https://www.virtualflybrain.org/">virtualflybrain.org</a> 跟著做。</p>
+  <p>這一份不用安裝任何東西，也不用登入。每一步都直接給網址，貼到瀏覽器就會開在 VFB 的檢視器裡。</p>
 
   <div class="callout">
-    <b>第一步就會卡住，所以先講清楚會卡在哪。</b>在搜尋框輸入 <code>JRC2018Unisex</code>，你會拿到<b>一百多筆</b>結果，而且<b>清單裡不會出現 VFB_00101567 這個編號</b>——編號要點進去之後才看得到。所以不要在清單裡找編號，要照名字認。下面第 1 步說的就是怎麼認。
+    <b>不要從搜尋框開始。</b>VFB 有好幾個搜尋框，<b>各自屬於不同的網站、行為也不一樣</b>；其中一個甚至會因為你打字的大小寫而讓你要找的東西整個看不見（理由寫在這一節最後，那一段本身就是一課）。所以下面每一步都給網址，貼上去就到；搜尋框留到第 5 步當<b>選做</b>。
   </div>
 
   <ol>
-    <li><b>搜尋，然後看懂你拿到的是什麼。</b>在搜尋框輸入 <code>JRC2018Unisex</code>，會回來 <b>103 筆</b>。這 103 筆可以完全交代清楚：
-      <br>· <b>99 筆</b>的名字長成「某某 <b>on</b> JRC2018Unisex adult brain」（bulb on…、medulla on…）——<b>那些是畫在這顆標準腦上的東西，不是 template 本身</b>。
-      <br>· 另外 <b>2 筆</b>是 <b>JRC2018Unisex<u>VNC</u></b>（VFB_00200000）——那是<b>腹神經索</b>那一套 template，名字很像，但不是你要的。
-      <br>· 剩下的 <b>2 筆</b>才是你要的那一套，兩筆是同一個東西：它的正式名字是 <b>JRC2018U</b>，<code>JRC2018Unisex</code> 只是同義詞，所以畫面上可能顯示成 <i>JRC2018U</i>——別以為找錯了。
-      <br>認法只有一條：<b>名字裡沒有「on …」、也沒有 VNC 的那一個。</b>找不到就直接開網址，不用經過搜尋：<a href="https://virtualflybrain.org/reports/VFB_00101567">virtualflybrain.org/reports/VFB_00101567</a>（這就是 VFB 自己的查詢結果在連的那種網址）。</li>
-    <li><b>確認你點對了。</b>點進去之後，資訊面板（Term Info）與瀏覽器網址列都會出現編號 <code>VFB_00101567</code>。對上了再往下做。</li>
-    <li><b>看它的分區。</b>在同一個面板裡找到名為 <i>Painted domains for JRC2018U</i> 的查詢並執行它。回傳的每一列都是畫在這顆標準腦上的一個腦區，<b>一共 46 列</b>——跟第 3 節那張表對得上。（這 46 個才是這顆 template 的分區；第 1 步看到的那 97 筆是搜尋字串撞出來的，兩個數字不是同一回事。）</li>
-    <li><b>換一套 template，同樣做一次。</b>搜尋 <code>JFRC2</code>：<b>129 筆</b>裡有 <b>127 筆</b>的名字一樣帶著「on … JFRC2」，只有 <b>2 筆</b>是 template 本身（同一個東西的兩個名字）。這一套的正式名字就是 <code>JFRC2</code>，比上一套好認；直達網址 <a href="https://virtualflybrain.org/reports/VFB_00017894">reports/VFB_00017894</a>。它的 <i>Painted domains for JFRC2</i> 回 <b>58 列</b>，跟上一套的 46 不一樣——不同的 template 畫的分區本來就不同。</li>
-    <li><b>看一顆神經元掛在哪幾套 template 上。</b>打開 FlyCircuit 的一顆神經元 <a href="https://virtualflybrain.org/reports/VFB_00005010">Cha-F-100205（reports/VFB_00005010）</a>，看它的影像列在哪些 template 底下。答案是<b>兩套</b>：JFRC2（VFB_00017894）與 JRC2018Unisex（VFB_00101567）。<b>第二套就是第 6 節說的橋接產物</b>——同一顆神經元只拍過一次，另一套是算出來的。</li>
+    <li><b>打開 JRC2018Unisex 的頁面。</b>網址：<a href="https://virtualflybrain.org/reports/VFB_00101567">virtualflybrain.org/reports/VFB_00101567</a>。這種 <code>reports/編號</code> 的網址是 VFB 自己的查詢結果在連的那一種，它會轉到檢視器。<b>確認你到對地方了</b>：資訊面板（Term Info）與瀏覽器網址列都會出現 <code>VFB_00101567</code>。
+      <br>順便看一眼它的名字：面板上寫的是 <b>JRC2018U</b>，不是你以為的 JRC2018Unisex——後者只是它的同義詞。這一點等一下第 5 步會用到。</li>
+    <li><b>看它的分區。</b>在同一個面板裡找到名為 <i>Painted domains for JRC2018U</i> 的查詢並執行它。回傳的每一列都是畫在這顆標準腦上的一個腦區，<b>一共 46 列</b>——跟第 3 節那張表對得上。</li>
+    <li><b>換一套 template，同樣做一次。</b><a href="https://virtualflybrain.org/reports/VFB_00017894">reports/VFB_00017894</a> 是 JFRC2。它的 <i>Painted domains for JFRC2</i> 回 <b>58 列</b>，跟上一套的 46 不一樣——<b>不同的 template 畫的分區本來就不同</b>，這正是第 3 節那張表那一欄的意思。</li>
+    <li><b>看一顆神經元掛在哪幾套 template 上。</b>打開 FlyCircuit 的一顆神經元 <a href="https://virtualflybrain.org/reports/VFB_00005010">Cha-F-100205（reports/VFB_00005010）</a>，看它的影像列在哪些 template 底下。答案是<b>兩套</b>：JFRC2（VFB_00017894）與 JRC2018Unisex（VFB_00101567）。<b>第二套就是第 6 節說的橋接產物</b>——這顆神經元只拍過一次，另一套是算出來的。</li>
+    <li><b>（選做）現在去試搜尋框，而且先知道會發生什麼。</b>要先分清楚<b>有兩個不同的搜尋框</b>：<code>virtualflybrain.org</code> 那個寫著「Search VFB — pages, neurons, brain regions…」的框，是<b>說明網站自己的</b>；第 1 步打開的檢視器在另一個網站上（<code>v2.virtualflybrain.org</code>），那裡的搜尋是另一個。<br>在說明網站那個框裡打 <code>JRC2018Unisex</code>，<b>大小寫要跟這裡一模一樣</b>。打對了，它排第一。<b>只要把那個 U 打成小寫 u</b>，它就掉出畫面——那個框只跟資料庫要前 40 筆、而且只顯示 8 筆，改了大小寫之後它連前 40 名都排不進去，於是畫面上剩下的 8 筆全是「某某 <b>on</b> JRC2018Unisex adult brain」。<b>看不到它不是你打錯字，是那個框就是這樣設計的。</b><br>順便看一眼那 8 筆：<b>它們沒有一個是 template</b>，全是畫在它上面的東西。另外還會混進 <b>JRC2018Unisex<u>VNC</u></b>（VFB_00200000）——那是<b>腹神經索</b>那一套，名字只差三個字母。</li>
   </ol>
 
-  <p class="figsrc">這一節的筆數與名字由 <code>scripts/vfb_probe.py</code> 的 <code>worksheet</code> 探針照學員的做法查得（2026-09-14），原始輸出在 <code>out/worksheet.json</code>；兩次搜尋的每一筆都分類到上面說的那幾群，沒有剩下的。數字是向站上的搜尋介面問來的；<b>網站畫面上的排序與顯示欄位可能跟這裡不同</b>，所以每一步都另外給了直達網址。</p>
-
   <div class="note">
-    <b>為什麼搜尋一個 template 的名字，回來的九成不是 template？</b>因為畫在它上面的每一塊，名字裡都帶著它的名字——「bulb <b>on JRC2018Unisex adult brain</b>」。搜尋比對的是名字，所以它們全部命中。這不是搜尋壞了，是<b>第 2 節那句「template 是兩件事」的直接後果</b>：一套 template 底下掛著一整份分區地圖，而那份地圖的每一塊都以它命名。認名字的訣竅只有一條——<b>看有沒有「on … 」那一段</b>：有的是分區，沒有的才是 template 本身。
+    <b>為什麼搜尋一個 template 的名字，回來的大多不是 template？</b>因為畫在它上面的每一塊，名字裡都帶著它的名字——「bulb <b>on JRC2018Unisex adult brain</b>」。搜尋比對的是名字，所以它們全部命中。這不是搜尋壞了，是<b>第 2 節那句「template 是兩件事」的直接後果</b>：一套 template 底下掛著一整份分區地圖，而那份地圖的每一塊都以它命名。認名字的訣竅只有一條——<b>看有沒有「on … 」那一段</b>：有的是分區，沒有的才是 template 本身。
+  </div>
+
+  <div class="callout">
+    <b>為什麼這一節一律給網址，不叫你用搜尋框。</b>因為「你會看到幾筆」根本不是資料的性質，<b>是那個框的性質</b>。光是 VFB 就有好幾個搜尋框，各自問不同的服務、拿不同的筆數、用不同的規則重排：說明網站首頁那個跟資料庫要 <b>40 筆</b>、畫面上只顯示 <b>8 筆</b>；而本課探針打的那支公開介面，同一個字串回 <b>103 列</b>（其實只有 48 個不重複的詞）。更麻煩的是排序還會被<b>你打字的大小寫</b>左右：<code>JRC2018Unisex</code> 讓目標排第 1，<code>JRC2018unisex</code> 讓它掉到 40 名以外——同一個東西、同一個資料庫，只差一個字母的大小寫。
+    <br>所以與其教你在那個框裡怎麼找，不如給網址。<b>這也是第 5 節那條「筆數不是個數」的同一個毛病換了個地方出現</b>：你看到的數字往往是<b>介面</b>的產物，不是資料的產物——想知道資料本身有幾個，得繞過介面直接問資料庫，那是 PART 6 的事。
   </div>
 
   <div class="note">

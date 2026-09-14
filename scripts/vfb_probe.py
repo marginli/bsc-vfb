@@ -35,6 +35,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 BASE = "https://v3-cached.virtualflybrain.org"
+# 網站的搜尋框打的**不是** BASE 那一支，而是 SOLR，而且參數跟說明文件寫的也不一樣
+# （參數是從 v2.virtualflybrain.org 的 main.bundle.js 裡抄出來的）。見 worksheet 探針。
+SOLR = "https://solr.virtualflybrain.org/solr/ontology/select"
 PDB = "https://pdb.virtualflybrain.org/db/neo4j/tx/commit"  # 唯讀，不需認證
 ROOT = Path("/home/wanjuli/claude_linux/BSC_plan/specific_topics/VFB")
 OUT = ROOT / "out"
@@ -100,6 +103,84 @@ def paged(path: str, params: dict, page: int = 5000, cap: int = 200_000):
             break
     truncated = count is not None and len(rows) < count
     return first_url, count, rows, truncated
+
+
+def solr_site_search(term: str, rows: int = 500):
+    """照**網站主搜尋框實際送出的參數**問 SOLR。
+
+    這些參數不是從說明文件抄的——文件站 /docs/apis/solr/ 寫的 bq、pf、fq
+    跟前端實際送的不一樣（文件沒有 pf=label^250、也沒有 facets_annotation:Class^200）。
+    這裡抄的是 v2.virtualflybrain.org 的 main.bundle.js 裡那組。
+    """
+    params = {
+        "q": term, "q.op": "OR", "defType": "edismax", "mm": "45%",
+        "qf": ("label^110 synonym^100 label_autosuggest "
+               "synonym_autosuggest shortform_autosuggest"),
+        "indent": "true",
+        "fl": "short_form,label,synonym,id,facets_annotation,unique_facets",
+        "start": "0", "pf": "label^250 synonym^120", "ps": "0",
+        "fq": ["(short_form:VFB* OR short_form:FB* OR facets_annotation:DataSet "
+               "OR facets_annotation:pub) AND NOT short_form:VFBc_*",
+               "NOT facets_annotation:Deprecated"],
+        "rows": str(rows), "wt": "json",
+        "bq": ("short_form:VFBexp*^10.0 short_form:VFB*^50.0 "
+               "facets_annotation:Class^200.0 short_form:FBbt*^150.0 "
+               "short_form:FBbt_00003982^2 facets_annotation:Deprecated^0.001 "
+               "facets_annotation:DataSet^500.0 facets_annotation:pub^100.0"),
+    }
+    url = SOLR + "?" + urllib.parse.urlencode({"json": json.dumps({"params": params})})
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+        return url, json.loads(r.read().decode("utf-8", errors="replace"))
+
+
+def solr_docsite_palette(term: str):
+    """照**文件站首頁那個搜尋框**（命令面板）實際送出的參數問 SOLR。
+
+    參數與兩個常數都是從 www.virtualflybrain.org 的 /js/app.*.js 抄出來的：
+        let Z = 8,  q = 40;
+    也就是：跟 SOLR 要 40 筆（rows=40），畫面上只顯示 **8 筆**（slice(0, Z)）。
+    拿回來之後前端再依「跟你打的字**完全相同**」分四級重排：
+        0 = 編號相同、1 = 正式名相同、2 = 某個同義詞相同、3 = 其餘（維持 SOLR 的順序）
+    這一支存在的理由見 _notes 第 18 條——學員卡住的就是這個框。
+    """
+    fq = ["(short_form:VFB* OR short_form:FB* OR facets_annotation:DataSet "
+          "OR facets_annotation:pub) AND NOT short_form:VFBc_*",
+          "NOT facets_annotation:Deprecated"]
+    bq = ("short_form:VFBexp*^10.0 short_form:VFB*^50.0 "
+          "facets_annotation:Class^200.0 short_form:FBbt*^150.0 "
+          "short_form:FBbt_00003982^2 facets_annotation:Deprecated^0.001 "
+          "facets_annotation:DataSet^500.0 facets_annotation:pub^100.0")
+    pairs = [("q", term), ("q.op", "OR"), ("defType", "edismax"), ("mm", "45%"),
+             ("qf", "label^110 synonym^100 label_autosuggest "
+                    "synonym_autosuggest shortform_autosuggest"),
+             ("pf", "label^250 synonym^120"), ("ps", "0"),
+             ("fl", "short_form,label,synonym,unique_facets"), ("bq", bq),
+             ("rows", "40"), ("start", "0"), ("wt", "json")]
+    pairs += [("fq", f) for f in fq]
+    url = SOLR + "?" + urllib.parse.urlencode(pairs)
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+        d = json.loads(r.read().decode("utf-8", errors="replace"))
+    docs = (d.get("response") or {}).get("docs") or []
+
+    def norm(x):
+        return " ".join(str(x or "").lower().split())
+
+    typed = norm(term)
+
+    def tier(doc):
+        if norm(doc.get("short_form")) == typed:
+            return 0
+        if norm(doc.get("label")) == typed:
+            return 1
+        if any(norm(sy) == typed for sy in doc.get("synonym") or []):
+            return 2
+        return 3
+
+    ranked = sorted(((tier(x), i, x) for i, x in enumerate(docs)),
+                    key=lambda z: (z[0], z[1]))
+    return url, docs, [x for _, _, x in ranked[:8]]
 
 
 def cypher(statement: str):
@@ -297,6 +378,21 @@ def _worksheet():
             urls[f"painted:{tid}"] = u_p
             painted = pd.get("count")
 
+        # 同一個字串，網站的搜尋框問的是 SOLR，跟上面那支 REST 是兩回事。
+        # 兩邊的筆數本來就不一樣，而且都不等於學員螢幕上看到的筆數。
+        u_solr, sd = solr_site_search(typed)
+        urls[f"solr_site:{typed}"] = u_solr
+        docs = (sd.get("response") or {}).get("docs") or []
+        solr_found = (sd.get("response") or {}).get("numFound")
+        # 前端會把每一筆 explode 成「label 一列、short_form 一列、每個同義詞各一列」
+        exploded = []
+        for d in docs:
+            sf, lab = d.get("short_form"), d.get("label")
+            exploded.append((sf, lab))
+            exploded.append((sf, f"{sf} ({lab})"))
+            for sy in d.get("synonym") or []:
+                exploded.append((sf, f"{sy} ({lab})"))
+
         steps.append({
             "typed_into_search_box": typed,
             "id": tid,
@@ -315,7 +411,31 @@ def _worksheet():
             "painted_domains_query_label": pq.get("label") if pq else None,
             "painted_domains_count": painted,
             "report_url": f"https://virtualflybrain.org/reports/{tid}",
+            # ── 網站那一路（SOLR）──────────────────────────────
+            "solr_num_found": solr_found,
+            "solr_exploded_rows": len(exploded),
+            "solr_target_first_ranks": [i for i, (sf, _) in enumerate(exploded)
+                                        if sf == tid][:4],
+            "solr_top8_as_displayed": [t for _, t in exploded[:8]],
         })
+
+    # 文件站首頁那個搜尋框：打字的大小寫會決定目標看不看得見。
+    # 它跟 SOLR 要 40 筆、只顯示 8 筆，所以目標一旦掉出前 40 名就等於不存在。
+    spellings, sp_urls = [], {}
+    for typed in ["JRC2018Unisex", "JRC2018unisex", "JRC2018Uni", "JRC2018"]:
+        u_p, docs, top8 = solr_docsite_palette(typed)
+        sp_urls[typed] = u_p
+        rank = next((i for i, x in enumerate(docs)
+                     if x.get("short_form") == "VFB_00101567"), None)
+        spellings.append({
+            "typed": typed,
+            "is_exact_label": typed == "JRC2018Unisex",
+            "target_rank_within_40": rank,
+            "target_visible_in_top8": any(x.get("short_form") == "VFB_00101567"
+                                          for x in top8),
+            "top8_labels": [x.get("label") for x in top8],
+        })
+    urls["docsite_palette"] = sp_urls
 
     # 第 4 步：一顆神經元同時掛在兩套 template 上（＝橋接的產物）
     u_n, n = fetch("/get_term_info", {"id": EX_NEURON_LM})
@@ -326,6 +446,13 @@ def _worksheet():
         "url": urls,
         "data": {
             "steps": steps,
+            "docsite_search_box": {
+                "where": "www.virtualflybrain.org 首頁的搜尋框（命令面板）",
+                "asks_solr_for": 40,
+                "shows_on_screen": 8,
+                "reranks_by": "跟你打的字是否完全相同（編號→正式名→同義詞→其餘）",
+                "spellings": spellings,
+            },
             "example_neuron": {
                 "id": EX_NEURON_LM,
                 "name": n.get("Name"),
@@ -341,7 +468,11 @@ def _worksheet():
                  "顎神經節那種的型別不是 Synaptic_neuropil，名字卻一樣帶「on …」。"
                  "rows_not_named_on_it_detail 要能逐列交代完——"
                  "搜尋 JRC2018Unisex 會連 JRC2018UnisexVNC（另一套 template）一起撈回來。"
-                 "第 5 步：example_neuron 對位到 n_templates 套 template。"),
+                 "第 5 步：example_neuron 對位到 n_templates 套 template。"
+                 "　**三條路三個數字**：REST /search 的 search_rows、"
+                 "網站搜尋框打的 SOLR 的 solr_num_found、以及前端 explode 後的 "
+                 "solr_exploded_rows，同一個字串三個都不一樣。"
+                 "所以頁面上**不要寫學員會看到幾筆**——我們量得到的沒有一個是螢幕上那個數字。"),
     }
 
 
