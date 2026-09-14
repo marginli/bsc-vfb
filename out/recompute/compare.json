@@ -414,6 +414,203 @@
    "LoVP90c_R"
   ]
  },
+ "by_body_id": {
+  "renamed": {
+   "DNc01_L": {
+    "body": 11369,
+    "vfb_name": "DNc01_R",
+    "paper_cells": 1,
+    "vfb_cells": 2
+   },
+   "DNc02_L": {
+    "body": 10705,
+    "vfb_name": "DNc02_R",
+    "paper_cells": 1,
+    "vfb_cells": 1
+   },
+   "HST_R": {
+    "body": 12521,
+    "vfb_name": "HS4_R",
+    "paper_cells": 1,
+    "vfb_cells": 1
+   },
+   "LAL047_R": {
+    "body": 531732,
+    "vfb_name": "LoVC8_R",
+    "paper_cells": 1,
+    "vfb_cells": 1
+   },
+   "LC35a_R": {
+    "body": 27026,
+    "vfb_name": "LoVP15_R",
+    "paper_cells": 5,
+    "vfb_cells": 5
+   },
+   "LC35b_R": {
+    "body": 23062,
+    "vfb_name": "LoVP104_R",
+    "paper_cells": 1,
+    "vfb_cells": 1
+   },
+   "LC39a_R": {
+    "body": 22964,
+    "vfb_name": "LC39_R",
+    "paper_cells": 3,
+    "vfb_cells": 3
+   },
+   "LC39b_R": {
+    "body": 20726,
+    "vfb_name": "LoVP51_R",
+    "paper_cells": 1,
+    "vfb_cells": 1
+   },
+   "LT85_R": {
+    "body": 19122,
+    "vfb_name": "LoVP87_R",
+    "paper_cells": 1,
+    "vfb_cells": 1
+   },
+   "Li11a_R": {
+    "body": 14879,
+    "vfb_name": "Li11_R",
+    "paper_cells": 2,
+    "vfb_cells": 4
+   },
+   "Li11b_R": {
+    "body": 17534,
+    "vfb_name": "Li11_R",
+    "paper_cells": 2,
+    "vfb_cells": 4
+   },
+   "LoVP90a_R": {
+    "body": 11907,
+    "vfb_name": "LoVP90_R",
+    "paper_cells": 1,
+    "vfb_cells": 3
+   },
+   "LoVP90b_R": {
+    "body": 12202,
+    "vfb_name": "LoVP90_R",
+    "paper_cells": 1,
+    "vfb_cells": 3
+   },
+   "LoVP90c_R": {
+    "body": 12094,
+    "vfb_name": "LoVP90_R",
+    "paper_cells": 1,
+    "vfb_cells": 3
+   },
+   "V1_L": {
+    "body": 10854,
+    "vfb_name": "LPT58_L",
+    "paper_cells": 1,
+    "vfb_cells": 1
+   },
+   "VST1_R": {
+    "body": 20634,
+    "vfb_name": "VT_R",
+    "paper_cells": 3,
+    "vfb_cells": 7
+   },
+   "VST2_R": {
+    "body": 16570,
+    "vfb_name": "VT_R",
+    "paper_cells": 4,
+    "vfb_cells": 7
+   },
+   "mALD1_L": {
+    "body": 10457,
+    "vfb_name": "LoVC10_L",
+    "paper_cells": 1,
+    "vfb_cells": 1
+   }
+  },
+  "absent": {
+   "AN09A005_L": {
+    "body": 511828,
+    "paper_cells": 2
+   },
+   "AN09A005_R": {
+    "body": 20831,
+    "paper_cells": 2
+   },
+   "AN27X013_L": {
+    "body": 12398,
+    "paper_cells": 2
+   },
+   "AN27X013_R": {
+    "body": 10150,
+    "paper_cells": 2
+   },
+   "PLP_TBD1_R": {
+    "body": 33451,
+    "paper_cells": 1
+   },
+   "VLP_TBD1_R": {
+    "body": 33194,
+    "paper_cells": 1
+   },
+   "aMe_TBD1_R": {
+    "body": 10508,
+    "paper_cells": 1
+   }
+  },
+  "n_renamed": 18,
+  "n_absent": 7,
+  "cells_absent": 11,
+  "vfb_names_taking_more_than_one_paper_row": {
+   "Li11_R": 2,
+   "LoVP90_R": 3,
+   "VT_R": 2
+  },
+  "vfb_names_no_longer_only_in_vfb": [
+   "DNc02_R",
+   "HS4_R",
+   "LC39_R",
+   "LPT58_L",
+   "Li11_R",
+   "LoVC10_L",
+   "LoVC8_R",
+   "LoVP104_R",
+   "LoVP15_R",
+   "LoVP87_R",
+   "LoVP90_R",
+   "VT_R"
+  ],
+  "only_in_vfb_after": 172,
+  "kinds": {
+   "renamed_one_to_one": [
+    "DNc02_L",
+    "HST_R",
+    "LAL047_R",
+    "LC35a_R",
+    "LC35b_R",
+    "LC39a_R",
+    "LC39b_R",
+    "LT85_R",
+    "V1_L",
+    "mALD1_L"
+   ],
+   "side_label_differs": [
+    "DNc01_L"
+   ],
+   "paper_split_vfb_merged": {
+    "Li11_R": [
+     "Li11a_R",
+     "Li11b_R"
+    ],
+    "LoVP90_R": [
+     "LoVP90a_R",
+     "LoVP90b_R",
+     "LoVP90c_R"
+    ],
+    "VT_R": [
+     "VST1_R",
+     "VST2_R"
+    ]
+   }
+  }
+ },
  "total_cells_paper": 52827,
  "total_cells_vfb": 53402
 }

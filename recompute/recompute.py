@@ -102,7 +102,10 @@ def paper_target() -> dict:
             return 0
 
     rows = [r for r in ws.iter_rows(min_row=2, values_only=True) if r and r[0]]
-    by_instance = {r[1]: {"cell_type": r[0], "cells": n(r[2]), "group": r[3]} for r in rows}
+    # bodyId 那一欄只給「圖裡用的那一顆」的編號，不是整列的每一顆；
+    # 但拿來確認「這一列的神經元在不在 VFB 裡」已經夠——見 resolve_by_body_id()。
+    by_instance = {r[1]: {"cell_type": r[0], "cells": n(r[2]), "group": r[3],
+                          "body": n(r[4])} for r in rows}
 
     # 列數比型數多，因為**一列是一個（型, 側別）實例**，不是一個型。
     # 論文正文報的是型；表列的是列。不分清楚，778 與 732 會看起來像矛盾。
@@ -170,11 +173,30 @@ def vfb_side() -> dict:
 
     # 哪些類別是「泛稱」（底下還有別的類別，而那個別的類別也在這一組裡）
     lit = "[" + ",".join(f"'{c}'" for c in classes) + "]"
-    generic = {r[0] for r in cypher(
+    # **只看這一組之內**：某個類別在整個 VFB 本體論裡還有下位，但那些下位
+    # 在這套資料裡沒有神經元，它在這裡仍算末端。這是我們的選擇，不是資料說的。
+    generic_rows = cypher(
         "MATCH (a:Class)<-[:SUBCLASSOF*1..8]-(b:Class) "
         "WHERE a.short_form IN %s AND b.short_form IN %s "
-        "RETURN DISTINCT a.short_form" % (lit, lit))}
+        "RETURN a.short_form, a.label, count(DISTINCT b) "
+        "ORDER BY count(DISTINCT b) DESC" % (lit, lit))
+    generic = {r[0] for r in generic_rows}
     leaf = {c: lab for c, lab in classes.items() if c not in generic}
+
+    # 泛稱底下各自直接掛了幾顆——拿來說明「為什麼加總會超過總數」
+    direct = dict(collections.Counter(
+        c for _, c, _ in pairs if c in generic))
+    generic_list = [{"short_form": sf, "label": lab, "subclasses_here": k,
+                     "neurons_directly_here": direct.get(sf, 0)}
+                    for sf, lab, k in generic_rows]
+
+    # bodyId → 標籤。VFB 的標籤長這樣：Dm15_R (JRC_OpticLobe:65558)
+    body = re.compile(r"\(JRC_OpticLobe:(\d+)\)")
+    by_body = {}
+    for _, lab in neurons:
+        m = body.search(lab or "")
+        if m:
+            by_body[int(m.group(1))] = (lab or "").split(" (")[0]
 
     # 比對的鍵
     pre = re.compile(r"^(.*?)\s*\(")
@@ -190,11 +212,72 @@ def vfb_side() -> dict:
 
     return {"dataset": ds,
             "neurons": len(neurons),
+            "by_body_id": by_body,
             "classes_all": len(classes),
             "classes_generic": len(generic),
             "classes_leaf": len(leaf),
+            "generic_classes": generic_list,
+            # 821 個末端類別的完整標籤。存下來，頁面上引到的任何一個型名
+            # 都對得回這裡（稽核只認 out/ 裡出現過的字串）。
+            "leaf_classes": {c: lab for c, lab in sorted(leaf.items())},
+            "instanceof_pairs": len(pairs),
             "keys_instance": dict(key_of_instance),
             "keys_class": dict(by_class)}
+
+
+def resolve_by_body_id(target: dict, vfb: dict, only_paper: list,
+                       only_vfb: list) -> dict:
+    """只在論文那一側的列，改用 bodyId 再查一次。
+
+    **名字對不上不代表東西不在。**兩邊給同一顆重建的神經元取不同的型名，
+    用名字比就永遠對不上；而 bodyId 是同一份重建的編號，兩邊共用。
+    論文補充表有一欄 bodyId，VFB 的標籤裡也帶著它（`Dm15_R (JRC_OpticLobe:65558)`），
+    所以這一步可以把「改名」跟「真的沒收進來」分開。
+
+    回傳兩桶：
+      renamed    bodyId 在 VFB 找得到，但 VFB 給它的名字不一樣
+      absent     bodyId 在 VFB 的 Nern2024 裡完全不存在
+    """
+    paper, by_body = target["by_instance"], vfb["by_body_id"]
+    got = vfb["keys_instance"]
+    renamed, absent = {}, {}
+    for inst in only_paper:
+        b = paper[inst].get("body")
+        lab = by_body.get(b) if b else None
+        if lab:
+            renamed[inst] = {"body": b, "vfb_name": lab,
+                             "paper_cells": paper[inst]["cells"],
+                             "vfb_cells": got.get(lab)}
+        else:
+            absent[inst] = {"body": b, "paper_cells": paper[inst]["cells"]}
+
+    # 改名之後，VFB 那一側的名字就不該再算成「只在 VFB」
+    merged = collections.Counter(v["vfb_name"] for v in renamed.values())
+    return {"renamed": renamed, "absent": absent,
+            "n_renamed": len(renamed), "n_absent": len(absent),
+            "cells_absent": sum(v["paper_cells"] for v in absent.values()),
+            # 論文拆成兩型、VFB 併成一型的，會在這裡露出來（同一個 vfb_name 出現兩次）
+            "vfb_names_taking_more_than_one_paper_row":
+                {k: v for k, v in merged.items() if v > 1},
+            # 這些 VFB 名字其實就是論文那幾列，不該再算成「只在 VFB」
+            "vfb_names_no_longer_only_in_vfb":
+                sorted({v["vfb_name"] for v in renamed.values()} & set(only_vfb)),
+            "only_in_vfb_after": len(set(only_vfb)
+                - {v["vfb_name"] for v in renamed.values()}),
+            # 分類：一對一改名／側別標到另一邊／論文拆而 VFB 併成一個
+            "kinds": {
+                "renamed_one_to_one": sorted(
+                    k for k, v in renamed.items()
+                    if merged[v["vfb_name"]] == 1
+                    and v["paper_cells"] == v["vfb_cells"]),
+                "side_label_differs": sorted(
+                    k for k, v in renamed.items()
+                    if merged[v["vfb_name"]] == 1
+                    and v["paper_cells"] != v["vfb_cells"]),
+                "paper_split_vfb_merged": {
+                    name: sorted(k for k, v in renamed.items()
+                                 if v["vfb_name"] == name)
+                    for name, c in merged.items() if c > 1}}}
 
 
 def compare(target: dict, vfb: dict) -> dict:
@@ -271,6 +354,7 @@ def compare(target: dict, vfb: dict) -> dict:
             "only_in_paper": only_paper,
             "only_in_vfb": only_vfb,
             "paper_split_vfb_did_not": {k: sorted(v) for k, v in split.items()},
+            "by_body_id": resolve_by_body_id(target, vfb, only_paper, only_vfb),
             "total_cells_paper": target["total_cells"],
             "total_cells_vfb": vfb["neurons"]}
 

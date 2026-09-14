@@ -70,3892 +70,4670 @@
   "5-HTPMPV03_R": {
    "cell_type": "5-HTPMPV03",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10050
   },
   "5thsLNv_LNd6_R": {
    "cell_type": "5thsLNv_LNd6",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11901
   },
   "Am1_R": {
    "cell_type": "Am1",
    "cells": 1,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 10093
   },
   "aMe_TBD1_R": {
    "cell_type": "aMe_TBD1",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 10508
   },
   "aMe1_R": {
    "cell_type": "aMe1",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 46099
   },
   "aMe2_R": {
    "cell_type": "aMe2",
    "cells": 4,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 29351
   },
   "aMe3_R": {
    "cell_type": "aMe3",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 14207
   },
   "aMe4_R": {
    "cell_type": "aMe4",
    "cells": 9,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 13623
   },
   "aMe5_R": {
    "cell_type": "aMe5",
    "cells": 17,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 30585
   },
   "aMe6a_R": {
    "cell_type": "aMe6a",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15110
   },
   "aMe6b_R": {
    "cell_type": "aMe6b",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 20277
   },
   "aMe6c_R": {
    "cell_type": "aMe6c",
    "cells": 1,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 15680
   },
   "aMe8_R": {
    "cell_type": "aMe8",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16866
   },
   "aMe9_R": {
    "cell_type": "aMe9",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 14499
   },
   "aMe10_R": {
    "cell_type": "aMe10",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 19513
   },
   "aMe12_R": {
    "cell_type": "aMe12",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13190
   },
   "aMe13_R": {
    "cell_type": "aMe13",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13457
   },
   "aMe15_R": {
    "cell_type": "aMe15",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 14356
   },
   "aMe17a_R": {
    "cell_type": "aMe17a",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 514230
   },
   "aMe17b_R": {
    "cell_type": "aMe17b",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 12718
   },
   "aMe17c_R": {
    "cell_type": "aMe17c",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11081
   },
   "aMe17e_R": {
    "cell_type": "aMe17e",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10303
   },
   "aMe20_R": {
    "cell_type": "aMe20",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12295
   },
   "aMe22_R": {
    "cell_type": "aMe22",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 14613
   },
   "aMe23_R": {
    "cell_type": "aMe23",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 23376
   },
   "aMe24_R": {
    "cell_type": "aMe24",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 20674
   },
   "aMe25_R": {
    "cell_type": "aMe25",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13362
   },
   "aMe26_R": {
    "cell_type": "aMe26",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15377
   },
   "aMe30_R": {
    "cell_type": "aMe30",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 12727
   },
   "AN09A005_R": {
    "cell_type": "AN09A005",
    "cells": 2,
-   "group": "other"
+   "group": "other",
+   "body": 20831
   },
   "AN27X013_R": {
    "cell_type": "AN27X013",
    "cells": 2,
-   "group": "other"
+   "group": "other",
+   "body": 10150
   },
   "AOTU045_R": {
    "cell_type": "AOTU045",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15319
   },
   "AOTU056_R": {
    "cell_type": "AOTU056",
    "cells": 5,
-   "group": "other"
+   "group": "other",
+   "body": 66210
   },
   "AOTU058_R": {
    "cell_type": "AOTU058",
    "cells": 2,
-   "group": "other"
+   "group": "other",
+   "body": 66291
   },
   "C2_R": {
    "cell_type": "C2",
    "cells": 874,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 78453
   },
   "C3_R": {
    "cell_type": "C3",
    "cells": 892,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 49223
   },
   "CL125_R": {
    "cell_type": "CL125",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 18009
   },
   "Cm-DRA_R": {
    "cell_type": "Cm-DRA",
    "cells": 3,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 22529
   },
   "Cm1_R": {
    "cell_type": "Cm1",
    "cells": 231,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 575256
   },
   "Cm2_R": {
    "cell_type": "Cm2",
    "cells": 203,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 129985
   },
   "Cm3_R": {
    "cell_type": "Cm3",
    "cells": 167,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 63279
   },
   "Cm4_R": {
    "cell_type": "Cm4",
    "cells": 126,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 125210
   },
   "Cm5_R": {
    "cell_type": "Cm5",
    "cells": 109,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 104279
   },
   "Cm6_R": {
    "cell_type": "Cm6",
    "cells": 106,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 107552
   },
   "Cm7_R": {
    "cell_type": "Cm7",
    "cells": 93,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 60613
   },
   "Cm8_R": {
    "cell_type": "Cm8",
    "cells": 90,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 48844
   },
   "Cm9_R": {
    "cell_type": "Cm9",
    "cells": 73,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 71613
   },
   "Cm10_R": {
    "cell_type": "Cm10",
    "cells": 45,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 97930
   },
   "Cm11a_R": {
    "cell_type": "Cm11a",
    "cells": 40,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 57093
   },
   "Cm11b_R": {
    "cell_type": "Cm11b",
    "cells": 30,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 63647
   },
   "Cm11c_R": {
    "cell_type": "Cm11c",
    "cells": 23,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 38325
   },
   "Cm11d_R": {
    "cell_type": "Cm11d",
    "cells": 9,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 29786
   },
   "Cm12_R": {
    "cell_type": "Cm12",
    "cells": 35,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 22626
   },
   "Cm13_R": {
    "cell_type": "Cm13",
    "cells": 27,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 36510
   },
   "Cm14_R": {
    "cell_type": "Cm14",
    "cells": 23,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 36243
   },
   "Cm15_R": {
    "cell_type": "Cm15",
    "cells": 22,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 92102
   },
   "Cm16_R": {
    "cell_type": "Cm16",
    "cells": 17,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 61146
   },
   "Cm17_R": {
    "cell_type": "Cm17",
    "cells": 16,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 25048
   },
   "Cm18_R": {
    "cell_type": "Cm18",
    "cells": 14,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 43159
   },
   "Cm19_R": {
    "cell_type": "Cm19",
    "cells": 14,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 19005
   },
   "Cm20_R": {
    "cell_type": "Cm20",
    "cells": 13,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 48079
   },
   "Cm21_R": {
    "cell_type": "Cm21",
    "cells": 13,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 34153
   },
   "Cm22_R": {
    "cell_type": "Cm22",
    "cells": 10,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 59284
   },
   "Cm23_R": {
    "cell_type": "Cm23",
    "cells": 8,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 21535
   },
   "Cm24_R": {
    "cell_type": "Cm24",
    "cells": 5,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 30030
   },
   "Cm25_R": {
    "cell_type": "Cm25",
    "cells": 3,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 22272
   },
   "Cm26_R": {
    "cell_type": "Cm26",
    "cells": 6,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 16683
   },
   "Cm27_R": {
    "cell_type": "Cm27",
    "cells": 5,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 36782
   },
   "Cm28_R": {
    "cell_type": "Cm28",
    "cells": 6,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 15025
   },
   "Cm29_R": {
    "cell_type": "Cm29",
    "cells": 3,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 13447
   },
   "Cm30_R": {
    "cell_type": "Cm30",
    "cells": 2,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 12456
   },
   "Cm31a_R": {
    "cell_type": "Cm31a",
    "cells": 2,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 10843
   },
   "Cm31b_R": {
    "cell_type": "Cm31b",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 10518
   },
   "Cm32_R": {
    "cell_type": "Cm32",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 12643
   },
   "Cm33_R": {
    "cell_type": "Cm33",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 12713
   },
   "Cm34_R": {
    "cell_type": "Cm34",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 10114
   },
   "Cm35_R": {
    "cell_type": "Cm35",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 11130
   },
   "dCal1_R": {
    "cell_type": "dCal1",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10441
   },
   "Dm-DRA1_R": {
    "cell_type": "Dm-DRA1",
    "cells": 26,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 81034
   },
   "Dm-DRA2_R": {
    "cell_type": "Dm-DRA2",
    "cells": 18,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 97136
   },
   "Dm1_R": {
    "cell_type": "Dm1",
    "cells": 39,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 18915
   },
   "Dm2_R": {
    "cell_type": "Dm2",
    "cells": 726,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 103886
   },
   "Dm3a_R": {
    "cell_type": "Dm3a",
    "cells": 601,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 125612
   },
   "Dm3b_R": {
    "cell_type": "Dm3b",
    "cells": 571,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 114360
   },
   "Dm3c_R": {
    "cell_type": "Dm3c",
    "cells": 401,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 115343
   },
   "Dm4_R": {
    "cell_type": "Dm4",
    "cells": 48,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 17345
   },
   "Dm6_R": {
    "cell_type": "Dm6",
    "cells": 29,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 14028
   },
   "Dm8a_R": {
    "cell_type": "Dm8a",
    "cells": 285,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 31219
   },
   "Dm8b_R": {
    "cell_type": "Dm8b",
    "cells": 265,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 111772
   },
   "Dm9_R": {
    "cell_type": "Dm9",
    "cells": 135,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 35188
   },
   "Dm10_R": {
    "cell_type": "Dm10",
    "cells": 311,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 117605
   },
   "Dm11_R": {
    "cell_type": "Dm11",
    "cells": 82,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 138520
   },
   "Dm12_R": {
    "cell_type": "Dm12",
    "cells": 137,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 33671
   },
   "Dm13_R": {
    "cell_type": "Dm13",
    "cells": 28,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 15853
   },
   "Dm14_R": {
    "cell_type": "Dm14",
    "cells": 16,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 17167
   },
   "Dm15_R": {
    "cell_type": "Dm15",
    "cells": 242,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 116274
   },
   "Dm16_R": {
    "cell_type": "Dm16",
    "cells": 75,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 72422
   },
   "Dm17_R": {
    "cell_type": "Dm17",
    "cells": 4,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 10839
   },
   "Dm18_R": {
    "cell_type": "Dm18",
    "cells": 27,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 18743
   },
   "Dm19_R": {
    "cell_type": "Dm19",
    "cells": 15,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 12884
   },
   "Dm20_R": {
    "cell_type": "Dm20",
    "cells": 48,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 23044
   },
   "DN1a_R": {
    "cell_type": "DN1a",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 14636
   },
   "DNc01_R": {
    "cell_type": "DNc01",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 512245
   },
   "DNp11_R": {
    "cell_type": "DNp11",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 10106
   },
   "DNp27_R": {
    "cell_type": "DNp27",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 10063
   },
   "DNp30_R": {
    "cell_type": "DNp30",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 10068
   },
   "DNpe053_R": {
    "cell_type": "DNpe053",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 20418
   },
   "H1_R": {
    "cell_type": "H1",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10755
   },
   "H2_R": {
    "cell_type": "H2",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10025
   },
   "HBeyelet_R": {
    "cell_type": "HBeyelet",
    "cells": 3,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 26455
   },
   "HSE_R": {
    "cell_type": "HSE",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10016
   },
   "HSN_R": {
    "cell_type": "HSN",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10015
   },
   "HSS_R": {
    "cell_type": "HSS",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10023
   },
   "HST_R": {
    "cell_type": "HST",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12521
   },
   "KCg-s1_R": {
    "cell_type": "KCg-s1",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 18540
   },
   "l-LNv_R": {
    "cell_type": "l-LNv",
    "cells": 4,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11114
   },
   "L1_R": {
    "cell_type": "L1",
    "cells": 892,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 34929
   },
   "L2_R": {
    "cell_type": "L2",
    "cells": 893,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 27848
   },
   "L3_R": {
    "cell_type": "L3",
    "cells": 892,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 82753
   },
   "L4_R": {
    "cell_type": "L4",
    "cells": 891,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 81844
   },
   "L5_R": {
    "cell_type": "L5",
    "cells": 898,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 91284
   },
   "Lai_R": {
    "cell_type": "Lai",
    "cells": 48,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 71924
   },
   "LAL047_R": {
    "cell_type": "LAL047",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 531732
   },
   "LAL048_R": {
    "cell_type": "LAL048",
    "cells": 2,
-   "group": "other"
+   "group": "other",
+   "body": 43504
   },
   "Lat1_R": {
    "cell_type": "Lat1",
    "cells": 4,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 26197
   },
   "Lat2_R": {
    "cell_type": "Lat2",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 19777
   },
   "Lat3_R": {
    "cell_type": "Lat3",
    "cells": 4,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 42094
   },
   "Lat4_R": {
    "cell_type": "Lat4",
    "cells": 1,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 21257
   },
   "Lat5_R": {
    "cell_type": "Lat5",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 19286
   },
   "Lawf1_R": {
    "cell_type": "Lawf1",
    "cells": 184,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 40718
   },
   "Lawf2_R": {
    "cell_type": "Lawf2",
    "cells": 188,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 31749
   },
   "LC4_R": {
    "cell_type": "LC4",
    "cells": 55,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 23392
   },
   "LC6_R": {
    "cell_type": "LC6",
    "cells": 65,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 38017
   },
   "LC9_R": {
    "cell_type": "LC9",
    "cells": 115,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 24110
   },
   "LC10a_R": {
    "cell_type": "LC10a",
    "cells": 140,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 21199
   },
   "LC10b_R": {
    "cell_type": "LC10b",
    "cells": 48,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 42029
   },
   "LC10c-1_R": {
    "cell_type": "LC10c-1",
    "cells": 66,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 27455
   },
   "LC10c-2_R": {
    "cell_type": "LC10c-2",
    "cells": 66,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 41080
   },
   "LC10d_R": {
    "cell_type": "LC10d",
    "cells": 106,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 26545
   },
   "LC10e_R": {
    "cell_type": "LC10e",
    "cells": 48,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 65584
   },
   "LC11_R": {
    "cell_type": "LC11",
    "cells": 75,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 25902
   },
   "LC12_R": {
    "cell_type": "LC12",
    "cells": 242,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 56550
   },
   "LC13_R": {
    "cell_type": "LC13",
    "cells": 94,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 59045
   },
   "LC14a-1_R": {
    "cell_type": "LC14a-1",
    "cells": 15,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 24305
   },
   "LC14a-2_R": {
    "cell_type": "LC14a-2",
    "cells": 8,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 22025
   },
   "LC14b_R": {
    "cell_type": "LC14b",
    "cells": 22,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 21081
   },
   "LC15_R": {
    "cell_type": "LC15",
    "cells": 65,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 51278
   },
   "LC16_R": {
    "cell_type": "LC16",
    "cells": 94,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 53180
   },
   "LC17_R": {
    "cell_type": "LC17",
    "cells": 175,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 36862
   },
   "LC18_R": {
    "cell_type": "LC18",
    "cells": 104,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 42754
   },
   "LC19_R": {
    "cell_type": "LC19",
    "cells": 8,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 19887
   },
   "LC20a_R": {
    "cell_type": "LC20a",
    "cells": 30,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 66880
   },
   "LC20b_R": {
    "cell_type": "LC20b",
    "cells": 40,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 55338
   },
   "LC21_R": {
    "cell_type": "LC21",
    "cells": 78,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 34398
   },
   "LC22_R": {
    "cell_type": "LC22",
    "cells": 35,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 36373
   },
   "LC23_R": {
    "cell_type": "LC23",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 18201
   },
   "LC24_R": {
    "cell_type": "LC24",
    "cells": 54,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 82562
   },
   "LC25_R": {
    "cell_type": "LC25",
    "cells": 27,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 61130
   },
   "LC26_R": {
    "cell_type": "LC26",
    "cells": 37,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 59443
   },
   "LC27_R": {
    "cell_type": "LC27",
    "cells": 23,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 82165
   },
   "LC28_R": {
    "cell_type": "LC28",
    "cells": 31,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 57467
   },
   "LC29_R": {
    "cell_type": "LC29",
    "cells": 19,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 73667
   },
   "LC30_R": {
    "cell_type": "LC30",
    "cells": 30,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 101895
   },
   "LC31a_R": {
    "cell_type": "LC31a",
    "cells": 16,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 25862
   },
   "LC31b_R": {
    "cell_type": "LC31b",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11812
   },
   "LC33_R": {
    "cell_type": "LC33",
    "cells": 16,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 14002
   },
   "LC34_R": {
    "cell_type": "LC34",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 47900
   },
   "LC35a_R": {
    "cell_type": "LC35a",
    "cells": 5,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 27026
   },
   "LC35b_R": {
    "cell_type": "LC35b",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 23062
   },
   "LC36_R": {
    "cell_type": "LC36",
    "cells": 16,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 28375
   },
   "LC37_R": {
    "cell_type": "LC37",
    "cells": 8,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 27833
   },
   "LC39a_R": {
    "cell_type": "LC39a",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 22964
   },
   "LC39b_R": {
    "cell_type": "LC39b",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 20726
   },
   "LC40_R": {
    "cell_type": "LC40",
    "cells": 15,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 27705
   },
   "LC41_R": {
    "cell_type": "LC41",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 34029
   },
   "LC43_R": {
    "cell_type": "LC43",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 35974
   },
   "LC44_R": {
    "cell_type": "LC44",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 54692
   },
   "LC46b_R": {
    "cell_type": "LC46b",
    "cells": 5,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 54299
   },
   "Li11a_R": {
    "cell_type": "Li11a",
    "cells": 2,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 14879
   },
   "Li11b_R": {
    "cell_type": "Li11b",
    "cells": 2,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 17534
   },
   "Li12_R": {
    "cell_type": "Li12",
    "cells": 2,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 12505
   },
   "Li13_R": {
    "cell_type": "Li13",
    "cells": 33,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 26957
   },
   "Li14_R": {
    "cell_type": "Li14",
    "cells": 112,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 43857
   },
   "Li15_R": {
    "cell_type": "Li15",
    "cells": 21,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 30007
   },
   "Li16_R": {
    "cell_type": "Li16",
    "cells": 2,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 11394
   },
   "Li17_R": {
    "cell_type": "Li17",
    "cells": 10,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 15440
   },
   "Li18a_R": {
    "cell_type": "Li18a",
    "cells": 23,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 60928
   },
   "Li18b_R": {
    "cell_type": "Li18b",
    "cells": 17,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 64816
   },
   "Li19_R": {
    "cell_type": "Li19",
    "cells": 26,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 22826
   },
   "Li20_R": {
    "cell_type": "Li20",
    "cells": 21,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 20491
   },
   "Li21_R": {
    "cell_type": "Li21",
    "cells": 105,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 43796
   },
   "Li22_R": {
    "cell_type": "Li22",
    "cells": 119,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 69655
   },
   "Li23_R": {
    "cell_type": "Li23",
    "cells": 60,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 62974
   },
   "Li25_R": {
    "cell_type": "Li25",
    "cells": 60,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 30094
   },
   "Li26_R": {
    "cell_type": "Li26",
    "cells": 18,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 25566
   },
   "Li27_R": {
    "cell_type": "Li27",
    "cells": 58,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 86973
   },
   "Li28_R": {
    "cell_type": "Li28",
    "cells": 6,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 16033
   },
   "Li29_R": {
    "cell_type": "Li29",
    "cells": 4,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 13850
   },
   "Li30_R": {
    "cell_type": "Li30",
    "cells": 6,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 13376
   },
   "Li31_R": {
    "cell_type": "Li31",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 10974
   },
   "Li32_R": {
    "cell_type": "Li32",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 10352
   },
   "Li33_R": {
    "cell_type": "Li33",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 10351
   },
   "Li34a_R": {
    "cell_type": "Li34a",
    "cells": 34,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 35856
   },
   "Li34b_R": {
    "cell_type": "Li34b",
    "cells": 30,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 38417
   },
   "Li35_R": {
    "cell_type": "Li35",
    "cells": 13,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 41806
   },
   "Li36_R": {
    "cell_type": "Li36",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 16975
   },
   "Li37_R": {
    "cell_type": "Li37",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 17424
   },
   "LLPC1_R": {
    "cell_type": "LLPC1",
    "cells": 142,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 26070
   },
   "LLPC2_R": {
    "cell_type": "LLPC2",
    "cells": 125,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 59059
   },
   "LLPC3_R": {
    "cell_type": "LLPC3",
    "cells": 112,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 64432
   },
   "LLPC4_R": {
    "cell_type": "LLPC4",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15348
   },
   "LOLP1_R": {
    "cell_type": "LOLP1",
    "cells": 32,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 33521
   },
   "LoVC2_R": {
    "cell_type": "LoVC2",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 519263
   },
   "LoVC4_R": {
    "cell_type": "LoVC4",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11106
   },
   "LoVC5_R": {
    "cell_type": "LoVC5",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11180
   },
   "LoVC6_R": {
    "cell_type": "LoVC6",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10188
   },
   "LoVC7_R": {
    "cell_type": "LoVC7",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 517193
   },
   "LoVC13_R": {
    "cell_type": "LoVC13",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 12468
   },
   "LoVC15_R": {
    "cell_type": "LoVC15",
    "cells": 3,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 13736
   },
   "LoVC16_R": {
    "cell_type": "LoVC16",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10029
   },
   "LoVC17_R": {
    "cell_type": "LoVC17",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 15343
   },
   "LoVC18_R": {
    "cell_type": "LoVC18",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 537899
   },
   "LoVC19_R": {
    "cell_type": "LoVC19",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11586
   },
   "LoVC24_R": {
    "cell_type": "LoVC24",
    "cells": 3,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 35216
   },
   "LoVC26_R": {
    "cell_type": "LoVC26",
    "cells": 3,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 64694
   },
   "LoVCLo1_R": {
    "cell_type": "LoVCLo1",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11843
   },
   "LoVCLo2_R": {
    "cell_type": "LoVCLo2",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 12067
   },
   "LoVCLo3_R": {
    "cell_type": "LoVCLo3",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10100
   },
   "LoVP1_R": {
    "cell_type": "LoVP1",
    "cells": 27,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 68009
   },
   "LoVP2_R": {
    "cell_type": "LoVP2",
    "cells": 23,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 76681
   },
   "LoVP3_R": {
    "cell_type": "LoVP3",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 70517
   },
   "LoVP4_R": {
    "cell_type": "LoVP4",
    "cells": 5,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 70548
   },
   "LoVP5_R": {
    "cell_type": "LoVP5",
    "cells": 12,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 60641
   },
   "LoVP6_R": {
    "cell_type": "LoVP6",
    "cells": 11,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 54636
   },
   "LoVP7_R": {
    "cell_type": "LoVP7",
    "cells": 12,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 99002
   },
   "LoVP8_R": {
    "cell_type": "LoVP8",
    "cells": 9,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 27349
   },
   "LoVP9_R": {
    "cell_type": "LoVP9",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 155098
   },
   "LoVP10_R": {
    "cell_type": "LoVP10",
    "cells": 9,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 36242
   },
   "LoVP11_R": {
    "cell_type": "LoVP11",
    "cells": 4,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 46946
   },
   "LoVP12_R": {
    "cell_type": "LoVP12",
    "cells": 19,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 80560
   },
   "LoVP13_R": {
    "cell_type": "LoVP13",
    "cells": 24,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 82626
   },
   "LoVP14_R": {
    "cell_type": "LoVP14",
    "cells": 9,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 56861
   },
   "LoVP16_R": {
    "cell_type": "LoVP16",
    "cells": 5,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 27435
   },
   "LoVP17_R": {
    "cell_type": "LoVP17",
    "cells": 4,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 34651
   },
   "LoVP18_R": {
    "cell_type": "LoVP18",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 18420
   },
   "LoVP19_R": {
    "cell_type": "LoVP19",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 72257
   },
   "LoVP20_R": {
    "cell_type": "LoVP20",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 42963
   },
   "LoVP21_R": {
    "cell_type": "LoVP21",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 49740
   },
   "LoVP22_R": {
    "cell_type": "LoVP22",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 77074
   },
   "LoVP23_R": {
    "cell_type": "LoVP23",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 27189
   },
   "LoVP24_R": {
    "cell_type": "LoVP24",
    "cells": 4,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 107446
   },
   "LoVP25_R": {
    "cell_type": "LoVP25",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 53346
   },
   "LoVP26_R": {
    "cell_type": "LoVP26",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 546795
   },
   "LoVP27_R": {
    "cell_type": "LoVP27",
    "cells": 5,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 48142
   },
   "LoVP28_R": {
    "cell_type": "LoVP28",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 529228
   },
   "LoVP29_R": {
    "cell_type": "LoVP29",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 21416
   },
   "LoVP30_R": {
    "cell_type": "LoVP30",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16195
   },
   "LoVP31_R": {
    "cell_type": "LoVP31",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15586
   },
   "LoVP32_R": {
    "cell_type": "LoVP32",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 21129
   },
   "LoVP33_R": {
    "cell_type": "LoVP33",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 36596
   },
   "LoVP34_R": {
    "cell_type": "LoVP34",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 19459
   },
   "LoVP35_R": {
    "cell_type": "LoVP35",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 14819
   },
   "LoVP36_R": {
    "cell_type": "LoVP36",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 21962
   },
   "LoVP37_R": {
    "cell_type": "LoVP37",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 33437
   },
   "LoVP38_R": {
    "cell_type": "LoVP38",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 22440
   },
   "LoVP39_R": {
    "cell_type": "LoVP39",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 18001
   },
   "LoVP40_R": {
    "cell_type": "LoVP40",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15576
   },
   "LoVP41_R": {
    "cell_type": "LoVP41",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 21782
   },
   "LoVP42_R": {
    "cell_type": "LoVP42",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13874
   },
   "LoVP43_R": {
    "cell_type": "LoVP43",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 25008
   },
   "LoVP44_R": {
    "cell_type": "LoVP44",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 18683
   },
   "LoVP45_R": {
    "cell_type": "LoVP45",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15716
   },
   "LoVP46_R": {
    "cell_type": "LoVP46",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15987
   },
   "LoVP47_R": {
    "cell_type": "LoVP47",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 14479
   },
   "LoVP48_R": {
    "cell_type": "LoVP48",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15593
   },
   "LoVP49_R": {
    "cell_type": "LoVP49",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13473
   },
   "LoVP50_R": {
    "cell_type": "LoVP50",
    "cells": 4,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 17004
   },
   "LoVP51_R": {
    "cell_type": "LoVP51",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 32994
   },
   "LoVP52_R": {
    "cell_type": "LoVP52",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 38861
   },
   "LoVP53_R": {
    "cell_type": "LoVP53",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12145
   },
   "LoVP54_R": {
    "cell_type": "LoVP54",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11435
   },
   "LoVP55_R": {
    "cell_type": "LoVP55",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 38039
   },
   "LoVP56_R": {
    "cell_type": "LoVP56",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 27818
   },
   "LoVP57_R": {
    "cell_type": "LoVP57",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 25389
   },
   "LoVP58_R": {
    "cell_type": "LoVP58",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 14199
   },
   "LoVP59_R": {
    "cell_type": "LoVP59",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15363
   },
   "LoVP60_R": {
    "cell_type": "LoVP60",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 17978
   },
   "LoVP61_R": {
    "cell_type": "LoVP61",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 41726
   },
   "LoVP62_R": {
    "cell_type": "LoVP62",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 33760
   },
   "LoVP63_R": {
    "cell_type": "LoVP63",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13941
   },
   "LoVP64_R": {
    "cell_type": "LoVP64",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 14027
   },
   "LoVP65_R": {
    "cell_type": "LoVP65",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16609
   },
   "LoVP66_R": {
    "cell_type": "LoVP66",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 27925
   },
   "LoVP67_R": {
    "cell_type": "LoVP67",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15400
   },
   "LoVP68_R": {
    "cell_type": "LoVP68",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15074
   },
   "LoVP69_R": {
    "cell_type": "LoVP69",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16316
   },
   "LoVP70_R": {
    "cell_type": "LoVP70",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 18507
   },
   "LoVP71_R": {
    "cell_type": "LoVP71",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 25191
   },
   "LoVP72_R": {
    "cell_type": "LoVP72",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 23448
   },
   "LoVP73_R": {
    "cell_type": "LoVP73",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 14233
   },
   "LoVP74_R": {
    "cell_type": "LoVP74",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 24405
   },
   "LoVP75_R": {
    "cell_type": "LoVP75",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 39289
   },
   "LoVP76_R": {
    "cell_type": "LoVP76",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 21780
   },
   "LoVP77_R": {
    "cell_type": "LoVP77",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 28401
   },
   "LoVP78_R": {
    "cell_type": "LoVP78",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 24034
   },
   "LoVP79_R": {
    "cell_type": "LoVP79",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13326
   },
   "LoVP80_R": {
    "cell_type": "LoVP80",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 31742
   },
   "LoVP81_R": {
    "cell_type": "LoVP81",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 47989
   },
   "LoVP82_R": {
    "cell_type": "LoVP82",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 24044
   },
   "LoVP83_R": {
    "cell_type": "LoVP83",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 35898
   },
   "LoVP84_R": {
    "cell_type": "LoVP84",
    "cells": 4,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 544069
   },
   "LoVP85_R": {
    "cell_type": "LoVP85",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11926
   },
   "LoVP86_R": {
    "cell_type": "LoVP86",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13196
   },
   "LoVP88_R": {
    "cell_type": "LoVP88",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 522475
   },
   "LoVP89_R": {
    "cell_type": "LoVP89",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 23087
   },
   "LoVP90a_R": {
    "cell_type": "LoVP90a",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11907
   },
   "LoVP90b_R": {
    "cell_type": "LoVP90b",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12202
   },
   "LoVP90c_R": {
    "cell_type": "LoVP90c",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12094
   },
   "LoVP91_R": {
    "cell_type": "LoVP91",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 546546
   },
   "LoVP92_R": {
    "cell_type": "LoVP92",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 18635
   },
   "LoVP93_R": {
    "cell_type": "LoVP93",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 41512
   },
   "LoVP94_R": {
    "cell_type": "LoVP94",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 42561
   },
   "LoVP95_R": {
    "cell_type": "LoVP95",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 54603
   },
   "LoVP96_R": {
    "cell_type": "LoVP96",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12686
   },
   "LoVP97_R": {
    "cell_type": "LoVP97",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13707
   },
   "LoVP98_R": {
    "cell_type": "LoVP98",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 28614
   },
   "LoVP99_R": {
    "cell_type": "LoVP99",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 18630
   },
   "LoVP100_R": {
    "cell_type": "LoVP100",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11161
   },
   "LoVP101_R": {
    "cell_type": "LoVP101",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10693
   },
   "LoVP102_R": {
    "cell_type": "LoVP102",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10335
   },
   "LoVP103_R": {
    "cell_type": "LoVP103",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13727
   },
   "LoVP105_R": {
    "cell_type": "LoVP105",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 51809
   },
   "LoVP106_R": {
    "cell_type": "LoVP106",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13881
   },
   "LoVP107_R": {
    "cell_type": "LoVP107",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15737
   },
   "LoVP108_R": {
    "cell_type": "LoVP108",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 57463
   },
   "LPC1_R": {
    "cell_type": "LPC1",
    "cells": 109,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 67145
   },
   "LPC2_R": {
    "cell_type": "LPC2",
    "cells": 78,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 122742
   },
   "LPi2b_R": {
    "cell_type": "LPi2b",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 10893
   },
   "LPi2c_R": {
    "cell_type": "LPi2c",
    "cells": 27,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 24286
   },
   "LPi2d_R": {
    "cell_type": "LPi2d",
    "cells": 26,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 47437
   },
   "LPi2e_R": {
    "cell_type": "LPi2e",
    "cells": 46,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 64374
   },
   "LPi3a_R": {
    "cell_type": "LPi3a",
    "cells": 63,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 47305
   },
   "LPi3b_R": {
    "cell_type": "LPi3b",
    "cells": 22,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 32296
   },
   "LPi3c_R": {
    "cell_type": "LPi3c",
    "cells": 6,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 544366
   },
   "LPi4a_R": {
    "cell_type": "LPi4a",
    "cells": 17,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 44404
   },
   "LPi4b_R": {
    "cell_type": "LPi4b",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 10503
   },
   "LPi12_R": {
    "cell_type": "LPi12",
    "cells": 2,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 10436
   },
   "LPi14_R": {
    "cell_type": "LPi14",
    "cells": 16,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 69752
   },
   "LPi21_R": {
    "cell_type": "LPi21",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 10066
   },
   "LPi34_R": {
    "cell_type": "LPi34",
    "cells": 58,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 28306
   },
   "LPi43_R": {
    "cell_type": "LPi43",
    "cells": 33,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 20939
   },
   "LPi3412_R": {
    "cell_type": "LPi3412",
    "cells": 57,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 32882
   },
   "LPLC1_R": {
    "cell_type": "LPLC1",
    "cells": 66,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 21540
   },
   "LPLC2_R": {
    "cell_type": "LPLC2",
    "cells": 91,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 37431
   },
   "LPLC4_R": {
    "cell_type": "LPLC4",
    "cells": 49,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 18314
   },
   "LPT21_R": {
    "cell_type": "LPT21",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11031
   },
   "LPT22_R": {
    "cell_type": "LPT22",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11009
   },
   "LPT23_R": {
    "cell_type": "LPT23",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 551781
   },
   "LPT26_R": {
    "cell_type": "LPT26",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11696
   },
   "LPT27_R": {
    "cell_type": "LPT27",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11117
   },
   "LPT28_R": {
    "cell_type": "LPT28",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 37465
   },
   "LPT29_R": {
    "cell_type": "LPT29",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13842
   },
   "LPT30_R": {
    "cell_type": "LPT30",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12973
   },
   "LPT31_R": {
    "cell_type": "LPT31",
    "cells": 4,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16819
   },
   "LPT49_R": {
    "cell_type": "LPT49",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11609
   },
   "LPT50_R": {
    "cell_type": "LPT50",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10481
   },
   "LPT51_R": {
    "cell_type": "LPT51",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15371
   },
   "LPT52_R": {
    "cell_type": "LPT52",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11169
   },
   "LPT53_R": {
    "cell_type": "LPT53",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11003
   },
   "LPT54_R": {
    "cell_type": "LPT54",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10682
   },
   "LPT60_R": {
    "cell_type": "LPT60",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10583
   },
   "LPT100_R": {
    "cell_type": "LPT100",
    "cells": 19,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 73243
   },
   "LPT101_R": {
    "cell_type": "LPT101",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 45776
   },
   "LPT110_R": {
    "cell_type": "LPT110",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 513378
   },
   "LPT111_R": {
    "cell_type": "LPT111",
    "cells": 51,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 23297
   },
   "LPT112_R": {
    "cell_type": "LPT112",
    "cells": 20,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 35431
   },
   "LPT113_R": {
    "cell_type": "LPT113",
    "cells": 12,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 30594
   },
   "LPT114_R": {
    "cell_type": "LPT114",
    "cells": 11,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 13211
   },
   "LPT115_R": {
    "cell_type": "LPT115",
    "cells": 3,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 20232
   },
   "LPT116_R": {
    "cell_type": "LPT116",
    "cells": 5,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 18194
   },
   "LT1a_R": {
    "cell_type": "LT1a",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10439
   },
   "LT1b_R": {
    "cell_type": "LT1b",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10231
   },
   "LT1c_R": {
    "cell_type": "LT1c",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10764
   },
   "LT1d_R": {
    "cell_type": "LT1d",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10372
   },
   "LT11_R": {
    "cell_type": "LT11",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10476
   },
   "LT34_R": {
    "cell_type": "LT34",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10337
   },
   "LT37_R": {
    "cell_type": "LT37",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 24684
   },
   "LT39_R": {
    "cell_type": "LT39",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10663
   },
   "LT40_R": {
    "cell_type": "LT40",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11628
   },
   "LT41_R": {
    "cell_type": "LT41",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11254
   },
   "LT42_R": {
    "cell_type": "LT42",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11319
   },
   "LT43_R": {
    "cell_type": "LT43",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 496514
   },
   "LT47_R": {
    "cell_type": "LT47",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 19623
   },
   "LT51_R": {
    "cell_type": "LT51",
    "cells": 11,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11463
   },
   "LT52_R": {
    "cell_type": "LT52",
    "cells": 17,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 30496
   },
   "LT54_R": {
    "cell_type": "LT54",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 18774
   },
   "LT55_R": {
    "cell_type": "LT55",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 14512
   },
   "LT56_R": {
    "cell_type": "LT56",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 539413
   },
   "LT58_R": {
    "cell_type": "LT58",
    "cells": 1,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 11217
   },
   "LT59_R": {
    "cell_type": "LT59",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 18942
   },
   "LT60_R": {
    "cell_type": "LT60",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16474
   },
   "LT61a_R": {
    "cell_type": "LT61a",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11473
   },
   "LT61b_R": {
    "cell_type": "LT61b",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12957
   },
   "LT62_R": {
    "cell_type": "LT62",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11055
   },
   "LT63_R": {
    "cell_type": "LT63",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16373
   },
   "LT64_R": {
    "cell_type": "LT64",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 27322
   },
   "LT65_R": {
    "cell_type": "LT65",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 21607
   },
   "LT66_R": {
    "cell_type": "LT66",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10771
   },
   "LT67_R": {
    "cell_type": "LT67",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 14179
   },
   "LT68_R": {
    "cell_type": "LT68",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 21169
   },
   "LT69_R": {
    "cell_type": "LT69",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16996
   },
   "LT70_R": {
    "cell_type": "LT70",
    "cells": 6,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 33860
   },
   "LT72_R": {
    "cell_type": "LT72",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16153
   },
   "LT73_R": {
    "cell_type": "LT73",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16137
   },
   "LT74_R": {
    "cell_type": "LT74",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 25160
   },
   "LT75_R": {
    "cell_type": "LT75",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12979
   },
   "LT76_R": {
    "cell_type": "LT76",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15771
   },
   "LT77_R": {
    "cell_type": "LT77",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 18673
   },
   "LT78_R": {
    "cell_type": "LT78",
    "cells": 4,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16876
   },
   "LT79_R": {
    "cell_type": "LT79",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10250
   },
   "LT80_R": {
    "cell_type": "LT80",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 20979
   },
   "LT81_R": {
    "cell_type": "LT81",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 51640
   },
   "LT82a_R": {
    "cell_type": "LT82a",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11291
   },
   "LT82b_R": {
    "cell_type": "LT82b",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11887
   },
   "LT83_R": {
    "cell_type": "LT83",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10387
   },
   "LT84_R": {
    "cell_type": "LT84",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12439
   },
   "LT85_R": {
    "cell_type": "LT85",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 19122
   },
   "LT86_R": {
    "cell_type": "LT86",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11522
   },
   "LT87_R": {
    "cell_type": "LT87",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10266
   },
   "LT88_R": {
    "cell_type": "LT88",
    "cells": 1,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 11911
   },
   "MeLo1_R": {
    "cell_type": "MeLo1",
    "cells": 63,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 28895
   },
   "MeLo2_R": {
    "cell_type": "MeLo2",
    "cells": 71,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 31112
   },
   "MeLo3a_R": {
    "cell_type": "MeLo3a",
    "cells": 57,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 66117
   },
   "MeLo3b_R": {
    "cell_type": "MeLo3b",
    "cells": 40,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 26492
   },
   "MeLo4_R": {
    "cell_type": "MeLo4",
    "cells": 34,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 46472
   },
   "MeLo5_R": {
    "cell_type": "MeLo5",
    "cells": 19,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 67232
   },
   "MeLo6_R": {
    "cell_type": "MeLo6",
    "cells": 30,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 81212
   },
   "MeLo7_R": {
    "cell_type": "MeLo7",
    "cells": 48,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 50716
   },
   "MeLo8_R": {
    "cell_type": "MeLo8",
    "cells": 23,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 14778
   },
   "MeLo9_R": {
    "cell_type": "MeLo9",
    "cells": 42,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 19492
   },
   "MeLo10_R": {
    "cell_type": "MeLo10",
    "cells": 30,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 21883
   },
   "MeLo11_R": {
    "cell_type": "MeLo11",
    "cells": 27,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 17267
   },
   "MeLo12_R": {
    "cell_type": "MeLo12",
    "cells": 25,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 24720
   },
   "MeLo13_R": {
    "cell_type": "MeLo13",
    "cells": 37,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 33966
   },
   "MeLo14_R": {
    "cell_type": "MeLo14",
    "cells": 20,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 23360
   },
   "MeTu1_R": {
    "cell_type": "MeTu1",
    "cells": 124,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 41172
   },
   "MeTu2a_R": {
    "cell_type": "MeTu2a",
    "cells": 36,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 59537
   },
   "MeTu2b_R": {
    "cell_type": "MeTu2b",
    "cells": 16,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 25602
   },
   "MeTu3a_R": {
    "cell_type": "MeTu3a",
    "cells": 18,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 48600
   },
   "MeTu3b_R": {
    "cell_type": "MeTu3b",
    "cells": 42,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 48864
   },
   "MeTu3c_R": {
    "cell_type": "MeTu3c",
    "cells": 91,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 57165
   },
   "MeTu4a_R": {
    "cell_type": "MeTu4a",
    "cells": 49,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 50974
   },
   "MeTu4b_R": {
    "cell_type": "MeTu4b",
    "cells": 16,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 58995
   },
   "MeTu4c_R": {
    "cell_type": "MeTu4c",
    "cells": 41,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 55829
   },
   "MeTu4d_R": {
    "cell_type": "MeTu4d",
    "cells": 20,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 60230
   },
   "MeTu4e_R": {
    "cell_type": "MeTu4e",
    "cells": 25,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 58727
   },
   "MeTu4f_R": {
    "cell_type": "MeTu4f",
    "cells": 28,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 66657
   },
   "MeVC20_R": {
    "cell_type": "MeVC20",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 12863
   },
   "MeVC21_R": {
    "cell_type": "MeVC21",
    "cells": 3,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11858
   },
   "MeVC22_R": {
    "cell_type": "MeVC22",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11296
   },
   "MeVC23_R": {
    "cell_type": "MeVC23",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11046
   },
   "MeVC24_R": {
    "cell_type": "MeVC24",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 13938
   },
   "MeVC25_R": {
    "cell_type": "MeVC25",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10102
   },
   "MeVCMe1_R": {
    "cell_type": "MeVCMe1",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10222
   },
   "MeVP1_R": {
    "cell_type": "MeVP1",
    "cells": 59,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 70738
   },
   "MeVP2_R": {
    "cell_type": "MeVP2",
    "cells": 36,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 56919
   },
   "MeVP3_R": {
    "cell_type": "MeVP3",
    "cells": 35,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 80680
   },
   "MeVP4_R": {
    "cell_type": "MeVP4",
    "cells": 22,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 30838
   },
   "MeVP5_R": {
    "cell_type": "MeVP5",
    "cells": 9,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 75492
   },
   "MeVP6_R": {
    "cell_type": "MeVP6",
    "cells": 49,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 52560
   },
   "MeVP7_R": {
    "cell_type": "MeVP7",
    "cells": 12,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 34990
   },
   "MeVP8_R": {
    "cell_type": "MeVP8",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 18579
   },
   "MeVP9_R": {
    "cell_type": "MeVP9",
    "cells": 5,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12764
   },
   "MeVP10_R": {
    "cell_type": "MeVP10",
    "cells": 33,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 41321
   },
   "MeVP11_R": {
    "cell_type": "MeVP11",
    "cells": 30,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 54786
   },
   "MeVP12_R": {
    "cell_type": "MeVP12",
    "cells": 18,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 37182
   },
   "MeVP14_R": {
    "cell_type": "MeVP14",
    "cells": 17,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 50994
   },
   "MeVP15_R": {
    "cell_type": "MeVP15",
    "cells": 11,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 42017
   },
   "MeVP16_R": {
    "cell_type": "MeVP16",
    "cells": 4,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 30816
   },
   "MeVP17_R": {
    "cell_type": "MeVP17",
    "cells": 7,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 17295
   },
   "MeVP18_R": {
    "cell_type": "MeVP18",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13679
   },
   "MeVP20_R": {
    "cell_type": "MeVP20",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 34049
   },
   "MeVP21_R": {
    "cell_type": "MeVP21",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 19526
   },
   "MeVP22_R": {
    "cell_type": "MeVP22",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 22476
   },
   "MeVP23_R": {
    "cell_type": "MeVP23",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11595
   },
   "MeVP24_R": {
    "cell_type": "MeVP24",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10723
   },
   "MeVP25_R": {
    "cell_type": "MeVP25",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13076
   },
   "MeVP26_R": {
    "cell_type": "MeVP26",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 523062
   },
   "MeVP27_R": {
    "cell_type": "MeVP27",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16512
   },
   "MeVP28_R": {
    "cell_type": "MeVP28",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12382
   },
   "MeVP29_R": {
    "cell_type": "MeVP29",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11690
   },
   "MeVP30_R": {
    "cell_type": "MeVP30",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 14882
   },
   "MeVP31_R": {
    "cell_type": "MeVP31",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 26246
   },
   "MeVP32_R": {
    "cell_type": "MeVP32",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13931
   },
   "MeVP33_R": {
    "cell_type": "MeVP33",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13663
   },
   "MeVP34_R": {
    "cell_type": "MeVP34",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 19806
   },
   "MeVP35_R": {
    "cell_type": "MeVP35",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16664
   },
   "MeVP36_R": {
    "cell_type": "MeVP36",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11773
   },
   "MeVP38_R": {
    "cell_type": "MeVP38",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12416
   },
   "MeVP39_R": {
    "cell_type": "MeVP39",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 19731
   },
   "MeVP40_R": {
    "cell_type": "MeVP40",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 18315
   },
   "MeVP41_R": {
    "cell_type": "MeVP41",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13285
   },
   "MeVP42_R": {
    "cell_type": "MeVP42",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 17123
   },
   "MeVP43_R": {
    "cell_type": "MeVP43",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12639
   },
   "MeVP45_R": {
    "cell_type": "MeVP45",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13298
   },
   "MeVP46_R": {
    "cell_type": "MeVP46",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 14142
   },
   "MeVP47_R": {
    "cell_type": "MeVP47",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10803
   },
   "MeVP48_R": {
    "cell_type": "MeVP48",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15447
   },
   "MeVP49_R": {
    "cell_type": "MeVP49",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11446
   },
   "MeVP50_R": {
    "cell_type": "MeVP50",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13174
   },
   "MeVP51_R": {
    "cell_type": "MeVP51",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10896
   },
   "MeVP52_R": {
    "cell_type": "MeVP52",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10901
   },
   "MeVP53_R": {
    "cell_type": "MeVP53",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10480
   },
   "MeVP54_R": {
    "cell_type": "MeVP54",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 14977
   },
   "MeVP55_R": {
    "cell_type": "MeVP55",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 32249
   },
   "MeVP56_R": {
    "cell_type": "MeVP56",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11842
   },
   "MeVP57_R": {
    "cell_type": "MeVP57",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12048
   },
   "MeVP58_R": {
    "cell_type": "MeVP58",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 21776
   },
   "MeVP59_R": {
    "cell_type": "MeVP59",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 14754
   },
   "MeVP60_R": {
    "cell_type": "MeVP60",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15307
   },
   "MeVP61_R": {
    "cell_type": "MeVP61",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 18244
   },
   "MeVP62_R": {
    "cell_type": "MeVP62",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15656
   },
   "MeVP63_R": {
    "cell_type": "MeVP63",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 17475
   },
   "MeVP64_R": {
    "cell_type": "MeVP64",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 24515
   },
   "MeVPaMe1_R": {
    "cell_type": "MeVPaMe1",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12440
   },
   "MeVPaMe2_R": {
    "cell_type": "MeVPaMe2",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12172
   },
   "MeVPLo1_R": {
    "cell_type": "MeVPLo1",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11375
   },
   "MeVPLo2_R": {
    "cell_type": "MeVPLo2",
    "cells": 7,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 20700
   },
   "MeVPLp1_R": {
    "cell_type": "MeVPLp1",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10121
   },
   "MeVPLp2_R": {
    "cell_type": "MeVPLp2",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11684
   },
   "MeVPMe1_R": {
    "cell_type": "MeVPMe1",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10367
   },
   "MeVPMe2_R": {
    "cell_type": "MeVPMe2",
    "cells": 5,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11146
   },
   "MeVPMe3_R": {
    "cell_type": "MeVPMe3",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11396
   },
   "MeVPMe4_R": {
    "cell_type": "MeVPMe4",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12662
   },
   "MeVPMe5_R": {
    "cell_type": "MeVPMe5",
    "cells": 10,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 17429
   },
   "MeVPMe6_R": {
    "cell_type": "MeVPMe6",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12070
   },
   "MeVPMe7_R": {
    "cell_type": "MeVPMe7",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11669
   },
   "MeVPMe8_R": {
    "cell_type": "MeVPMe8",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 14258
   },
   "MeVPMe9_R": {
    "cell_type": "MeVPMe9",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 19449
   },
   "MeVPMe10_R": {
    "cell_type": "MeVPMe10",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16253
   },
   "MeVPMe11_R": {
    "cell_type": "MeVPMe11",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11202
   },
   "MeVPMe12_R": {
    "cell_type": "MeVPMe12",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10358
   },
   "MeVPMe13_R": {
    "cell_type": "MeVPMe13",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10275
   },
   "MeVPOL1_R": {
    "cell_type": "MeVPOL1",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10330
   },
   "Mi1_R": {
    "cell_type": "Mi1",
    "cells": 887,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 34479
   },
   "Mi2_R": {
    "cell_type": "Mi2",
    "cells": 492,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 121000
   },
   "Mi4_R": {
    "cell_type": "Mi4",
    "cells": 889,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 68773
   },
   "Mi9_R": {
    "cell_type": "Mi9",
    "cells": 889,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 64123
   },
   "Mi10_R": {
    "cell_type": "Mi10",
    "cells": 222,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 99202
   },
   "Mi13_R": {
    "cell_type": "Mi13",
    "cells": 453,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 78510
   },
   "Mi14_R": {
    "cell_type": "Mi14",
    "cells": 155,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 50817
   },
   "Mi15_R": {
    "cell_type": "Mi15",
    "cells": 582,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 172929
   },
   "Mi16_R": {
    "cell_type": "Mi16",
    "cells": 101,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 70588
   },
   "Mi17_R": {
    "cell_type": "Mi17",
    "cells": 97,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 84274
   },
   "Mi18_R": {
    "cell_type": "Mi18",
    "cells": 36,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 16117
   },
   "Mi19_R": {
    "cell_type": "Mi19",
    "cells": 5,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 11113
   },
   "Mi20_R": {
    "cell_type": "Mi20",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 17870
   },
   "Nod1_R": {
    "cell_type": "Nod1",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11346
   },
   "Nod2_R": {
    "cell_type": "Nod2",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11124
   },
   "Nod3_R": {
    "cell_type": "Nod3",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11293
   },
   "Nod4_R": {
    "cell_type": "Nod4",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10729
   },
   "Nod5_R": {
    "cell_type": "Nod5",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12328
   },
   "OA-AL2i1_R": {
    "cell_type": "OA-AL2i1",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10072
   },
   "OA-AL2i2_R": {
    "cell_type": "OA-AL2i2",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10322
   },
   "OA-AL2i3_R": {
    "cell_type": "OA-AL2i3",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10687
   },
   "OA-AL2i4_R": {
    "cell_type": "OA-AL2i4",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10677
   },
   "OA-ASM1_R": {
    "cell_type": "OA-ASM1",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 12688
   },
   "OLVC1_R": {
    "cell_type": "OLVC1",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10891
   },
   "OLVC5_R": {
    "cell_type": "OLVC5",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11155
   },
   "PLP_TBD1_R": {
    "cell_type": "PLP_TBD1",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 33451
   },
   "PLP021_R": {
    "cell_type": "PLP021",
    "cells": 2,
-   "group": "other"
+   "group": "other",
+   "body": 725764894
   },
   "PLP032_R": {
    "cell_type": "PLP032",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 11152
   },
   "PLP036_R": {
    "cell_type": "PLP036",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 20038
   },
   "PLP069_R": {
    "cell_type": "PLP069",
    "cells": 2,
-   "group": "other"
+   "group": "other",
+   "body": 23627
   },
   "PLP080_R": {
    "cell_type": "PLP080",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 15264
   },
   "PLP150_R": {
    "cell_type": "PLP150",
    "cells": 6,
-   "group": "other"
+   "group": "other",
+   "body": 29581
   },
   "PLP211_R": {
    "cell_type": "PLP211",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 11507
   },
   "PLP231_R": {
    "cell_type": "PLP231",
    "cells": 2,
-   "group": "other"
+   "group": "other",
+   "body": 16880
   },
   "Pm1_R": {
    "cell_type": "Pm1",
    "cells": 121,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 37586
   },
   "Pm2a_R": {
    "cell_type": "Pm2a",
    "cells": 109,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 22182
   },
   "Pm2b_R": {
    "cell_type": "Pm2b",
    "cells": 65,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 17599
   },
   "Pm3_R": {
    "cell_type": "Pm3",
    "cells": 36,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 15838
   },
   "Pm4_R": {
    "cell_type": "Pm4",
    "cells": 85,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 20626
   },
   "Pm5_R": {
    "cell_type": "Pm5",
    "cells": 94,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 24281
   },
   "Pm6_R": {
    "cell_type": "Pm6",
    "cells": 24,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 18226
   },
   "Pm7_R": {
    "cell_type": "Pm7",
    "cells": 14,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 14599
   },
   "Pm8_R": {
    "cell_type": "Pm8",
    "cells": 20,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 18180
   },
   "Pm9_R": {
    "cell_type": "Pm9",
    "cells": 27,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 24063
   },
   "Pm10_R": {
    "cell_type": "Pm10",
    "cells": 37,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 21717
   },
   "Pm11_R": {
    "cell_type": "Pm11",
    "cells": 2,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 10807
   },
   "Pm12_R": {
    "cell_type": "Pm12",
    "cells": 2,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 10531
   },
   "Pm13_R": {
    "cell_type": "Pm13",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 11029
   },
   "PS272_R": {
    "cell_type": "PS272",
    "cells": 2,
-   "group": "other"
+   "group": "other",
+   "body": 15635
   },
   "PVLP046_R": {
    "cell_type": "PVLP046",
    "cells": 5,
-   "group": "other"
+   "group": "other",
+   "body": 18230
   },
   "R1-R6_R": {
    "cell_type": "R1-R6",
    "cells": 2265,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 32275
   },
   "R7d_R": {
    "cell_type": "R7d",
    "cells": 42,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 134128
   },
   "R7p_R": {
    "cell_type": "R7p",
    "cells": 95,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 172293
   },
   "R7y_R": {
    "cell_type": "R7y",
    "cells": 244,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 223619
   },
   "R8d_R": {
    "cell_type": "R8d",
    "cells": 41,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 163682
   },
   "R8p_R": {
    "cell_type": "R8p",
    "cells": 95,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 186297
   },
   "R8y_R": {
    "cell_type": "R8y",
    "cells": 245,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 177362
   },
   "s-LNv_R": {
    "cell_type": "s-LNv",
    "cells": 4,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16461
   },
   "SLP249_R": {
    "cell_type": "SLP249",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15863
   },
   "SLP250_R": {
    "cell_type": "SLP250",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13328
   },
   "SLP359_R": {
    "cell_type": "SLP359",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 23842
   },
   "SMP200_R": {
    "cell_type": "SMP200",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 20615
   },
   "SMP217_R": {
    "cell_type": "SMP217",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 39416
   },
   "SMP528_R": {
    "cell_type": "SMP528",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 517277
   },
   "T1_R": {
    "cell_type": "T1",
    "cells": 892,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 38634
   },
   "T2_R": {
    "cell_type": "T2",
    "cells": 822,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 58703
   },
   "T2a_R": {
    "cell_type": "T2a",
    "cells": 939,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 87390
   },
   "T3_R": {
    "cell_type": "T3",
    "cells": 976,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 100499
   },
   "T4a_R": {
    "cell_type": "T4a",
    "cells": 849,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 90465
   },
   "T4b_R": {
    "cell_type": "T4b",
    "cells": 846,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 100867
   },
   "T4c_R": {
    "cell_type": "T4c",
    "cells": 883,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 91444
   },
   "T4d_R": {
    "cell_type": "T4d",
    "cells": 859,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 104414
   },
   "T5a_R": {
    "cell_type": "T5a",
    "cells": 838,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 102873
   },
   "T5b_R": {
    "cell_type": "T5b",
    "cells": 852,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 116378
   },
   "T5c_R": {
    "cell_type": "T5c",
    "cells": 858,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 107508
   },
   "T5d_R": {
    "cell_type": "T5d",
    "cells": 808,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 111518
   },
   "Tlp11_R": {
    "cell_type": "Tlp11",
    "cells": 32,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 26508
   },
   "Tlp12_R": {
    "cell_type": "Tlp12",
    "cells": 68,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 39329
   },
   "Tlp13_R": {
    "cell_type": "Tlp13",
    "cells": 58,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 38078
   },
   "Tlp14_R": {
    "cell_type": "Tlp14",
    "cells": 30,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 33090
   },
   "Tm1_R": {
    "cell_type": "Tm1",
    "cells": 890,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 42867
   },
   "Tm2_R": {
    "cell_type": "Tm2",
    "cells": 883,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 73470
   },
   "Tm3_R": {
    "cell_type": "Tm3",
    "cells": 1037,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 122308
   },
   "Tm4_R": {
    "cell_type": "Tm4",
    "cells": 833,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 96022
   },
   "Tm5Y_R": {
    "cell_type": "Tm5Y",
    "cells": 463,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 74509
   },
   "Tm5a_R": {
    "cell_type": "Tm5a",
    "cells": 307,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 90630
   },
   "Tm5b_R": {
    "cell_type": "Tm5b",
    "cells": 262,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 127569
   },
   "Tm5c_R": {
    "cell_type": "Tm5c",
    "cells": 374,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 60112
   },
   "Tm6_R": {
    "cell_type": "Tm6",
    "cells": 770,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 147014
   },
   "Tm9_R": {
    "cell_type": "Tm9",
    "cells": 887,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 89422
   },
   "Tm12_R": {
    "cell_type": "Tm12",
    "cells": 494,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 75385
   },
   "Tm16_R": {
    "cell_type": "Tm16",
    "cells": 197,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 36665
   },
   "Tm20_R": {
    "cell_type": "Tm20",
    "cells": 876,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 79036
   },
   "Tm23_R": {
    "cell_type": "Tm23",
    "cells": 16,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 26879
   },
   "Tm24_R": {
    "cell_type": "Tm24",
    "cells": 115,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 25981
   },
   "Tm26_R": {
    "cell_type": "Tm26",
    "cells": 50,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 34274
   },
   "Tm29_R": {
    "cell_type": "Tm29",
    "cells": 276,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 101388
   },
   "Tm30_R": {
    "cell_type": "Tm30",
    "cells": 61,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 41502
   },
   "Tm31_R": {
    "cell_type": "Tm31",
    "cells": 55,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 33065
   },
   "Tm32_R": {
    "cell_type": "Tm32",
    "cells": 59,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 47836
   },
   "Tm33_R": {
    "cell_type": "Tm33",
    "cells": 139,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 98130
   },
   "Tm34_R": {
    "cell_type": "Tm34",
    "cells": 88,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 76304
   },
   "Tm35_R": {
    "cell_type": "Tm35",
    "cells": 43,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 104313
   },
   "Tm36_R": {
    "cell_type": "Tm36",
    "cells": 77,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 77992
   },
   "Tm37_R": {
    "cell_type": "Tm37",
    "cells": 268,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 94557
   },
   "Tm38_R": {
    "cell_type": "Tm38",
    "cells": 116,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 37858
   },
   "Tm39_R": {
    "cell_type": "Tm39",
    "cells": 200,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 82879
   },
   "Tm40_R": {
    "cell_type": "Tm40",
    "cells": 83,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 131178
   },
   "TmY3_R": {
    "cell_type": "TmY3",
    "cells": 409,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 43334
   },
   "TmY4_R": {
    "cell_type": "TmY4",
    "cells": 288,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 39721
   },
   "TmY5a_R": {
    "cell_type": "TmY5a",
    "cells": 678,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 45506
   },
   "TmY9a_R": {
    "cell_type": "TmY9a",
    "cells": 230,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 45291
   },
   "TmY9b_R": {
    "cell_type": "TmY9b",
    "cells": 266,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 55648
   },
   "TmY10_R": {
    "cell_type": "TmY10",
    "cells": 278,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 49398
   },
   "TmY13_R": {
    "cell_type": "TmY13",
    "cells": 211,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 34564
   },
   "TmY14_R": {
    "cell_type": "TmY14",
    "cells": 234,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 21988
   },
   "TmY15_R": {
    "cell_type": "TmY15",
    "cells": 110,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 26151
   },
   "TmY16_R": {
    "cell_type": "TmY16",
    "cells": 80,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 20761
   },
   "TmY17_R": {
    "cell_type": "TmY17",
    "cells": 200,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 33576
   },
   "TmY18_R": {
    "cell_type": "TmY18",
    "cells": 694,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 120287
   },
   "TmY19a_R": {
    "cell_type": "TmY19a",
    "cells": 43,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 14581
   },
   "TmY19b_R": {
    "cell_type": "TmY19b",
    "cells": 17,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 19702
   },
   "TmY20_R": {
    "cell_type": "TmY20",
    "cells": 167,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 44828
   },
   "TmY21_R": {
    "cell_type": "TmY21",
    "cells": 189,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 44670
   },
   "vCal1_R": {
    "cell_type": "vCal1",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11089
   },
   "vCal2_R": {
    "cell_type": "vCal2",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 14006
   },
   "vCal3_R": {
    "cell_type": "vCal3",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11077
   },
   "VLP_TBD1_R": {
    "cell_type": "VLP_TBD1",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 33194
   },
   "VS_R": {
    "cell_type": "VS",
    "cells": 9,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10012
   },
   "VSm_R": {
    "cell_type": "VSm",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11134
   },
   "VST1_R": {
    "cell_type": "VST1",
    "cells": 3,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 20634
   },
   "VST2_R": {
    "cell_type": "VST2",
    "cells": 4,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16570
   },
   "Y3_R": {
    "cell_type": "Y3",
    "cells": 322,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 30521
   },
   "Y11_R": {
    "cell_type": "Y11",
    "cells": 76,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 37624
   },
   "Y12_R": {
    "cell_type": "Y12",
    "cells": 89,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 30067
   },
   "Y13_R": {
    "cell_type": "Y13",
    "cells": 99,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 38491
   },
   "Y14_R": {
    "cell_type": "Y14",
    "cells": 104,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 42846
   },
   "5-HTPMPV01_L": {
    "cell_type": "5-HTPMPV01",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 14694
   },
   "5-HTPMPV03_L": {
    "cell_type": "5-HTPMPV03",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10278
   },
   "aMe9_L": {
    "cell_type": "aMe9",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 50159
   },
   "aMe10_L": {
    "cell_type": "aMe10",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16674
   },
   "aMe12_L": {
    "cell_type": "aMe12",
    "cells": 4,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12211
   },
   "AN09A005_L": {
    "cell_type": "AN09A005",
    "cells": 2,
-   "group": "other"
+   "group": "other",
+   "body": 511828
   },
   "AN27X013_L": {
    "cell_type": "AN27X013",
    "cells": 2,
-   "group": "other"
+   "group": "other",
+   "body": 12398
   },
   "CL357_L": {
    "cell_type": "CL357",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 519787
   },
   "CT1_L": {
    "cell_type": "CT1",
    "cells": 1,
-   "group": "ONCN"
+   "group": "ONCN",
+   "body": 10009
   },
   "dCal1_L": {
    "cell_type": "dCal1",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10077
   },
   "DCH_L": {
    "cell_type": "DCH",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10061
   },
   "DNc01_L": {
    "cell_type": "DNc01",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 11369
   },
   "DNc02_L": {
    "cell_type": "DNc02",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 10705
   },
   "DNp27_L": {
    "cell_type": "DNp27",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 536048
   },
   "DNp30_L": {
    "cell_type": "DNp30",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 10143
   },
   "DNpe053_L": {
    "cell_type": "DNpe053",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 10286
   },
   "H1_L": {
    "cell_type": "H1",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10865
   },
   "l-LNv_L": {
    "cell_type": "l-LNv",
    "cells": 4,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 553895
   },
   "LC14a-1_L": {
    "cell_type": "LC14a-1",
    "cells": 15,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 22940
   },
   "LC14a-2_L": {
    "cell_type": "LC14a-2",
    "cells": 7,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 29557
   },
   "LC14b_L": {
    "cell_type": "LC14b",
    "cells": 21,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 26816
   },
   "Li38_L": {
    "cell_type": "Li38",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 10302
   },
   "Li39_L": {
    "cell_type": "Li39",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 10051
   },
   "LoVC1_L": {
    "cell_type": "LoVC1",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11406
   },
   "LoVC3_L": {
    "cell_type": "LoVC3",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10293
   },
   "LoVC9_L": {
    "cell_type": "LoVC9",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 12174
   },
   "LoVC11_L": {
    "cell_type": "LoVC11",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 511797
   },
   "LoVC12_L": {
    "cell_type": "LoVC12",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10477
   },
   "LoVC14_L": {
    "cell_type": "LoVC14",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10052
   },
   "LoVC20_L": {
    "cell_type": "LoVC20",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10956
   },
   "LoVC21_L": {
    "cell_type": "LoVC21",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10730
   },
   "LoVC22_L": {
    "cell_type": "LoVC22",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 15042
   },
   "LoVC23_L": {
    "cell_type": "LoVC23",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 16602
   },
   "LoVC25_L": {
    "cell_type": "LoVC25",
    "cells": 9,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 557985
   },
   "LoVC27_L": {
    "cell_type": "LoVC27",
    "cells": 5,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 139972
   },
   "LoVC28_L": {
    "cell_type": "LoVC28",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 54854
   },
   "LoVC29_L": {
    "cell_type": "LoVC29",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 67118
   },
   "LoVCLo1_L": {
    "cell_type": "LoVCLo1",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11658
   },
   "LoVCLo2_L": {
    "cell_type": "LoVCLo2",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11806
   },
   "LoVCLo3_L": {
    "cell_type": "LoVCLo3",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10432
   },
   "LPT50_L": {
    "cell_type": "LPT50",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10214
   },
   "LPT57_L": {
    "cell_type": "LPT57",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10630
   },
   "LPT59_L": {
    "cell_type": "LPT59",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10317
   },
   "LT33_L": {
    "cell_type": "LT33",
    "cells": 1,
-   "group": "ONIN"
+   "group": "ONIN",
+   "body": 537032
   },
   "LT35_L": {
    "cell_type": "LT35",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10787
   },
   "LT36_L": {
    "cell_type": "LT36",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10415
   },
   "LT46_L": {
    "cell_type": "LT46",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11802
   },
   "LT54_L": {
    "cell_type": "LT54",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 575937
   },
   "LT55_L": {
    "cell_type": "LT55",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16826
   },
   "LT66_L": {
    "cell_type": "LT66",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10675
   },
   "mALD1_L": {
    "cell_type": "mALD1",
    "cells": 1,
-   "group": "other"
+   "group": "other",
+   "body": 10457
   },
   "MeVC1_L": {
    "cell_type": "MeVC1",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10078
   },
   "MeVC2_L": {
    "cell_type": "MeVC2",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10809
   },
   "MeVC3_L": {
    "cell_type": "MeVC3",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11368
   },
   "MeVC4a_L": {
    "cell_type": "MeVC4a",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11260
   },
   "MeVC4b_L": {
    "cell_type": "MeVC4b",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10314
   },
   "MeVC5_L": {
    "cell_type": "MeVC5",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 12235
   },
   "MeVC6_L": {
    "cell_type": "MeVC6",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11344
   },
   "MeVC7a_L": {
    "cell_type": "MeVC7a",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 13040
   },
   "MeVC7b_L": {
    "cell_type": "MeVC7b",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 12105
   },
   "MeVC8_L": {
    "cell_type": "MeVC8",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 12697
   },
   "MeVC9_L": {
    "cell_type": "MeVC9",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 521633
   },
   "MeVC10_L": {
    "cell_type": "MeVC10",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 13796
   },
   "MeVC11_L": {
    "cell_type": "MeVC11",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10046
   },
   "MeVC12_L": {
    "cell_type": "MeVC12",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 12112
   },
   "MeVC26_L": {
    "cell_type": "MeVC26",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10532
   },
   "MeVC27_L": {
    "cell_type": "MeVC27",
    "cells": 3,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 519789
   },
   "MeVCMe1_L": {
    "cell_type": "MeVCMe1",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10107
   },
   "MeVPaMe1_L": {
    "cell_type": "MeVPaMe1",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11454
   },
   "MeVPaMe2_L": {
    "cell_type": "MeVPaMe2",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 15152
   },
   "MeVPLo1_L": {
    "cell_type": "MeVPLo1",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11485
   },
   "MeVPLo2_L": {
    "cell_type": "MeVPLo2",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 526613
   },
   "MeVPLp1_L": {
    "cell_type": "MeVPLp1",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10067
   },
   "MeVPLp2_L": {
    "cell_type": "MeVPLp2",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11641
   },
   "MeVPMe1_L": {
    "cell_type": "MeVPMe1",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10541
   },
   "MeVPMe2_L": {
    "cell_type": "MeVPMe2",
    "cells": 5,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10178
   },
   "MeVPMe3_L": {
    "cell_type": "MeVPMe3",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11015
   },
   "MeVPMe4_L": {
    "cell_type": "MeVPMe4",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 13214
   },
   "MeVPMe5_L": {
    "cell_type": "MeVPMe5",
    "cells": 9,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12528
   },
   "MeVPMe6_L": {
    "cell_type": "MeVPMe6",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 11384
   },
   "MeVPMe7_L": {
    "cell_type": "MeVPMe7",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 12805
   },
   "MeVPMe8_L": {
    "cell_type": "MeVPMe8",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 16157
   },
   "MeVPMe9_L": {
    "cell_type": "MeVPMe9",
    "cells": 6,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 18544
   },
   "MeVPMe10_L": {
    "cell_type": "MeVPMe10",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 19259
   },
   "MeVPMe11_L": {
    "cell_type": "MeVPMe11",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10882
   },
   "MeVPMe12_L": {
    "cell_type": "MeVPMe12",
    "cells": 2,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10451
   },
   "MeVPMe13_L": {
    "cell_type": "MeVPMe13",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10298
   },
   "MeVPOL1_L": {
    "cell_type": "MeVPOL1",
    "cells": 1,
-   "group": "VPN"
+   "group": "VPN",
+   "body": 10060
   },
   "OA-ASM1_L": {
    "cell_type": "OA-ASM1",
    "cells": 2,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 11264
   },
   "OLVC2_L": {
    "cell_type": "OLVC2",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10679
   },
   "OLVC3_L": {
    "cell_type": "OLVC3",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10836
   },
   "OLVC4_L": {
    "cell_type": "OLVC4",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 512295
   },
   "OLVC6_L": {
    "cell_type": "OLVC6",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 40609
   },
   "OLVC7_L": {
    "cell_type": "OLVC7",
    "cells": 3,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 35711
   },
   "PVLP046_L": {
    "cell_type": "PVLP046",
    "cells": 6,
-   "group": "other"
+   "group": "other",
+   "body": 19116
   },
   "V1_L": {
    "cell_type": "V1",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10854
   },
   "VCH_L": {
    "cell_type": "VCH",
    "cells": 1,
-   "group": "VCN"
+   "group": "VCN",
+   "body": 10027
   }
  }
 }
