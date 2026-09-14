@@ -103,9 +103,44 @@ def paper_target() -> dict:
 
     rows = [r for r in ws.iter_rows(min_row=2, values_only=True) if r and r[0]]
     by_instance = {r[1]: {"cell_type": r[0], "cells": n(r[2]), "group": r[3]} for r in rows}
+
+    # 列數比型數多，因為**一列是一個（型, 側別）實例**，不是一個型。
+    # 論文正文報的是型；表列的是列。不分清楚，778 與 732 會看起來像矛盾。
+    per_type = collections.defaultdict(list)
+    for inst, v in by_instance.items():
+        per_type[v["cell_type"]].append(inst)
+    def side(x):
+        return x[-2:] if x[-2:] in ("_L", "_R") else "其他"
+    buckets = collections.Counter()
+    groups = collections.defaultdict(collections.Counter)
+    for ct, insts in per_type.items():
+        s = tuple(sorted({side(i) for i in insts}))
+        key = {("_L", "_R"): "both", ("_R",): "right_only", ("_L",): "left_only"}.get(s, str(s))
+        buckets[key] += 1
+        groups[key][by_instance[insts[0]]["group"]] += 1
+    sides = {"rows_per_type": dict(sorted(collections.Counter(
+                 len(v) for v in per_type.values()).items())),
+             "types_by_side": dict(buckets),
+             "groups_by_side": {k: dict(v.most_common()) for k, v in groups.items()},
+             "note": "778 列 − 732 型 = 46，剛好就是佔兩列的型數；那 46 個全部是 _L／_R 成對。"}
+
+    # 這個分法有一條獨立的旁證：論文正文自己報過 VCN 的型數與顆數。
+    # 「型 104、列 110、顆 270」對上正文的 "104 VCN types across about 270 cells"
+    # ——論文報型、表列列，兩個單位在這裡同時出現，剛好把上面那件事釘死。
+    vcn = [i for ct, insts in per_type.items() for i in insts
+           if by_instance[insts[0]]["group"] == "VCN"]
+    sides["vcn_check"] = {
+        "types": sum(1 for ct, insts in per_type.items()
+                     if by_instance[insts[0]]["group"] == "VCN"),
+        "rows": len(vcn),
+        "cells": sum(by_instance[i]["cells"] for i in vcn),
+        "paper_says": "We identified 104 VCN types across about 270 cells"}
+
     return {"rows": len(rows),
             "distinct_cell_types": len({r[0] for r in rows}),
             "total_cells": sum(n(r[2]) for r in rows),
+            "instance_side": dict(collections.Counter(side(i) for i in by_instance)),
+            "sides": sides,
             "by_instance": by_instance}
 
 

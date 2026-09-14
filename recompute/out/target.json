@@ -2,6 +2,48 @@
  "rows": 778,
  "distinct_cell_types": 732,
  "total_cells": 52827,
+ "instance_side": {
+  "_R": 681,
+  "_L": 97
+ },
+ "sides": {
+  "rows_per_type": {
+   "1": 686,
+   "2": 46
+  },
+  "types_by_side": {
+   "both": 46,
+   "right_only": 635,
+   "left_only": 51
+  },
+  "groups_by_side": {
+   "both": {
+    "VPN": 33,
+    "other": 7,
+    "VCN": 6
+   },
+   "right_only": {
+    "VPN": 319,
+    "ONIN": 146,
+    "ONCN": 94,
+    "VCN": 54,
+    "other": 22
+   },
+   "left_only": {
+    "VCN": 44,
+    "other": 3,
+    "ONIN": 3,
+    "ONCN": 1
+   }
+  },
+  "note": "778 列 − 732 型 = 46，剛好就是佔兩列的型數；那 46 個全部是 _L／_R 成對。",
+  "vcn_check": {
+   "types": 104,
+   "rows": 110,
+   "cells": 270,
+   "paper_says": "We identified 104 VCN types across about 270 cells"
+  }
+ },
  "by_instance": {
   "5-HTPMPV03_R": {
    "cell_type": "5-HTPMPV03",

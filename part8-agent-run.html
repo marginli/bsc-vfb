@@ -87,7 +87,7 @@
 
   <div class="callout">
     <b>一句話的結論：<span style="white-space:nowrap">732 這個數字對得起來，但不是用「數出 732 個型」的方式對起來的。</span></b><br>
-    我們沒有從 VFB 直接數出 732——VFB 那一側末端類別有 <b>821</b> 個。<b>對得起來的是「逐型的顆數」</b>：論文列出的 778 列裡，有 732 列的顆數跟 VFB 算出來的一模一樣。<b>兩個 732 是巧合嗎？</b>不是，但也不是同一件事：前者是論文的分型數，後者是逐列比對後顆數相同的列數。<b>它們碰巧相等，而把它們混為一談就是這一整頁在防的錯。</b>
+    我們沒有從 VFB 直接數出 732——VFB 那一側末端類別有 <b>821</b> 個。<b>對得起來的是「逐型的顆數」</b>：論文列出的 778 列裡，有 732 列的顆數跟 VFB 算出來的一模一樣。<b>兩個 732 是巧合嗎？</b>不是，但也不是同一件事：前者是論文的分型數，後者是逐列比對後顆數相同的<b>列</b>數（而列比型多，見下方〈為什麼是 778 列卻只有 732 個型〉）。<b>它們碰巧相等，而把它們混為一談就是這一整頁在防的錯。</b>
   </div>
 
   <div class="tblwrap">
@@ -100,6 +100,27 @@
   </div>
 
   <p class="figsrc">論文側出自 <code>out/recompute/target.json</code>；VFB 側的 <code>neurons</code>、<code>classes_all</code>、<code>classes_generic</code>、<code>classes_leaf</code> 出自 <code>out/recompute/vfb.json</code>；兩個命中率出自 <code>out/recompute/compare.json</code> 的 <code>key_choice</code>。2026-09-14。</p>
+
+  <div class="gap">
+    <h4>為什麼是 778 列卻只有 732 個型</h4>
+    <p><b>一列不是一個型，是一個「型＋側別」的實例。</b>778 − 732 ＝ <b>46</b>，而剛好有 46 個型在表裡佔了兩列——一列 <code>_L</code>、一列 <code>_R</code>，<b>46 個全部成對，沒有例外</b>。686 個型各佔一列，加上 46 個各佔兩列，正好 778。</p>
+    <p>會這樣，是因為這份連線體重建的是<b>右側</b>視葉（681 列是 <code>_R</code>，97 列是 <code>_L</code>）。把 732 個型按側別攤開：</p>
+    <div class="tblwrap">
+    <table>
+      <tr><th>在表裡出現在</th><th>型數</th><th>主要是哪一群</th></tr>
+      <tr><td>只有 <code>_R</code></td><td>635</td><td>VPN 319、ONIN 146、ONCN 94　——<b>視葉自己的神經元</b></td></tr>
+      <tr><td>兩側都有</td><td>46</td><td>VPN 33、VCN 6　——連到中腦的，左右兩顆都伸進右視葉</td></tr>
+      <tr><td>只有 <code>_L</code></td><td>51</td><td><b>VCN 44</b>　——中腦送訊號進視葉的，這裡是左側那顆伸進右視葉</td></tr>
+    </table>
+    </div>
+    <p><b>ONIN 一個都沒有兩側</b>，這正合定義——視葉內在神經元的突觸不出視葉，所以只有右側那一群進得了這份重建。會出現在左側的全是跨側的那幾類（<code>H1</code>、<code>DNp27</code>、<code>AN09A005</code>、<code>5-HTPMPV03</code>）。</p>
+    <p><b>這個分法有一條獨立的旁證。</b>論文正文另外寫了一句：</p>
+    <p lang="en">We identified 104 VCN types across about 270 cells</p>
+    <p>而補充表裡 VCN 那一群，我們算出來是 <b>104 個型、110 列、270 顆</b>——<b>論文報的是型，表列的是列</b>，兩個單位在同一句話裡同時出現，一個字都不差。</p>
+  </div>
+
+  <p class="figsrc">側別的分解出自 <code>out/recompute/target.json</code> 的 <code>sides</code>（<code>rows_per_type</code>、<code>types_by_side</code>、<code>groups_by_side</code>、<code>vcn_check</code>）與 <code>instance_side</code>；正文那句引文出自 <code>out/recompute/paper_quotes.json</code>（全文經 Europe PMC 取得，逐字比對過）。2026-09-14。</p>
+
 
   <div class="gap">
     <h4>那個 22 個百分點的差距，是這一輪最實用的一個發現</h4>
@@ -251,7 +272,7 @@
   <p>照<a href="part7-agent-prompts.html#s4">指令 10</a>整理出來的，是三支程式加一份說明：</p>
 
   <div class="filecard">
-    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　267 行</span><p>取論文的靶、取 VFB 那一側、逐列比對。<b>所有自己決定的參數集中在開頭的 <code>PARAMS</code></b></p></div>
+    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　302 行</span><p>取論文的靶、取 VFB 那一側、逐列比對。<b>所有自己決定的參數集中在開頭的 <code>PARAMS</code></b></p></div>
     <div class="f"><span class="nm">make_figure.py</span><span class="role">產圖　91 行</span><p>畫<a href="#s3">第 3 節</a>那張圖</p></div>
     <div class="f"><span class="nm">cross_check.py</span><span class="role">旁證　168 行</span><p>同一個數字問三條路，把不一樣的地方攤開</p></div>
   </div>
