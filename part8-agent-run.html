@@ -89,8 +89,20 @@
   <p class="figsrc">四個數字出自 <code>out/recompute/compare.json</code> 的 <code>matched</code>、<code>same_count</code>、<code>different_count</code>、<code>total_cells_delta</code>，由 <code>recompute/recompute.py</code> 於 2026-09-14 產生。</p>
 
   <div class="callout">
-    <b>一句話的結論：<span style="white-space:nowrap">732 這個數字對得起來，但不是用「數出 732 個型」的方式對起來的。</span></b><br>
-    我們沒有從 VFB 直接數出 732——VFB 那一側末端類別有 <b>821</b> 個。<b>對得起來的是「逐型的顆數」</b>：論文列出的 778 列裡，有 732 列的顆數跟 VFB 算出來的一模一樣。<b>兩個 732 是巧合嗎？</b>不是，但也不是同一件事：前者是論文的分型數，後者是逐列比對後顆數相同的<b>列</b>數（而列比型多，見下方〈為什麼是 778 列卻只有 732 個型〉）。<b>它們碰巧相等，而把它們混為一談就是這一整頁在防的錯。</b>
+    <b>一句話的結論：<span style="white-space:nowrap">真正對上的不是 732 這個型數，是「逐型的顆數」。</span></b><br>
+    <b>我們沒有從 VFB 數出 732 個型</b>——VFB 那一側末端類別有 <b>821</b> 個。對上的是另一件事：論文列出的 778 列裡，有 732 <b>列</b>的顆數跟 VFB 算出來的一模一樣。<b>這兩個 732 剛好相等，但它們不是同一件事</b>（下面拆給你看）。
+  </div>
+
+  <div class="danger">
+    <b>那兩個 732 是巧合——貨真價實的巧合。</b>拆開看就知道，它們只是<b>剛好都等於 778 減 46</b>，而那兩個 46 毫無關係：
+    <div class="tblwrap">
+    <table>
+      <tr><th></th><th>算式</th><th>那個 46 是什麼</th></tr>
+      <tr><td><b>論文的分型數</b></td><td>778 − 46 ＝ 732</td><td><b>46 個型各佔兩列</b>（一列 <code>_L</code>、一列 <code>_R</code>）</td></tr>
+      <tr><td><b>顆數相同的列數</b></td><td>778 − (21 ＋ 25) ＝ 732</td><td><b>21</b> 列顆數不同 ＋ <b>25</b> 列 VFB 那側沒有</td></tr>
+    </table>
+    </div>
+    <b>一個講的是左右側，一個講的是比對結果，兩者之間沒有任何因果。</b>而如果沒有拆開，「我們算出 732，論文也是 732」讀起來就像一次漂亮的驗算——<b>那正是這一整頁在防的那種錯覺。</b>
   </div>
 
   <div class="tblwrap">
