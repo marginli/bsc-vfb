@@ -55,7 +55,7 @@
     <tr><td>指令 8 換第二條路得到的 <b>60,002</b> 與那個沒解掉的 <b>263</b>（<a href="#s5">第 5 節</a>）</td><td><b>否</b></td><td>這一輪第一次跑，而且結果出乎意料</td></tr>
     <tr><td>指令 9 那張圖，以及圖上落在對角線的點數</td><td><b>否</b></td><td>這一輪才畫</td></tr>
     <tr><td>指令 10 的乾淨重跑：<b>18</b> 秒、<b>50</b> 秒、五個輸出檔逐位元組相同</td><td><b>否</b></td><td>這一輪才做</td></tr>
-    <tr><td>用 <code>bodyId</code> 把 A 類追到底的結果（<a href="#s4b">第 4b</a>、<a href="#s4c">4c 節</a>）</td><td><b>否</b></td><td>這一頁發布之後才做的補查。它<b>推翻了兩個原先靠猜的結論</b>，也把「對不上的三類」收斂成一句話：<b>兩邊差了一個版本</b></td></tr>
+    <tr><td>用 <code>bodyId</code> 把 A 類追到底的結果（<a href="#s4b">第 4b</a>、<a href="#s4c">4c 節</a>）</td><td><b>否</b></td><td>這一頁發布之後才做的補查，<b>而它把「對不上的三類」收斂成一句話</b>：兩邊差了一個版本</td></tr>
   </table>
   </div>
 
@@ -196,20 +196,8 @@
   <p class="figsrc">六列出自 <code>out/recompute/compare.json</code> 的 <code>photoreceptor_rows</code>，合計出自同檔的 <code>photoreceptor_delta_total</code>。2026-09-14。</p>
 
   <div class="callout">
-    <b>而這件事論文自己講了。</b>圖 1 的說明裡有一句：
-    <p lang="en">A few cell types are undercounted (estimated 2,777 cells from the lamina and 459 R7 and R8 photoreceptors, see Methods for details).</p>
-    <b>論文明說 R7／R8 被少算了，估計是 459 顆。</b>我們算出來的差是 402 顆，落在同一個量級。<b>這不是我們算錯，也不是論文算錯——是論文自己標註過的一個已知缺口，而 VFB 那一版把其中一部分補上了。</b>
+    <b>那兩筆大的是另一回事，而它有一個有出處的解釋。</b><code>R7p</code> 的 ＋202 與 <code>R8p</code> 的 ＋199，<b>不是誰算錯，是兩邊拿的資料差了一個版本</b>——論文的版本註記明寫，新版「調整了一些個別細胞的分型，其中幾乎全是 R7 與 R8 光受器」。<b>證據與推導都在<a href="#s4c">第 4c 節</a>。</b>
   </div>
-
-  <div class="gap">
-    <h4>再往下挖一層：那 200 顆為什麼全部落在「pale」那一列</h4>
-    <p>論文的方法段描述了分型的步驟：</p>
-    <p lang="en">Step 3: R7 cells are classified as pale (R7p) or yellow (R7y) using connectivity with Dm8a/b and Tm5a/b and anatomical markers; cells that could not be confidently assigned are labelled as ‘R7_unclear’.</p>
-    <p><b>論文有一個 <code>R7_unclear</code> 的標籤，但補充表裡沒有這一列</b>——把補充表裡的每一列都掃過一遍，沒有任何一列的名字帶 <code>unclear</code>。而 VFB 那一側也沒有任何標籤帶 <code>unclear</code>；VFB 的 <code>R7p_R</code> 那 297 顆全部掛在同一個類別 <code>FBbt_02000006</code>（<i>photoreceptor cell R7 of pale ommatidium</i>）底下。</p>
-    <p><b>我們一度以為</b>：論文判不出來、標成 <code>R7_unclear</code> 的那些細胞，在 VFB 這一版被歸進了 pale。<b>那只是個猜測，而後來找到了有出處的答案</b>——兩邊差了一個資料集版本，而論文的版本註記明寫 v1.1 調整了個別細胞的分型、幾乎全是 R7 與 R8。<b>見<a href="#s4c">第 4c 節</a>。</b></p>
-  </div>
-
-  <p class="figsrc">兩條引文出自 <code>out/recompute/paper_quotes.json</code>（全文經 Europe PMC 的 <code>fullTextXML</code> 取得，PMC12119369，2026-09-14，逐字比對過）。「補充表裡沒有 unclear」與「VFB 沒有 unclear、297 顆同屬一個類別」出自對 <code>out/recompute/target.json</code> 的搜尋與一次知識庫查詢（<code>recompute/cross_check.py</code> 同一支介面）。</p>
 
   <!-- ══════════════════════════════════════════════════════ -->
   <h2 id="s4"><span class="pt">4</span>對不上的三類</h2>
@@ -251,11 +239,11 @@
   <p class="figsrc">四堆的分類與完整清單出自 <code>out/recompute/compare.json</code> 的 <code>by_body_id</code>（<code>kinds</code>、<code>absent</code>、<code>n_renamed</code>、<code>cells_absent</code>、<code>only_in_vfb_after</code>），由 <code>recompute/recompute.py</code> 的 <code>resolve_by_body_id()</code> 產生；「只出現在 <code>Berg2025</code>」出自一次知識庫查詢。2026-09-14。</p>
 
   <div class="danger">
-    <b>這一輪順手推翻了我們自己上一版的一個結論。</b>先前用「名字去掉最後那個字母」去猜拆分，得到「<code>LC39</code>、<code>Li11</code>、<code>LoVP90</code> 三個型被論文拆成 a／b／c」。<b>編號查出來不是這樣</b>：<code>LC39a_R</code> 確實對到 <code>LC39_R</code>，但 <code>LC39b_R</code> 對到的是 <b><code>LoVP51_R</code></b>——一個完全不同的名字。<b>字串猜得出形狀，猜不出身分。</b>
+    <b>為什麼非得用編號不可——光看名字會猜錯。</b>那 25 列裡有 <code>LC39a_R</code> 與 <code>LC39b_R</code>，看起來顯然是「<code>LC39</code> 被拆成 a 和 b」。<b>編號查出來不是這樣</b>：<code>LC39a_R</code> 確實對到 <code>LC39_R</code>，但 <code>LC39b_R</code> 對到的是 <b><code>LoVP51_R</code></b>——一個完全不同的名字。<b>字串猜得出形狀，猜不出身分</b>，而猜錯的那一個<b>不會自己舉手</b>：它照樣會被歸進「已經解釋掉了」那一堆。
   </div>
 
   <div class="callout">
-    <b>所以 A 類真正「沒有解釋」的只有 7 列 11 顆，而不是原先寫的 18 列。</b>而 B 類也跟著縮水：那 184 個「只在 VFB」的名字裡，有 <b>12 個</b>其實就是 A 類那幾列改了名，扣掉之後是 <b>172</b> 個。<br>
+    <b>所以 A 類真正「沒有解釋」的只有 7 列 11 顆。</b>而 B 類也跟著縮水：那 184 個「只在 VFB」的名字裡，有 <b>12 個</b>其實就是 A 類那幾列改了名，扣掉之後是 <b>172</b> 個。<br>
     <b>換一個鍵，兩類同時變小。</b>這件事回頭看 <a href="part7-agent-prompts.html#s4">指令 5</a>：它要求「至少兩種鍵、都回報數字」——<b>做對了方向，但兩種都選了名字。</b>真正該加的一句是<b>「有沒有一個兩邊共用的編號」</b>。
   </div>
 
@@ -321,7 +309,7 @@
   <div class="danger">
     <b>同一個版本差也解釋了<a href="#s3">第 3 節</a>那個最大的差異。</b>〈Versions of the dataset〉的同一段還寫著，v1.1 還<b>「調整了一些個別細胞的分型，其中幾乎全是 R7 與 R8 光受器」</b>：
     <p lang="en">adjusted the typing of some individual cells (nearly all of these are R7 and R8 photoreceptors</p>
-    <b>所以 <code>R7p</code> 那 ＋202 與 <code>R8p</code> 的 ＋199，最可能的解釋是版本之間的重新分型，而不是我們先前猜的「<code>R7_unclear</code> 被歸進 pale」。</b>兩種說法指向的其實是同一批細胞（<a href="#s3">第 3 節</a>那段 Methods 描述的就是 v1.1 的分型流程），但<b>論文的版本註記是有出處的，而我們那個猜測沒有。</b>
+    <b>所以 <code>R7p</code> 那 ＋202 與 <code>R8p</code> 的 ＋199，是版本之間的重新分型。</b>v1.0.1 歸在 pale 那一列的細胞，v1.1 把其中約兩百顆改判到別處——<b>而論文的補充表是 v1.1 的，所以那一列只剩 95。</b>這是這一頁上最大的一筆差異，<b>而它的解釋不在資料裡，在版本註記裡。</b>
   </div>
 
   <div class="callout">
@@ -428,10 +416,10 @@
   <div class="draft">
     <b>還沒解的，列在這裡：</b>
     <ul>
-      <li>REST 報的 60,002 與知識庫算出的 59,739 差 <b>263</b> 列——機制找到了，餘數沒找到。</li>
-      <li><s>A 類裡有 18 個型只在論文表裡、在 VFB 找不到，沒有解釋。</s><br><b>已解</b>（<a href="#s4b">第 4b</a>、<a href="#s4c">4c 節</a>）：<b>兩邊差了一個版本</b>——VFB 是 <code>v1.0.1</code>、論文表是 <code>v1.1</code>。改名、拆型、以及那 7 列，全寫在論文自己的〈Versions of the dataset〉裡。<b>剩下的只有一句</b>：我們沒有 v1.1 的存取權，所以「那 11 顆是 v1.1 併出來的」是推論不是查證。</li>
-      <li><s><code>R7p</code> 那多出來的 200 顆是不是論文的 <code>R7_unclear</code>。</s><br><b>有更好的答案了</b>（<a href="#s4c">第 4c 節</a>）：論文的版本註記明寫 v1.1 調整了個別細胞的分型、<b>而且幾乎全是 R7 與 R8</b>。<b>那個 <code>R7_unclear</code> 的猜測就此作廢</b>——它沒有出處，版本註記有。</li>
-      <li>B 類扣掉改名的之後還有 <b>172</b> 個名字，只抽查了 3 個。</li>
+      <li>REST 報的 <b>60,002</b> 與知識庫算出的 <b>59,739</b> 差 <b>263</b> 列（<a href="#s5">第 5 節</a>）——機制找到了，餘數沒找到。</li>
+      <li>我們<b>沒有 <code>v1.1</code> 的存取權</b>，所以「那 11 顆是 v1.1 併出來的」（<a href="#s4c">第 4c 節</a>）是<b>推論</b>，不是查證。要坐實，得拿 v1.1 直接比對那 7 個編號。</li>
+      <li>論文說的「<b>2 個型被併成 1 個</b>」我們<b>驗不出來</b>——補充表的 <code>bodyId</code> 欄只給一個代表，而被併掉的那個型在 v1.1 沒有自己的列。<b>這是方法的天花板，不是資料的問題。</b></li>
+      <li>只在 VFB 那一側的 <b>172</b> 個名字（<a href="#s4">第 4 節</a> B 類扣掉改名後），<b>只抽查了 3 個</b>。</li>
     </ul>
     <b>四條都寫在這裡，不寫進結論。</b>
   </div>

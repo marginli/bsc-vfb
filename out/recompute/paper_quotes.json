@@ -4,12 +4,6 @@
  "pmcid": "PMC12119369",
  "fetched": "2026-09-14",
  "n_types": "We classified around 53,000 visual system neurons into 732 cell types",
- "undercount": "A few cell types are undercounted (estimated 2,777 cells from the lamina and 459 R7 and R8 photoreceptors, see Methods for details).",
- "pale_yellow": "Step 3: R7 cells are classified as pale (R7p) or yellow (R7y) using connectivity with Dm8a/b and Tm5a/b and anatomical markers; cells that could not be confidently assigned are labelled as ‘R7_unclear’.",
- "undercount_numbers": {
-  "lamina_cells": 2777,
-  "r7_r8_photoreceptors": 459
- },
  "check": "三條引文都在上面那份全文裡逐字對得到（本檔產生時逐條 in 比對過）",
  "versions": "Two releases of the optic lobe dataset are available: the initial release (optic-lobe:v1.0.1) and the current version of the dataset (optic-lobe:v1.1).",
  "split_merge": "We also revised some cell-type definitions (5 types were split into a total of 11 new types and 2 types were merged into a single type).",
