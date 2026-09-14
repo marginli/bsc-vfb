@@ -1,0 +1,427 @@
+{
+  "probe": "palette",
+  "part": "PART 2",
+  "question": "文件站的搜尋框：打一個字串，前端實際送出什麼、畫面上實際出現幾列",
+  "site": "https://www.virtualflybrain.org/",
+  "what_it_is": "文件站 header 的 `Search VFB… ⌘K`。它不是 <input>，是命令面板的觸發鈕；打的是 solr.virtualflybrain.org/solr/ontology/select，rows=40，畫面顯示 8 列。",
+  "by_term": {
+    "JRC2018Unisex": {
+      "typed": "JRC2018Unisex",
+      "q_sent_to_solr": "jrc2018unisex",
+      "solr_url": "https://solr.virtualflybrain.org/solr/ontology/select?q=jrc2018unisex&q.op=OR&defType=edismax&mm=45%25&qf=label%5E110+synonym%5E100+label_autosuggest+synonym_autosuggest+shortform_autosuggest&pf=label%5E250+synonym%5E120&ps=0&fl=short_form%2Clabel%2Csynonym%2Cunique_facets&bq=short_form%3AVFBexp*%5E10.0+short_form%3AVFB*%5E50.0+facets_annotation%3AClass%5E200.0+short_form%3AFBbt*%5E150.0+short_form%3AFBbt_00003982%5E2+facets_annotation%3ADeprecated%5E0.001+facets_annotation%3ADataSet%5E500.0+facets_annotation%3Apub%5E100.0&rows=40&start=0&wt=json&fq=%28short_form%3AVFB*+OR+short_form%3AFB*+OR+facets_annotation%3ADataSet+OR+facets_annotation%3Apub%29+AND+NOT+short_form%3AVFBc_*&fq=NOT+facets_annotation%3ADeprecated",
+      "n_requests_while_typing": 1,
+      "group_headings": [
+        "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+      ],
+      "results_on_screen": [
+        {
+          "title": "ME on JRC2018Unisex adult brain",
+          "id": "VFB_00102107",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Visual_system"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "LO on JRC2018Unisex adult brain",
+          "id": "VFB_00102109",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Visual_system"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "BU on JRC2018Unisex adult brain",
+          "id": "VFB_00102139",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Synaptic_neuropil_domain"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "WED on JRC2018Unisex adult brain",
+          "id": "VFB_00102154",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Synaptic_neuropil_domain"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "RUB on JRC2018Unisex adult brain",
+          "id": "VFB_00102175",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Synaptic_neuropil_subdomain"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "ATL on JRC2018Unisex adult brain",
+          "id": "VFB_00102190",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Synaptic_neuropil_domain"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "VES on JRC2018Unisex adult brain",
+          "id": "VFB_00102212",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Synaptic_neuropil_domain"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "EPA on JRC2018Unisex adult brain",
+          "id": "VFB_00102213",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Synaptic_neuropil_domain"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        }
+      ],
+      "n_results_on_screen": 8,
+      "n_results_by_badge": {
+        "term": 8
+      },
+      "target_on_screen": false,
+      "rows_raw": [
+        "ANATOMY TERMS · OPENS IN THE 3D BROWSER",
+        "ME on JRC2018Unisex adult brain\nVFB_00102107 — Nervous_system · Adult · Visual_system\nterm",
+        "LO on JRC2018Unisex adult brain\nVFB_00102109 — Nervous_system · Adult · Visual_system\nterm",
+        "BU on JRC2018Unisex adult brain\nVFB_00102139 — Nervous_system · Adult · Synaptic_neuropil_domain\nterm",
+        "WED on JRC2018Unisex adult brain\nVFB_00102154 — Nervous_system · Adult · Synaptic_neuropil_domain\nterm",
+        "RUB on JRC2018Unisex adult brain\nVFB_00102175 — Nervous_system · Adult · Synaptic_neuropil_subdomain\nterm",
+        "ATL on JRC2018Unisex adult brain\nVFB_00102190 — Nervous_system · Adult · Synaptic_neuropil_domain\nterm",
+        "VES on JRC2018Unisex adult brain\nVFB_00102212 — Nervous_system · Adult · Synaptic_neuropil_domain\nterm",
+        "EPA on JRC2018Unisex adult brain\nVFB_00102213 — Nervous_system · Adult · Synaptic_neuropil_domain\nterm"
+      ]
+    },
+    "jrc2018unisex": {
+      "typed": "jrc2018unisex",
+      "q_sent_to_solr": "jrc2018unisex",
+      "solr_url": "https://solr.virtualflybrain.org/solr/ontology/select?q=jrc2018unisex&q.op=OR&defType=edismax&mm=45%25&qf=label%5E110+synonym%5E100+label_autosuggest+synonym_autosuggest+shortform_autosuggest&pf=label%5E250+synonym%5E120&ps=0&fl=short_form%2Clabel%2Csynonym%2Cunique_facets&bq=short_form%3AVFBexp*%5E10.0+short_form%3AVFB*%5E50.0+facets_annotation%3AClass%5E200.0+short_form%3AFBbt*%5E150.0+short_form%3AFBbt_00003982%5E2+facets_annotation%3ADeprecated%5E0.001+facets_annotation%3ADataSet%5E500.0+facets_annotation%3Apub%5E100.0&rows=40&start=0&wt=json&fq=%28short_form%3AVFB*+OR+short_form%3AFB*+OR+facets_annotation%3ADataSet+OR+facets_annotation%3Apub%29+AND+NOT+short_form%3AVFBc_*&fq=NOT+facets_annotation%3ADeprecated",
+      "n_requests_while_typing": 1,
+      "group_headings": [
+        "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+      ],
+      "results_on_screen": [
+        {
+          "title": "ME on JRC2018Unisex adult brain",
+          "id": "VFB_00102107",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Visual_system"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "LO on JRC2018Unisex adult brain",
+          "id": "VFB_00102109",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Visual_system"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "BU on JRC2018Unisex adult brain",
+          "id": "VFB_00102139",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Synaptic_neuropil_domain"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "WED on JRC2018Unisex adult brain",
+          "id": "VFB_00102154",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Synaptic_neuropil_domain"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "RUB on JRC2018Unisex adult brain",
+          "id": "VFB_00102175",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Synaptic_neuropil_subdomain"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "ATL on JRC2018Unisex adult brain",
+          "id": "VFB_00102190",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Synaptic_neuropil_domain"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "VES on JRC2018Unisex adult brain",
+          "id": "VFB_00102212",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Synaptic_neuropil_domain"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "EPA on JRC2018Unisex adult brain",
+          "id": "VFB_00102213",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Synaptic_neuropil_domain"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        }
+      ],
+      "n_results_on_screen": 8,
+      "n_results_by_badge": {
+        "term": 8
+      },
+      "target_on_screen": false,
+      "rows_raw": [
+        "ANATOMY TERMS · OPENS IN THE 3D BROWSER",
+        "ME on JRC2018Unisex adult brain\nVFB_00102107 — Nervous_system · Adult · Visual_system\nterm",
+        "LO on JRC2018Unisex adult brain\nVFB_00102109 — Nervous_system · Adult · Visual_system\nterm",
+        "BU on JRC2018Unisex adult brain\nVFB_00102139 — Nervous_system · Adult · Synaptic_neuropil_domain\nterm",
+        "WED on JRC2018Unisex adult brain\nVFB_00102154 — Nervous_system · Adult · Synaptic_neuropil_domain\nterm",
+        "RUB on JRC2018Unisex adult brain\nVFB_00102175 — Nervous_system · Adult · Synaptic_neuropil_subdomain\nterm",
+        "ATL on JRC2018Unisex adult brain\nVFB_00102190 — Nervous_system · Adult · Synaptic_neuropil_domain\nterm",
+        "VES on JRC2018Unisex adult brain\nVFB_00102212 — Nervous_system · Adult · Synaptic_neuropil_domain\nterm",
+        "EPA on JRC2018Unisex adult brain\nVFB_00102213 — Nervous_system · Adult · Synaptic_neuropil_domain\nterm"
+      ]
+    },
+    "JRC2018U": {
+      "typed": "JRC2018U",
+      "q_sent_to_solr": "jrc2018u",
+      "solr_url": "https://solr.virtualflybrain.org/solr/ontology/select?q=jrc2018u&q.op=OR&defType=edismax&mm=45%25&qf=label%5E110+synonym%5E100+label_autosuggest+synonym_autosuggest+shortform_autosuggest&pf=label%5E250+synonym%5E120&ps=0&fl=short_form%2Clabel%2Csynonym%2Cunique_facets&bq=short_form%3AVFBexp*%5E10.0+short_form%3AVFB*%5E50.0+facets_annotation%3AClass%5E200.0+short_form%3AFBbt*%5E150.0+short_form%3AFBbt_00003982%5E2+facets_annotation%3ADeprecated%5E0.001+facets_annotation%3ADataSet%5E500.0+facets_annotation%3Apub%5E100.0&rows=40&start=0&wt=json&fq=%28short_form%3AVFB*+OR+short_form%3AFB*+OR+facets_annotation%3ADataSet+OR+facets_annotation%3Apub%29+AND+NOT+short_form%3AVFBc_*&fq=NOT+facets_annotation%3ADeprecated",
+      "n_requests_while_typing": 1,
+      "group_headings": [
+        "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+      ],
+      "results_on_screen": [
+        {
+          "title": "JRC2018Unisex",
+          "id": "VFB_00101567",
+          "facets": [
+            "Nervous_system",
+            "Adult"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        }
+      ],
+      "n_results_on_screen": 1,
+      "n_results_by_badge": {
+        "term": 1
+      },
+      "target_on_screen": true,
+      "rows_raw": [
+        "ANATOMY TERMS · OPENS IN THE 3D BROWSER",
+        "JRC2018Unisex\nVFB_00101567 — Nervous_system · Adult\nterm"
+      ]
+    },
+    "medulla": {
+      "typed": "medulla",
+      "q_sent_to_solr": "medulla",
+      "solr_url": "https://solr.virtualflybrain.org/solr/ontology/select?q=medulla&q.op=OR&defType=edismax&mm=45%25&qf=label%5E110+synonym%5E100+label_autosuggest+synonym_autosuggest+shortform_autosuggest&pf=label%5E250+synonym%5E120&ps=0&fl=short_form%2Clabel%2Csynonym%2Cunique_facets&bq=short_form%3AVFBexp*%5E10.0+short_form%3AVFB*%5E50.0+facets_annotation%3AClass%5E200.0+short_form%3AFBbt*%5E150.0+short_form%3AFBbt_00003982%5E2+facets_annotation%3ADeprecated%5E0.001+facets_annotation%3ADataSet%5E500.0+facets_annotation%3Apub%5E100.0&rows=40&start=0&wt=json&fq=%28short_form%3AVFB*+OR+short_form%3AFB*+OR+facets_annotation%3ADataSet+OR+facets_annotation%3Apub%29+AND+NOT+short_form%3AVFBc_*&fq=NOT+facets_annotation%3ADeprecated",
+      "n_requests_while_typing": 1,
+      "group_headings": [
+        "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+      ],
+      "results_on_screen": [
+        {
+          "title": "medulla",
+          "id": "FBbt_00003748",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Visual_system"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "medulla anlage",
+          "id": "FBbt_00001935",
+          "facets": [
+            "Nervous_system",
+            "Larva"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "cell body rind of adult medulla",
+          "id": "FBbt_00100205",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Visual_system"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "adult medulla ensheathing glial cell",
+          "id": "FBbt_00049497",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Visual_system"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "adult medulla cell body glial cell",
+          "id": "FBbt_00049498",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Visual_system"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "adult medulla astrocyte-like glial cell",
+          "id": "FBbt_00049496",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Visual_system"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "plexiform medulla",
+          "id": "FBbt_00045001",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Visual_system"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "accessory medulla",
+          "id": "FBbt_00045003",
+          "facets": [
+            "Nervous_system",
+            "Adult",
+            "Visual_system"
+          ],
+          "second_line": null,
+          "badge": "term",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "SOLR API",
+          "id": null,
+          "facets": null,
+          "second_line": "How to programatically search for a term.",
+          "badge": "docs",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        },
+        {
+          "title": "SOLR API",
+          "id": null,
+          "facets": null,
+          "second_line": "The SOLR Search API provides fast text search and autocomplete functionality for VFB entities, datasets, and …",
+          "badge": "docs",
+          "group": "ANATOMY TERMS · OPENS IN THE 3D BROWSER"
+        }
+      ],
+      "n_results_on_screen": 10,
+      "n_results_by_badge": {
+        "term": 8,
+        "docs": 2
+      },
+      "target_on_screen": false,
+      "rows_raw": [
+        "ANATOMY TERMS · OPENS IN THE 3D BROWSER",
+        "medulla\nFBbt_00003748 — Nervous_system · Adult · Visual_system\nterm",
+        "medulla anlage\nFBbt_00001935 — Nervous_system · Larva\nterm",
+        "cell body rind of adult medulla\nFBbt_00100205 — Nervous_system · Adult · Visual_system\nterm",
+        "adult medulla ensheathing glial cell\nFBbt_00049497 — Nervous_system · Adult · Visual_system\nterm",
+        "adult medulla cell body glial cell\nFBbt_00049498 — Nervous_system · Adult · Visual_system\nterm",
+        "adult medulla astrocyte-like glial cell\nFBbt_00049496 — Nervous_system · Adult · Visual_system\nterm",
+        "plexiform medulla\nFBbt_00045001 — Nervous_system · Adult · Visual_system\nterm",
+        "accessory medulla\nFBbt_00045003 — Nervous_system · Adult · Visual_system\nterm",
+        "SOLR API\nHow to programatically search for a term.\ndocs",
+        "SOLR API\nThe SOLR Search API provides fast text search and autocomplete functionality for VFB entities, datasets, and …\ndocs"
+      ]
+    }
+  }
+}

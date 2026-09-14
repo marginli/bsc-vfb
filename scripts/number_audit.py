@@ -5,7 +5,8 @@
    這一型專題的硬條件是「頁面上每個數字都有一支存下來的 API 輸出可以對回去」
    （types/tool.md〈查證〉）。這支程式把那句話變成可執行的檢查，分兩道：
 
-     A. 逐一比對　每個數字都要在 out/ 的探針輸出裡找得到。
+     A. 逐一比對　每個數字都要在 out/ 的探針輸出裡找得到
+        （含 out/ui/——那是 browser_probe.py 用真的瀏覽器拍回來的畫面）。
         允許三種變形，因為頁面上的寫法跟 JSON 裡存的常常不同單位或精度：
           · 四捨五入   206.51 → 206.5
           · 比例↔百分比 0.816 → 81.6%
@@ -102,8 +103,15 @@ def haystack():
             for m in NUM.findall(o):
                 add(m.replace(",", ""), src)
 
-    for f in sorted(glob.glob(os.path.join(D, "out", "*.json"))):
-        walk(json.load(io.open(f, encoding="utf-8")), os.path.basename(f))
+    # out/*.json 是 API 探針（資料庫裡有什麼），out/ui/*.json 是畫面探針
+    # （學員螢幕上有什麼）。**兩者都是這一課的「原文」**，所以兩邊都要掃——
+    # PART 2 講的「同一個字串在三個框給三種筆數」，那些數字只在 out/ui/ 裡。
+    for f in (sorted(glob.glob(os.path.join(D, "out", "*.json")))
+              + sorted(glob.glob(os.path.join(D, "out", "ui", "*.json")))):
+        tag = os.path.basename(f)
+        if os.path.basename(os.path.dirname(f)) == "ui":
+            tag = "ui/" + tag
+        walk(json.load(io.open(f, encoding="utf-8")), tag)
     return got
 
 

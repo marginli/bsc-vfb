@@ -1,0 +1,94 @@
+{
+  "probe": "template_names",
+  "part": "PART 2",
+  "question": "十套 template 在畫面上的 Name 與 Symbol 各是什麼？兩者何時不一樣？",
+  "url": {
+    "VFB_00017894": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00017894",
+    "VFB_00030786": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00030786",
+    "VFB_00049000": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00049000",
+    "VFB_00050000": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00050000",
+    "VFB_00100000": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00100000",
+    "VFB_00101384": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00101384",
+    "VFB_00101567": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00101567",
+    "VFB_00110000": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00110000",
+    "VFB_00120000": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00120000",
+    "VFB_00200000": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00200000"
+  },
+  "note": "畫面上的欄位名對回 out/ui/terminfo_v2_template.json 與 terminfo_v3_template.json（那兩支是用真的瀏覽器拍的）。",
+  "data": {
+    "rows": [
+      {
+        "id": "VFB_00017894",
+        "name_on_screen": "adult brain template JFRC2",
+        "symbol_on_screen": "JFRC2",
+        "differs": true,
+        "symbol_appears_inside_name": true
+      },
+      {
+        "id": "VFB_00030786",
+        "name_on_screen": "adult brain template Ito2014",
+        "symbol_on_screen": "adult brain template Ito2014",
+        "differs": false,
+        "symbol_appears_inside_name": true
+      },
+      {
+        "id": "VFB_00049000",
+        "name_on_screen": "L3 CNS template - Wood2018",
+        "symbol_on_screen": "L3 CNS template - Wood2018",
+        "differs": false,
+        "symbol_appears_inside_name": true
+      },
+      {
+        "id": "VFB_00050000",
+        "name_on_screen": "L1 larval CNS ssTEM - Cardona/Janelia",
+        "symbol_on_screen": "L1 larval CNS ssTEM - Cardona/Janelia",
+        "differs": false,
+        "symbol_appears_inside_name": true
+      },
+      {
+        "id": "VFB_00100000",
+        "name_on_screen": "adult VNS template - Court2018",
+        "symbol_on_screen": "COURT2018VNS",
+        "differs": true,
+        "symbol_appears_inside_name": false
+      },
+      {
+        "id": "VFB_00101384",
+        "name_on_screen": "JRC_FlyEM_Hemibrain",
+        "symbol_on_screen": "JRCFIB2018Fum",
+        "differs": true,
+        "symbol_appears_inside_name": false
+      },
+      {
+        "id": "VFB_00101567",
+        "name_on_screen": "JRC2018Unisex",
+        "symbol_on_screen": "JRC2018U",
+        "differs": true,
+        "symbol_appears_inside_name": true
+      },
+      {
+        "id": "VFB_00110000",
+        "name_on_screen": "Adult Head (McKellar2020)",
+        "symbol_on_screen": "Adult Head (McKellar2020)",
+        "differs": false,
+        "symbol_appears_inside_name": true
+      },
+      {
+        "id": "VFB_00120000",
+        "name_on_screen": "Adult T1 Leg (Kuan2020)",
+        "symbol_on_screen": "Adult T1 Leg (Kuan2020)",
+        "differs": false,
+        "symbol_appears_inside_name": true
+      },
+      {
+        "id": "VFB_00200000",
+        "name_on_screen": "JRC2018UnisexVNC",
+        "symbol_on_screen": "JRCVNC2018U",
+        "differs": true,
+        "symbol_appears_inside_name": false
+      }
+    ],
+    "n_differs": 5,
+    "n_symbol_not_in_name": 3
+  }
+}

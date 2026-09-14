@@ -8,3 +8,7 @@ out/_quotes/
 # 內部規劃文件，不公開
 vfb_plan.docx
 make_vfb_plan.py
+
+# 介面截圖：每次重跑都會有幾個像素的差異，進版控只會製造雜訊。
+# out/ui/*.json 則要進版控——頁面上的介面描述要對得回它們。
+out/ui/shots/

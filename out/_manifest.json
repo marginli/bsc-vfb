@@ -1,6 +1,6 @@
 {
   "base": "https://v3-cached.virtualflybrain.org",
-  "run_at": "2026-09-14T01:33:18+00:00",
+  "run_at": "2026-09-14T03:39:23+00:00",
   "probes": {
     "templates": {
       "sha256": "e45b3e7cdd6c8087",
@@ -99,10 +99,28 @@
       "bytes": 2784
     },
     "worksheet": {
-      "sha256": "73cd00afc6bdb4c0",
-      "seconds": 16.4,
-      "fetched_at": "2026-09-14T01:33:18+00:00",
-      "bytes": 14845
+      "sha256": "c370cefa034ce5ba",
+      "seconds": 15.8,
+      "fetched_at": "2026-09-14T03:18:55+00:00",
+      "bytes": 16176
+    },
+    "terminfo_individual": {
+      "sha256": "e566915a41c78cf2",
+      "seconds": 4.3,
+      "fetched_at": "2026-09-14T03:39:23+00:00",
+      "bytes": 69576
+    },
+    "template_names": {
+      "sha256": "9884ddf4856d9606",
+      "seconds": 12.3,
+      "fetched_at": "2026-09-14T03:38:17+00:00",
+      "bytes": 3527
+    },
+    "search_case": {
+      "sha256": "bd0d718bfb2d854b",
+      "seconds": 4.2,
+      "fetched_at": "2026-09-14T03:38:45+00:00",
+      "bytes": 5026
     }
   }
 }

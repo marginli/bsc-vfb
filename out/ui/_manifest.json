@@ -1,0 +1,46 @@
+{
+  "probes": {
+    "palette": {
+      "sha256": "0d5ce57681c77225",
+      "seconds": 68.5,
+      "fetched_at": "2026-09-14T03:17:54+00:00"
+    },
+    "terminfo_v2_template": {
+      "sha256": "91344d923d31afd0",
+      "seconds": 38.6,
+      "fetched_at": "2026-09-14T03:11:29+00:00"
+    },
+    "terminfo_v3_template": {
+      "sha256": "1058d76421fd530e",
+      "seconds": 40.0,
+      "fetched_at": "2026-09-14T03:16:31+00:00"
+    },
+    "terminfo_v2_neuron": {
+      "sha256": "c4c587042f747307",
+      "seconds": 38.4,
+      "fetched_at": "2026-09-14T03:12:48+00:00"
+    },
+    "search_v3": {
+      "sha256": "2883c400b0a746c6",
+      "seconds": 42.5,
+      "fetched_at": "2026-09-14T03:36:36+00:00"
+    },
+    "search_v2": {
+      "sha256": "e2bd14ccb2cda7a1",
+      "seconds": 49.1,
+      "fetched_at": "2026-09-14T03:37:26+00:00"
+    },
+    "terminfo_v2_region": {
+      "sha256": "3c39b4b4ed6b90f7",
+      "seconds": 38.6,
+      "fetched_at": "2026-09-14T03:40:31+00:00"
+    },
+    "terminfo_v2_individual": {
+      "sha256": "6bea44b883aba61c",
+      "seconds": 37.6,
+      "fetched_at": "2026-09-14T03:44:48+00:00"
+    }
+  },
+  "run_at": "2026-09-14T03:44:48+00:00",
+  "note": "這裡記的是**畫面**，不是資料庫。介面改版時這些檔案會變，而那正是要回頭複查介面描述的信號（types/tool.md〈這一型的時效〉）。"
+}

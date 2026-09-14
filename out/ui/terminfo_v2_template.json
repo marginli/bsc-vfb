@@ -1,0 +1,98 @@
+{
+  "probe": "terminfo_v2_template",
+  "part": "PART 1 作業單第 1–2 步 / PART 2",
+  "question": "v2 的 Term Info 面板上，這顆 template 的每一欄叫什麼、值是什麼",
+  "site": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto",
+  "id": "VFB_00101567",
+  "url": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto?id=VFB_00101567",
+  "panel": "Term Info 分頁",
+  "field_order_on_screen": [
+    "Symbol",
+    "Name",
+    "Classification",
+    "Thumbnail",
+    "Query For",
+    "Graphs For",
+    "Description",
+    "Source",
+    "License",
+    "Aligned To",
+    "Downloads"
+  ],
+  "fields": {
+    "Symbol": [
+      "JRC2018U"
+    ],
+    "Name": [
+      "JRC2018Unisex [VFB_00101567]",
+      "Nervous system",
+      "Adult"
+    ],
+    "Classification": [
+      "adult brain"
+    ],
+    "Thumbnail": [],
+    "Query For": [
+      "46Painted domains for JRC2018U",
+      "491kAll images aligned to JRC2018U",
+      "104Datasets aligned to JRC2018U",
+      "150All available datasets"
+    ],
+    "Graphs For": [
+      "Show location of JRC2018Unisex",
+      "Show classification of JRC2018Unisex"
+    ],
+    "Description": [
+      "Janelia 2018 unisex, averaged adult brain template"
+    ],
+    "Source": [
+      "JRC 2018 templates & ROIs"
+    ],
+    "License": [
+      "CC-BY-NC-SA_4.0"
+    ],
+    "Aligned To": [
+      "JRC2018Unisex"
+    ],
+    "Downloads": [
+      "Mesh (OBJ): VFB_00101567_mesh.obj",
+      "Slices (Woolz): VFB_00101567.wlz",
+      "Signal (NRRD): VFB_00101567.nrrd",
+      "Remember to cite: citations.bibtex",
+      "The license shown above applies to this data."
+    ]
+  },
+  "all_lines": [
+    "Symbol",
+    "JRC2018U",
+    "Name",
+    "JRC2018Unisex [VFB_00101567]",
+    "Nervous system",
+    "Adult",
+    "Classification",
+    "adult brain",
+    "Thumbnail",
+    "Query For",
+    "46Painted domains for JRC2018U",
+    "491kAll images aligned to JRC2018U",
+    "104Datasets aligned to JRC2018U",
+    "150All available datasets",
+    "Graphs For",
+    "Show location of JRC2018Unisex",
+    "Show classification of JRC2018Unisex",
+    "Description",
+    "Janelia 2018 unisex, averaged adult brain template",
+    "Source",
+    "JRC 2018 templates & ROIs",
+    "License",
+    "CC-BY-NC-SA_4.0",
+    "Aligned To",
+    "JRC2018Unisex",
+    "Downloads",
+    "Mesh (OBJ): VFB_00101567_mesh.obj",
+    "Slices (Woolz): VFB_00101567.wlz",
+    "Signal (NRRD): VFB_00101567.nrrd",
+    "Remember to cite: citations.bibtex",
+    "The license shown above applies to this data."
+  ]
+}

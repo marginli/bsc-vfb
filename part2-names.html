@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PART 2 把一個名字問清楚｜VFB 專題課程</title>
+<link rel="stylesheet" href="assets/vfb.css">
+</head>
+<body>
+<div class="crumb"><a href="index.html">VFB 專題課程</a> ／ PART 2</div>
+<header class="hero">
+  <p class="eyebrow">PART 2</p>
+  <h1>把一個名字問清楚</h1>
+  <p class="subtitle">你手上有一個名字，想知道 VFB 上跟它有關的一切——而這件事比打字進搜尋框複雜一層</p>
+</header>
+
+<div class="wrap">
+
+  <div class="pager top">
+    <a href="part1-templates.html">← PART 1　座標系</a>
+    <span>PART 3　從腦區找到神經元（尚未發布）</span>
+  </div>
+
+  <nav class="toc">
+    <h2>本頁章節</h2>
+    <ol>
+      <li><a href="#s1"><code>ME_R</code>、<code>ME(R)</code>、<i>optic medulla</i>，是三塊腦區還是一塊？</a></li>
+      <li><a href="#s2">VFB 查的是詞，不是字串</a></li>
+      <li><a href="#s3">兩種編號是兩種東西：類別與個體</a></li>
+      <li><a href="#s4">同一個東西有三個名字</a></li>
+      <li><a href="#s5">三個搜尋框，三種行為</a></li>
+      <li><a href="#s6">打 <code>JRC2018Unisex</code> 找不到 JRC2018Unisex</a></li>
+      <li><a href="#s7">動手做</a></li>
+    </ol>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s1"><span class="pt">1</span><code>ME_R</code>、<code>ME(R)</code>、<i>optic medulla</i>，是三塊腦區還是一塊？</h2>
+
+  <p><b>一塊。</b>你讀一篇用 FlyWire 資料的論文，裡面的腦區叫 <code>ME_R</code>；換一篇用 hemibrain 的，同一塊叫 <code>ME(R)</code>；再翻一本解剖學的書，它叫 <i>optic medulla</i>。三個寫法指的是同一塊<b>神經氈</b>——那是 <a href="part1-templates.html">PART 1</a> 用的詞，指神經纖維密集交織、突觸集中的那一團組織；這一塊位在<b>視葉</b>，也就是果蠅腦處理視覺的那一大區。</p>
+
+  <p>這件事聽起來只是麻煩，實際上會讓整個分析停擺：你想把兩套連線資料放在一起比，第一步就要知道甲方的 <code>ME_R</code> 等於乙方的哪一個。<b>多數人的作法是自己維護一張對照表。VFB 的作法是，那張表已經在裡面了。</b></p>
+
+  <p>在 VFB 上，這塊腦區只有一個身分，編號 <code>FBbt_00003748</code>，正式名字是 <i>medulla</i>。上面那三個寫法，連同另外五種，全部登記成它的<b>別名</b>——也就是「同一個東西的另一種寫法」：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>登記的寫法</th><th>登記成哪一種別名</th><th>誰這樣叫它</th></tr>
+    <tr><td><code>ME</code></td><td>完全同義</td><td>BrainName 命名法（Ito et al., 2014）</td></tr>
+    <tr><td><i>optic medulla</i></td><td>完全同義</td><td>Venkatesh and Shyamala, 2010</td></tr>
+    <tr><td><code>Med</code></td><td>完全同義</td><td>Chiang et al., 2011</td></tr>
+    <tr><td><code>ME_R</code>　<code>ME_L</code></td><td>相關同義</td><td>BANC（Bates et al., 2025）與 FlyWire（Schlegel et al., 2024）</td></tr>
+    <tr><td><code>ME(R)</code>　<code>ME(L)</code></td><td>相關同義</td><td>hemibrain（Scheffer et al., 2020）、male-cns（Berg et al., 2025）、視葉連線體（Nern et al., 2025）</td></tr>
+    <tr><td><code>m</code></td><td>相關同義</td><td>（登記時沒有附出處）</td></tr>
+  </table>
+  </div>
+
+  <div class="plain">
+    <b>白話。</b>「完全同義」是指兩個寫法可以互換，意思一樣；「相關同義」是指兩者有關但不保證完全等同——<code>ME_R</code> 是<b>右側</b>的那一塊，而 <i>medulla</i> 這個詞本身沒有分左右。VFB 用這兩種標記把「同一個東西的另一個名字」和「幾乎是同一個東西」分開，你在讀的時候要跟著分開。
+  </div>
+
+  <p class="figsrc">上表整理自 <code>out/terminfo_region.json</code> 的 <code>Synonyms</code>（<code>scripts/vfb_probe.py</code> 抓取，2026-09-14）。同一份內容在畫面上是 Term Info 的 <b><code>Alternative Names</code></b> 欄，逐列存在 <code>out/ui/terminfo_v2_region.json</code>（<code>scripts/browser_probe.py</code> 拍攝，2026-09-14）：兩邊都是 13 列，畫面上每一列還附了出處論文。表裡的八種寫法就是這 13 列去掉重複登記的結果——<code>ME_R</code>、<code>ME_L</code>、<code>ME(R)</code>、<code>ME(L)</code> 各被不只一套資料集登記過一次。</p>
+
+  <div class="note">
+    <b>這一節要換掉的觀念：VFB 的搜尋框不是在幫你比對字串，是在幫你找「詞」。</b>你打進去的任何一個別名，都會把你帶到同一個編號。所以在 VFB 上，<b>問清楚一個名字，等於把它換成一個編號。</b>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s2"><span class="pt">2</span>VFB 查的是詞，不是字串</h2>
+
+  <p>VFB 底下掛著一份<b>本體論</b>——這個詞本課第一次用，先定義：本體論是一份把概念、概念的正式名字、它的別名、以及概念與概念之間的關係（哪個是哪個的一部分、哪個是哪個的一種）全部寫下來的詞表，每個概念配一個永久編號。VFB 用的那一份叫 FBbt，是 FlyBase 維護的果蠅解剖本體論，前面那個 <code>FBbt_00003748</code> 就是它的編號。</p>
+
+  <p>「查詞不查字串」的直接後果是：<b>同一個詞會在結果裡佔不只一列。</b>向 VFB 的公開介面查 <i>medulla</i>、要 10 筆，回來的 10 列對應的其實只有 9 個詞——<code>FBbt_00003748</code> 佔了兩列：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>回來的那一列長這樣</th><th>它其實是哪個詞</th></tr>
+    <tr><td><code>medulla (FBbt_00003748)</code></td><td rowspan="2"><code>FBbt_00003748</code>　← 同一個</td></tr>
+    <tr><td><code>optic medulla (medulla)</code></td></tr>
+    <tr><td><code>medulla cortex (cell body rind of adult medulla)</code></td><td><code>FBbt_00100205</code></td></tr>
+    <tr><td><code>larval medulla (medulla anlage)</code></td><td><code>FBbt_00001935</code></td></tr>
+  </table>
+  </div>
+
+  <p>讀法是這樣：<b>括號外面是配對到的那個寫法，括號裡面是這個詞的正式名字或編號。</b>第一列是拿正式名字配對到的，所以括號裡直接給編號；第二列是拿別名 <i>optic medulla</i> 配對到的，所以括號裡提醒你「它的正式名字是 medulla」。兩列，一個詞。</p>
+
+  <div class="callout">
+    <b>所以「回來幾筆」永遠不等於「有幾個」。</b>這是本課會反覆遇到的一件事，PART 1 在算 template 的分區時遇過一次，這裡是它在搜尋上的長相：<b>列數是「有幾種叫法被配對到」，個數才是「有幾個東西」。</b>要數東西，就去數不重複的編號。
+  </div>
+
+  <p class="figsrc">上表出自 <code>out/search_medulla.json</code>（<code>scripts/vfb_probe.py</code>，2026-09-14），該檔存的是完整的 10 列；表上只列出前四列與重複的那一組。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s3"><span class="pt">3</span>兩種編號是兩種東西：類別與個體</h2>
+
+  <p>你在 VFB 上會看到兩種編號開頭，它們不是新舊版本，是<b>兩種不同性質的東西</b>：</p>
+
+  <div class="terms">
+    <div class="term">
+      <div class="w"><code>FBbt_…</code>　類別</div>
+      <p>一個<b>概念</b>：「medulla 這種腦區」。它不是任何一張圖、不屬於任何一隻果蠅。定義、別名、跟其他概念的關係都掛在這裡。</p>
+    </div>
+    <div class="term">
+      <div class="w"><code>VFB_…</code>　個體</div>
+      <p>一個<b>具體的東西</b>：「畫在 JRC2018Unisex 這顆標準腦上的那一塊 medulla」。它有影像、有座標、有授權、有來源資料集。</p>
+    </div>
+  </div>
+
+  <p>把同一塊腦區的兩邊並排，差別一眼看得出來：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th></th><th>類別</th><th>個體</th></tr>
+    <tr><th>編號</th><td><code>FBbt_00003748</code></td><td><code>VFB_00102107</code></td></tr>
+    <tr><th>名字</th><td><i>medulla</i></td><td><i>ME on JRC2018Unisex adult brain</i></td></tr>
+    <tr><th>別名</th><td>13 筆</td><td>0 筆</td></tr>
+    <tr><th>授權</th><td>沒有</td><td>CC-BY-NC-SA 4.0</td></tr>
+    <tr><th>對位到哪顆腦</th><td>沒有這個欄位</td><td><code>JRC2018U</code>　<span class="k">← 畫面上寫的是短名；它的編號是 <code>VFB_00101567</code>，見<a href="#s4">第 4 節</a></span></td></tr>
+    <tr><th>來源資料集</th><td>沒有</td><td><i>JRC 2018 templates &amp; ROIs</i></td></tr>
+  </table>
+  </div>
+
+  <div class="danger">
+    <b>最重要的一列是「授權」。</b>授權掛在個體上，不在類別上——因為能不能用、怎麼引用，是那張影像的事，不是那個概念的事。所以<b>要查一筆資料的授權，一定要打開那個 <code>VFB_…</code> 個體去看，查類別是查不到的</b>（它那一欄根本不存在）。實際做法是把編號接在 <code>virtualflybrain.org/reports/</code> 後面貼進瀏覽器。這一點跟 PART 1 <a href="part1-templates.html#s3">第 3 節</a>那張表是同一件事的兩面：VFB 上沒有一句話蓋得住全站的授權。
+  </div>
+
+  <h3>一個類別底下有幾個個體</h3>
+
+  <p><i>medulla</i> 這個類別，<b>知識庫</b>（VFB 背後存放所有資料的那個資料庫，<a href="part1-templates.html#s3">PART 1 第 3 節</a>這樣叫它）裡掛著 <b>2,424 個</b>個體。其中<b>有名字的只有 12 個</b>，另外 2,412 個的編號長成 <code>VFB_internal…</code>、沒有名字也沒有影像——那些是用來承載「某一個基因表現模式，跟某一隻果蠅的這塊腦區有重疊」這類陳述的節點。</p>
+
+  <p>有名字的 12 個裡，<b>只有 4 個有影像</b>，就是 <i>medulla</i> 被畫在四套標準腦上的那四塊；剩下 8 個是 <code>ME_L</code>、<code>ME_R</code>、<code>ME(L)</code>、<code>ME(R)</code> ——四套連線資料集各自登記的左右兩塊。</p>
+
+  <div class="statgrid">
+    <div class="stat"><div class="v">2,424</div><div class="k">掛在 medulla 底下的個體</div></div>
+    <div class="stat"><div class="v">12</div><div class="k">其中有名字的</div></div>
+    <div class="stat"><div class="v">4</div><div class="k">其中有影像的</div></div>
+  </div>
+
+  <div class="callout">
+    <b>這三個數字都對，回答的是三個不同的問題。</b>拿其中任何一個去講另一個，都會錯得很嚴重——而站上的介面只會給你其中一個。看到一個數字，先問它在回答哪一個問題。
+  </div>
+
+  <p>整個知識庫的尺度也是同一個道理：登記在案的東西共 741,026 個，其中類別 122,360 個、個體 618,665 個。<b>個體比類別多五倍</b>，因為同一個概念會被畫在很多顆腦上、被很多套資料集各自登記一次。</p>
+
+  <p class="figsrc">並排表的欄位與值，出自 <code>out/ui/terminfo_v2_region.json</code>（類別那一欄）與 <code>out/ui/terminfo_v2_individual.json</code>（個體那一欄）——兩支都是 <code>scripts/browser_probe.py</code> 在 2026-09-14 用真的瀏覽器拍的。個體數出自 <code>out/terminfo_individual.json</code>（該檔的個體數用知識庫的 Cypher 查詢算，<b>不是</b>用介面的 <code>Examples</code> 欄——那一欄實測不穩定，同一個編號連問五次會交替回三套與四套）。有影像的 4 個出自 <code>out/counts_region.json</code> 的 <code>ListAllAvailableImages</code>。全站三個總數出自 <code>out/facets.json</code>。以上皆由 <code>scripts/vfb_probe.py</code> 於 2026-09-14 抓取。<b>全站總數會隨資料更新而變</b>，這裡標出來是要給你一個量級，不是一個常數。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s4"><span class="pt">4</span>同一個東西有三個名字</h2>
+
+  <p>在檢視器（<code>virtualflybrain.org/reports/&lt;編號&gt;</code> 會帶你到那裡）打開任何一個東西的 Term Info 面板，你會看到三個欄位，三個都是它的名字：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>欄位</th><th>是什麼</th><th>以 JRC2018Unisex 為例</th></tr>
+    <tr><td><code>Name</code></td><td>正式名字。面板上顯示得最大的那一個</td><td><code>JRC2018Unisex</code></td></tr>
+    <tr><td><code>Symbol</code></td><td>短名。<b>站上的查詢標籤、以及 <code>Aligned To</code> 欄用的是這一個</b></td><td><code>JRC2018U</code></td></tr>
+    <tr><td><code>ID</code></td><td>永久編號。網址裡的那一串</td><td><code>VFB_00101567</code></td></tr>
+  </table>
+  </div>
+
+  <p>十套 template 裡，<b>有五套的 <code>Symbol</code> 跟 <code>Name</code> 不一樣；其中三套的 <code>Symbol</code> 連一個字都不出現在 <code>Name</code> 裡</b>——拿著其中一個去站上找另一個，會找不到：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>ID</th><th><code>Name</code></th><th><code>Symbol</code></th></tr>
+    <tr><td><code>VFB_00101567</code></td><td>JRC2018Unisex</td><td><code>JRC2018U</code>　← 互相看不出來</td></tr>
+    <tr><td><code>VFB_00200000</code></td><td>JRC2018UnisexVNC</td><td><code>JRCVNC2018U</code>　← 互相看不出來</td></tr>
+    <tr><td><code>VFB_00101384</code></td><td>JRC_FlyEM_Hemibrain</td><td><code>JRCFIB2018Fum</code>　← 互相看不出來</td></tr>
+    <tr><td><code>VFB_00017894</code></td><td>adult brain template JFRC2</td><td><code>JFRC2</code></td></tr>
+    <tr><td><code>VFB_00100000</code></td><td>adult VNS template - Court2018</td><td><code>COURT2018VNS</code></td></tr>
+    <tr><td colspan="3">其餘五套的 <code>Symbol</code> 與 <code>Name</code> 完全相同（Ito2014、Wood2018、L1 ssTEM、McKellar2020、Kuan2020）</td></tr>
+  </table>
+  </div>
+
+  <div class="note">
+    <b>本課的規矩：要指名一個東西，一律用 <code>ID</code>。</b>名字會因為你站在哪一個欄位、哪一個介面而不同，編號不會。這也是為什麼 <a href="part1-templates.html#s7">PART 1 的作業單</a>每一步都給 <code>reports/&lt;編號&gt;</code> 的網址，而不是叫你去搜尋框打名字。
+  </div>
+
+  <p class="figsrc">十套的 <code>Name</code> 與 <code>Symbol</code> 出自 <code>out/template_names.json</code>（<code>scripts/vfb_probe.py</code>，2026-09-14）。三個欄位在畫面上的位置與寫法，出自 <code>out/ui/terminfo_v2_template.json</code> 與 <code>out/ui/terminfo_v3_template.json</code>（<code>scripts/browser_probe.py</code> 拍攝，2026-09-14）。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s5"><span class="pt">5</span>三個搜尋框，三種行為</h2>
+
+  <p>VFB 有三個網站，各有一個搜尋框。它們不是同一個東西換了個樣子——<b>送出去的查詢就不一樣</b>。同一個字 <i>medulla</i>，三個框送出三種東西：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>在哪個網站</th><th>搜尋框在哪</th><th>打 <i>medulla</i>，實際送出的查詢</th><th>畫面上排出多少列</th></tr>
+    <tr>
+      <td><code>www.virtualflybrain.org</code><br><span class="k">說明文件站</span></td>
+      <td>頁首 <code>Search VFB… ⌘K</code> 那顆按鈕，點下去才長出輸入框</td>
+      <td><code>medulla</code><br><span class="k">原樣送出，不展開</span></td>
+      <td>8 列詞，外加 2 列說明文件的頁面</td>
+    </tr>
+    <tr>
+      <td><code>v2.virtualflybrain.org</code><br><span class="k">舊版檢視器</span></td>
+      <td>頂列的放大鏡圖示</td>
+      <td><code>(medulla OR medulla* OR *medulla OR *medulla*)</code></td>
+      <td><b>1,466 列</b></td>
+    </tr>
+    <tr>
+      <td><code>v3.virtualflybrain.org</code><br><span class="k">新版檢視器</span></td>
+      <td>頂列的 <code>Find something...</code> 輸入框</td>
+      <td><code>medulla OR medulla* OR *medulla*</code></td>
+      <td><b>506 列</b></td>
+    </tr>
+  </table>
+  </div>
+
+  <div class="note">
+    <b>本課用哪一個：一個都不用。</b>上表列出三個框是為了讓你認得它們，不是要你挑一個。本課的作法是<b>直接用編號開網址</b>（<code>virtualflybrain.org/reports/&lt;編號&gt;</code>），<a href="part1-templates.html#s7">PART 1</a> 與本頁的作業單都是這樣寫的。真的要用搜尋框的時候（你手上只有名字、沒有編號），<b>避開說明文件站那一個</b>：三個框裡只有它不展開萬用字元，而且只向搜尋服務要 40 筆——<a href="#s6">下一節</a>就是它漏掉東西的例子。另外兩個框都會展開，取回的詞多得多（打 <i>medulla</i> 時 v2 取回 494 個、v3 取回 150 個），代價是你要自己從一長串裡挑。
+  </div>
+
+  <p>1,466 跟 506 這種數字，是<b>兩層放大</b>疊出來的。以 v3 為例：</p>
+
+  <ol>
+    <li><b>查詢被展開成萬用字元。</b>你打 <i>medulla</i>，送出去的是「medulla 或 medulla 開頭 或 任何位置含 medulla」，所以 <i>medulla columnar neuron</i>、<i>accessory medulla</i> 這種全部符合，共 501 個詞。</li>
+    <li><b>拿回來的每個詞，再按別名拆開。</b>實際取回 150 個詞，畫面上卻排出 506 列：<i>medulla</i> 這一個詞，就因為 <code>m</code>、<code>ME</code>、<code>Med</code>、<i>optic medulla</i> 各自被拆成一列。</li>
+  </ol>
+
+  <div class="callout">
+    <b>所以「畫面上有幾列」是這個介面的性質，不是這份資料的性質。</b>同一個字，文件站給你 8 列、v3 給你 506 列、v2 給你 1,466 列——三個都沒有錯，它們在回答三個不同的問題。<b>凡是要拿數量去下結論，就不要數畫面上的列，去數不重複的編號。</b>
+  </div>
+
+  <p class="figsrc">三個框送出的查詢與畫面列數，由 <code>scripts/browser_probe.py</code> 用真的瀏覽器各操作一次取得（2026-09-14），原始輸出在 <code>out/ui/palette.json</code>、<code>out/ui/search_v2.json</code>、<code>out/ui/search_v3.json</code>；每一支都附了它攔到的完整查詢網址，以及拿那個網址重問一次得到的詞數，兩者並排存著。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s6"><span class="pt">6</span>打 <code>JRC2018Unisex</code> 找不到 JRC2018Unisex</h2>
+
+  <p>把前面幾節合起來，就解得開這門課最反直覺的一個現象。到說明文件站的搜尋框，打上這顆標準腦的正式名字 <code>JRC2018Unisex</code>——完全正確、一個字不差——畫面給你 8 列，每一列都長成 <i>ME on JRC2018Unisex adult brain</i> 這樣，<b>而 JRC2018Unisex 本身不在裡面</b>。</p>
+
+  <p>五件事疊在一起，缺一件都不會發生：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th></th><th>發生了什麼</th><th>為什麼這會害到你</th></tr>
+    <tr><td>①</td><td>這個框向搜尋服務要 <b>40 筆</b></td><td>排在 40 名之後的，等於不存在</td></tr>
+    <tr><td>②</td><td>送出之前，你打的字<b>一律被轉成小寫</b></td><td>大小寫不在你手上，怎麼打都一樣</td></tr>
+    <tr><td>③</td><td>同一組條件，全小寫時目標排<b>第 47 名</b>（大小寫保留的話是第 1 名）</td><td>第 47 名 &gt; 40，根本沒被取回來</td></tr>
+    <tr><td>④</td><td>排在它前面的 46 列，<b>是它自己的分區</b></td><td>每塊分區的名字裡都帶著母體的名字，比分因此比母體高</td></tr>
+    <tr><td>⑤</td><td>畫面只排得下 <b>8 列</b></td><td>看到的全是分區</td></tr>
+  </table>
+  </div>
+
+  <p>第 ③ 件事的差距不是勉強落敗：同一組條件、同一個字串，只差大小寫——</p>
+
+  <div class="statgrid">
+    <div class="stat"><div class="v">第 1 名</div><div class="k">大小寫保留時，分數 669.06</div></div>
+    <div class="stat"><div class="v">第 47 名</div><div class="k">全小寫時，分數 58.37</div></div>
+    <div class="stat"><div class="v">424.69</div><div class="k">全小寫時第一名的分數</div></div>
+  </div>
+
+  <h3>該打什麼才找得到</h3>
+
+  <p><b>打 <code>JRC2018U</code>。</b>那是它的 <code>Symbol</code>（<a href="#s4">第 4 節</a>那張表的第一列）。用它去查，符合的只有一個，畫面上就一列，正是要找的那顆標準腦。</p>
+
+  <div class="plain">
+    <b>可以帶走的兩條經驗。</b>第一，<b>拿一顆標準腦的名字去搜，回來的是它的分區</b>——因為分區的名字裡都含著它。要找母體，改用 <code>Symbol</code>。第二，更省事的作法是<b>根本不用搜尋框</b>：只要知道編號，直接開 <code>virtualflybrain.org/reports/&lt;編號&gt;</code>。<a href="part1-templates.html#s7">PART 1 的作業單</a>每一步都這樣做，就是為了避開這一整節。
+  </div>
+
+  <p class="figsrc">名次與分數出自 <code>out/search_case.json</code>（<code>scripts/vfb_probe.py</code>，2026-09-14，兩種大小寫各問一次）。「要 40 筆、顯示 8 列」與各種打法的結果出自 <code>out/worksheet.json</code> 的 <code>docsite_search_box</code>。「送出前一律轉小寫」與畫面上那 8 列的內容，出自 <code>out/ui/palette.json</code>——那一支是用真的瀏覽器打字、攔下送出的查詢、再把畫面上的列逐列記下來的（<code>scripts/browser_probe.py</code>，2026-09-14）。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s7"><span class="pt">7</span>動手做</h2>
+
+  <p>四步，不用安裝也不用登入。前三步都直接給網址，貼到瀏覽器就會開在 VFB 的檢視器（<code>v2.virtualflybrain.org</code>）裡。</p>
+
+  <ol>
+    <li><b>打開 medulla 這個「類別」。</b>網址：<a href="https://virtualflybrain.org/reports/FBbt_00003748">virtualflybrain.org/reports/FBbt_00003748</a>。<br><b>去哪裡確認你到對地方了</b>：檢視器裡的 <b>Term Info</b> 分頁，看它的 <b><code>Name</code></b> 欄，應該寫著 <code>medulla [FBbt_00003748]</code>（編號在方括號裡）。</li>
+
+    <li><b>找出這塊腦區的所有別名。</b>在同一個 Term Info 面板裡往下找 <b><code>Alternative Names</code></b> 欄。<br><b>看到什麼算對</b>：每一列都寫成「<i>某某 synonym</i>：寫法（出處）」，例如 <code>exact synonym: ME (BRAIN_NAME_ABV, Ito et al., 2014)</code>。找出 <a href="#s1">第 1 節</a>那張表裡的 <code>ME_R</code>，確認它旁邊標的是 BANC 與 FlyWire 兩套資料。</li>
+
+    <li><b>換成同一塊腦區的「個體」，比較兩邊的面板。</b>網址：<a href="https://virtualflybrain.org/reports/VFB_00102107">virtualflybrain.org/reports/VFB_00102107</a>。<br><b>去哪裡看</b>：一樣是 Term Info。<b>看到什麼算對</b>：這一頁有三個上一頁沒有的欄位——<b><code>License</code></b>（寫著 <code>CC-BY-NC-SA_4.0</code>）、<b><code>Source</code></b>（寫著 <i>JRC 2018 templates &amp; ROIs</i>）與 <b><code>Aligned To</code></b>（寫著 <code>JRC2018U</code>，<b>是短名不是編號</b>）；而上一頁有的 <code>Alternative Names</code>，這一頁沒有。<b>這就是<a href="#s3">第 3 節</a>那張並排表，在畫面上的樣子。</b><br>順便看一下 <b><code>Classification</code></b> 欄：它寫著 <i>medulla</i>，也就是上一步那個類別——<b>個體會指回自己的類別</b>，你可以從這裡走回去。</li>
+
+    <li><b>把同一個字丟進兩個不同的搜尋框。</b>先到說明文件站 <a href="https://www.virtualflybrain.org/">www.virtualflybrain.org</a>，點頁首那顆 <code>Search VFB… ⌘K</code> 按鈕，打 <code>medulla</code>；再到 <a href="https://v3.virtualflybrain.org/">v3.virtualflybrain.org</a>，用頂列的 <code>Find something...</code> 打同一個字。<br><b>看到什麼算對</b>：兩邊排出來的清單長度差很多，而且<b>兩邊的第一列都是 <code>medulla (FBbt_00003748)</code></b>。<a href="#s5">第 5 節</a>解釋了為什麼長度會差這麼多——但不管差多少，<b>那個編號是同一個</b>，而編號才是你要的東西。</li>
+  </ol>
+
+  <p class="figsrc">這一節指名的每一個欄位名與它的現值，都由 <code>scripts/browser_probe.py</code> 在 2026-09-14 用真的瀏覽器把這四步做過一遍拍下來，原始輸出在 <code>out/ui/</code>（<code>terminfo_v2_region.json</code>、<code>terminfo_v2_individual.json</code>、<code>palette.json</code>、<code>search_v3.json</code>）。</p>
+
+  <div class="note">
+    <b>如果你看到的欄位名跟這裡寫的不一樣，先看你在哪一個網站。</b>本節寫的是 <code>v2.virtualflybrain.org</code> 的欄位名，而 <code>reports/&lt;編號&gt;</code> 目前就是轉到那裡。新版的 <code>v3.virtualflybrain.org</code> 有幾欄名字不同：資訊欄分成 <code>General Information</code> 與 <code>Metadata</code> 兩區，授權那一欄叫 <code>Licenses</code>（v2 叫 <code>License</code>），現成查詢那一區叫 <code>Queries</code>（v2 叫 <code>Query For</code>）。<code>Name</code>、<code>Symbol</code>、<code>Aligned To</code> 三欄兩版同名。
+  </div>
+
+  <div class="pager">
+    <a href="part1-templates.html">← PART 1　座標系</a>
+    <span>PART 3　從腦區找到神經元（尚未發布）</span>
+  </div>
+</div>
+
+<div class="foot">
+  VFB 專題課程　PART 2　·　本頁引用的 VFB 資料與畫面皆於 2026-09-14 讀取　·　
+  頁面上每個數字都對得回 <code>out/</code> 底下的探針輸出
+</div>
+</body>
+</html>

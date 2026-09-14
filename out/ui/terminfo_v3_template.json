@@ -1,0 +1,78 @@
+{
+  "probe": "terminfo_v3_template",
+  "part": "PART 1 作業單第 1–2 步 / PART 2",
+  "question": "v3 的左側資訊欄上，同一顆 template 的每一欄叫什麼、值是什麼",
+  "site": "https://v3.virtualflybrain.org/",
+  "id": "VFB_00101567",
+  "url": "https://v3.virtualflybrain.org/?id=VFB_00101567",
+  "panel": "左側資訊欄（分成 General Information／Metadata／Queries (n)／Graphs 四區）",
+  "field_order_on_screen": [
+    "General Information",
+    "Name",
+    "Symbol",
+    "ID",
+    "Licenses",
+    "Metadata",
+    "Tags",
+    "Description",
+    "Types",
+    "Aligned To",
+    "Queries (4)",
+    "Graphs"
+  ],
+  "fields": {
+    "General Information": [],
+    "Name": [
+      "JRC2018Unisex"
+    ],
+    "Symbol": [
+      "JRC2018U"
+    ],
+    "ID": [
+      "VFB_00101567"
+    ],
+    "Licenses": [
+      "CC-BY-NC-SA_4.0"
+    ],
+    "Metadata": [],
+    "Tags": [
+      "Adult",
+      "Nervous System"
+    ],
+    "Description": [
+      "Janelia 2018 unisex, averaged adult brain template"
+    ],
+    "Types": [
+      "adult brain"
+    ],
+    "Aligned To": [
+      "JRC2018U"
+    ],
+    "Graphs": []
+  },
+  "all_lines": [
+    "General Information",
+    "Name",
+    "JRC2018Unisex",
+    "Symbol",
+    "JRC2018U",
+    "ID",
+    "VFB_00101567",
+    "Licenses",
+    "CC-BY-NC-SA_4.0",
+    "Metadata",
+    "Tags",
+    "Adult",
+    "Nervous System",
+    "Description",
+    "Janelia 2018 unisex, averaged adult brain template",
+    "Types",
+    "adult brain",
+    "Aligned To",
+    "JRC2018U",
+    "Queries (4)",
+    "Other queries",
+    "492102",
+    "Graphs"
+  ]
+}

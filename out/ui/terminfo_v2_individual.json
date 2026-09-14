@@ -1,0 +1,100 @@
+{
+  "probe": "terminfo_v2_individual",
+  "part": "PART 2 作業單第 3 步",
+  "question": "同一塊腦區的「個體」，畫面上比「類別」多了哪幾欄、值是什麼",
+  "site": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto",
+  "id": "VFB_00102107",
+  "url": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto?id=VFB_00102107",
+  "field_order_on_screen": [
+    "Name",
+    "Classification",
+    "Query For",
+    "Graphs For",
+    "Source",
+    "License",
+    "Aligned To",
+    "Downloads"
+  ],
+  "fields": {
+    "Name": [
+      "ME on JRC2018Unisex adult brain [VFB_00102107]",
+      "Visual system",
+      "Synaptic neuropil domain",
+      "Nervous system",
+      "Adult"
+    ],
+    "Classification": [
+      "medulla",
+      "Thumbnail"
+    ],
+    "Query For": [
+      "471Neurons with some part in medulla",
+      "464Neurons with synaptic terminals in medulla",
+      "262Neurons with presynaptic terminals in medulla",
+      "333Neurons with postsynaptic terminals in medulla",
+      "3Tracts/nerves innervating medulla",
+      "7Lineage clones found in medulla",
+      "226kImages of neurons with some part in medulla",
+      "2kTransgene expression in medulla",
+      "28Parts of medulla",
+      "0Subclasses of medulla"
+    ],
+    "Graphs For": [
+      "Show location of ME on JRC2018Unisex adult brain",
+      "Show classification of ME on JRC2018Unisex adult brain"
+    ],
+    "Source": [
+      "JRC 2018 templates & ROIs"
+    ],
+    "License": [
+      "CC-BY-NC-SA_4.0"
+    ],
+    "Aligned To": [
+      "JRC2018U"
+    ],
+    "Downloads": [
+      "Mesh (OBJ): VFB_00102107_mesh.obj",
+      "Slices (Woolz): VFB_00102107.wlz",
+      "Signal (NRRD): VFB_00102107.nrrd",
+      "Remember to cite: citations.bibtex",
+      "The license shown above applies to this data."
+    ]
+  },
+  "all_lines": [
+    "Name",
+    "ME on JRC2018Unisex adult brain [VFB_00102107]",
+    "Visual system",
+    "Synaptic neuropil domain",
+    "Nervous system",
+    "Adult",
+    "Classification",
+    "medulla",
+    "Thumbnail",
+    "Query For",
+    "471Neurons with some part in medulla",
+    "464Neurons with synaptic terminals in medulla",
+    "262Neurons with presynaptic terminals in medulla",
+    "333Neurons with postsynaptic terminals in medulla",
+    "3Tracts/nerves innervating medulla",
+    "7Lineage clones found in medulla",
+    "226kImages of neurons with some part in medulla",
+    "2kTransgene expression in medulla",
+    "28Parts of medulla",
+    "0Subclasses of medulla",
+    "Graphs For",
+    "Show location of ME on JRC2018Unisex adult brain",
+    "Show classification of ME on JRC2018Unisex adult brain",
+    "Source",
+    "JRC 2018 templates & ROIs",
+    "License",
+    "CC-BY-NC-SA_4.0",
+    "Aligned To",
+    "JRC2018U",
+    "Downloads",
+    "Mesh (OBJ): VFB_00102107_mesh.obj",
+    "Slices (Woolz): VFB_00102107.wlz",
+    "Signal (NRRD): VFB_00102107.nrrd",
+    "Remember to cite: citations.bibtex",
+    "The license shown above applies to this data."
+  ]
+}

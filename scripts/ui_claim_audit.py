@@ -12,9 +12,18 @@
      B. 給操作指示的那一節，要寫出網域。
         （第 18 條：作業單寫「打開 virtualflybrain.org」，那是說明文件站不是檢視器，
         學員在錯的網站上怎麼找都找不到。錯的不是描述，是起點。）
-     C. 不准寫「會看到幾筆」。
+     C. 寫「會看到幾筆」要有畫面探針撐著。
         （第 20、21 條：同一個查詢，不同的框給不同的筆數，前端還會把一筆拆成好幾列。
         「幾筆」是介面的性質，不是資料的性質。）
+        **這一條 2026-09-14 從全面禁止改成有條件放行**：當初禁止，是因為
+        當時沒有任何辦法驗證畫面上究竟有幾列——唯一的來源是 API 的筆數，
+        而那是另一回事。現在 scripts/browser_probe.py 用真的瀏覽器把列數數回來，
+        存在 out/ui/。所以規則改成：**那一節的出處行要指名某一支探針輸出檔
+        （out/….json，API 的或畫面的都算），而且要有擷取日期，才可以寫筆數**；
+        兩者缺一仍然不准。指名到檔案是關鍵——只寫「由探針查得」等於沒有出處，
+        重跑的時候沒有人知道要回頭比對哪一支。
+        （PART 2 的主題正是「同一個字串在三個框給三種筆數」——
+        若仍全面禁止，這一課就寫不出來，而它是學員最常撞到的那件事。）
      D. 作業單的每一步都要有網址，而且用到「看／找／確認」就要指名欄位。
         （第 18 條：網址是主線，介面描述是備案。
         第 19 條：說了「看什麼」沒說「去哪裡看」，學員到畫面前找不到東西。）
@@ -33,7 +42,9 @@ D = "/home/wanjuli/claude_linux/BSC_plan/specific_topics/VFB"
 # 具名的介面元件。**不要**放「畫面」「欄」「點」這種泛稱——
 # 它們在講圖、講表、講質心的句子裡到處都是，放進來整份稽核就被雜訊淹掉。
 WIDGETS = [r'Term Info', r'資訊面板', r'搜尋框', r'檢視器', r'網址列', r'下拉',
-           r'按鈕', r'圖示', r'<code>Queries</code>', r'Aligned to', r'<code>Licenses</code>']
+           r'按鈕', r'圖示', r'命令面板', r'<code>Quer(y For|ies)</code>',
+           r'Aligned [Tt]o', r'<code>Licenses?</code>', r'<code>Symbol</code>',
+           r'<code>Source</code>', r'<code>Name</code>']
 
 
 def widget_name(pat):
@@ -101,11 +112,17 @@ def audit(path):
             print(f"  [缺網域] {name} 在給操作指示，卻沒寫明是在哪一個網站上做")
             bad += 1
 
-    # C. 不准寫「會看到幾筆」
-    for m in COUNT_CLAIM.finditer(text_of(src)):
-        ctx = re.sub(r'\s+', ' ', text_of(src)[max(0, m.start() - 20):m.end() + 12])
-        print(f"  [講筆數] …{ctx}…　（「幾筆」是介面的性質，不要寫）")
-        bad += 1
+    # C. 寫筆數要有探針撐著：這一節要同時指名某支 out/….json 與擷取日期
+    for sid, title, body in sections(src):
+        txt = text_of(body)
+        backed = bool(re.search(r"out/[\w/]*\.json", body)) and bool(DATE.search(txt))
+        for m in COUNT_CLAIM.finditer(txt):
+            if backed:
+                continue
+            ctx = re.sub(r'\s+', ' ', txt[max(0, m.start() - 20):m.end() + 12])
+            print(f"  [講筆數] {sid} …{ctx}…"
+                  f"　（要寫筆數，這一節得指名某支 out/….json 並標擷取日期）")
+            bad += 1
 
     # D. 作業單每一步：叫人移動就要給網址；叫人去看就要指名欄位
     #    只看「在給操作指示」的那一節——目錄那種純錨點的 <ol> 不算作業單。

@@ -1,0 +1,114 @@
+{
+  "probe": "terminfo_v2_neuron",
+  "part": "PART 1 作業單第 4 步",
+  "question": "作業單叫學員看的 Aligned To 欄，畫面上實際列出哪幾套 template",
+  "site": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto",
+  "id": "VFB_00005010",
+  "url": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto?id=VFB_00005010",
+  "field_order_on_screen": [
+    "Name",
+    "Classification",
+    "Query For",
+    "Description",
+    "Source",
+    "License",
+    "Aligned To",
+    "Downloads"
+  ],
+  "fields": {
+    "Name": [
+      "Cha-F-100205 [VFB_00005010]",
+      "Neuron",
+      "Nervous system",
+      "Expression pattern fragment",
+      "Adult",
+      "Alternative Names",
+      "exact synonym: Cha-F-100205",
+      "exact synonym: ChaMARCM-F001101_seg002"
+    ],
+    "Classification": [
+      "adult neuron",
+      "expression pattern fragment",
+      "Thumbnail",
+      "Previous",
+      "Cha-F-100205",
+      "Next",
+      "Relationships",
+      "expresses: P{ChAT-GAL4.7.4}",
+      "is part of: P{ChAT-GAL4.7.4} expression pattern, adult brain, female organism"
+    ],
+    "Query For": [
+      "Neurons with similar morphology to Cha-F-100205 [NBLAST]",
+      "Graphs For",
+      "Show location of Cha-F-100205",
+      "Show classification of Cha-F-100205"
+    ],
+    "Description": [
+      "Comment",
+      "OutAge: Adult 5~15 days",
+      "Cross References",
+      "FlyCircuit 1.1"
+    ],
+    "Source": [
+      "FlyCircuit 1.0 - single neurons (Chiang2010)"
+    ],
+    "License": [
+      "FlyCircuit License"
+    ],
+    "Aligned To": [
+      "JFRC2, JRC2018U"
+    ],
+    "Downloads": [
+      "Mesh (OBJ): VFB_00005010_mesh.obj",
+      "Skeleton (SWC): VFB_00005010.swc",
+      "Slices (Woolz): VFB_00005010.wlz",
+      "Signal (NRRD): VFB_00005010.nrrd",
+      "Remember to cite: citations.bibtex",
+      "The license shown above applies to this data."
+    ]
+  },
+  "all_lines": [
+    "Name",
+    "Cha-F-100205 [VFB_00005010]",
+    "Neuron",
+    "Nervous system",
+    "Expression pattern fragment",
+    "Adult",
+    "Alternative Names",
+    "exact synonym: Cha-F-100205",
+    "exact synonym: ChaMARCM-F001101_seg002",
+    "Classification",
+    "adult neuron",
+    "expression pattern fragment",
+    "Thumbnail",
+    "Previous",
+    "Cha-F-100205",
+    "Next",
+    "Relationships",
+    "expresses: P{ChAT-GAL4.7.4}",
+    "is part of: P{ChAT-GAL4.7.4} expression pattern, adult brain, female organism",
+    "Query For",
+    "Neurons with similar morphology to Cha-F-100205 [NBLAST]",
+    "Graphs For",
+    "Show location of Cha-F-100205",
+    "Show classification of Cha-F-100205",
+    "Description",
+    "Comment",
+    "OutAge: Adult 5~15 days",
+    "Cross References",
+    "FlyCircuit 1.1",
+    "Source",
+    "FlyCircuit 1.0 - single neurons (Chiang2010)",
+    "License",
+    "FlyCircuit License",
+    "Aligned To",
+    "JFRC2, JRC2018U",
+    "Downloads",
+    "Mesh (OBJ): VFB_00005010_mesh.obj",
+    "Skeleton (SWC): VFB_00005010.swc",
+    "Slices (Woolz): VFB_00005010.wlz",
+    "Signal (NRRD): VFB_00005010.nrrd",
+    "Remember to cite: citations.bibtex",
+    "The license shown above applies to this data."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "probe": "search_case",
+  "part": "PART 2",
+  "question": "同一組搜尋參數，只差大小寫，目標會排到第幾名？",
+  "url": {
+    "JRC2018Unisex": "https://solr.virtualflybrain.org/solr/ontology/select?json=%7B%22params%22%3A+%7B%22q%22%3A+%22JRC2018Unisex%22%2C+%22q.op%22%3A+%22OR%22%2C+%22defType%22%3A+%22edismax%22%2C+%22mm%22%3A+%2245%25%22%2C+%22qf%22%3A+%22label%5E110+synonym%5E100+label_autosuggest+synonym_autosuggest+shortform_autosuggest%22%2C+%22indent%22%3A+%22true%22%2C+%22fl%22%3A+%22short_form%2Clabel%2Csynonym%2Cid%2Cfacets_annotation%2Cunique_facets%22%2C+%22start%22%3A+%220%22%2C+%22pf%22%3A+%22label%5E250+synonym%5E120%22%2C+%22ps%22%3A+%220%22%2C+%22fq%22%3A+%5B%22%28short_form%3AVFB%2A+OR+short_form%3AFB%2A+OR+facets_annotation%3ADataSet+OR+facets_annotation%3Apub%29+AND+NOT+short_form%3AVFBc_%2A%22%2C+%22NOT+facets_annotation%3ADeprecated%22%5D%2C+%22rows%22%3A+%22100%22%2C+%22wt%22%3A+%22json%22%2C+%22bq%22%3A+%22short_form%3AVFBexp%2A%5E10.0+short_form%3AVFB%2A%5E50.0+facets_annotation%3AClass%5E200.0+short_form%3AFBbt%2A%5E150.0+short_form%3AFBbt_00003982%5E2+facets_annotation%3ADeprecated%5E0.001+facets_annotation%3ADataSet%5E500.0+facets_annotation%3Apub%5E100.0%22%7D%7D",
+    "jrc2018unisex": "https://solr.virtualflybrain.org/solr/ontology/select?json=%7B%22params%22%3A+%7B%22q%22%3A+%22jrc2018unisex%22%2C+%22q.op%22%3A+%22OR%22%2C+%22defType%22%3A+%22edismax%22%2C+%22mm%22%3A+%2245%25%22%2C+%22qf%22%3A+%22label%5E110+synonym%5E100+label_autosuggest+synonym_autosuggest+shortform_autosuggest%22%2C+%22indent%22%3A+%22true%22%2C+%22fl%22%3A+%22short_form%2Clabel%2Csynonym%2Cid%2Cfacets_annotation%2Cunique_facets%22%2C+%22start%22%3A+%220%22%2C+%22pf%22%3A+%22label%5E250+synonym%5E120%22%2C+%22ps%22%3A+%220%22%2C+%22fq%22%3A+%5B%22%28short_form%3AVFB%2A+OR+short_form%3AFB%2A+OR+facets_annotation%3ADataSet+OR+facets_annotation%3Apub%29+AND+NOT+short_form%3AVFBc_%2A%22%2C+%22NOT+facets_annotation%3ADeprecated%22%5D%2C+%22rows%22%3A+%22100%22%2C+%22wt%22%3A+%22json%22%2C+%22bq%22%3A+%22short_form%3AVFBexp%2A%5E10.0+short_form%3AVFB%2A%5E50.0+facets_annotation%3AClass%5E200.0+short_form%3AFBbt%2A%5E150.0+short_form%3AFBbt_00003982%5E2+facets_annotation%3ADeprecated%5E0.001+facets_annotation%3ADataSet%5E500.0+facets_annotation%3Apub%5E100.0%22%7D%7D"
+  },
+  "note": "大小寫只在 SOLR 端有效；學員碰不到它——文件站那個框送出前一律轉小寫，見 out/ui/palette.json。",
+  "data": {
+    "JRC2018Unisex": {
+      "url": "https://solr.virtualflybrain.org/solr/ontology/select?json=%7B%22params%22%3A+%7B%22q%22%3A+%22JRC2018Unisex%22%2C+%22q.op%22%3A+%22OR%22%2C+%22defType%22%3A+%22edismax%22%2C+%22mm%22%3A+%2245%25%22%2C+%22qf%22%3A+%22label%5E110+synonym%5E100+label_autosuggest+synonym_autosuggest+shortform_autosuggest%22%2C+%22indent%22%3A+%22true%22%2C+%22fl%22%3A+%22short_form%2Clabel%2Csynonym%2Cid%2Cfacets_annotation%2Cunique_facets%22%2C+%22start%22%3A+%220%22%2C+%22pf%22%3A+%22label%5E250+synonym%5E120%22%2C+%22ps%22%3A+%220%22%2C+%22fq%22%3A+%5B%22%28short_form%3AVFB%2A+OR+short_form%3AFB%2A+OR+facets_annotation%3ADataSet+OR+facets_annotation%3Apub%29+AND+NOT+short_form%3AVFBc_%2A%22%2C+%22NOT+facets_annotation%3ADeprecated%22%5D%2C+%22rows%22%3A+%22100%22%2C+%22wt%22%3A+%22json%22%2C+%22bq%22%3A+%22short_form%3AVFBexp%2A%5E10.0+short_form%3AVFB%2A%5E50.0+facets_annotation%3AClass%5E200.0+short_form%3AFBbt%2A%5E150.0+short_form%3AFBbt_00003982%5E2+facets_annotation%3ADeprecated%5E0.001+facets_annotation%3ADataSet%5E500.0+facets_annotation%3Apub%5E100.0%22%7D%7D",
+      "numFound": 47,
+      "target_rank_1based": 1,
+      "n_rows_named_on_something": 46,
+      "top_score": 669.0626,
+      "target_score": 669.0626
+    },
+    "jrc2018unisex": {
+      "url": "https://solr.virtualflybrain.org/solr/ontology/select?json=%7B%22params%22%3A+%7B%22q%22%3A+%22jrc2018unisex%22%2C+%22q.op%22%3A+%22OR%22%2C+%22defType%22%3A+%22edismax%22%2C+%22mm%22%3A+%2245%25%22%2C+%22qf%22%3A+%22label%5E110+synonym%5E100+label_autosuggest+synonym_autosuggest+shortform_autosuggest%22%2C+%22indent%22%3A+%22true%22%2C+%22fl%22%3A+%22short_form%2Clabel%2Csynonym%2Cid%2Cfacets_annotation%2Cunique_facets%22%2C+%22start%22%3A+%220%22%2C+%22pf%22%3A+%22label%5E250+synonym%5E120%22%2C+%22ps%22%3A+%220%22%2C+%22fq%22%3A+%5B%22%28short_form%3AVFB%2A+OR+short_form%3AFB%2A+OR+facets_annotation%3ADataSet+OR+facets_annotation%3Apub%29+AND+NOT+short_form%3AVFBc_%2A%22%2C+%22NOT+facets_annotation%3ADeprecated%22%5D%2C+%22rows%22%3A+%22100%22%2C+%22wt%22%3A+%22json%22%2C+%22bq%22%3A+%22short_form%3AVFBexp%2A%5E10.0+short_form%3AVFB%2A%5E50.0+facets_annotation%3AClass%5E200.0+short_form%3AFBbt%2A%5E150.0+short_form%3AFBbt_00003982%5E2+facets_annotation%3ADeprecated%5E0.001+facets_annotation%3ADataSet%5E500.0+facets_annotation%3Apub%5E100.0%22%7D%7D",
+      "numFound": 47,
+      "target_rank_1based": 47,
+      "n_rows_named_on_something": 46,
+      "top_score": 424.6881,
+      "target_score": 58.37406
+    }
+  }
+}

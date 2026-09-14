@@ -49,6 +49,7 @@ UA = "bsc-vfb-teaching-probe/1.0 (+https://github.com/marginli/bsc-vfb)"
 # 教材裡固定拿來當例子的幾個 id。改這裡就會改掉整份教材的例子，
 # 所以一旦頁面開始引用，就不要再動。
 EX_REGION = "FBbt_00003748"      # medulla：分區清楚、EM 與 LM 兩種來源都有
+EX_REGION_INDIV = "VFB_00102107"  # 同一塊 medulla 畫在 JRC2018Unisex 上的那一個個體
 EX_NEURON_LM = "VFB_00005010"    # Cha-F-100205：FlyCircuit 的一顆，有 NBLAST 可跑
 EX_DATASET_LM = "Chiang2010"     # FlyCircuit 1.0
 EX_UP = "LPLC2"                  # 連線例子的上游
@@ -142,13 +143,15 @@ def solr_docsite_palette(term: str):
     也就是：跟 SOLR 要 40 筆（rows=40），畫面上只顯示 **8 筆**（slice(0, Z)）。
     拿回來之後前端再依「跟你打的字**完全相同**」分四級重排：
         0 = 編號相同、1 = 正式名相同、2 = 某個同義詞相同、3 = 其餘（維持 SOLR 的順序）
-    這一支存在的理由見 _notes 第 18 條——學員卡住的就是這個框。
 
-    ⚠ **這個重建已經被實測推翻，不要拿它的名次去描述畫面。**（_notes 第 20 條）
-    照這組參數算出來，`JRC2018Unisex` 應該讓目標排第一、改成小寫就掉出前 40；
-    但使用者實際操作的結果是**兩種打法都給同樣的 8 筆，而且都沒有目標**。
-    所以這支探針記的是「SOLR 對這組參數會怎麼排」，**不是**「畫面上會出現什麼」。
-    唯一經過實際操作確認的只有兩件事：**只顯示 8 筆**、**那 8 筆裡沒有 template 本身**。
+    **第三個常數是 `.toLowerCase()`，而它才是關鍵的那一個。**
+    前端在送出之前一律把字串轉小寫，所以學員打什麼大小寫都到不了 SOLR。
+    這件事讀 bundle 讀不出來（轉小寫的那一行跟送出的那一行隔得很遠），
+    是用真的瀏覽器攔請求才看到的——見 scripts/browser_probe.py 與 out/ui/palette.json。
+
+    補上這一行之後，這支重建**跟畫面完全一致**（8 筆、全是分區、沒有 template 本身）。
+    在此之前它少了這一行，於是預測「打大寫就排第一」，跟畫面對不起來，
+    連累 _notes 第 18、20 兩條各錯一次。
     """
     fq = ["(short_form:VFB* OR short_form:FB* OR facets_annotation:DataSet "
           "OR facets_annotation:pub) AND NOT short_form:VFBc_*",
@@ -157,7 +160,7 @@ def solr_docsite_palette(term: str):
           "facets_annotation:Class^200.0 short_form:FBbt*^150.0 "
           "short_form:FBbt_00003982^2 facets_annotation:Deprecated^0.001 "
           "facets_annotation:DataSet^500.0 facets_annotation:pub^100.0")
-    pairs = [("q", term), ("q.op", "OR"), ("defType", "edismax"), ("mm", "45%"),
+    pairs = [("q", term.lower()), ("q.op", "OR"), ("defType", "edismax"), ("mm", "45%"),
              ("qf", "label^110 synonym^100 label_autosuggest "
                     "synonym_autosuggest shortform_autosuggest"),
              ("pf", "label^250 synonym^120"), ("ps", "0"),
@@ -170,6 +173,8 @@ def solr_docsite_palette(term: str):
         d = json.loads(r.read().decode("utf-8", errors="replace"))
     docs = (d.get("response") or {}).get("docs") or []
 
+    # 前端拿回來之後才做重排，而重排比對的是**使用者原本打的字**（沒轉小寫）。
+    # 送出去的是小寫、比對的是原字，兩者不同——這是這個框最反直覺的地方。
     def norm(x):
         return " ".join(str(x or "").lower().split())
 
@@ -187,6 +192,16 @@ def solr_docsite_palette(term: str):
     ranked = sorted(((tier(x), i, x) for i, x in enumerate(docs)),
                     key=lambda z: (z[0], z[1]))
     return url, docs, [x for _, _, x in ranked[:8]]
+
+
+def fetch_raw_json(url: str):
+    """照現成的完整網址取 JSON。給 search_case 用：它要把同一支查詢多要一個 score 欄位。"""
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+            return json.loads(r.read().decode("utf-8", errors="replace"))
+    except Exception:
+        return None
 
 
 def cypher(statement: str):
@@ -343,7 +358,8 @@ def _worksheet():
     **為什麼要有這一支**：作業單第一版寫「在搜尋框輸入 JRC2018Unisex，
     資訊面板裡會出現它的編號 VFB_00101567」。使用者照著做，得到一長串結果、
     找不到那個編號。原因有三個，全都在這支探針的輸出裡看得到：
-      1. 這個詞的正式名字是 **JRC2018U**，JRC2018Unisex 只是同義詞；
+      1. 正式名（Term Info 的 `Name` 欄）是 **JRC2018Unisex**，
+         **JRC2018U** 是它的 `Symbol`；而查詢標籤與搜尋框認的是後者；
       2. 搜尋回的一百多列裡，九成以上是**畫在這顆腦上的分區**，
          名字都長成「某某 on JRC2018Unisex adult brain」；
       3. 編號不在結果清單裡，要點進去才看得到——
@@ -425,16 +441,19 @@ def _worksheet():
             "solr_top8_as_displayed": [t for _, t in exploded[:8]],
         })
 
-    # 文件站首頁那個搜尋框：打字的大小寫會決定目標看不看得見。
-    # 它跟 SOLR 要 40 筆、只顯示 8 筆，所以目標一旦掉出前 40 名就等於不存在。
+    # 文件站首頁那個搜尋框：它跟 SOLR 要 40 筆、只顯示 8 筆，
+    # 而且送出前一律轉小寫——所以目標一旦掉出前 40 名就等於不存在，
+    # 學員也沒有任何打法可以救它（改大小寫沒用，那一步在前端就被抹掉了）。
     spellings, sp_urls = [], {}
-    for typed in ["JRC2018Unisex", "JRC2018unisex", "JRC2018Uni", "JRC2018"]:
+    # 最後一個是**唯一找得到目標的打法**——它是 Term Info 的 `Symbol` 欄那個短名。
+    for typed in ["JRC2018Unisex", "JRC2018unisex", "JRC2018Uni", "JRC2018", "JRC2018U"]:
         u_p, docs, top8 = solr_docsite_palette(typed)
         sp_urls[typed] = u_p
         rank = next((i for i, x in enumerate(docs)
                      if x.get("short_form") == "VFB_00101567"), None)
         spellings.append({
             "typed": typed,
+            "sent_to_solr": typed.lower(),
             "is_exact_label": typed == "JRC2018Unisex",
             "target_rank_within_40": rank,
             "target_visible_in_top8": any(x.get("short_form") == "VFB_00101567"
@@ -484,20 +503,23 @@ def _worksheet():
                 # 下面三項抄自該站的 js（Z=8, q=40 與重排函式）
                 "asks_solr_for": 40,
                 "shows_on_screen": 8,
+                "lowercases_before_sending": True,
                 "reranks_by": "跟你打的字是否完全相同（編號→正式名→同義詞→其餘）",
-                # ── 實際操作確認過的，只有這兩條 ──
-                "confirmed_by_hand": {
+                # ── 用真的瀏覽器確認過的（out/ui/palette.json）──
+                "confirmed_in_browser": {
                     "shows_8_rows": True,
                     "template_itself_absent_from_those_8": True,
-                    "when": "2026-09-14，使用者實測",
+                    "typed_JRC2018Unisex_sent_jrc2018unisex": True,
+                    "JRC2018U_returns_exactly_one": True,
+                    "when": "2026-09-14",
+                    "probe": "scripts/browser_probe.py → out/ui/palette.json",
                 },
-                # ── 以下是重建，**已被實測推翻**，不可用來描述畫面 ──
-                "reconstruction_matches_screen": False,
+                # 補上轉小寫之後，這個重建跟畫面一致了。
+                "reconstruction_matches_screen": True,
                 "reconstruction_note": (
-                    "照抄的參數算出來，大小寫會決定目標排第一還是掉出前 40；"
-                    "但實測兩種打法都給同樣的 8 筆、都沒有目標。"
-                    "留著是為了記錄『這條路試過、而且是錯的』，不是給頁面引用的。"),
-                "spellings_reconstructed_only": spellings,
+                    "這支算的是「SOLR 對這組參數會怎麼排」。它跟畫面一致，"
+                    "但**要描述畫面請引 out/ui/palette.json**——那支是真的瀏覽器拍的。"),
+                "spellings_reconstructed": spellings,
             },
             "example_neuron": {
                 "id": EX_NEURON_LM,
@@ -544,6 +566,129 @@ def _terminfo_region():
     url, d = fetch("/get_term_info", {"id": EX_REGION})
     return {"url": url, "data": d,
             "note": f"{EX_REGION} = medulla。整包原樣存下來，頁面上講到的每一欄都對得回這裡。"}
+
+
+@probe("search_case", "PART 2",
+       "同一組搜尋參數，只差大小寫，目標會排到第幾名？")
+def _search_case():
+    """PART 2 的核心例子：打 template 的正式名字，找不到 template 本身。
+
+    這一支問的是「為什麼」。同一組參數、同一個字串，只差大小寫：
+    大寫版目標排第一，全小寫版排最後一名——而**前端在送出前一律轉小寫**，
+    所以學員永遠走在小寫那一條路上（那件事由 out/ui/palette.json 證實）。
+
+    排在它前面的那些，是**它自己的分區**：每一塊分區的名字裡都帶著母體的名字。
+    """
+    out = {}
+    for typed in ("JRC2018Unisex", "jrc2018unisex"):
+        url, d = solr_site_search(typed, rows=100)
+        docs = (d.get("response") or {}).get("docs") or []
+        rank = next((i for i, x in enumerate(docs)
+                     if x.get("short_form") == "VFB_00101567"), None)
+        # 要分數就得請 SOLR 把 score 也給出來
+        u2 = url.replace("short_form%2Clabel", "short_form%2Clabel%2Cscore")
+        scored = fetch_raw_json(u2)
+        sdocs = ((scored.get("response") or {}).get("docs") or []) if scored else []
+        named_on = [x for x in docs if " on " in (x.get("label") or "")]
+        out[typed] = {
+            "url": url,
+            "numFound": (d.get("response") or {}).get("numFound"),
+            "target_rank_1based": None if rank is None else rank + 1,
+            "n_rows_named_on_something": len(named_on),
+            "top_score": (sdocs[0].get("score") if sdocs else None),
+            "target_score": (sdocs[rank].get("score")
+                             if sdocs and rank is not None and rank < len(sdocs) else None),
+        }
+    return {"url": {k: v["url"] for k, v in out.items()}, "data": out,
+            "note": ("大小寫只在 SOLR 端有效；學員碰不到它——"
+                     "文件站那個框送出前一律轉小寫，見 out/ui/palette.json。")}
+
+
+@probe("template_names", "PART 2",
+       "十套 template 在畫面上的 Name 與 Symbol 各是什麼？兩者何時不一樣？")
+def _template_names():
+    """PART 2 的主軸之一是「一個東西有三個名字」。這一支把十套 template 的
+    三個名字並排存下來，因為**它們的關係不是一對一的**：
+
+      畫面上的 `Name`   ＝ REST 的 `Meta.Name`（去掉 markdown 連結語法）
+      畫面上的 `Symbol` ＝ REST **頂層**的 `Name`  ← 名字一樣、意思相反，很容易抄錯
+      畫面上的 `ID`     ＝ `short_form`
+
+    十套裡有五套的 Symbol 跟 Name 不同，其中 `JRC_FlyEM_Hemibrain` 與它的 Symbol
+    `JRCFIB2018Fum` **一個字都不重疊**——拿其中一個去站上找另一個會找不到。
+    """
+    ids = [t["id"] for t in json.loads(
+        (OUT / "template_detail.json").read_text("utf-8"))["data"]]
+    rows, urls = [], {}
+    for i in ids:
+        url, d = fetch("/get_term_info", {"id": i})
+        urls[i] = url
+        name = strip_markup((d.get("Meta") or {}).get("Name") or "")
+        sym = d.get("Name")
+        rows.append({"id": i, "name_on_screen": name, "symbol_on_screen": sym,
+                     "differs": name != sym,
+                     "symbol_appears_inside_name": bool(sym) and sym in name})
+    return {"url": urls, "data": {
+                "rows": rows,
+                "n_differs": sum(r["differs"] for r in rows),
+                "n_symbol_not_in_name": sum(
+                    r["differs"] and not r["symbol_appears_inside_name"] for r in rows)},
+            "note": ("畫面上的欄位名對回 out/ui/terminfo_v2_template.json 與 "
+                     "terminfo_v3_template.json（那兩支是用真的瀏覽器拍的）。")}
+
+
+@probe("terminfo_individual", "PART 2",
+       "同一塊腦區，「類別」與「畫在某顆腦上的那一個」的面板差在哪？")
+def _terminfo_individual():
+    """EX_REGION 是類別（medulla 這個概念），這一支問的是它的其中一個個體。
+
+    **為什麼要成對存**：PART 2 的主軸是「FBbt_ 是類別、VFB_ 是個體」，
+    而這件事最好的證據就是把兩邊的 Term Info 並排——
+    類別有 Examples、沒有授權也沒有下載；個體反過來。
+    授權掛在個體上這件事尤其重要（types/tool.md〈著作權：逐筆，不是整站〉）。
+    """
+    url, d = fetch("/get_term_info", {"id": EX_REGION_INDIV})
+    cls = fetch("/get_term_info", {"id": EX_REGION})[1]
+
+    def shape(x):
+        return {"Name": x.get("Name"),
+                "Id": x.get("Id"),
+                "IsClass": x.get("IsClass"),
+                "IsIndividual": x.get("IsIndividual"),
+                "IsPaintedDomain": x.get("IsPaintedDomain"),
+                "SuperTypes": x.get("SuperTypes"),
+                "n_Examples": len(x.get("Examples") or {}),
+                "n_Synonyms": len(x.get("Synonyms") or []),
+                "n_Queries": len(x.get("Queries") or []),
+                "has_Licenses": bool(x.get("Licenses")),
+                "licences": [l.get("label") for l in licences_of(x)],
+                "aligned_to": sorted((x.get("Images") or {}).keys()),
+                "source": ((x.get("Licenses") or {}).get("0") or {}).get("source")}
+
+    # 第二條路：知識庫算「這個類別底下到底有幾個個體」。
+    # REST 的 Examples 欄**不穩定**——同一個 id 連問五次，回三套與四套交替出現，
+    # 所以個數一律用 Cypher 算（types/tool.md〈稽核〉那條交叉檢查）。
+    cy = ("MATCH (i:Individual)-[:INSTANCEOF]->(:Class {short_form:'%s'}) "
+          "RETURN count(i) AS total, "
+          "count(CASE WHEN i.short_form STARTS WITH 'VFB_internal' THEN 1 END) AS anonymous, "
+          "count(CASE WHEN NOT i.short_form STARTS WITH 'VFB_internal' THEN 1 END) AS named"
+          % EX_REGION)
+    cy_url, counts = cypher(cy)
+    cy2 = ("MATCH (i:Individual)-[:INSTANCEOF]->(:Class {short_form:'%s'}) "
+           "WHERE NOT i.short_form STARTS WITH 'VFB_internal' "
+           "RETURN i.short_form AS id, i.label AS label ORDER BY id" % EX_REGION)
+    _, named = cypher(cy2)
+
+    return {"url": {"rest": url, "kb": cy_url}, "data": {"individual": d, "compare": {
+                "class": shape(cls), "individual": shape(d)},
+                "instances_in_kb": {
+                    "total": counts[0][0], "anonymous": counts[0][1], "named": counts[0][2],
+                    "named_list": [{"id": r[0], "label": r[1]} for r in named],
+                    "note": ("anonymous 那些是 VFB_internal…，沒有名字也沒有影像，"
+                             "用來承載「某一個表現模式與某一隻果蠅的這塊腦區重疊」這類陳述。"
+                             "要算「有影像的有幾個」請用 ListAllAvailableImages（見 counts_region）。")},},
+            "note": (f"{EX_REGION_INDIV} 是 {EX_REGION}（medulla）畫在 JRC2018Unisex 上的那一塊。"
+                     "compare 兩欄並排，用來支持頁面上「類別與個體是兩種東西」那一節。")}
 
 
 @probe("hierarchy_region", "PART 2", "part_of 與 subclass_of 是兩張不同的圖，差在哪？")
