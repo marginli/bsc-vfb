@@ -125,7 +125,7 @@
   <p class="figsrc">2026-09-13 由 <code>scripts/vfb_probe.py</code> 抓取，原始輸出在 <code>out/templates.json</code> 與 <code>out/template_detail.json</code>。分區數用兩種算法各算一次——一種是數分區清單（扣掉代表整顆腦自己的那一格），一種是直接跑站上的 <i>Painted domains</i> 查詢——十套的兩個數字都一致。授權取自 VFB 的知識庫，每一套 template 各對到唯一一個授權。</p>
 
   <div class="callout">
-    <b>同一套 template，VFB 的兩個地方會給你不同的授權；這張表記的是知識庫那一個。</b>網站的資訊面板那一欄我們實測過會變動——同一個 template 連問五次，三次回 CC-BY 4.0、兩次回 CC-BY-SA 4.0；知識庫裡每一套 template 只連到<b>一個</b>授權，連問三次都一樣。所以你看到兩邊不一樣，不是你看錯，是那一欄不穩定。</p>
+    <b>同一套 template，VFB 的兩個地方會給你不同的授權；這張表記的是知識庫那一個。</b>那一欄我們實測過會變動——同一個 template 連問五次，三次回 CC-BY 4.0、兩次回 CC-BY-SA 4.0；知識庫裡每一套 template 只連到<b>一個</b>授權，連問三次都一樣。所以你看到兩邊不一樣，不是你看錯，是那一欄不穩定。</p>
     <p><b>但這張表回答的是「VFB 記了什麼」，不是「你可以做什麼」。</b>VFB 兩邊都只是轉錄：授權是當年釋出那套 template 的人給的，VFB 把它抄進自己的資料庫，抄錯或沒跟上更新都有可能。所以要判斷自己能不能用，源頭一律是那套 template 的原始論文或資料頁。這張表的用途是<b>索引</b>——告訴你該去查哪一套、大概會查到什麼——不是依據。
   </div>
 
@@ -344,11 +344,10 @@
   </div>
 
   <ol>
-    <li><b>打開 JRC2018Unisex 的頁面。</b>網址：<a href="https://virtualflybrain.org/reports/VFB_00101567">virtualflybrain.org/reports/VFB_00101567</a>。這種 <code>reports/編號</code> 的網址是 VFB 自己的查詢結果在連的那一種，它會轉到檢視器。<b>確認你到對地方了</b>：資訊面板（Term Info）與瀏覽器網址列都會出現 <code>VFB_00101567</code>。
-      <br>順便看一眼它的名字：面板上寫的是 <b>JRC2018U</b>，不是你以為的 JRC2018Unisex——後者只是它的同義詞。這一點等一下第 5 步會用到。</li>
-    <li><b>看它的分區。</b>在同一個面板裡找到名為 <i>Painted domains for JRC2018U</i> 的查詢並執行它。回傳的每一列都是畫在這顆標準腦上的一個腦區，<b>一共 46 列</b>——跟第 3 節那張表對得上。</li>
-    <li><b>換一套 template，同樣做一次。</b><a href="https://virtualflybrain.org/reports/VFB_00017894">reports/VFB_00017894</a> 是 JFRC2。它的 <i>Painted domains for JFRC2</i> 回 <b>58 列</b>，跟上一套的 46 不一樣——<b>不同的 template 畫的分區本來就不同</b>，這正是第 3 節那張表那一欄的意思。</li>
-    <li><b>看一顆神經元掛在哪幾套 template 上。</b>打開 FlyCircuit 的一顆神經元 <a href="https://virtualflybrain.org/reports/VFB_00005010">Cha-F-100205（reports/VFB_00005010）</a>，看它的影像列在哪些 template 底下。答案是<b>兩套</b>：JFRC2（VFB_00017894）與 JRC2018Unisex（VFB_00101567）。<b>第二套就是第 6 節說的橋接產物</b>——這顆神經元只拍過一次，另一套是算出來的。</li>
+    <li><b>打開 JRC2018Unisex 的頁面。</b>網址：<a href="https://virtualflybrain.org/reports/VFB_00101567">virtualflybrain.org/reports/VFB_00101567</a>。這種 <code>reports/編號</code> 的網址是 VFB 自己的查詢結果在連的那一種，它會轉到檢視器。<br><b>去哪裡確認你到對地方了</b>：檢視器裡有一個 <b>Term Info</b>（資訊面板）分頁，它顯示的是你目前選中的那個東西。看它的 <b><code>Name</code></b> 那一欄，應該寫著 <code>JRC2018Unisex (VFB_00101567)</code>；瀏覽器網址列也會帶著同一個編號。兩邊對上了再往下做。<br>順便記一件事：這一套<b>還有一個比較短的名字 <code>JRC2018U</code></b>。它不出現在 Name 欄，但下一步要找的那個查詢就是用它命名的——<b>同一個東西在同一個面板上有兩個名字，這在 VFB 很常見。</b></li>
+    <li><b>看它的分區。</b><b>去哪裡找</b>：同一個 Term Info 面板往下捲，有一區叫 <b><code>Queries</code></b>（跟這個東西有關的現成查詢）。在那裡找到名為 <i>Painted domains for JRC2018U</i> 的查詢並執行它。回傳的每一列都是畫在這顆標準腦上的一個腦區，<b>一共 46 列</b>——跟第 3 節那張表對得上。</li>
+    <li><b>換一套 template，同樣做一次。</b><a href="https://virtualflybrain.org/reports/VFB_00017894">reports/VFB_00017894</a> 是 JFRC2。一樣在 Term Info 的 <code>Queries</code> 區，這次的查詢叫 <i>Painted domains for JFRC2</i>，回 <b>58 列</b>，跟上一套的 46 不一樣——<b>不同的 template 畫的分區本來就不同</b>，這正是第 3 節那張表那一欄的意思。</li>
+    <li><b>看一顆神經元掛在哪幾套 template 上。</b>打開 FlyCircuit 的一顆神經元 <a href="https://virtualflybrain.org/reports/VFB_00005010">Cha-F-100205（reports/VFB_00005010）</a>。<br><b>去哪裡看</b>：Term Info 裡有一欄叫 <b><code>Aligned to</code></b>（v3 介面寫成 <code>Aligned To</code>），列的就是這顆神經元對位到哪幾套 template。這一顆會列出<b>兩套</b>：<code>VFB_00017894</code>（JFRC2）與 <code>VFB_00101567</code>（JRC2018Unisex）。<br><b>第二套就是第 6 節說的橋接產物</b>——這顆神經元只拍過一次，另一套是算出來的。順帶一提，這一欄列的是<b>編號</b>；編號要對回名字，就是第 3 節那張表的用途。</li>
     <li><b>（選做）現在去試搜尋框，而且先知道會發生什麼。</b>要先分清楚<b>有兩個不同的搜尋框</b>：<code>virtualflybrain.org</code> 那個寫著「Search VFB — pages, neurons, brain regions…」的框，是<b>說明網站自己的</b>；第 1 步打開的檢視器在另一個網站上（<code>v2.virtualflybrain.org</code>），那裡的搜尋是另一個。<br>在說明網站那個框裡打 <code>JRC2018Unisex</code>，<b>大小寫要跟這裡一模一樣</b>。打對了，它排第一。<b>只要把那個 U 打成小寫 u</b>，它就掉出畫面——那個框只跟資料庫要前 40 筆、而且只顯示 8 筆，改了大小寫之後它連前 40 名都排不進去，於是畫面上剩下的 8 筆全是「某某 <b>on</b> JRC2018Unisex adult brain」。<b>看不到它不是你打錯字，是那個框就是這樣設計的。</b><br>順便看一眼那 8 筆：<b>它們沒有一個是 template</b>，全是畫在它上面的東西。另外還會混進 <b>JRC2018Unisex<u>VNC</u></b>（VFB_00200000）——那是<b>腹神經索</b>那一套，名字只差三個字母。</li>
   </ol>
 
@@ -362,7 +361,7 @@
   </div>
 
   <div class="note">
-    <b>如果你看到的跟這裡寫的不一樣，先別急著懷疑自己。</b>本頁的數字是 2026 年 9 月 13 日抓的。VFB 的資料會更新，分區可能重畫、資料集會換版，數目因此改變是正常的。要確認自己看到的是哪一版，可以在網站上查該筆資料的來源資料集名稱——那裡會帶版本號。<b>會變的是數目，不會變的是這一頁講的那些關係</b>：template 是平均腦、對位是照參考頻道做的、位置是估計值、重疊不是接觸、每一次橋接都要付誤差。
+    <b>如果你看到的跟這裡寫的不一樣，先別急著懷疑自己。</b>本頁的數字是 2026 年 9 月 13 日抓的。VFB 的資料會更新，分區可能重畫、資料集會換版，數目因此改變是正常的。要確認自己看到的是哪一版，就看該筆資料 Term Info 的 <code>Licenses</code> 欄——它除了授權，也標出這筆影像出自哪一個資料集，<b>資料集的名字裡帶著版本</b>（例如上面那顆神經元標的是「FlyCircuit 1.0 - single neurons (Chiang2010)」）。<b>會變的是數目，不會變的是這一頁講的那些關係</b>：template 是平均腦、對位是照參考頻道做的、位置是估計值、重疊不是接觸、每一次橋接都要付誤差。
   </div>
 
   <div class="pager">

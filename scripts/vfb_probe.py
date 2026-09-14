@@ -442,10 +442,37 @@ def _worksheet():
     urls[f"term_info:{EX_NEURON_LM}"] = u_n
     aligned = sorted((n.get("Images") or {}).keys())
 
+    # 作業單每一步都指名「去 Term Info 的哪一欄看」。那些欄位名一旦改掉，
+    # 學員就會照著找不到——所以把每一欄的現值存下來，重跑時 diff 得出來。
+    def meta_name(d):
+        return (d.get("Meta") or {}).get("Name")
+
+    ti_t = fetch("/get_term_info", {"id": "VFB_00101567"})[1]
+    ti_j = fetch("/get_term_info", {"id": "VFB_00017894"})[1]
+    lic0 = (n.get("Licenses") or {}).get("0") or {}
+    fields = {
+        "第1步：Term Info 的 Name 欄（用來確認到對地方了）": {
+            "VFB_00101567": meta_name(ti_t)},
+        "第1步：另一個較短的名字（頂層 Name，查詢標籤用它）": {
+            "VFB_00101567": ti_t.get("Name")},
+        "第2、3步：Term Info 的 Queries 區裡那支查詢的標籤": {
+            "VFB_00101567": next((q["label"] for q in ti_t.get("Queries") or []
+                                  if q.get("query") == "PaintedDomains"), None),
+            "VFB_00017894": next((q["label"] for q in ti_j.get("Queries") or []
+                                  if q.get("query") == "PaintedDomains"), None)},
+        "第4步：Term Info 的 Aligned to 欄（＝Images 的鍵）": {
+            EX_NEURON_LM: sorted((n.get("Images") or {}).keys())},
+        "授權方框：Term Info 的 Licenses 欄": {
+            "VFB_00101567": [x["label"] for x in licences_of(ti_t)]},
+        "結尾：Licenses 欄同時標出來源資料集（名字裡帶版本）": {
+            EX_NEURON_LM: lic0.get("source")},
+    }
+
     return {
         "url": urls,
         "data": {
             "steps": steps,
+            "term_info_fields_pointed_at": fields,
             "docsite_search_box": {
                 "where": "www.virtualflybrain.org 首頁的搜尋框（命令面板）",
                 "asks_solr_for": 40,
@@ -472,7 +499,9 @@ def _worksheet():
                  "　**三條路三個數字**：REST /search 的 search_rows、"
                  "網站搜尋框打的 SOLR 的 solr_num_found、以及前端 explode 後的 "
                  "solr_exploded_rows，同一個字串三個都不一樣。"
-                 "所以頁面上**不要寫學員會看到幾筆**——我們量得到的沒有一個是螢幕上那個數字。"),
+                 "所以頁面上**不要寫學員會看到幾筆**——我們量得到的沒有一個是螢幕上那個數字。"
+                 "　term_info_fields_pointed_at 記的是作業單叫學員去看的每一欄的現值："
+                 "欄位改名或內容變了，學員就會照著找不到，重跑時要當成必修項。"),
     }
 
 

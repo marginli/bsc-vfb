@@ -19,7 +19,7 @@
     },
     "term_info:VFB_00005010": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00005010"
   },
-  "note": "作業單第 1、4 步：學員打進去的字串不一定是該詞的正式名字，而且搜尋結果絕大多數是「畫在這套 template 上的東西」而不是 template 本身——所以作業單要給 report_url 當保險，不能只寫「點進結果」。rows_named_on_this_template 是照**名字**分的（學員在畫面上只有名字可用），neuropil_typed_rows 是照型別分的，兩個數字本來就不同：顎神經節那種的型別不是 Synaptic_neuropil，名字卻一樣帶「on …」。rows_not_named_on_it_detail 要能逐列交代完——搜尋 JRC2018Unisex 會連 JRC2018UnisexVNC（另一套 template）一起撈回來。第 5 步：example_neuron 對位到 n_templates 套 template。　**三條路三個數字**：REST /search 的 search_rows、網站搜尋框打的 SOLR 的 solr_num_found、以及前端 explode 後的 solr_exploded_rows，同一個字串三個都不一樣。所以頁面上**不要寫學員會看到幾筆**——我們量得到的沒有一個是螢幕上那個數字。",
+  "note": "作業單第 1、4 步：學員打進去的字串不一定是該詞的正式名字，而且搜尋結果絕大多數是「畫在這套 template 上的東西」而不是 template 本身——所以作業單要給 report_url 當保險，不能只寫「點進結果」。rows_named_on_this_template 是照**名字**分的（學員在畫面上只有名字可用），neuropil_typed_rows 是照型別分的，兩個數字本來就不同：顎神經節那種的型別不是 Synaptic_neuropil，名字卻一樣帶「on …」。rows_not_named_on_it_detail 要能逐列交代完——搜尋 JRC2018Unisex 會連 JRC2018UnisexVNC（另一套 template）一起撈回來。第 5 步：example_neuron 對位到 n_templates 套 template。　**三條路三個數字**：REST /search 的 search_rows、網站搜尋框打的 SOLR 的 solr_num_found、以及前端 explode 後的 solr_exploded_rows，同一個字串三個都不一樣。所以頁面上**不要寫學員會看到幾筆**——我們量得到的沒有一個是螢幕上那個數字。　term_info_fields_pointed_at 記的是作業單叫學員去看的每一欄的現值：欄位改名或內容變了，學員就會照著找不到，重跑時要當成必修項。",
   "data": {
     "steps": [
       {
@@ -139,6 +139,32 @@
         ]
       }
     ],
+    "term_info_fields_pointed_at": {
+      "第1步：Term Info 的 Name 欄（用來確認到對地方了）": {
+        "VFB_00101567": "[JRC2018Unisex](VFB_00101567)"
+      },
+      "第1步：另一個較短的名字（頂層 Name，查詢標籤用它）": {
+        "VFB_00101567": "JRC2018U"
+      },
+      "第2、3步：Term Info 的 Queries 區裡那支查詢的標籤": {
+        "VFB_00101567": "Painted domains for JRC2018U",
+        "VFB_00017894": "Painted domains for JFRC2"
+      },
+      "第4步：Term Info 的 Aligned to 欄（＝Images 的鍵）": {
+        "VFB_00005010": [
+          "VFB_00017894",
+          "VFB_00101567"
+        ]
+      },
+      "授權方框：Term Info 的 Licenses 欄": {
+        "VFB_00101567": [
+          "CC-BY-NC-SA_4.0"
+        ]
+      },
+      "結尾：Licenses 欄同時標出來源資料集（名字裡帶版本）": {
+        "VFB_00005010": "FlyCircuit 1.0 - single neurons (Chiang2010)"
+      }
+    },
     "docsite_search_box": {
       "where": "www.virtualflybrain.org 首頁的搜尋框（命令面板）",
       "asks_solr_for": 40,
