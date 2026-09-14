@@ -1,0 +1,53 @@
+{
+  "probe": "bulk_download",
+  "part": "PART 6",
+  "question": "打包下載的對話框：叫什麼、給哪幾種格式、挑的是什麼",
+  "site": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto",
+  "id": "VFB_00005010",
+  "url": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto?id=VFB_00005010",
+  "toolbar_icon_titles": [
+    "NBLAST Uploader",
+    "Download Contents",
+    "Clear all",
+    "Search",
+    "Query results",
+    "Layers",
+    "Center Stack",
+    "Zoom In",
+    "Zoom Out",
+    "Step Into Stack",
+    "Step Out Of Stack",
+    "Change Slice Plane Through Stack",
+    "Toggle the 3D slice display",
+    "Deselect",
+    "Color",
+    "Target in 3D",
+    "Hide",
+    "Disable 3D Volume",
+    "Enable 3D Skeleton",
+    "Delete",
+    "FlyCircuit 1.1"
+  ],
+  "icon_that_opens_it": "Download Contents",
+  "dialog_lines": [
+    "Download Data",
+    "Please select the desired types",
+    "OBJ",
+    "SWC",
+    "NRRD",
+    "References",
+    "Please select Variables:",
+    "All Instances",
+    "Cha-F-100205",
+    "adult brain template JFRC2",
+    "CANCEL",
+    "DOWNLOAD"
+  ],
+  "formats_offered": [
+    "OBJ",
+    "SWC",
+    "NRRD",
+    "References"
+  ],
+  "note": "三個名字互不相同：圖示 title `Download Contents`、對話框標題 `Download Data`、而 VFB 文件與本課計畫書都叫它 bulk download。頁面上要用畫面上看得到的那兩個。"
+}

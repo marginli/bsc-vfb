@@ -123,6 +123,10 @@ def candidates(src):
             continue
         if IS_ID.match(t) or t.lower() in NOT_A_FIELD:
             continue
+        # 以 () 結尾的是函式呼叫（`VfbConnect()`、`len()`），不是介面上的名字。
+        # 只擋結尾——`Mesh (OBJ)` 這種括號在中間的是真的欄位名。
+        if t.endswith("()"):
+            continue
         if not LOOKS_LIKE_FIELD.match(t):
             continue
         out.append(t)

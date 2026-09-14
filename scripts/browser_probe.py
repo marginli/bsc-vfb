@@ -899,6 +899,51 @@ def _nblast_results(pw):
         b.close()
 
 
+@probe("bulk_download", "PART 6",
+       "打包下載的對話框：叫什麼、給哪幾種格式、挑的是什麼")
+def _bulk_download(pw):
+    """PART 6 滑鼠那一層。**三個名字都要拍**，因為它們互不相同：
+    頂列圖示的 title 是 `Download Contents`，對話框標題是 `Download Data`，
+    而計畫書當初照文件寫的是「bulk download 圖示」——三個講法沒有一個一樣。
+    """
+    b, pg = new_page(pw, 1700, 1050)
+    try:
+        pg.goto(f"{V2}?id={EX_NEURON_LM}", wait_until="domcontentloaded", timeout=90000)
+        pg.wait_for_timeout(32000)
+        icons = pg.evaluate(
+            """() => [...document.querySelectorAll('[title]')]
+                 .filter(e => e.getClientRects().length)
+                 .map(e => e.getAttribute('title'))
+                 .filter(t => t && t.length < 40)""")
+        pg.locator("[title*='ownload']").first.click(timeout=10000)
+        pg.wait_for_timeout(6000)
+        shot(pg, "bulk_download")
+        dialog = pg.evaluate(
+            """() => { const NL = String.fromCharCode(10);
+               // 要同時含標題與格式卡片，否則抓到的只有標題那一個元素
+               const c = [...document.querySelectorAll('div')].filter(x => {
+                   const t = x.innerText || '';
+                   return x.getClientRects().length && t.length < 1200
+                          && t.indexOf('Download Data') >= 0 && t.indexOf('OBJ') >= 0; });
+               if (!c.length) return null;
+               c.sort((a, b) => a.innerText.length - b.innerText.length);
+               return c[0].innerText.split(NL).map(s => s.trim()).filter(Boolean); }""")
+        return {
+            "site": V2, "id": EX_NEURON_LM,
+            "url": f"{V2}?id={EX_NEURON_LM}",
+            "toolbar_icon_titles": icons,
+            "icon_that_opens_it": "Download Contents",
+            "dialog_lines": dialog,
+            "formats_offered": [x for x in (dialog or [])
+                                if x in ("OBJ", "SWC", "NRRD", "References")],
+            "note": ("三個名字互不相同：圖示 title `Download Contents`、"
+                     "對話框標題 `Download Data`、而 VFB 文件與本課計畫書都叫它 "
+                     "bulk download。頁面上要用畫面上看得到的那兩個。"),
+        }
+    finally:
+        b.close()
+
+
 @probe("search_v3", "PART 2",
        "v3 的 `Find something...` 搜尋框：送出什麼、畫面上出現什麼")
 def _search_v3(pw):

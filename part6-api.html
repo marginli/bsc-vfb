@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PART 6 接到程式與 AI｜VFB 專題課程</title>
+<link rel="stylesheet" href="assets/vfb.css">
+</head>
+<body>
+<div class="crumb"><a href="index.html">VFB 專題課程</a> ／ PART 6</div>
+<header class="hero">
+  <p class="eyebrow">PART 6</p>
+  <h1>接到程式與 AI</h1>
+  <p class="subtitle">同一個問題有三種問法。這一部分把三種都做一次，然後比對答案——不一樣的地方才是重點</p>
+</header>
+
+<div class="wrap">
+
+  <div class="pager top">
+    <a href="part5-nblast.html">← PART 5　形態比對</a>
+    <span>這是最後一個部分</span>
+  </div>
+
+  <nav class="toc">
+    <h2>本頁章節</h2>
+    <ol>
+      <li><a href="#s1">這個網站不是只能用滑鼠</a></li>
+      <li><a href="#s2">滑鼠：把東西打包帶走</a></li>
+      <li><a href="#s3">程式：<code>vfb-connect</code></a></li>
+      <li><a href="#s4">AI：VFB 自己架的 MCP 伺服器</a></li>
+      <li><a href="#s5">同一個問題，三種做法</a></li>
+      <li><a href="#s6">哪一層該用在什麼時候</a></li>
+      <li><a href="#s7">動手做</a></li>
+    </ol>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s1"><span class="pt">1</span>這個網站不是只能用滑鼠</h2>
+
+  <p><a href="part3-queries.html">PART 3</a> 用滑鼠做出了一份清單：medulla 裡有一部分在裡面的神經元，<b>471 種</b>。那份清單還有兩種拿法：<b>寫三行 Python</b>，或者<b>直接用中文問 AI</b>——而 VFB 自己就架了一台伺服器，專門讓 AI 去問它。</p>
+
+  <div class="note">
+    <b>這一部分要換掉的觀念：「這個網站只能用滑鼠。」</b>三種做法問的是同一個資料庫，<b>但它們的預設值不一樣</b>——所以會給出不一樣的數字。<a href="#s5">第 5 節</a>把三個數字擺在一起，逐項解釋差在哪裡。<b>那一節才是這一部分真正要教的東西</b>；前面三節只是把工具介紹完。
+  </div>
+
+  <p class="figsrc">471 這個數字出自 <a href="part3-queries.html#s2">PART 3 第 2 節</a>（<code>out/query_overlaps.json</code>，<code>scripts/vfb_probe.py</code>，2026-09-14）；<a href="#s5">第 5 節</a>會把三層各自問到的數字並排。</p>
+
+  <div class="callout">
+    <b>前五個部分都不用安裝任何東西，這一部分不是。</b>滑鼠那一層仍然在瀏覽器裡做得完；程式與 AI 兩層要裝東西。<b>不想裝也沒關係</b>——<a href="#s5">第 5 節</a>的結論不需要你自己跑過就看得懂。
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s2"><span class="pt">2</span>滑鼠：把東西打包帶走</h2>
+
+  <p><a href="part3-queries.html#s6">PART 3 第 6 節</a>下載的是<b>清單</b>（一個 CSV）。這裡下載的是<b>東西本身</b>——影像、網格、骨架。</p>
+
+  <p>在檢視器（<code>v2.virtualflybrain.org</code>）裡把要的東西開好之後，按頂列那個 <b><code>Download Contents</code></b> 圖示，跳出來的對話框標題是 <b><code>Download Data</code></b>：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>對話框的兩段</th><th>要你選什麼</th></tr>
+    <tr><td><i>Please select the desired types</i></td><td>四種格式：<code>OBJ</code>（網格）、<code>SWC</code>（骨架）、<code>NRRD</code>（影像訊號）、<code>References</code>（引用資訊）</td></tr>
+    <tr><td><i>Please select Variables:</i></td><td><b>要下載哪幾個東西</b>——目前載入檢視器裡的那些，可以整組勾（<code>All Instances</code>）也可以逐個挑</td></tr>
+  </table>
+  </div>
+
+  <div class="danger">
+    <b>第二段挑的是「東西」，不是「欄位」。</b>它列出來的就是 <a href="part3-queries.html#s5">PART 3 第 5 節</a>那個 <code>Layers</code> 面板上的內容——<b>你沒有勾進檢視器的東西，這裡不會出現</b>。所以要打包一批神經元，得先把它們載入檢視器。
+  </div>
+
+  <p class="figsrc">圖示名稱、對話框標題、兩段文字與四種格式，由 <code>scripts/browser_probe.py</code> 在 2026-09-14 用真的瀏覽器點開拍下，原始輸出在 <code>out/ui/bulk_download.json</code>。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s3"><span class="pt">3</span>程式：<code>vfb-connect</code></h2>
+
+  <p>VFB 官方的 Python 套件。裝一行：</p>
+
+  <pre>pip install vfb-connect</pre>
+
+  <p>本課實測的是 <b>2.4.5</b> 版。用起來是三行：</p>
+
+  <pre>from vfb_connect import VfbConnect
+vc = VfbConnect()
+vc.get_terms_by_region('medulla')</pre>
+
+  <div class="note">
+    <b>兩件文件沒寫、但你一定會遇到的事。</b><br>
+    <b>一、<code>import</code> 本身就會連線。</b>光是把套件匯入並建立 <code>VfbConnect()</code>，就要<b>五秒</b>，而且會印出六百多個字元的彩色橫幅。寫進腳本裡會很吵，<b>要自己把輸出關掉</b>。<br>
+    <b>二、回傳的是 DataFrame，不是 list 或 dict。</b>所以拿到之後是用 <code>len()</code>、<code>.columns</code>、<code>['id']</code> 這一套，不是 <code>for x in ...</code> 逐筆挑鍵。
+  </div>
+
+  <p class="figsrc">版本、耗時、橫幅長度與回傳型別，由 <code>scripts/three_layers.py</code> 在 2026-09-14 實際跑一次量得，記在 <code>out/three_layers.json</code> 的 <code>code</code> 底下。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s4"><span class="pt">4</span>AI：VFB 自己架的 MCP 伺服器</h2>
+
+  <p><b>MCP</b>（Model Context Protocol）是一套讓 AI 助理去呼叫外部工具的協定——這個詞本課第一次用，意思就是：<b>有人把一組工具包好、放在一個網址上，AI 助理連上去就能用。</b>VFB 自己架了一台：</p>
+
+  <pre>https://vfb3-mcp.virtualflybrain.org</pre>
+
+  <p><b>不需要認證、不需要 API key。</b>本課實測到的伺服器版本是 <code>vfb3-mcp-server 1.11.2</code>。以 Claude Code 為例，接上去是一行：</p>
+
+  <pre>claude mcp add --transport http virtual-fly-brain \
+       https://vfb3-mcp.virtualflybrain.org</pre>
+
+  <p>接上之後，你就可以用中文問「medulla 裡有哪些神經元」，AI 會自己挑工具、自己填參數。</p>
+
+  <h3>它開出來的工具有 11 個</h3>
+
+  <p>VFB 的說明文件介紹了七類。<b>實際連上去問它，回來的是 11 個</b>——七類都在，另外四個文件沒提，而且那四個全都跟 <a href="part4-connectomes.html">PART 4</a> 的主題有關：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>工具名</th><th>做什麼</th><th>文件有提嗎</th></tr>
+    <tr><td><code>get_term_info</code></td><td>查一個詞的全部資訊</td><td>有</td></tr>
+    <tr><td><code>search_terms</code></td><td>搜尋詞條</td><td>有</td></tr>
+    <tr><td><code>run_query</code></td><td>跑現成查詢（含 NBLAST）</td><td>有</td></tr>
+    <tr><td><code>get_hierarchy</code></td><td>階層瀏覽</td><td>有</td></tr>
+    <tr><td><code>list_search_facets</code></td><td>列出可以用來篩的類別</td><td>有</td></tr>
+    <tr><td><code>resolve_entity</code></td><td>把名字解析成編號</td><td>有</td></tr>
+    <tr><td><code>resolve_combination</code></td><td>解析 split-GAL4 組合名</td><td>有</td></tr>
+    <tr><td><code>list_connectome_datasets</code></td><td>列出連線資料集</td><td><b>沒有</b></td></tr>
+    <tr><td><code>query_connectivity</code></td><td>跨所有連線資料集查連線</td><td><b>沒有</b></td></tr>
+    <tr><td><code>get_predicted_neurotransmitters</code></td><td>查預測的神經傳導物質</td><td><b>沒有</b></td></tr>
+    <tr><td><code>get_known_neurotransmitters</code></td><td>查已知（人工整理）的神經傳導物質</td><td><b>沒有</b></td></tr>
+  </table>
+  </div>
+
+  <div class="callout">
+    <b>「文件是導覽，不是實作」——這是本課第五次遇到。</b>前面四次分別是：template 文件寫四套實際十套（<a href="part1-templates.html#s3">PART 1</a>）、文件的搜尋參數跟前端實際送的不一樣（<a href="part2-names.html#s5">PART 2</a>）、結果表的欄名跟程式介面的鍵名不同（<a href="part3-queries.html#s3">PART 3</a>）、以及連線資料集清單只收八套而知識庫裡有六十套（<a href="part4-connectomes.html#s2">PART 4</a>）。<b>要知道一個服務真的提供什麼，去問它，不要讀它的介紹。</b>
+  </div>
+
+  <p class="figsrc">伺服器版本、11 個工具的名稱與參數，由 <code>scripts/three_layers.py</code> 走 MCP 的握手流程後取得（2026-09-14），記在 <code>out/three_layers.json</code> 的 <code>ai</code> 底下。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s5"><span class="pt">5</span>同一個問題，三種做法</h2>
+
+  <p>現在把三層擺在一起。問題就是 <a href="part3-queries.html">PART 3</a> 那個：<b>medulla 裡有一部分在裡面的神經元，有幾種？</b></p>
+
+  <div class="statgrid">
+    <div class="stat"><div class="v">471</div><div class="k">滑鼠：結果表的標題</div></div>
+    <div class="stat"><div class="v">471</div><div class="k">AI：MCP 的 run_query</div></div>
+    <div class="stat"><div class="v">510</div><div class="k">程式：get_terms_by_region()</div></div>
+  </div>
+
+  <p><b>滑鼠與 AI 一致，程式那一層多了 39。</b>差在哪裡？把兩邊的編號取回來逐一比對，答案很單純：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>差別</th><th>多出來的是什麼</th><th>為什麼</th></tr>
+    <tr><td>510 → 481</td><td><b>39 個次分區</b>：<i>outer medulla</i>、<i>medulla layer M1</i>–<i>M10</i>、<i>inner medulla</i>⋯</td><td>函式叫 <code>get_terms_by_<b>region</b></code>，它回的是「跟這個腦區有關的<b>所有詞</b>」，不是只有神經元。加上 <code>cells_only=True</code> 就排掉了</td></tr>
+    <tr><td>481 → 471</td><td><b>9 個膠細胞</b> ＋ <b>2 個神經元</b>（<i>Dm8a</i>、<i>Dm8b</i>）</td><td><b>cell 不等於 neuron</b>——膠細胞也是細胞。那兩個神經元見下一段</td></tr>
+    <tr><td>反過來，471 裡有 1 個是程式那層沒有的</td><td><code>FBbt_00110069</code>，標籤是 <i>obsolete distal medullary amacrine neuron Dm8b</i></td><td><b>一個已棄用的詞。</b><code>vfb-connect</code> 預設 <code>include_deprecated=False</code> 會把它排掉，而站上那支查詢沒有這個預設</td></tr>
+  </table>
+  </div>
+
+  <p>最後那一列值得多看一眼：<b>站上那 471 種裡，有一種是已經棄用的詞</b>，而它的新版（<code>FBbt_00053638</code> 與 <code>FBbt_00053639</code>，<i>Dm8a</i> 與 <i>Dm8b</i>）反而只出現在程式那一層。同一個名字、兩個編號，一個作廢一個現行——這正是 <a href="part4-connectomes.html#s4">PART 4 第 4 節</a>講的棄用，出現在詞的層次上。</p>
+
+  <div class="plain">
+    <b>三個差別，全部來自參數的預設值。</b>沒有一個是哪一層算錯了。<b>所以規矩是：報告一個數字的時候，要連「你用的是哪一層、那一層的預設值是什麼」一起說。</b><a href="part4-connectomes.html#s6">PART 4 第 6 節</a>那份清單要再加一件：<b>你用的是哪一層</b>。
+  </div>
+
+  <p class="figsrc">三層的數字、逐項差集與每一個差異項的標籤，由 <code>scripts/three_layers.py</code> 在 2026-09-14 各跑一次取得，原始輸出在 <code>out/three_layers.json</code>（滑鼠那一層的數字讀自 <code>out/ui/query_results.json</code>，也就是真的瀏覽器拍下來的標題列）。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s6"><span class="pt">6</span>哪一層該用在什麼時候</h2>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>這一層</th><th>什麼時候用</th><th>要付的代價</th></tr>
+    <tr><td><b>滑鼠</b></td><td>看一顆、確認一件事、把東西打包帶走。<b>預設就用這一層</b></td><td>做不了批次；筆數是介面的性質（<a href="part2-names.html#s5">PART 2 第 5 節</a>）</td></tr>
+    <tr><td><b>程式</b></td><td>要批次、要算不重複的個數、要把結果接到下一步</td><td>要裝、要五秒的啟動、<b>而且要自己弄清楚每個參數的預設值</b></td></tr>
+    <tr><td><b>AI</b></td><td>你還不知道該用哪一支查詢的時候；或者問題不好翻成介面操作</td><td>它會替你挑工具、填參數——<b>而那些正是你該自己決定的事</b></td></tr>
+  </table>
+  </div>
+
+  <div class="danger">
+    <b>AI 那一層有一個特有的風險：它會替你做決定，而且不會告訴你。</b>上面那三個差別——次分區算不算、膠細胞算不算、棄用的詞算不算——<b>每一個都是有人替你決定了</b>。用滑鼠時決定的人是 VFB，用程式時是那個函式的預設值，用 AI 時是 AI。<b>三種都不是你。</b><br>所以問完之後要追一句：<b>「你用了哪一個工具、填了哪些參數？」</b>——MCP 的回應裡有這些資訊，而那是你把它的答案寫進論文之前必須看的東西。
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s7"><span class="pt">7</span>動手做</h2>
+
+  <p>三步。第一步在瀏覽器裡做得完，第二、三步要裝東西——<b>不裝也可以只做第一步</b>。</p>
+
+  <ol>
+    <li><b>把一顆神經元打包下載。</b>網址：<a href="https://virtualflybrain.org/reports/VFB_00005010">virtualflybrain.org/reports/VFB_00005010</a>。在檢視器（<code>v2.virtualflybrain.org</code>）頂列找到 <b><code>Download Contents</code></b> 圖示，點開。<br><b>看到什麼算對</b>：對話框標題是 <code>Download Data</code>，第一段 <i>Please select the desired types</i> 底下有四個方框：<code>OBJ</code>、<code>SWC</code>、<code>NRRD</code>、<code>References</code>。勾 <code>SWC</code>，再到第二段勾 <code>Cha-F-100205</code>，按 <code>DOWNLOAD</code>。<br><b>拿到的就是 <a href="part5-nblast.html#s4">PART 5 第 4 節</a>量過的那份骨架。</b></li>
+
+    <li><b>用程式問同一個腦區。</b>裝好 <code>pip install vfb-connect</code> 之後跑那三行（<a href="#s3">第 3 節</a>）。<br><b>看到什麼算對</b>：回來的是一個 DataFrame。<b>先不要看內容，先看 <code>len()</code></b>——如果是 <b>510</b>，你就親眼看到<a href="#s5">第 5 節</a>那個差別了。接著加上 <code>cells_only=True</code> 再跑一次，數字會變成 <b>481</b>。<br><b>兩個數字都不是 471。想一下為什麼，再去看第 5 節那張表。</b></li>
+
+    <li><b>接上 MCP，然後追問它。</b>照<a href="#s4">第 4 節</a>那一行把伺服器加進你的 AI 助理，然後用中文問：「medulla 裡有一部分在裡面的神經元有幾種？」<br><b>看到什麼算對</b>：它應該回你 <b>471</b>。<br><b>然後追問一句：「你用了哪一個工具、填了哪些參數？」</b>——把它的回答跟<a href="#s5">第 5 節</a>那張表對一遍。<b>這一步才是這個作業單的重點</b>：不是讓 AI 給你答案，是讓它交代它怎麼得到那個答案的。</li>
+  </ol>
+
+  <p class="figsrc">這一節指名的每一個名稱與數字，都由 <code>scripts/browser_probe.py</code> 與 <code>scripts/three_layers.py</code> 在 2026-09-14 實際做過一遍取得，原始輸出在 <code>out/ui/bulk_download.json</code> 與 <code>out/three_layers.json</code>。</p>
+
+  <div class="note">
+    <b>這是這門課的最後一個部分。</b>六個部分走完，你手上有的不是一套操作步驟，而是一組習慣：<b>先問這個數字在回答什麼問題</b>、<b>先確認自己在哪一個網站上</b>、<b>先看它是哪一套資料的哪一版</b>、<b>先問有沒有第二條路可以問到同一個數字</b>。<br>這些習慣不會因為 VFB 改版而失效——<b>而這門課裡所有會失效的東西，都標了日期。</b>
+  </div>
+
+  <div class="pager">
+    <a href="part5-nblast.html">← PART 5　形態比對</a>
+    <span>這是最後一個部分</span>
+  </div>
+</div>
+
+<div class="foot">
+  VFB 專題課程　PART 6　·　本頁引用的 VFB 資料、畫面與 API 回應皆於 2026-09-14 取得　·　
+  頁面上每個數字都對得回 <code>out/</code> 底下的探針輸出
+</div>
+</body>
+</html>
