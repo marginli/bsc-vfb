@@ -58,13 +58,7 @@
     "ONCN": 1
    }
   },
-  "note": "778 列 − 732 型 = 46，剛好就是佔兩列的型數；那 46 個全部是 _L／_R 成對。",
-  "vcn_check": {
-   "types": 104,
-   "rows": 110,
-   "cells": 270,
-   "paper_says": "We identified 104 VCN types across about 270 cells"
-  }
+  "note": "778 列 − 732 型 = 46，剛好就是佔兩列的型數；那 46 個全部是 _L／_R 成對。"
  },
  "by_instance": {
   "5-HTPMPV03_R": {
