@@ -143,6 +143,12 @@ def solr_docsite_palette(term: str):
     拿回來之後前端再依「跟你打的字**完全相同**」分四級重排：
         0 = 編號相同、1 = 正式名相同、2 = 某個同義詞相同、3 = 其餘（維持 SOLR 的順序）
     這一支存在的理由見 _notes 第 18 條——學員卡住的就是這個框。
+
+    ⚠ **這個重建已經被實測推翻，不要拿它的名次去描述畫面。**（_notes 第 20 條）
+    照這組參數算出來，`JRC2018Unisex` 應該讓目標排第一、改成小寫就掉出前 40；
+    但使用者實際操作的結果是**兩種打法都給同樣的 8 筆，而且都沒有目標**。
+    所以這支探針記的是「SOLR 對這組參數會怎麼排」，**不是**「畫面上會出現什麼」。
+    唯一經過實際操作確認的只有兩件事：**只顯示 8 筆**、**那 8 筆裡沒有 template 本身**。
     """
     fq = ["(short_form:VFB* OR short_form:FB* OR facets_annotation:DataSet "
           "OR facets_annotation:pub) AND NOT short_form:VFBc_*",
@@ -475,10 +481,23 @@ def _worksheet():
             "term_info_fields_pointed_at": fields,
             "docsite_search_box": {
                 "where": "www.virtualflybrain.org 首頁的搜尋框（命令面板）",
+                # 下面三項抄自該站的 js（Z=8, q=40 與重排函式）
                 "asks_solr_for": 40,
                 "shows_on_screen": 8,
                 "reranks_by": "跟你打的字是否完全相同（編號→正式名→同義詞→其餘）",
-                "spellings": spellings,
+                # ── 實際操作確認過的，只有這兩條 ──
+                "confirmed_by_hand": {
+                    "shows_8_rows": True,
+                    "template_itself_absent_from_those_8": True,
+                    "when": "2026-09-14，使用者實測",
+                },
+                # ── 以下是重建，**已被實測推翻**，不可用來描述畫面 ──
+                "reconstruction_matches_screen": False,
+                "reconstruction_note": (
+                    "照抄的參數算出來，大小寫會決定目標排第一還是掉出前 40；"
+                    "但實測兩種打法都給同樣的 8 筆、都沒有目標。"
+                    "留著是為了記錄『這條路試過、而且是錯的』，不是給頁面引用的。"),
+                "spellings_reconstructed_only": spellings,
             },
             "example_neuron": {
                 "id": EX_NEURON_LM,

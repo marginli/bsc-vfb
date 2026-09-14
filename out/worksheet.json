@@ -170,7 +170,14 @@
       "asks_solr_for": 40,
       "shows_on_screen": 8,
       "reranks_by": "跟你打的字是否完全相同（編號→正式名→同義詞→其餘）",
-      "spellings": [
+      "confirmed_by_hand": {
+        "shows_8_rows": true,
+        "template_itself_absent_from_those_8": true,
+        "when": "2026-09-14，使用者實測"
+      },
+      "reconstruction_matches_screen": false,
+      "reconstruction_note": "照抄的參數算出來，大小寫會決定目標排第一還是掉出前 40；但實測兩種打法都給同樣的 8 筆、都沒有目標。留著是為了記錄『這條路試過、而且是錯的』，不是給頁面引用的。",
+      "spellings_reconstructed_only": [
         {
           "typed": "JRC2018Unisex",
           "is_exact_label": true,
