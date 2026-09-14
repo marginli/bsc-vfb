@@ -16,6 +16,28 @@
    "right_only": 635,
    "left_only": 51
   },
+  "rows_contributed_by_side": {
+   "right_only": {
+    "_R": 635,
+    "_L": 0,
+    "rows": 635
+   },
+   "both": {
+    "_R": 46,
+    "_L": 46,
+    "rows": 92
+   },
+   "left_only": {
+    "_R": 0,
+    "_L": 51,
+    "rows": 51
+   },
+   "total": {
+    "_R": 681,
+    "_L": 97,
+    "rows": 778
+   }
+  },
   "groups_by_side": {
    "both": {
     "VPN": 33,

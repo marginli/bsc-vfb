@@ -104,15 +104,17 @@
   <div class="gap">
     <h4>為什麼是 778 列卻只有 732 個型</h4>
     <p><b>一列不是一個型，是一個「型＋側別」的實例。</b>778 − 732 ＝ <b>46</b>，而剛好有 46 個型在表裡佔了兩列——一列 <code>_L</code>、一列 <code>_R</code>，<b>46 個全部成對，沒有例外</b>。686 個型各佔一列，加上 46 個各佔兩列，正好 778。</p>
-    <p>會這樣，是因為這份連線體重建的是<b>右側</b>視葉（681 列是 <code>_R</code>，97 列是 <code>_L</code>）。把 732 個型按側別攤開：</p>
+    <p>會這樣，是因為這份連線體重建的是<b>右側</b>視葉。把 732 個型按側別攤開——<b>最右邊那兩欄是型，中間兩欄是列</b>，兩者的換算就寫在表裡：</p>
     <div class="tblwrap">
     <table>
-      <tr><th>在表裡出現在</th><th>型數</th><th>主要是哪一群</th></tr>
-      <tr><td>只有 <code>_R</code></td><td>635</td><td>VPN 319、ONIN 146、ONCN 94　——<b>視葉自己的神經元</b></td></tr>
-      <tr><td>兩側都有</td><td>46</td><td>VPN 33、VCN 6　——連到中腦的，左右兩顆都伸進右視葉</td></tr>
-      <tr><td>只有 <code>_L</code></td><td>51</td><td><b>VCN 44</b>　——中腦送訊號進視葉的，這裡是左側那顆伸進右視葉</td></tr>
+      <tr><th>在表裡出現在</th><th>型數</th><th>各佔幾列</th><th>主要是哪一群</th></tr>
+      <tr><td>只有 <code>_R</code></td><td>635</td><td>635 列（全是 <code>_R</code>）</td><td>VPN 319、ONIN 146、ONCN 94　——<b>視葉自己的神經元</b></td></tr>
+      <tr><td>兩側都有</td><td>46</td><td><b>92 列</b>（<code>_R</code> 46 ＋ <code>_L</code> 46）</td><td>VPN 33、VCN 6　——連到中腦的，左右兩顆都伸進右視葉</td></tr>
+      <tr><td>只有 <code>_L</code></td><td>51</td><td>51 列（全是 <code>_L</code>）</td><td><b>VCN 44</b>　——中腦送訊號進視葉的，這裡是左側那顆伸進右視葉</td></tr>
+      <tr><th>合計</th><th>732 個型</th><th>778 列（<code>_R</code> 681、<code>_L</code> 97）</th><td></td></tr>
     </table>
     </div>
+    <p><b>最後那一列是這張表的重點。</b>「只有 <code>_R</code> 的型有 635 個」跟「表裡有 681 列 <code>_R</code>」不衝突——<b>差的 46 列，是那 46 個兩側都有的型貢獻的右側那一半</b>。同理 <code>_L</code>：51 ＋ 46 ＝ 97。<b>看起來打架，是因為一個在數型、一個在數列。</b></p>
     <p><b>ONIN 一個都沒有兩側</b>，這正合定義——視葉內在神經元的突觸不出視葉，所以只有右側那一群進得了這份重建。會出現在左側的全是跨側的那幾類（<code>H1</code>、<code>DNp27</code>、<code>AN09A005</code>、<code>5-HTPMPV03</code>）。</p>
     <p><b>這個分法有一條獨立的旁證。</b>論文正文另外寫了一句：</p>
     <p lang="en">We identified 104 VCN types across about 270 cells</p>
@@ -272,7 +274,7 @@
   <p>照<a href="part7-agent-prompts.html#s4">指令 10</a>整理出來的，是三支程式加一份說明：</p>
 
   <div class="filecard">
-    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　302 行</span><p>取論文的靶、取 VFB 那一側、逐列比對。<b>所有自己決定的參數集中在開頭的 <code>PARAMS</code></b></p></div>
+    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　312 行</span><p>取論文的靶、取 VFB 那一側、逐列比對。<b>所有自己決定的參數集中在開頭的 <code>PARAMS</code></b></p></div>
     <div class="f"><span class="nm">make_figure.py</span><span class="role">產圖　91 行</span><p>畫<a href="#s3">第 3 節</a>那張圖</p></div>
     <div class="f"><span class="nm">cross_check.py</span><span class="role">旁證　168 行</span><p>同一個數字問三條路，把不一樣的地方攤開</p></div>
   </div>

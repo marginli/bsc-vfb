@@ -118,9 +118,19 @@ def paper_target() -> dict:
         key = {("_L", "_R"): "both", ("_R",): "right_only", ("_L",): "left_only"}.get(s, str(s))
         buckets[key] += 1
         groups[key][by_instance[insts[0]]["group"]] += 1
+    # 每一種型各貢獻幾列。**這一段是為了把「型」與「列」兜起來**——
+    # 兩組數字並排放著而不寫出換算，讀的人只會看到 681 跟 635 打架。
+    contributed = {}
+    for key, r, l in (("right_only", 1, 0), ("both", 1, 1), ("left_only", 0, 1)):
+        k = buckets[key]                     # 不要用 n：上面那個 n() 是轉數字的函式
+        contributed[key] = {"_R": k * r, "_L": k * l, "rows": k * (r + l)}
+    contributed["total"] = {
+        k: sum(v[k] for v in contributed.values()) for k in ("_R", "_L", "rows")}
+
     sides = {"rows_per_type": dict(sorted(collections.Counter(
                  len(v) for v in per_type.values()).items())),
              "types_by_side": dict(buckets),
+             "rows_contributed_by_side": contributed,
              "groups_by_side": {k: dict(v.most_common()) for k, v in groups.items()},
              "note": "778 列 − 732 型 = 46，剛好就是佔兩列的型數；那 46 個全部是 _L／_R 成對。"}
 
