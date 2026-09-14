@@ -1,0 +1,110 @@
+{
+  "probe": "worksheet",
+  "part": "PART 1",
+  "question": "作業單那四步，學員照著做實際會看到什麼？",
+  "url": {
+    "search:JRC2018Unisex": "https://v3-cached.virtualflybrain.org/search?query=JRC2018Unisex&limit=300",
+    "term_info:VFB_00101567": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00101567",
+    "painted:VFB_00101567": "https://v3-cached.virtualflybrain.org/run_query?id=VFB_00101567&query_type=PaintedDomains&limit=1",
+    "search:JFRC2": "https://v3-cached.virtualflybrain.org/search?query=JFRC2&limit=300",
+    "term_info:VFB_00017894": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00017894",
+    "painted:VFB_00017894": "https://v3-cached.virtualflybrain.org/run_query?id=VFB_00017894&query_type=PaintedDomains&limit=1",
+    "term_info:VFB_00005010": "https://v3-cached.virtualflybrain.org/get_term_info?id=VFB_00005010"
+  },
+  "note": "作業單第 1、4 步：學員打進去的字串不一定是該詞的正式名字，而且搜尋結果絕大多數是「畫在這套 template 上的東西」而不是 template 本身——所以作業單要給 report_url 當保險，不能只寫「點進結果」。rows_named_on_this_template 是照**名字**分的（學員在畫面上只有名字可用），neuropil_typed_rows 是照型別分的，兩個數字本來就不同：顎神經節那種的型別不是 Synaptic_neuropil，名字卻一樣帶「on …」。rows_not_named_on_it_detail 要能逐列交代完——搜尋 JRC2018Unisex 會連 JRC2018UnisexVNC（另一套 template）一起撈回來。第 5 步：example_neuron 對位到 n_templates 套 template。",
+  "data": {
+    "steps": [
+      {
+        "typed_into_search_box": "JRC2018Unisex",
+        "id": "VFB_00101567",
+        "display_name": "JRC2018U",
+        "typed_string_is_the_display_name": false,
+        "search_rows": 103,
+        "search_distinct_terms": 48,
+        "target_rows": [
+          {
+            "rank": 0,
+            "label": "JRC2018Unisex (VFB_00101567)"
+          },
+          {
+            "rank": 54,
+            "label": "JRC2018U (JRC2018Unisex)"
+          }
+        ],
+        "rows_named_on_this_template": 99,
+        "rows_not_named_on_it": 4,
+        "rows_not_named_on_it_detail": [
+          {
+            "id": "VFB_00101567",
+            "label": "JRC2018Unisex (VFB_00101567)"
+          },
+          {
+            "id": "VFB_00101567",
+            "label": "JRC2018U (JRC2018Unisex)"
+          },
+          {
+            "id": "VFB_00200000",
+            "label": "JRCVNC2018U (JRC2018UnisexVNC)"
+          },
+          {
+            "id": "VFB_00200000",
+            "label": "JRC2018UnisexVNC (VFB_00200000)"
+          }
+        ],
+        "other_templates_in_results": [
+          "VFB_00200000"
+        ],
+        "neuropil_typed_rows": 97,
+        "all_rows_accounted_for": true,
+        "painted_domains_query_label": "Painted domains for JRC2018U",
+        "painted_domains_count": 46,
+        "report_url": "https://virtualflybrain.org/reports/VFB_00101567"
+      },
+      {
+        "typed_into_search_box": "JFRC2",
+        "id": "VFB_00017894",
+        "display_name": "JFRC2",
+        "typed_string_is_the_display_name": true,
+        "search_rows": 129,
+        "search_distinct_terms": 60,
+        "target_rows": [
+          {
+            "rank": 0,
+            "label": "JFRC2 (adult brain template JFRC2)"
+          },
+          {
+            "rank": 69,
+            "label": "adult brain template JFRC2 (VFB_00017894)"
+          }
+        ],
+        "rows_named_on_this_template": 127,
+        "rows_not_named_on_it": 2,
+        "rows_not_named_on_it_detail": [
+          {
+            "id": "VFB_00017894",
+            "label": "JFRC2 (adult brain template JFRC2)"
+          },
+          {
+            "id": "VFB_00017894",
+            "label": "adult brain template JFRC2 (VFB_00017894)"
+          }
+        ],
+        "other_templates_in_results": [],
+        "neuropil_typed_rows": 122,
+        "all_rows_accounted_for": true,
+        "painted_domains_query_label": "Painted domains for JFRC2",
+        "painted_domains_count": 58,
+        "report_url": "https://virtualflybrain.org/reports/VFB_00017894"
+      }
+    ],
+    "example_neuron": {
+      "id": "VFB_00005010",
+      "name": "Cha-F-100205",
+      "aligned_to_templates": [
+        "VFB_00017894",
+        "VFB_00101567"
+      ],
+      "n_templates": 2
+    }
+  }
+}

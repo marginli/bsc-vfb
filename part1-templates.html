@@ -339,12 +339,27 @@
 
   <p>這一份不用安裝任何東西，也不用登入。打開 <a href="https://www.virtualflybrain.org/">virtualflybrain.org</a> 跟著做。</p>
 
+  <div class="callout">
+    <b>第一步就會卡住，所以先講清楚會卡在哪。</b>在搜尋框輸入 <code>JRC2018Unisex</code>，你會拿到<b>一百多筆</b>結果，而且<b>清單裡不會出現 VFB_00101567 這個編號</b>——編號要點進去之後才看得到。所以不要在清單裡找編號，要照名字認。下面第 1 步說的就是怎麼認。
+  </div>
+
   <ol>
-    <li><b>找一套 template。</b>在搜尋框輸入 <code>JRC2018Unisex</code>，點進結果。資訊面板（Term Info）裡會出現它的編號 VFB_00101567。</li>
-    <li><b>看它的分區。</b>在同一個面板裡找到名為 <i>Painted domains for JRC2018U</i> 的查詢並執行它。回傳的每一列都是畫在這顆標準腦上的一個腦區，一共 46 列——跟上面那張表對得上。</li>
-    <li><b>換一套 template。</b>搜尋 <code>JFRC2</code>，做同樣的事。比較兩邊的分區數目。</li>
-    <li><b>看一顆神經元掛在哪個 template 上。</b>隨便點開一顆神經元，看它的資訊面板裡寫的是哪一套 template。如果它同時有兩筆，那兩筆就是本頁第 6 節說的橋接產物。</li>
+    <li><b>搜尋，然後看懂你拿到的是什麼。</b>在搜尋框輸入 <code>JRC2018Unisex</code>，會回來 <b>103 筆</b>。這 103 筆可以完全交代清楚：
+      <br>· <b>99 筆</b>的名字長成「某某 <b>on</b> JRC2018Unisex adult brain」（bulb on…、medulla on…）——<b>那些是畫在這顆標準腦上的東西，不是 template 本身</b>。
+      <br>· 另外 <b>2 筆</b>是 <b>JRC2018Unisex<u>VNC</u></b>（VFB_00200000）——那是<b>腹神經索</b>那一套 template，名字很像，但不是你要的。
+      <br>· 剩下的 <b>2 筆</b>才是你要的那一套，兩筆是同一個東西：它的正式名字是 <b>JRC2018U</b>，<code>JRC2018Unisex</code> 只是同義詞，所以畫面上可能顯示成 <i>JRC2018U</i>——別以為找錯了。
+      <br>認法只有一條：<b>名字裡沒有「on …」、也沒有 VNC 的那一個。</b>找不到就直接開網址，不用經過搜尋：<a href="https://virtualflybrain.org/reports/VFB_00101567">virtualflybrain.org/reports/VFB_00101567</a>（這就是 VFB 自己的查詢結果在連的那種網址）。</li>
+    <li><b>確認你點對了。</b>點進去之後，資訊面板（Term Info）與瀏覽器網址列都會出現編號 <code>VFB_00101567</code>。對上了再往下做。</li>
+    <li><b>看它的分區。</b>在同一個面板裡找到名為 <i>Painted domains for JRC2018U</i> 的查詢並執行它。回傳的每一列都是畫在這顆標準腦上的一個腦區，<b>一共 46 列</b>——跟第 3 節那張表對得上。（這 46 個才是這顆 template 的分區；第 1 步看到的那 97 筆是搜尋字串撞出來的，兩個數字不是同一回事。）</li>
+    <li><b>換一套 template，同樣做一次。</b>搜尋 <code>JFRC2</code>：<b>129 筆</b>裡有 <b>127 筆</b>的名字一樣帶著「on … JFRC2」，只有 <b>2 筆</b>是 template 本身（同一個東西的兩個名字）。這一套的正式名字就是 <code>JFRC2</code>，比上一套好認；直達網址 <a href="https://virtualflybrain.org/reports/VFB_00017894">reports/VFB_00017894</a>。它的 <i>Painted domains for JFRC2</i> 回 <b>58 列</b>，跟上一套的 46 不一樣——不同的 template 畫的分區本來就不同。</li>
+    <li><b>看一顆神經元掛在哪幾套 template 上。</b>打開 FlyCircuit 的一顆神經元 <a href="https://virtualflybrain.org/reports/VFB_00005010">Cha-F-100205（reports/VFB_00005010）</a>，看它的影像列在哪些 template 底下。答案是<b>兩套</b>：JFRC2（VFB_00017894）與 JRC2018Unisex（VFB_00101567）。<b>第二套就是第 6 節說的橋接產物</b>——同一顆神經元只拍過一次，另一套是算出來的。</li>
   </ol>
+
+  <p class="figsrc">這一節的筆數與名字由 <code>scripts/vfb_probe.py</code> 的 <code>worksheet</code> 探針照學員的做法查得（2026-09-14），原始輸出在 <code>out/worksheet.json</code>；兩次搜尋的每一筆都分類到上面說的那幾群，沒有剩下的。數字是向站上的搜尋介面問來的；<b>網站畫面上的排序與顯示欄位可能跟這裡不同</b>，所以每一步都另外給了直達網址。</p>
+
+  <div class="note">
+    <b>為什麼搜尋一個 template 的名字，回來的九成不是 template？</b>因為畫在它上面的每一塊，名字裡都帶著它的名字——「bulb <b>on JRC2018Unisex adult brain</b>」。搜尋比對的是名字，所以它們全部命中。這不是搜尋壞了，是<b>第 2 節那句「template 是兩件事」的直接後果</b>：一套 template 底下掛著一整份分區地圖，而那份地圖的每一塊都以它命名。認名字的訣竅只有一條——<b>看有沒有「on … 」那一段</b>：有的是分區，沒有的才是 template 本身。
+  </div>
 
   <div class="note">
     <b>如果你看到的跟這裡寫的不一樣，先別急著懷疑自己。</b>本頁的數字是 2026 年 9 月 13 日抓的。VFB 的資料會更新，分區可能重畫、資料集會換版，數目因此改變是正常的。要確認自己看到的是哪一版，可以在網站上查該筆資料的來源資料集名稱——那裡會帶版本號。<b>會變的是數目，不會變的是這一頁講的那些關係</b>：template 是平均腦、對位是照參考頻道做的、位置是估計值、重疊不是接觸、每一次橋接都要付誤差。

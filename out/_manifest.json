@@ -1,6 +1,6 @@
 {
   "base": "https://v3-cached.virtualflybrain.org",
-  "run_at": "2026-09-13T11:08:00+00:00",
+  "run_at": "2026-09-14T00:47:24+00:00",
   "probes": {
     "templates": {
       "sha256": "e45b3e7cdd6c8087",
@@ -97,6 +97,12 @@
       "seconds": 0.8,
       "fetched_at": "2026-09-13T11:07:50+00:00",
       "bytes": 2784
+    },
+    "worksheet": {
+      "sha256": "ce1cce04d23472f3",
+      "seconds": 7.5,
+      "fetched_at": "2026-09-14T00:47:24+00:00",
+      "bytes": 4419
     }
   }
 }

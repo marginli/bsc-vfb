@@ -248,6 +248,103 @@ def _template_detail():
                         else "這一輪兩邊一致。"))}
 
 
+@probe("worksheet", "PART 1", "作業單那四步，學員照著做實際會看到什麼？",
+       needs=("templates",))
+def _worksheet():
+    """把作業單的每一步照學員的做法跑一次。
+
+    **為什麼要有這一支**：作業單第一版寫「在搜尋框輸入 JRC2018Unisex，
+    資訊面板裡會出現它的編號 VFB_00101567」。使用者照著做，得到一長串結果、
+    找不到那個編號。原因有三個，全都在這支探針的輸出裡看得到：
+      1. 這個詞的正式名字是 **JRC2018U**，JRC2018Unisex 只是同義詞；
+      2. 搜尋回的一百多列裡，九成以上是**畫在這顆腦上的分區**，
+         名字都長成「某某 on JRC2018Unisex adult brain」；
+      3. 編號不在結果清單裡，要點進去才看得到——
+         所以「找不到編號」的學員根本不知道該點哪一列。
+    作業單的每一個數字都要對得回這裡，跟正文的數字同一個標準。
+    """
+    steps, urls = [], {}
+    for tid, typed in [("VFB_00101567", "JRC2018Unisex"), ("VFB_00017894", "JFRC2")]:
+        u_s, sr = fetch("/search", {"query": typed, "limit": 300})
+        rows = sr.get("rows") or []
+        urls[f"search:{typed}"] = u_s
+
+        # 學員在畫面上看到的是 label；目標詞可能因為同義詞佔了不只一列。
+        hits = [(i, r.get("label")) for i, r in enumerate(rows)
+                if r.get("short_form") == tid]
+        # 學員在畫面上唯一能用的線索是名字，所以照名字分類，不要照型別分類：
+        # 「某某 on <template 的名字>」的那些，是畫在這套 template 上的東西。
+        # （用型別分會少算——例如顎神經節的型別是 Ganglion 不是 Synaptic_neuropil，
+        #   但它的名字一樣長成「… on JRC2018Unisex adult brain」，學員看到的是名字。）
+        def facets(r):
+            return r.get("facets_annotation") or []
+        named_on = [r for r in rows if " on " in (r.get("label") or "")]
+        rest = [r for r in rows if " on " not in (r.get("label") or "")]
+        # 剩下的幾列要能逐列交代完，否則就是還有沒想到的東西混在裡面
+        other_templates = sorted({r["short_form"] for r in rest
+                                  if r["short_form"] != tid})
+        domains = [r for r in rows
+                   if any(f.startswith("Synaptic_neuropil") for f in facets(r))]
+
+        u_t, ti = fetch("/get_term_info", {"id": tid})
+        urls[f"term_info:{tid}"] = u_t
+        pq = next((q for q in ti.get("Queries") or []
+                   if q.get("query") == "PaintedDomains"), None)
+        painted = None
+        if pq:
+            u_p, pd = fetch("/run_query", {"id": tid, "query_type": "PaintedDomains",
+                                           "limit": 1})
+            urls[f"painted:{tid}"] = u_p
+            painted = pd.get("count")
+
+        steps.append({
+            "typed_into_search_box": typed,
+            "id": tid,
+            "display_name": ti.get("Name"),
+            "typed_string_is_the_display_name": ti.get("Name") == typed,
+            "search_rows": sr.get("count"),
+            "search_distinct_terms": sr.get("distinct_terms"),
+            "target_rows": [{"rank": i, "label": lab} for i, lab in hits],
+            "rows_named_on_this_template": len(named_on),
+            "rows_not_named_on_it": len(rest),
+            "rows_not_named_on_it_detail": [
+                {"id": r["short_form"], "label": r.get("label")} for r in rest],
+            "other_templates_in_results": other_templates,
+            "neuropil_typed_rows": len(domains),
+            "all_rows_accounted_for": len(named_on) + len(rest) == len(rows),
+            "painted_domains_query_label": pq.get("label") if pq else None,
+            "painted_domains_count": painted,
+            "report_url": f"https://virtualflybrain.org/reports/{tid}",
+        })
+
+    # 第 4 步：一顆神經元同時掛在兩套 template 上（＝橋接的產物）
+    u_n, n = fetch("/get_term_info", {"id": EX_NEURON_LM})
+    urls[f"term_info:{EX_NEURON_LM}"] = u_n
+    aligned = sorted((n.get("Images") or {}).keys())
+
+    return {
+        "url": urls,
+        "data": {
+            "steps": steps,
+            "example_neuron": {
+                "id": EX_NEURON_LM,
+                "name": n.get("Name"),
+                "aligned_to_templates": aligned,
+                "n_templates": len(aligned),
+            },
+        },
+        "note": ("作業單第 1、4 步：學員打進去的字串不一定是該詞的正式名字，"
+                 "而且搜尋結果絕大多數是「畫在這套 template 上的東西」而不是 template 本身——"
+                 "所以作業單要給 report_url 當保險，不能只寫「點進結果」。"
+                 "rows_named_on_this_template 是照**名字**分的（學員在畫面上只有名字可用），"
+                 "neuropil_typed_rows 是照型別分的，兩個數字本來就不同："
+                 "顎神經節那種的型別不是 Synaptic_neuropil，名字卻一樣帶「on …」。"
+                 "rows_not_named_on_it_detail 要能逐列交代完——"
+                 "搜尋 JRC2018Unisex 會連 JRC2018UnisexVNC（另一套 template）一起撈回來。"
+                 "第 5 步：example_neuron 對位到 n_templates 套 template。"),
+    }
+
+
 # ── PART 2：名字與本體論 ────────────────────────────────────────
 @probe("facets", "PART 2", "搜尋可以用哪些類別來篩選？各有多少筆？")
 def _facets():
