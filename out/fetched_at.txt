@@ -1,7 +1,7 @@
 VFB 探針抓取紀錄
 ============================================================
 API   https://v3-cached.virtualflybrain.org
-執行  2026-09-14T05:48:09+00:00（UTC）
+執行  2026-09-14T06:04:05+00:00（UTC）
 
 連線資料集與版本（label 裡的版本號就是要標在頁面上的）：
   BANC   BANC888                            BANC web interface v888
@@ -71,7 +71,7 @@ FlyCircuit（Chiang2010）——「幾筆」跟「幾顆」不是同一件事：
   connectome_datasets    2026-09-13T11:07:43+00:00  ba8536816773094a
   connectivity_example   2026-09-13T11:07:46+00:00  8adca7a5a9c8d53d
   flycircuit_dataset     2026-09-13T11:07:46+00:00  d7259f1f695dc963
-  nblast_example         2026-09-13T11:07:51+00:00  abd968d0513428b5
+  nblast_example         2026-09-14T06:04:05+00:00  feb2b0e6894e7924
   service                2026-09-13T11:07:53+00:00  6c95b97af876c3ca
   flycircuit_images      2026-09-13T07:50:04+00:00  519f054a30a54924
   dataset_sizes          2026-09-13T11:07:49+00:00  05b5bf5e5be3b12b

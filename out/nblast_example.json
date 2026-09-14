@@ -2,14 +2,15 @@
   "probe": "nblast_example",
   "part": "PART 5",
   "question": "NBLAST 的相似度查詢回傳什麼？分數怎麼看？",
-  "url": "https://v3-cached.virtualflybrain.org/run_query?id=VFB_00005010&query_type=SimilarMorphologyTo&limit=10",
-  "note": "VFB_00005010 = Cha-F-100205，FlyCircuit 的一顆。分數的門檻是人訂的。",
+  "url": "https://v3-cached.virtualflybrain.org/run_query?id=VFB_00005010&query_type=SimilarMorphologyTo&limit=200&offset=0",
+  "note": "VFB_00005010 = Cha-F-100205，FlyCircuit 的一顆光學顯微鏡影像。分數的門檻是人訂的；這一支存的是分布，不是一個代表值。",
   "data": {
     "count": 61,
+    "truncated": false,
     "columns": [
       "id",
-      "score",
       "name",
+      "score",
       "tags",
       "type",
       "source",
@@ -18,126 +19,110 @@
       "technique",
       "thumbnail"
     ],
-    "rows": [
+    "score_max": 0.7,
+    "score_min": 0.45,
+    "score_span": 0.25,
+    "n_distinct_types": 22,
+    "types": {
+      "transmedullary neuron Tm3": 7,
+      "transmedullary neuron Tm6": 7,
+      "transmedullary neuron Tm2": 6,
+      "transmedullary neuron Tm9": 6,
+      "transmedullary neuron Tm1": 6,
+      "transmedullary Y neuron TmY18": 3,
+      "adult cholinergic neuron": 3,
+      "expression pattern fragment": 3,
+      "T2 neuron": 2,
+      "transmedullary neuron Tm5a": 2,
+      "medulla intrinsic neuron Mi4": 2,
+      "transmedullary neuron Tm20": 2,
+      "transmedullary neuron Tm29": 2,
+      "transmedullary neuron Tm4": 2,
+      "adult neuron": 1,
+      "transmedullary Y neuron TmY5a": 1,
+      "medulla intrinsic neuron Mi9": 1,
+      "transmedullary neuron Tm5c": 1,
+      "medulla intrinsic neuron Mi1": 1,
+      "transmedullary Y neuron TmY3": 1,
+      "transmedullary neuron Tm12": 1,
+      "transmedullary Y neuron TmY10": 1
+    },
+    "types_in_top10": [
+      "adult neuron",
+      "transmedullary Y neuron TmY18",
+      "transmedullary neuron Tm1",
+      "transmedullary neuron Tm2",
+      "transmedullary neuron Tm3",
+      "transmedullary neuron Tm6",
+      "transmedullary neuron Tm9"
+    ],
+    "n_types_in_top10": 7,
+    "score_gap_rank1_to_rank10": 0.07,
+    "sources": {
+      "FlyWire web interface v783": 29,
+      "FlyCircuit 1.1": 4,
+      "Neuprint web interface - JRC_Optic-Lobe:v1.0.1": 28
+    },
+    "top10": [
       {
-        "id": "VFB_fw110595",
-        "name": "[ME.11293 (FlyWire:720575940611277922)](VFB_fw110595)",
         "score": "0.7",
-        "tags": "secondary_neuron|Nervous_system|Visual_system|Adult|Cholinergic",
-        "type": "[transmedullary neuron Tm2](FBbt_00003790)",
-        "source": "[FlyWire web interface v783](flywire783)",
-        "source_id": "[720575940611277922](https://codex.flywire.ai/app/cell_details?data_version=783&root_id=720575940611277922)",
-        "template": "[JRC2018U](VFB_00101567)",
-        "technique": "transmission electron microscopy (TEM)",
-        "thumbnail": "[![ME.11293 (FlyWire:720575940611277922) aligned to JRC2018U](https://www.virtualflybrain.org/data/VFB/i/fw11/0595/VFB_00101567/thumbnail.png 'ME.11293 (FlyWire:720575940611277922) aligned to JRC2018U')](VFB_00101567,VFB_fw110595)"
+        "name": "ME.11293 (FlyWire:720575940611277922)",
+        "type": "transmedullary neuron Tm2",
+        "source": "FlyWire web interface v783"
       },
       {
-        "id": "VFB_fw090107",
-        "name": "[ME.LO.13216 (FlyWire:720575940633583585)](VFB_fw090107)",
         "score": "0.69",
-        "tags": "secondary_neuron|Nervous_system|Visual_system|Adult|Cholinergic",
-        "type": "[transmedullary neuron Tm9](FBbt_00003797)",
-        "source": "[FlyWire web interface v783](flywire783)",
-        "source_id": "[720575940633583585](https://codex.flywire.ai/app/cell_details?data_version=783&root_id=720575940633583585)",
-        "template": "[JRC2018U](VFB_00101567)",
-        "technique": "transmission electron microscopy (TEM)",
-        "thumbnail": "[![ME.LO.13216 (FlyWire:720575940633583585) aligned to JRC2018U](https://www.virtualflybrain.org/data/VFB/i/fw09/0107/VFB_00101567/thumbnail.png 'ME.LO.13216 (FlyWire:720575940633583585) aligned to JRC2018U')](VFB_00101567,VFB_fw090107)"
+        "name": "ME.LO.13216 (FlyWire:720575940633583585)",
+        "type": "transmedullary neuron Tm9",
+        "source": "FlyWire web interface v783"
       },
       {
-        "id": "VFB_fw073325",
-        "name": "[ME.6156 (FlyWire:720575940610509010)](VFB_fw073325)",
         "score": "0.69",
-        "tags": "secondary_neuron|Nervous_system|Adult|Visual_system|Cholinergic",
-        "type": "[transmedullary neuron Tm1](FBbt_00003789)",
-        "source": "[FlyWire web interface v783](flywire783)",
-        "source_id": "[720575940610509010](https://codex.flywire.ai/app/cell_details?data_version=783&root_id=720575940610509010)",
-        "template": "[JRC2018U](VFB_00101567)",
-        "technique": "transmission electron microscopy (TEM)",
-        "thumbnail": "[![ME.6156 (FlyWire:720575940610509010) aligned to JRC2018U](https://www.virtualflybrain.org/data/VFB/i/fw07/3325/VFB_00101567/thumbnail.png 'ME.6156 (FlyWire:720575940610509010) aligned to JRC2018U')](VFB_00101567,VFB_fw073325)"
+        "name": "ME.6156 (FlyWire:720575940610509010)",
+        "type": "transmedullary neuron Tm1",
+        "source": "FlyWire web interface v783"
       },
       {
-        "id": "VFB_fw111318",
-        "name": "[ME.6929 (FlyWire:720575940606170801)](VFB_fw111318)",
         "score": "0.66",
-        "tags": "secondary_neuron|Nervous_system|Adult|Visual_system|Cholinergic",
-        "type": "[transmedullary neuron Tm1](FBbt_00003789)",
-        "source": "[FlyWire web interface v783](flywire783)",
-        "source_id": "[720575940606170801](https://codex.flywire.ai/app/cell_details?data_version=783&root_id=720575940606170801)",
-        "template": "[JRC2018U](VFB_00101567)",
-        "technique": "transmission electron microscopy (TEM)",
-        "thumbnail": "[![ME.6929 (FlyWire:720575940606170801) aligned to JRC2018U](https://www.virtualflybrain.org/data/VFB/i/fw11/1318/VFB_00101567/thumbnail.png 'ME.6929 (FlyWire:720575940606170801) aligned to JRC2018U')](VFB_00101567,VFB_fw111318)"
+        "name": "ME.6929 (FlyWire:720575940606170801)",
+        "type": "transmedullary neuron Tm1",
+        "source": "FlyWire web interface v783"
       },
       {
-        "id": "VFB_fw098911",
-        "name": "[ME.16155 (FlyWire:720575940624876011)](VFB_fw098911)",
         "score": "0.66",
-        "tags": "secondary_neuron|Nervous_system|Adult|GABAergic|Visual_system|Cholinergic",
-        "type": "[transmedullary neuron Tm3](FBbt_00003791)",
-        "source": "[FlyWire web interface v783](flywire783)",
-        "source_id": "[720575940624876011](https://codex.flywire.ai/app/cell_details?data_version=783&root_id=720575940624876011)",
-        "template": "[JRC2018U](VFB_00101567)",
-        "technique": "transmission electron microscopy (TEM)",
-        "thumbnail": "[![ME.16155 (FlyWire:720575940624876011) aligned to JRC2018U](https://www.virtualflybrain.org/data/VFB/i/fw09/8911/VFB_00101567/thumbnail.png 'ME.16155 (FlyWire:720575940624876011) aligned to JRC2018U')](VFB_00101567,VFB_fw098911)"
+        "name": "ME.16155 (FlyWire:720575940624876011)",
+        "type": "transmedullary neuron Tm3",
+        "source": "FlyWire web interface v783"
       },
       {
-        "id": "VFB_fw099685",
-        "name": "[ME.39397 (FlyWire:720575940605787494)](VFB_fw099685)",
         "score": "0.64",
-        "tags": "secondary_neuron|Nervous_system|Adult|GABAergic|Visual_system|Cholinergic",
-        "type": "[transmedullary neuron Tm3](FBbt_00003791)",
-        "source": "[FlyWire web interface v783](flywire783)",
-        "source_id": "[720575940605787494](https://codex.flywire.ai/app/cell_details?data_version=783&root_id=720575940605787494)",
-        "template": "[JRC2018U](VFB_00101567)",
-        "technique": "transmission electron microscopy (TEM)",
-        "thumbnail": "[![ME.39397 (FlyWire:720575940605787494) aligned to JRC2018U](https://www.virtualflybrain.org/data/VFB/i/fw09/9685/VFB_00101567/thumbnail.png 'ME.39397 (FlyWire:720575940605787494) aligned to JRC2018U')](VFB_00101567,VFB_fw099685)"
+        "name": "ME.39397 (FlyWire:720575940605787494)",
+        "type": "transmedullary neuron Tm3",
+        "source": "FlyWire web interface v783"
       },
       {
-        "id": "VFB_fw074350",
-        "name": "[ME.39264 (FlyWire:720575940604151520)](VFB_fw074350)",
         "score": "0.64",
-        "tags": "secondary_neuron|Nervous_system|Adult|Visual_system|Cholinergic",
-        "type": "[transmedullary neuron Tm1](FBbt_00003789)",
-        "source": "[FlyWire web interface v783](flywire783)",
-        "source_id": "[720575940604151520](https://codex.flywire.ai/app/cell_details?data_version=783&root_id=720575940604151520)",
-        "template": "[JRC2018U](VFB_00101567)",
-        "technique": "transmission electron microscopy (TEM)",
-        "thumbnail": "[![ME.39264 (FlyWire:720575940604151520) aligned to JRC2018U](https://www.virtualflybrain.org/data/VFB/i/fw07/4350/VFB_00101567/thumbnail.png 'ME.39264 (FlyWire:720575940604151520) aligned to JRC2018U')](VFB_00101567,VFB_fw074350)"
+        "name": "ME.39264 (FlyWire:720575940604151520)",
+        "type": "transmedullary neuron Tm1",
+        "source": "FlyWire web interface v783"
       },
       {
-        "id": "VFB_fw068492",
-        "name": "[ME.LO.14685 (FlyWire:720575940620599646)](VFB_fw068492)",
         "score": "0.63",
-        "tags": "Nervous_system|Adult|Visual_system|Cholinergic",
-        "type": "[transmedullary Y neuron TmY18](FBbt_00049515); [adult cholinergic neuron](FBbt_00058205)",
-        "source": "[FlyWire web interface v783](flywire783)",
-        "source_id": "[720575940620599646](https://codex.flywire.ai/app/cell_details?data_version=783&root_id=720575940620599646)",
-        "template": "[JRC2018U](VFB_00101567)",
-        "technique": "transmission electron microscopy (TEM)",
-        "thumbnail": "[![ME.LO.14685 (FlyWire:720575940620599646) aligned to JRC2018U](https://www.virtualflybrain.org/data/VFB/i/fw06/8492/VFB_00101567/thumbnail.png 'ME.LO.14685 (FlyWire:720575940620599646) aligned to JRC2018U')](VFB_00101567,VFB_fw068492)"
+        "name": "ME.LO.14685 (FlyWire:720575940620599646)",
+        "type": "transmedullary Y neuron TmY18",
+        "source": "FlyWire web interface v783"
       },
       {
-        "id": "VFB_00011599",
-        "name": "[Cha-F-700001](VFB_00011599)",
         "score": "0.63",
-        "tags": "Expression_pattern_fragment|Nervous_system|Neuron|Adult",
-        "type": "[adult neuron](FBbt_00047095); [expression pattern fragment](VFBext_0000004)",
-        "source": "[FlyCircuit 1.1](FlyCircuit)",
-        "source_id": "[Cha-F-700001](http://www.flycircuit.tw/v1.1/modules.php?name=clearpage&op=detail_table&neuron=Cha-F-700001)",
-        "template": "[JRC2018U](VFB_00101567)",
-        "technique": "confocal microscopy",
-        "thumbnail": "[![Cha-F-700001 aligned to JRC2018U](https://www.virtualflybrain.org/data/VFB/i/0001/1599/VFB_00101567/thumbnail.png 'Cha-F-700001 aligned to JRC2018U')](VFB_00101567,VFB_00011599); [![Cha-F-700001 aligned to JFRC2](https://www.virtualflybrain.org/data/VFB/i/0001/1599/VFB_00017894/thumbnail.png 'Cha-F-700001 aligned to JFRC2')](VFB_00017894,VFB_00011599)"
+        "name": "Cha-F-700001",
+        "type": "adult neuron",
+        "source": "FlyCircuit 1.1"
       },
       {
-        "id": "VFB_fw095319",
-        "name": "[ME.LO.8631 (FlyWire:720575940653114870)](VFB_fw095319)",
         "score": "0.63",
-        "tags": "Nervous_system|Visual_system|Adult|Cholinergic",
-        "type": "[transmedullary neuron Tm6](FBbt_00003794); [adult cholinergic neuron](FBbt_00058205)",
-        "source": "[FlyWire web interface v783](flywire783)",
-        "source_id": "[720575940653114870](https://codex.flywire.ai/app/cell_details?data_version=783&root_id=720575940653114870)",
-        "template": "[JRC2018U](VFB_00101567)",
-        "technique": "transmission electron microscopy (TEM)",
-        "thumbnail": "[![ME.LO.8631 (FlyWire:720575940653114870) aligned to JRC2018U](https://www.virtualflybrain.org/data/VFB/i/fw09/5319/VFB_00101567/thumbnail.png 'ME.LO.8631 (FlyWire:720575940653114870) aligned to JRC2018U')](VFB_00101567,VFB_fw095319)"
+        "name": "ME.LO.8631 (FlyWire:720575940653114870)",
+        "type": "transmedullary neuron Tm6",
+        "source": "FlyWire web interface v783"
       }
     ]
   }

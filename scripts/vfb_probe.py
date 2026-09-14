@@ -994,13 +994,42 @@ def _templates_pdb():
 
 @probe("nblast_example", "PART 5", "NBLAST 的相似度查詢回傳什麼？分數怎麼看？")
 def _nblast_example():
-    url, d = fetch("/run_query", {"id": EX_NEURON_LM,
-                                  "query_type": "SimilarMorphologyTo", "limit": 10})
+    """把 61 筆**全部**取回，不是只取前 10。
+
+    PART 5 要講的正是分數的分布與型別的分散——只看前 10 筆看不出
+    「分數只差 0.07，卻橫跨五種細胞型」這件事。
+    """
+    url, count, rows, trunc = paged("/run_query",
+                                    {"id": EX_NEURON_LM,
+                                     "query_type": "SimilarMorphologyTo"}, page=200)
+    assert len(rows) == count, f"取回 {len(rows)} 列，但 count 說 {count}"
+
+    def clean(v):
+        return strip_markup(str(v or ""))
+
+    scores = [float(r["score"]) for r in rows if r.get("score") not in (None, "")]
+    types, sources = {}, {}
+    for r in rows:
+        types[clean(r.get("type"))] = types.get(clean(r.get("type")), 0) + 1
+        sources[clean(r.get("source"))] = sources.get(clean(r.get("source")), 0) + 1
+    top = [{"score": r.get("score"), "name": clean(r.get("name")),
+            "type": clean(r.get("type")), "source": clean(r.get("source"))}
+           for r in rows[:10]]
     return {"url": url,
-            "data": {"count": d.get("count"),
-                     "columns": list((d.get("headers") or {}).keys()),
-                     "rows": d.get("rows")},
-            "note": f"{EX_NEURON_LM} = Cha-F-100205，FlyCircuit 的一顆。分數的門檻是人訂的。"}
+            "data": {"count": count, "truncated": trunc,
+                     "columns": list(rows[0].keys()) if rows else [],
+                     "score_max": max(scores), "score_min": min(scores),
+                     "score_span": round(max(scores) - min(scores), 4),
+                     "n_distinct_types": len(types),
+                     "types": dict(sorted(types.items(), key=lambda kv: -kv[1])),
+                     "types_in_top10": sorted({t["type"] for t in top}),
+                     "n_types_in_top10": len({t["type"] for t in top}),
+                     "score_gap_rank1_to_rank10": round(
+                         float(rows[0]["score"]) - float(rows[9]["score"]), 4),
+                     "sources": sources,
+                     "top10": top},
+            "note": (f"{EX_NEURON_LM} = Cha-F-100205，FlyCircuit 的一顆光學顯微鏡影像。"
+                     "分數的門檻是人訂的；這一支存的是分布，不是一個代表值。")}
 
 
 # ── PART 6：服務本身 ────────────────────────────────────────────

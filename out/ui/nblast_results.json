@@ -1,0 +1,39 @@
+{
+  "probe": "nblast_results",
+  "part": "PART 5",
+  "question": "在畫面上跑一次 NBLAST：結果表有哪些欄、分數怎麼呈現",
+  "site": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto",
+  "id": "VFB_00005010",
+  "query_label": "Neurons with similar morphology to Cha-F-100205 [NBLAST]",
+  "url": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto?id=VFB_00005010",
+  "results_title": "61 Neurons with similar morphology to Cha-F-100205 [NBLAST mean score]",
+  "all_header_texts": [
+    "Controls",
+    "Name",
+    "Type",
+    "Thumbnail",
+    "Name",
+    "Type",
+    "Gross_Type",
+    "Template_Space",
+    "Imaging_Technique",
+    "Images",
+    "Score ▼"
+  ],
+  "columns_on_screen": [
+    "Name",
+    "Type",
+    "Gross_Type",
+    "Template_Space",
+    "Imaging_Technique",
+    "Images",
+    "Score ▼"
+  ],
+  "actions_at_bottom": [
+    "Downloads",
+    "Refine query",
+    "New query",
+    "Delete results",
+    "Download results (CSV)"
+  ]
+}

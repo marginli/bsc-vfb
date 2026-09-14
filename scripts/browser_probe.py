@@ -86,6 +86,8 @@ EX_REGION_NAME = "medulla"     # PART 2 的主例
 EX_REGION = "FBbt_00003748"    # medulla 這個「類別」本身（跟 vfb_probe.py 同一個例子）
 EX_REGION_INDIV = "VFB_00102107"  # 它畫在 JRC2018Unisex 上的那一個「個體」
 QUERY_LABEL = "Neurons with some part in medulla"   # PART 3 主要示範的那一支現成查詢
+EX_NEURON_LM = "VFB_00005010"           # Cha-F-100205：PART 5 的主例（FlyCircuit 那一顆）
+NBLAST_LABEL = "Neurons with similar morphology to Cha-F-100205 [NBLAST]"
 EX_CONNECTOME_NEURON = "VFB_jrmc375t"   # Cm7_L (MaleCNS:41280)：PART 4 的例子，
                                         # 它的 Source 欄同時列著 male-cns 的兩個版本
 
@@ -833,6 +835,65 @@ def _terminfo_v2_connectome_neuron(pw):
             "n_sources_listed": len(f.get("Source") or []),
             "n_licenses_listed": len(f.get("License") or []),
             "all_lines": lines,
+        }
+    finally:
+        b.close()
+
+
+@probe("nblast_results", "PART 5",
+       "在畫面上跑一次 NBLAST：結果表有哪些欄、分數怎麼呈現")
+def _nblast_results(pw):
+    """PART 5 的作業單要學員親手跑一次 NBLAST，所以這一步要先拍過。
+
+    重點在**結果表比 PART 3 那支多一欄 `Score`**——而那一欄就是這一節的主題。
+    """
+    b, pg = new_page(pw, 1700, 1050)
+    try:
+        pg.goto(f"{V2}?id={EX_NEURON_LM}", wait_until="domcontentloaded", timeout=90000)
+        pg.wait_for_timeout(32000)
+        clicked = pg.evaluate(
+            """(label) => { const el = [...document.querySelectorAll('*')].filter(
+                   e => e.children.length === 0 && (e.innerText || '').includes(label));
+               if (!el.length) return false;
+               const e = el[el.length - 1];
+               e.scrollIntoView({block: 'center'}); e.click(); return true; }""",
+            NBLAST_LABEL)
+        if not clicked:
+            raise RuntimeError(f"Query For 區找不到「{NBLAST_LABEL}」")
+        pg.wait_for_timeout(25000)
+        shot(pg, "nblast_results")
+        title = pg.evaluate(
+            """() => { const NL = String.fromCharCode(10);
+               const c = [...document.querySelectorAll('*')].filter(x => {
+                   if (!x.getClientRects().length) return false;
+                   const t = (x.innerText || '').trim().split(NL)[0];
+                   return /^[0-9]+ /.test(t) && t.length < 90
+                          && t.toLowerCase().indexOf('similar') >= 0; });
+               if (!c.length) return null;
+               c.sort((a, b) => a.innerText.length - b.innerText.length);
+               return c[0].innerText.trim().split(NL)[0]; }""")
+        cols = pg.evaluate(
+            """() => [...document.querySelectorAll('[class*=griddle-header],th')]
+                 .filter(e => e.getClientRects().length)
+                 .map(e => (e.innerText || '').trim())
+                 .filter(t => t && t.length < 30)""")
+        return {
+            "site": V2, "id": EX_NEURON_LM, "query_label": NBLAST_LABEL,
+            "url": f"{V2}?id={EX_NEURON_LM}",
+            "results_title": title,
+            "all_header_texts": cols,
+            # **不要用白名單篩欄名**：這支查詢的結果表比 PART 3 那支多兩欄
+            # （`Type` 與 `Score ▼`），而白名單寫死的話，新出現的欄位會被靜默丟掉
+            # ——那正是「欄位是跟著查詢走的」這件事最容易被漏掉的方式。
+            # 改成排除掉 Layers 面板固定那四欄，其餘照收。
+            "columns_on_screen": [c for c in dict.fromkeys(cols)
+                                  if c not in ("Controls", "Thumbnail", "Type", "Name")
+                                  or cols.count(c) > 1],
+            "actions_at_bottom": pg.evaluate(
+                """() => [...document.querySelectorAll('*')]
+                     .filter(e => e.getClientRects().length && e.children.length === 0)
+                     .map(e => (e.innerText || '').trim())
+                     .filter(t => /Refine|New query|Delete results|Download/.test(t))"""),
         }
     finally:
         b.close()

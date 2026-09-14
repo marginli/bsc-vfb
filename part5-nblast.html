@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PART 5 形態比對：NBLAST 與 FlyCircuit｜VFB 專題課程</title>
+<link rel="stylesheet" href="assets/vfb.css">
+</head>
+<body>
+<div class="crumb"><a href="index.html">VFB 專題課程</a> ／ PART 5</div>
+<header class="hero">
+  <p class="eyebrow">PART 5</p>
+  <h1>形態比對：NBLAST 與 FlyCircuit</h1>
+  <p class="subtitle">站上會給你一個相似度分數。這一部分講那個分數能說什麼、不能說什麼——以及它底下那份資料到底是什麼</p>
+</header>
+
+<div class="wrap">
+
+  <div class="pager top">
+    <a href="part4-connectomes.html">← PART 4　連線體</a>
+    <span>PART 6　接到程式與 AI（尚未發布）</span>
+  </div>
+
+  <nav class="toc">
+    <h2>本頁章節</h2>
+    <ol>
+      <li><a href="#s1">你手上這顆是什麼型？站上給了七種答案</a></li>
+      <li><a href="#s2">NBLAST 回什麼</a></li>
+      <li><a href="#s3">分數是拿什麼算的</a></li>
+      <li><a href="#s4">拿原始資料驗一次：48 點對 49 點</a></li>
+      <li><a href="#s5">同一顆，在兩個座標系裡</a></li>
+      <li><a href="#s6">所以那個分數能說什麼</a></li>
+      <li><a href="#s7">動手做</a></li>
+    </ol>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s1"><span class="pt">1</span>你手上這顆是什麼型？站上給了七種答案</h2>
+
+  <p>這是實驗室裡最常見的一種需求：你有一顆神經元的影像，想知道<b>它是哪一型</b>。VFB 上有一支現成查詢可以做這件事——它會找出形態最像的那些，附上分數。</p>
+
+  <p>拿 FlyCircuit 的 <i>Cha-F-100205</i> 去問，回來 61 筆。<b>前十名長這樣：</b></p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>分數</th><th>它是哪一型</th></tr>
+    <tr><td>0.70</td><td>transmedullary neuron <b>Tm2</b></td></tr>
+    <tr><td>0.69</td><td>transmedullary neuron <b>Tm9</b></td></tr>
+    <tr><td>0.69</td><td>transmedullary neuron <b>Tm1</b></td></tr>
+    <tr><td>0.66</td><td>transmedullary neuron <b>Tm1</b></td></tr>
+    <tr><td>0.66</td><td>transmedullary neuron <b>Tm3</b></td></tr>
+    <tr><td>0.64</td><td>transmedullary neuron <b>Tm3</b></td></tr>
+    <tr><td>0.64</td><td>transmedullary neuron <b>Tm1</b></td></tr>
+    <tr><td>0.63</td><td>transmedullary Y neuron <b>TmY18</b></td></tr>
+  </table>
+  </div>
+
+  <p><b>前十名橫跨七種細胞型，而第一名到第十名只差 0.07。</b>如果你要的是「它是哪一型」這個答案，這份結果<b>沒有給你一個答案，它給了你七個</b>——而且它們之間的分數差距，小到不足以把其中一個挑出來。</p>
+
+  <div class="note">
+    <b>這一部分要換掉的觀念：相似度分數不是分類器的輸出。</b>它是一個排序用的量，不是「是不是這一型」的判定。<b>要用它做判定，門檻得你自己訂，而且要自己說明為什麼訂在那裡。</b>
+  </div>
+
+  <p class="figsrc">上表出自 <code>out/nblast_example.json</code> 的 <code>top10</code>（<code>scripts/vfb_probe.py</code>，2026-09-14），該檔存的是全部 61 筆；「橫跨七種細胞型」是那一支探針算出來的 <code>n_types_in_top10</code>，「只差 0.07」是 <code>score_gap_rank1_to_rank10</code>。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s2"><span class="pt">2</span>NBLAST 回什麼</h2>
+
+  <p>這支查詢叫 <b>NBLAST</b>——一種比較神經元形態的方法。在檢視器（<code>v2.virtualflybrain.org</code>）裡，它就在 <code>Query For</code> 區，名字是 <i>Neurons with similar morphology to Cha-F-100205 [NBLAST]</i>。</p>
+
+  <p>點下去之後，結果表的標題是：</p>
+
+  <div class="callout">
+    <code>61 Neurons with similar morphology to Cha-F-100205 [NBLAST mean score]</code>
+  </div>
+
+  <p><b>標題裡多了兩個字：<i>mean score</i>。</b>這不是排版；它在告訴你分數是怎麼來的——<b>NBLAST 比 A 對 B 跟比 B 對 A 得到的分數不一樣</b>，而站上給的是兩個方向的<b>平均</b>。你自己重算的時候如果只算一個方向，數字就對不上。</p>
+
+  <p>這張結果表比 <a href="part3-queries.html#s3">PART 3</a> 那支多兩欄，一共七欄：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>欄名</th><th>PART 3 那支有嗎</th><th>裡面是什麼</th></tr>
+    <tr><td><code>Name</code></td><td>有</td><td>比中的那一顆</td></tr>
+    <tr><td><code>Type</code></td><td><b>沒有</b></td><td>它是哪一型——<a href="#s1">第 1 節</a>那一欄</td></tr>
+    <tr><td><code>Gross_Type</code></td><td>有</td><td>分類標籤</td></tr>
+    <tr><td><code>Template_Space</code></td><td>有</td><td>對位到哪套標準腦</td></tr>
+    <tr><td><code>Imaging_Technique</code></td><td>有</td><td>怎麼拍的</td></tr>
+    <tr><td><code>Images</code></td><td>有</td><td>縮圖</td></tr>
+    <tr><td><code>Score ▼</code></td><td><b>沒有</b></td><td>相似度，預設由高到低排</td></tr>
+  </table>
+  </div>
+
+  <p>這是 <a href="part3-queries.html#s3">PART 3 第 3 節</a>那句「欄位是跟著查詢走的」最清楚的例子——<b>換一支查詢，表頭就換一組。</b></p>
+
+  <p>61 筆的分數落在 <b>0.45 到 0.70</b> 之間，而它們來自三套資料：</p>
+
+  <div class="statgrid">
+    <div class="stat"><div class="v">29</div><div class="k">FlyWire web interface v783</div></div>
+    <div class="stat"><div class="v">28</div><div class="k">Optic Lobe v1.0.1</div></div>
+    <div class="stat"><div class="v">4</div><div class="k">FlyCircuit 1.1</div></div>
+  </div>
+
+  <p><b>拿一顆螢光顯微鏡拍的神經元去問，回來的幾乎全是電子顯微鏡重建的。</b>這正是這件事有用的地方——它把兩種完全不同的取像方式接了起來。但也因此，<a href="#s3">下一節</a>那個問題才要緊：<b>兩種來源的東西，是被化約成什麼才拿來比的？</b></p>
+
+  <p class="figsrc">標題與七個欄名由 <code>scripts/browser_probe.py</code> 在 2026-09-14 用真的瀏覽器跑完這支查詢後拍下，原始輸出在 <code>out/ui/nblast_results.json</code>；分數範圍與三套來源的筆數出自 <code>out/nblast_example.json</code>（<code>scripts/vfb_probe.py</code>，同日，全部 61 筆都取回，取回列數等於它自己報的數字）。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s3"><span class="pt">3</span>分數是拿什麼算的</h2>
+
+  <p>NBLAST 不是拿影像比，也不是拿三維網格比。<b>它比的是骨架</b>——把神經元化約成一串有父子關係的點。分數的一切性質都是從這件事來的。</p>
+
+  <p>那份骨架可以直接下載：在該筆資料的資訊面板底下，<code>Downloads</code> 區的 <code>Skeleton (SWC)</code>（<a href="part3-queries.html#s6">PART 3 第 6 節</a>）。<b>所以「站上說這兩顆像」這件事，是可以自己去查的</b>——這也是接下來兩節要做的事。</p>
+
+  <div class="plain">
+    <b>白話。</b>把一顆神經元想成一棵樹：骨架就是這棵樹的節點與枝幹，不含粗細、不含亮度、不含影像。兩顆神經元「像不像」，在這個框架裡就是「兩棵樹擺在一起，點對點有多接近、方向有多一致」。<b>骨架抽得好不好，直接決定分數對不對。</b>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s4"><span class="pt">4</span>拿原始資料驗一次：48 點對 49 點</h2>
+
+  <p><i>Cha-F-100205</i> 出自 FlyCircuit，而 FlyCircuit 自己也釋出骨架。<b>所以這一顆有兩份骨架：FlyCircuit 釋出的那一份，以及 VFB 提供下載的那一份。</b>兩份擺在一起量，結果是這樣：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th></th><th>FlyCircuit 釋出的 SWC</th><th>VFB 提供下載的 SWC</th></tr>
+    <tr><th>點數</th><td>48</td><td><b>49</b></td></tr>
+    <tr><th>分支點</th><td>5</td><td><b>4</b></td></tr>
+    <tr><th>端點</th><td>7</td><td><b>6</b></td></tr>
+    <tr><th>半徑欄</th><td>全部是 0</td><td>全部是 <code>NA</code></td></tr>
+    <tr><th>產生工具（寫在檔頭）</th><td>TREES toolbox</td><td><code>nat::write.neuron.swc</code></td></tr>
+  </table>
+  </div>
+
+  <p><b>分支點的個數不一樣。</b>而分支點的個數，是換一個座標系不會改變的量——所以<b>VFB 那一份不是 FlyCircuit 那一份的座標轉換，它是另外做出來的一份。</b></p>
+
+  <div class="figpair">
+    <figure>
+      <img src="assets/p5-skel-local.png" alt="橘色線畫的神經元骨架，形狀像一條長的淺 W 形，沿線有五個實心圓點（分支點）與七個空心圓點（端點）。">
+      <figcaption><span class="ab">A</span><b>FlyCircuit 釋出的 SWC</b>：48 個點，實心點是分支點（5 個），空心點是端點（7 個）。</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/p5-skel-vfb.png" alt="藍色線畫的同一顆神經元骨架，左側較密集、右側是一條長弧，沿線有四個實心圓點與六個空心圓點。">
+      <figcaption><span class="ab">B</span><b>VFB 提供下載的 SWC</b>：49 個點，分支點 4 個、端點 6 個。</figcaption>
+    </figure>
+  </div>
+
+  <p class="figsrc">兩張圖由 <code>scripts/make_part5_figures.py</code> 從本機 FlyCircuit 的 <code>FC12_swc/Cha-F-100205_swc.swc</code> 與 VFB 的下載網址各讀一份畫出，數字存在 <code>out/part5_figures.json</code>（2026-09-14）。<b>兩張各自把座標置中、做主成分旋轉、再除以自己的最大跨距，用同一個裁切框——所以整體姿態不能拿來比，能比的是點的個數。</b>這<b>不是解剖方位圖</b>：兩份資料在不同的座標框裡（<a href="part1-templates.html#s6">PART 1 第 6 節</a>），本頁不宣稱任何方位。</p>
+
+  <div class="danger">
+    <b>這不表示誰錯了。</b>VFB 從來沒有宣稱它提供的是 FlyCircuit 釋出的那個檔案——它提供的是自己這一套處理管線的產物。<b>本課也不判斷哪一份比較好</b>，那要問做那兩條管線的人。<b>要記住的是操作上的後果：你在 VFB 上看到的分數，是拿 VFB 那份骨架算的；你拿 FlyCircuit 的 SWC 自己重算，不會得到同一個數字。</b>
+  </div>
+
+  <div class="callout">
+    <b>順帶一個對後面有影響的細節：兩份的半徑欄都沒有數值</b>（一個全是 0、一個全是 <code>NA</code>）。<b>所以粗細沒有進到這個比較裡</b>——兩顆形狀一樣、粗細差十倍的神經元，在這個框架下是一樣的。
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s5"><span class="pt">5</span>同一顆，在兩個座標系裡</h2>
+
+  <p><a href="part1-templates.html#s7">PART 1 的作業單</a>問過這顆神經元的 <code>Aligned To</code> 欄，答案是兩套：JFRC2 與 JRC2018U。<b>所以 VFB 上這一顆有兩份骨架，一個座標系一份。</b>兩份也可以各自下載下來量：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th></th><th>VFB／JFRC2</th><th>VFB／JRC2018U</th></tr>
+    <tr><th>點數</th><td>49</td><td>49</td></tr>
+    <tr><th>分支點、端點</th><td>4、6</td><td>4、6</td></tr>
+    <tr><th>度數序列</th><td colspan="2" style="text-align:center"><b>完全相同</b></td></tr>
+    <tr><th>總路徑長</th><td>143.73</td><td>138.34　<span class="k">← 差 3.8%</span></td></tr>
+  </table>
+  </div>
+
+  <p><b>形狀統計一模一樣，長度差 3.8%。</b>這正是 <a href="part1-templates.html#s6">PART 1 第 6 節</a>講的橋接：同一顆神經元被搬到另一個座標系，樹的結構原封不動，但每一段的長度被非剛體對位拉扯過。</p>
+
+  <div class="note">
+    <b>所以「長度」這種量，要標明是在哪個座標系裡量的。</b>點數、分支點數這些是拓樸量，跨座標系不變；長度、體積、距離是幾何量，跨座標系會變。<b>報告一個幾何量而不說座標系，等於沒說。</b>
+  </div>
+
+  <p class="figsrc">兩欄數字出自 <code>out/part5_figures.json</code> 的 <code>vfb_jfrc2</code> 與 <code>vfb_jrc2018u</code>（<code>scripts/make_part5_figures.py</code>，2026-09-14，兩份都從 VFB 的下載網址直接讀）。<b>路徑長只在 VFB 這兩份之間相比</b>——跟 <a href="#s4">第 4 節</a>那份本機 SWC 不能比，那一份在 FlyCircuit 自己的座標框裡，單位尺度不同。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s6"><span class="pt">6</span>所以那個分數能說什麼</h2>
+
+  <p>把前面五節收起來：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>它能說</th><th>它不能說</th></tr>
+    <tr>
+      <td><b>排序。</b>0.70 的那一顆，形態上比 0.45 的那一顆更接近你的目標。這是它設計來做的事。</td>
+      <td><b>判定型別。</b>前十名橫跨七種型、分數只差 0.07。要下判定，門檻是你訂的，理由也是你的。</td>
+    </tr>
+    <tr>
+      <td><b>跨取像方式的線索。</b>它把螢光顯微鏡的一顆接到電子顯微鏡重建上，這是別的方法不容易做到的。</td>
+      <td><b>「這兩顆一樣粗」之類的話。</b>半徑沒有進到比較裡（<a href="#s4">第 4 節</a>）。</td>
+    </tr>
+    <tr>
+      <td><b>一個可以重跑的數字</b>——只要你說明是拿哪一份骨架、哪一個座標系、哪一天算的。</td>
+      <td><b>「我自己算也會是這個數字」。</b>骨架不同（48 對 49 點）、方向不同（站上給的是<i>mean score</i>），兩者都會讓你的數字對不上。</td>
+    </tr>
+  </table>
+  </div>
+
+  <p class="figsrc">這一節的數字全部是前面出現過的，不是新查的：0.07、0.45、0.70 出自 <code>out/nblast_example.json</code>（<a href="#s1">第 1 節</a>與<a href="#s2">第 2 節</a>）、48 與 49 出自 <code>out/part5_figures.json</code>（<a href="#s4">第 4 節</a>）。皆於 2026-09-14 取得。</p>
+
+  <p>這張表可以直接接到 <a href="part4-connectomes.html#s6">PART 4 第 6 節</a>那份「方法段該寫什麼」的清單——對相似度分數來說，那五件之外還要多寫兩件：<b>哪一份骨架</b>，以及<b>分數是哪個方向算的</b>。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s7"><span class="pt">7</span>動手做</h2>
+
+  <p>三步，前兩步在瀏覽器裡做得完；第三步要下載一個檔案。</p>
+
+  <ol>
+    <li><b>跑一次 NBLAST。</b>網址：<a href="https://virtualflybrain.org/reports/VFB_00005010">virtualflybrain.org/reports/VFB_00005010</a>（就是 <a href="part1-templates.html#s7">PART 1 作業單</a>第 4 步那一顆）。在檢視器（<code>v2.virtualflybrain.org</code>）的 <b>Term Info</b> 面板往下找 <b><code>Query For</code></b> 區，點 <i>Neurons with similar morphology to Cha-F-100205 [NBLAST]</i>。<br><b>看到什麼算對</b>：標題是 <code>61 Neurons with similar morphology to Cha-F-100205 [NBLAST mean score]</code>——<b>注意最後那兩個字 <i>mean score</i></b>。</li>
+
+    <li><b>看清楚前幾名是幾種型。</b>結果表最右邊是 <b><code>Score ▼</code></b> 欄，預設由高到低排；左邊第二欄是 <b><code>Type</code></b>。<br><b>看到什麼算對</b>：把前十列的 <code>Type</code> 讀一遍，你會數到<b>不只一種</b>——<a href="#s1">第 1 節</a>那張表就是這麼來的。<b>然後問自己一個問題：如果要你據此判定你手上那顆是哪一型，你會怎麼訂門檻？</b></li>
+
+    <li><b>把骨架拿下來看一眼。</b>同一個面板最底下的 <b><code>Downloads</code></b> 區，點 <code>Skeleton (SWC)</code>。<br><b>看到什麼算對</b>：那是一個純文字檔，每一行是一個點。第一行的註解寫著 <code># SWC format file</code>，而<b>半徑那一欄全部是 <code>NA</code></b>。<br><b>數一下有幾行不是註解</b>——<a href="#s4">第 4 節</a>說的 49 點就是這麼來的，而那 49 個點就是站上那個分數的全部輸入。</li>
+  </ol>
+
+  <p class="figsrc">這一節指名的每一個欄位名、標題與畫面上的字串，都由 <code>scripts/browser_probe.py</code> 在 2026-09-14 用真的瀏覽器把前兩步做過一遍拍下來（<code>out/ui/nblast_results.json</code> 與 <code>out/ui/terminfo_v2_neuron.json</code>）；第三步那個檔案的內容由 <code>scripts/make_part5_figures.py</code> 直接讀取並記進 <code>out/part5_figures.json</code>。</p>
+
+  <div class="note">
+    <b>數字跟你看到的不一樣是正常的。</b>本頁的數字是 2026 年 9 月 14 日抓的。站上的資料集會換版、新的重建會進來，比中的那些神經元與分數都會變——<b>不會變的是這一頁講的那些關係</b>：分數是排序不是判定、它比的是骨架、骨架不含粗細、拓樸量跨座標系不變而幾何量會變。
+  </div>
+
+  <div class="pager">
+    <a href="part4-connectomes.html">← PART 4　連線體</a>
+    <span>PART 6　接到程式與 AI（尚未發布）</span>
+  </div>
+</div>
+
+<div class="foot">
+  VFB 專題課程　PART 5　·　本頁引用的 VFB 資料與畫面皆於 2026-09-14 讀取　·　
+  骨架比對圖由本課自行計算；資料來源為 FlyCircuit（Chiang et al. 2010，自訂授權）與 VFB 的公開下載
+</div>
+</body>
+</html>

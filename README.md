@@ -13,10 +13,12 @@
 | `part2-names.html` | PART 2　把一個名字問清楚 |
 | `part3-queries.html` | PART 3　從腦區找到神經元 |
 | `part4-connectomes.html` | PART 4　連線體 |
+| `part5-nblast.html` | PART 5　形態比對：NBLAST 與 FlyCircuit |
 | `assets/` | 共用樣式與所有圖檔 |
 | `scripts/vfb_probe.py` | **API 探針**：把教材用到的查詢向 VFB 跑一遍，存進 `out/` |
 | `scripts/browser_probe.py` | **畫面探針**：用真的瀏覽器把學員會看到的畫面拍一遍，存進 `out/ui/` |
 | `scripts/make_part1_figures.py` | PART 1 的六張真實資料圖 |
+| `scripts/make_part5_figures.py` | PART 5 的兩張骨架比對圖（本機 FlyCircuit vs VFB 下載） |
 | `scripts/*_audit.py` | 七道稽核 |
 | `out/` | 探針的原始輸出。**頁面上每個數字都對得回這裡** |
 | `out/ui/` | 畫面探針的輸出。**頁面上每個介面名字都對得回這裡** |
