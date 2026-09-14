@@ -87,7 +87,19 @@
 
   <h3>數字一個比一個小，但不能相加</h3>
 
-  <p>那四支「神經元」查詢的數字看起來像一層層篩下去。<b>包含關係確實成立</b>——我們把四支的編號全部取回來做過集合運算：</p>
+  <p>上表裡有<b>五</b>支跟神經元有關的查詢，其中最後一支（<i>Images of neurons…</i>，226k）回的是個體，先放一邊。<b>剩下這四支回的都是種類</b>，數字一個比一個小，看起來像一層層篩下去：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>本頁往後這樣稱呼它</th><th>站上的查詢</th><th>回幾種</th></tr>
+    <tr><td><b>有一部分在裡面</b></td><td><i>Neurons with some part in medulla</i></td><td>471</td></tr>
+    <tr><td><b>有突觸終端</b></td><td><i>Neurons with synaptic terminals in medulla</i></td><td>464</td></tr>
+    <tr><td><b>前突觸</b></td><td><i>Neurons with presynaptic terminals in medulla</i></td><td>262</td></tr>
+    <tr><td><b>後突觸</b></td><td><i>Neurons with postsynaptic terminals in medulla</i></td><td>333</td></tr>
+  </table>
+  </div>
+
+  <p><b>包含關係確實成立</b>——我們把這四支的編號全部取回來做過集合運算：</p>
 
   <div class="plain">
     <b>前突觸 ⊆ 有突觸終端 ⊆ 有一部分在裡面。</b>後突觸也一樣。三個包含關係都逐一驗證過，沒有例外。

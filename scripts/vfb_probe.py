@@ -738,7 +738,7 @@ def _counts_region():
 
 
 @probe("query_overlaps", "PART 3",
-       "那幾支「神經元」查詢回的是同一群東西嗎？能不能相加？",
+       "NeuronsPartHere／NeuronsSynaptic／Neurons(Pre|Post)synapticHere 回的是同一群東西嗎？",
        needs=("counts_region",))
 def _query_overlaps():
     """PART 3 的核心警告：**這幾支查詢是巢狀的，但不能相加。**
