@@ -43,6 +43,8 @@ EXEMPT = {
            "引文（見該段的出處行），不是探針抓的數字，所以 out/ 裡沒有。",
     "1.65": "886 ÷ 536 ＝ 1.65 倍。兩個被除數都在 out/part1_figures.json 的 "
             "frames.*.labelled_extent_um 裡，比值是頁面上當場算的。",
+    "30": "PART 7 指令 7 裡「超過 30 筆就給前 30 筆」——那是我們自己訂的回報上限，"
+          "不是查來的數字。",
     "15,457": "80,003 − 64,546 ＝ 15,457（BANC 兩個版本的差）。兩個被減數都在 "
              "out/connectome_overview.json 的 version_pairs 裡，差值是頁面上當場算的。",
     "481": "226,524 ÷ 471 ≈ 481 倍。兩個被除數都在 out/counts_region.json 裡"
@@ -62,6 +64,8 @@ SKIP_CONTEXT = [
     (r'20\d\d[-年]\s*\d+\s*[-月]\s*$', "日期的日"),
     (r'(Neuron|Cell|Nature|Science)\s*$', "期刊卷號"),
     (r'\d:$',              "頁碼"),
+    (r'doi:\s*$',          "DOI"),
+    (r'doi:10\.$',         "DOI 的後半"),
     (r'[–-]$',             "頁碼範圍的後半"),
 ]
 SKIP_TOKEN = {

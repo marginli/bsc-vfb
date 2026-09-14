@@ -1,0 +1,70 @@
+{
+  "paper": {
+    "doi": "10.1038/s41586-025-08746-0",
+    "pmid": "40140576",
+    "pmcid": "PMC12119369",
+    "flybase": "FBrf0262545",
+    "citation": "Nern et al., 2025, Nature 641(8065): 1225-1237, Connectome-driven neural inventory of a complete visual system",
+    "licence": "CC-BY",
+    "oa_checked_with": "Unpaywall api.unpaywall.org/v2/<doi>"
+  },
+  "supplementary_table": {
+    "url": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-025-08746-0/MediaObjects/41586_2025_8746_MOESM4_ESM.zip",
+    "file": "Sup_Table_1_Cell-types_and_counts_final.xlsx",
+    "columns": [
+      "cell type",
+      "instance",
+      "no. of cells",
+      "main groups",
+      "bodyId in figures",
+      "predicted neurotransmitter"
+    ]
+  },
+  "quotes_from_main_text": {
+    "n_types": "We classified around 53,000 visual system neurons into 732 cell types",
+    "vcn": "We identified 104 VCN types across about 270 cells",
+    "concentration": "The number of neurons that constitute a type varied widely, with 60 cell types accounting for >50% of the synaptic connections and about 75% of the neurons."
+  },
+  "target": {
+    "rows": 778,
+    "distinct_cell_types": 732,
+    "total_cells": 52827,
+    "rows_by_group": {
+      "VCN": 110,
+      "VPN": 385,
+      "ONCN": 95,
+      "other": 39,
+      "ONIN": 149
+    },
+    "cells_by_group": {
+      "VCN": 270,
+      "VPN": 4546,
+      "ONCN": 32394,
+      "other": 67,
+      "ONIN": 15550
+    },
+    "rows_by_predicted_neurotransmitter": {
+      "5HT": 3,
+      "ACh": 273,
+      "GABA": 130,
+      "unclear": 179,
+      "Glu": 175,
+      "His": 8,
+      "Dop": 2,
+      "OA": 8
+    },
+    "n_types_with_more_than_one_row": 46,
+    "instance_side": {
+      "_R": 681,
+      "_L": 97,
+      "其他": 0
+    }
+  },
+  "vfb_side": {
+    "dataset": "Nern2024",
+    "link_relation": "has_reference",
+    "linked_to_paper_by": "知識庫裡 DataSet 的 has_reference 關係指向 FBrf0262545",
+    "site": "neuprint_JRC_OpticLobe_v1_0_1"
+  },
+  "note": "正文說 732 cell types、around 53,000 neurons；這張表算出來是 732 個型、52,827 顆——兩者對得起來，所以這張表可以當靶。PART 8 的比對就是拿 VFB 的資料跟 target 這一段逐列比。"
+}
