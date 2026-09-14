@@ -116,7 +116,7 @@
     <tr><td>VFB_00030786</td><td>Ito2014</td><td>成蟲腦（腦區命名法的官方模板）</td><td>75</td><td>CC-BY 4.0</td></tr>
     <tr><td>VFB_00101384</td><td>JRCFIB2018Fum</td><td>成蟲腦（hemibrain 電顯資料自己的空間）</td><td>97</td><td>CC-BY 4.0</td></tr>
     <tr><td>VFB_00049000</td><td>Wood2018</td><td>三齡幼蟲中樞神經系統</td><td>255</td><td>CC-BY 4.0</td></tr>
-    <tr><td>VFB_00050000</td><td>Seymour（L1 ssTEM）</td><td>一齡幼蟲中樞神經系統</td><td>0</td><td>CC-BY 4.0</td></tr>
+    <tr><td>VFB_00050000</td><td>L1 ssTEM（Cardona/Janelia）</td><td>一齡幼蟲中樞神經系統</td><td>0</td><td>CC-BY 4.0</td></tr>
     <tr><td>VFB_00100000</td><td>Court2018</td><td>成蟲腹神經系統</td><td>22</td><td>CC-BY 4.0</td></tr>
     <tr><td>VFB_00110000</td><td>McKellar2020</td><td>成蟲頭部</td><td>18</td><td>CC-BY 4.0</td></tr>
     <tr><td>VFB_00120000</td><td>Kuan2020</td><td>成蟲前足</td><td>4</td><td>CC-BY 4.0</td></tr>
@@ -125,13 +125,13 @@
   <p class="figsrc">2026-09-13 由 <code>scripts/vfb_probe.py</code> 抓取，原始輸出在 <code>out/templates.json</code> 與 <code>out/template_detail.json</code>。分區數用兩種算法各算一次——一種是數分區清單（扣掉代表整顆腦自己的那一格），一種是直接跑站上的 <i>Painted domains</i> 查詢——十套的兩個數字都一致。授權取自 VFB 的知識庫，每一套 template 各對到唯一一個授權。</p>
 
   <div class="callout">
-    <b>同一套 template，VFB 的兩個地方會給你不同的授權；這張表記的是知識庫那一個。</b>網站上那一欄——<b>Term Info 的 <code>Licenses</code></b>——我們實測過會變動——同一個 template 連問五次，三次回 CC-BY 4.0、兩次回 CC-BY-SA 4.0；知識庫裡每一套 template 只連到<b>一個</b>授權，連問三次都一樣。所以你看到兩邊不一樣，不是你看錯，是 <code>Licenses</code> 那一欄不穩定。</p>
+    <b>同一套 template，VFB 的兩個地方會給你不同的授權；這張表記的是知識庫那一個。</b>網站上那一欄（<b>Term Info 的 <code>Licenses</code></b>）我們實測過會變動——同一個 template 連問五次，三次回 CC-BY 4.0、兩次回 CC-BY-SA 4.0；知識庫裡每一套 template 只連到<b>一個</b>授權，連問三次都一樣。所以你看到兩邊不一樣，不是你看錯，是 <code>Licenses</code> 那一欄不穩定。</p>
     <p><b>但這張表回答的是「VFB 記了什麼」，不是「你可以做什麼」。</b>VFB 兩邊都只是轉錄：授權是當年釋出那套 template 的人給的，VFB 把它抄進自己的資料庫，抄錯或沒跟上更新都有可能。所以要判斷自己能不能用，源頭一律是那套 template 的原始論文或資料頁。這張表的用途是<b>索引</b>——告訴你該去查哪一套、大概會查到什麼——不是依據。
   </div>
 
   <p><b>要挑一套來用的話：成蟲腦就挑 JRC2018Unisex。</b>它是 VFB 現在的預設，新進來的資料都往它對；本課往後凡是沒有特別說明的成蟲腦，指的都是它。</p>
 
-  <p>為什麼要十套？因為<b>問題不同，基準就不同</b>。研究腹神經索的人對不到腦的 template 上；研究幼蟲的人對不到成蟲的；而 hemibrain 那批電顯資料在自己的空間裡重建，它有自己的一套座標。十套裡有三套根本不是腦——腹神經索、頭部、前足各一套。</p>
+  <p>為什麼要十套？因為<b>問題不同，基準就不同</b>。研究腹神經索的人對不到腦的 template 上；研究幼蟲的人對不到成蟲的；而 hemibrain 那批電顯資料在自己的空間裡重建，它有自己的一套座標。十套裡有四套涵蓋的不是成蟲腦本身：腹神經索與腹神經系統各一套，再加上頭部一套、前足一套。</p>
 
   <div class="note">
     <b>本課往後講「有幾套 template」，一律指這十套。</b>VFB 背後存放所有資料的那個資料庫（本課往後叫它<b>知識庫</b>）裡，另外有十個編號以 <code>VFBc_</code> 開頭的項目也標著 template，那是每一套 template 的附屬影像，搜尋時不會被當成可以選的基準。兩個數字都對，只是回答的問題不同；需要提到那十個的時候，本課會寫明它們是附屬影像。
