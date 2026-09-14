@@ -25,7 +25,7 @@
     <h2>本頁章節</h2>
     <ol>
       <li><a href="#s1">這個網站不是只能用滑鼠</a></li>
-      <li><a href="#s2">滑鼠：把東西打包帶走</a></li>
+      <li><a href="#s2">滑鼠這一層，以及它的天花板</a></li>
       <li><a href="#s3">程式：<code>vfb-connect</code></a></li>
       <li><a href="#s4">AI：VFB 自己架的 MCP 伺服器</a></li>
       <li><a href="#s5">同一個問題，三種做法</a></li>
@@ -50,27 +50,25 @@
   </div>
 
   <!-- ══════════════════════════════════════════════════════ -->
-  <h2 id="s2"><span class="pt">2</span>滑鼠：把東西打包帶走</h2>
+  <h2 id="s2"><span class="pt">2</span>滑鼠這一層，以及它的天花板</h2>
 
-  <p><a href="part3-queries.html#s6">PART 3 第 6 節</a>下載的是<b>清單</b>（一個 CSV）。這裡下載的是<b>東西本身</b>——影像、網格、骨架。</p>
+  <p>前五個部分做的每一件事，都是滑鼠這一層：<a href="part1-templates.html#s7">PART 1</a> 比對兩套標準腦的分區、<a href="part3-queries.html">PART 3</a> 做出那份 471 種的清單並把它<a href="part3-queries.html#s6">帶走</a>（三種下載都在那一節）、<a href="part5-nblast.html#s7">PART 5</a> 跑一次 NBLAST 再把骨架下載下來。<b>這一層能做的事比多數人以為的多。</b></p>
 
-  <p>在檢視器（<code>v2.virtualflybrain.org</code>）裡把要的東西開好之後，按頂列那個 <b><code>Download Contents</code></b> 圖示，跳出來的對話框標題是 <b><code>Download Data</code></b>：</p>
+  <p>但它有三件做不到的事，而且每一件都會在真的研究裡撞上：</p>
 
   <div class="tblwrap">
   <table>
-    <tr><th>對話框的兩段</th><th>要你選什麼</th></tr>
-    <tr><td><i>Please select the desired types</i></td><td>四種格式：<code>OBJ</code>（網格）、<code>SWC</code>（骨架）、<code>NRRD</code>（影像訊號）、<code>References</code>（引用資訊）</td></tr>
-    <tr><td><i>Please select Variables:</i></td><td><b>要下載哪幾個東西</b>——目前載入檢視器裡的那些，可以整組勾（<code>All Instances</code>）也可以逐個挑</td></tr>
+    <tr><th>做不到</th><th>什麼時候會撞上</th></tr>
+    <tr><td><b>批次</b></td><td>你要的不是一個腦區，是五十個</td></tr>
+    <tr><td><b>算不重複的個數</b></td><td>畫面給的是列數，而<a href="part2-names.html#s5">列數不是個數</a>——要去重就得自己拿全部的編號回來</td></tr>
+    <tr><td><b>把結果接到下一步</b></td><td>清單拿到了，但下一步要拿它去問別的問題、或餵進自己的分析</td></tr>
   </table>
   </div>
 
-  <div class="danger">
-    <b>第二段挑的是「東西」，不是「欄位」。</b>它列出來的就是 <a href="part3-queries.html#s5">PART 3 第 5 節</a>那個 <code>Layers</code> 面板上的內容——<b>你沒有勾進檢視器的東西，這裡不會出現</b>。所以要打包一批神經元，得先把它們載入檢視器。
-  </div>
+  <p><b>這三件事就是接下來兩層存在的理由。</b>底下兩節先各自介紹，<a href="#s5">第 5 節</a>再把三層擺在一起比。</p>
 
-  <p class="figsrc">圖示名稱、對話框標題、兩段文字與四種格式，由 <code>scripts/browser_probe.py</code> 在 2026-09-14 用真的瀏覽器點開拍下，原始輸出在 <code>out/ui/bulk_download.json</code>。</p>
+  <p class="figsrc">471 這個數字出自 <a href="part3-queries.html#s2">PART 3 第 2 節</a>（<code>out/query_overlaps.json</code>，<code>scripts/vfb_probe.py</code>，2026-09-14）。<a href="#s5">第 5 節</a>會把三層各自問到的數字並排。</p>
 
-  <!-- ══════════════════════════════════════════════════════ -->
   <h2 id="s3"><span class="pt">3</span>程式：<code>vfb-connect</code></h2>
 
   <p>VFB 官方的 Python 套件。裝一行：</p>
@@ -181,17 +179,24 @@ vc.get_terms_by_region('medulla')</pre>
   <!-- ══════════════════════════════════════════════════════ -->
   <h2 id="s7"><span class="pt">7</span>動手做</h2>
 
-  <p>三步。第一步在瀏覽器裡做得完，第二、三步要裝東西——<b>不裝也可以只做第一步</b>。</p>
+  <p>三步，都要裝東西——<b>前五個部分的作業單都不用，只有這一份要</b>。不想裝也可以只讀不做：<a href="#s5">第 5 節</a>的結論不需要你自己跑過就看得懂。</p>
 
   <ol>
-    <li><b>把一顆神經元打包下載。</b>網址：<a href="https://virtualflybrain.org/reports/VFB_00005010">virtualflybrain.org/reports/VFB_00005010</a>。在檢視器（<code>v2.virtualflybrain.org</code>）頂列找到 <b><code>Download Contents</code></b> 圖示，點開。<br><b>看到什麼算對</b>：對話框標題是 <code>Download Data</code>，第一段 <i>Please select the desired types</i> 底下有四個方框：<code>OBJ</code>、<code>SWC</code>、<code>NRRD</code>、<code>References</code>。勾 <code>SWC</code>，再到第二段勾 <code>Cha-F-100205</code>，按 <code>DOWNLOAD</code>。<br><b>拿到的就是 <a href="part5-nblast.html#s4">PART 5 第 4 節</a>量過的那份骨架。</b></li>
+    <li><b>用程式問一次。</b>裝好之後跑<a href="#s3">第 3 節</a>那三行：
+      <pre>pip install vfb-connect</pre>
+      <pre>from vfb_connect import VfbConnect
+vc = VfbConnect()
+vc.get_terms_by_region('medulla')</pre>
+      <b>看到什麼算對</b>：回來的是一個 DataFrame。<b>先不要看內容，先看 <code>len()</code>——是 510。</b><br>
+      <b>而你在 <a href="part3-queries.html">PART 3</a> 用滑鼠得到的是 471。</b>先停在這裡想一下為什麼。</li>
 
-    <li><b>用程式問同一個腦區。</b>裝好 <code>pip install vfb-connect</code> 之後跑那三行（<a href="#s3">第 3 節</a>）。<br><b>看到什麼算對</b>：回來的是一個 DataFrame。<b>先不要看內容，先看 <code>len()</code></b>——如果是 <b>510</b>，你就親眼看到<a href="#s5">第 5 節</a>那個差別了。接著加上 <code>cells_only=True</code> 再跑一次，數字會變成 <b>481</b>。<br><b>兩個數字都不是 471。想一下為什麼，再去看第 5 節那張表。</b></li>
+    <li><b>加一個參數再問一次。</b><pre>vc.get_terms_by_region('medulla', cells_only=True)</pre>
+      <b>看到什麼算對</b>：<b>481</b>。<br>兩個數字都不是 471，而<b>你一個字都沒改問題，只改了參數</b>。<a href="#s5">第 5 節</a>那張表逐項解釋那 39 個與那 10 個各是什麼。</li>
 
-    <li><b>接上 MCP，然後追問它。</b>照<a href="#s4">第 4 節</a>那一行把伺服器加進你的 AI 助理，然後用中文問：「medulla 裡有一部分在裡面的神經元有幾種？」<br><b>看到什麼算對</b>：它應該回你 <b>471</b>。<br><b>然後追問一句：「你用了哪一個工具、填了哪些參數？」</b>——把它的回答跟<a href="#s5">第 5 節</a>那張表對一遍。<b>這一步才是這個作業單的重點</b>：不是讓 AI 給你答案，是讓它交代它怎麼得到那個答案的。</li>
+    <li><b>接上 MCP，然後追問它。</b>照<a href="#s4">第 4 節</a>那一行把伺服器加進你的 AI 助理，用中文問：「medulla 裡有一部分在裡面的神經元有幾種？」<br><b>看到什麼算對</b>：它應該回你 <b>471</b>。<br><b>然後追問一句：「你用了哪一個工具、填了哪些參數？」</b>把它的回答跟<a href="#s5">第 5 節</a>那張表對一遍。<br><b>這一步才是這份作業單的重點</b>：不是讓 AI 給你答案，是讓它交代它怎麼得到那個答案的——因為那三個預設值，它一個都不會主動告訴你。</li>
   </ol>
 
-  <p class="figsrc">這一節指名的每一個名稱與數字，都由 <code>scripts/browser_probe.py</code> 與 <code>scripts/three_layers.py</code> 在 2026-09-14 實際做過一遍取得，原始輸出在 <code>out/ui/bulk_download.json</code> 與 <code>out/three_layers.json</code>。</p>
+  <p class="figsrc">三步的每一個數字，由 <code>scripts/three_layers.py</code> 在 2026-09-14 各跑一次取得，原始輸出在 <code>out/three_layers.json</code>。</p>
 
   <div class="note">
     <b>這是這門課的最後一個部分。</b>六個部分走完，你手上有的不是一套操作步驟，而是一組習慣：<b>先問這個數字在回答什麼問題</b>、<b>先確認自己在哪一個網站上</b>、<b>先看它是哪一套資料的哪一版</b>、<b>先問有沒有第二條路可以問到同一個數字</b>。<br>這些習慣不會因為 VFB 改版而失效——<b>而這門課裡所有會失效的東西，都標了日期。</b>

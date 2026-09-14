@@ -198,13 +198,26 @@
   <!-- ══════════════════════════════════════════════════════ -->
   <h2 id="s6"><span class="pt">6</span>匯出</h2>
 
-  <p>清單做好了要帶走。結果表底下有四個動作：<i>Refine query</i>、<i>New query</i>、<i>Delete results</i>、<b><i>Download results (CSV)</i></b>。最後那個就是把整份清單存成檔案。</p>
+  <p>清單做好了要帶走。<b>站上有三種下載，拿到的東西不一樣</b>——先把它們並排，之後就不會按錯：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>按哪裡</th><th>拿到什麼</th></tr>
+    <tr><td>結果表底下的 <b><i>Download results (CSV)</i></b></td><td><b>清單</b>：結果表那幾欄，一個 CSV</td></tr>
+    <tr><td>資訊面板底下的 <b><code>Downloads</code></b> 區</td><td><b>一個東西</b>：你正在看的那一筆，可以挑格式</td></tr>
+    <tr><td>頂列的 <b><code>Download Contents</code></b> 圖示</td><td><b>一批東西</b>：目前載入檢視器裡的那些，一次打包</td></tr>
+  </table>
+  </div>
+
+  <h3>一、清單：<i>Download results (CSV)</i></h3>
+
+  <p>結果表底下有四個動作：<i>Refine query</i>、<i>New query</i>、<i>Delete results</i>、<b><i>Download results (CSV)</i></b>。最後那個就是把整份清單存成檔案。</p>
 
   <div class="callout">
     <b>拿到的是整份結果，不是畫面上那幾列。</b>就算你先用 <code>Filter Results</code> 篩到只剩一列，按下去拿到的<b>仍然是全部 471 列</b>，連檔名都還是 <code>471_Neurons_with_some_part_in_medulla.csv</code>。<b>篩選是看的，下載是全部。</b>要只匯出一部分，得用 <i>Refine query</i> 重新問一次，而不是篩。
   </div>
 
-  <p>CSV 裡是結果表那幾欄，<b>不是影像</b>——影像要另外一顆一顆下載。另外要有心理準備：<b>CSV 的欄名是第三組寫法</b>。同一件事，你已經遇過三種名字：</p>
+  <p>CSV 裡是結果表那幾欄，<b>不是影像</b>——影像要用底下那兩種拿。另外要有心理準備：<b>CSV 的欄名是第三組寫法</b>。同一件事，你已經遇過三種名字：</p>
 
   <div class="tblwrap">
   <table>
@@ -219,6 +232,8 @@
   </div>
 
   <p><b>CSV 比畫面多給你一欄 <code>id</code></b>——那是編號，也就是 <a href="part2-names.html#s4">PART 2 第 4 節</a>說「要指名一個東西就用它」的那個。<b>拿 CSV 去做下一步時，用 <code>id</code> 那一欄，不要用名字。</b>另外，CSV 裡好幾欄的值帶著連結語法，例如 <code>[Dm8b](FBbt_00110069)</code>——要用之前得先拆開。</p>
+
+  <h3>二、一個東西：資訊面板的 <code>Downloads</code> 區</h3>
 
   <p>單一顆神經元的檔案在它自己的資訊面板底下，<code>Downloads</code> 那一區：</p>
 
@@ -237,12 +252,28 @@
     <b>那一區底下有一句話：「The license shown above applies to this data.」</b>——授權是<b>逐筆</b>的，寫在同一個面板的 <code>License</code> 欄裡，而它每一筆可能不一樣（<a href="part2-names.html#s3">PART 2 第 3 節</a>）。<b>下載之前看一眼那一欄，並且照 <code>citations.bibtex</code> 引用原始資料的論文</b>，不是引用 VFB。同一個面板的 <code>Source</code> 欄會告訴你這筆資料出自哪一套、哪一版。
   </div>
 
-  <p class="figsrc">四個動作按鈕出自 <code>out/ui/query_results.json</code>；<code>Downloads</code> 區的檔案清單與那句授權說明，出自 <code>out/ui/terminfo_v2_neuron.json</code>。<b>「篩選不影響下載」與 CSV 的欄名，是真的按下去下載了兩次量出來的</b>（一次不篩、一次篩成一列，兩次都拿到 471 列、同一個檔名），出自 <code>out/ui/csv_export.json</code>；程式介面那一欄的鍵名出自 <code>out/counts_region.json</code>。皆由 <code>scripts/browser_probe.py</code> 於 2026-09-14 取得。</p>
+  <h3>三、一批東西：<code>Download Contents</code></h3>
+
+  <p>要一次拿好幾個，用頂列那個 <b><code>Download Contents</code></b> 圖示。點下去跳出來的對話框標題是 <b><code>Download Data</code></b>，分兩段：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>對話框的兩段</th><th>要你選什麼</th></tr>
+    <tr><td><i>Please select the desired types</i></td><td>四種格式：<code>OBJ</code>（網格）、<code>SWC</code>（骨架）、<code>NRRD</code>（影像訊號）、<code>References</code>（引用資訊）</td></tr>
+    <tr><td><i>Please select Variables:</i></td><td><b>要下載哪幾個東西</b>，可以整組勾（<code>All Instances</code>）也可以逐個挑</td></tr>
+  </table>
+  </div>
+
+  <div class="danger">
+    <b>第二段列出來的，就是<a href="#s5">上一節</a>那個 <code>Layers</code> 面板上的東西。</b>所以<b>你沒有勾進檢視器的，這裡不會出現</b>——要打包一批神經元，得先把它們一個一個勾進去。<b>這是「縮圖不等於載入」那件事的第二個後果</b>：第一個是三維檢視裡看不到，第二個是打包時抓不到。
+  </div>
+
+  <p class="figsrc">四個動作按鈕出自 <code>out/ui/query_results.json</code>；<code>Downloads</code> 區的檔案清單與那句授權說明，出自 <code>out/ui/terminfo_v2_neuron.json</code>。<b>「篩選不影響下載」與 CSV 的欄名，是真的按下去下載了兩次量出來的</b>（一次不篩、一次篩成一列，兩次都拿到 471 列、同一個檔名），出自 <code>out/ui/csv_export.json</code>；程式介面那一欄的鍵名出自 <code>out/counts_region.json</code>。<code>Download Contents</code> 圖示的名稱、對話框標題與那兩段文字，出自 <code>out/ui/bulk_download.json</code>。皆由 <code>scripts/browser_probe.py</code> 於 2026-09-14 取得。</p>
 
   <!-- ══════════════════════════════════════════════════════ -->
   <h2 id="s7"><span class="pt">7</span>動手做</h2>
 
-  <p>四步，不用安裝也不用登入。做完你會有一份 CSV。</p>
+  <p>五步，不用安裝也不用登入。做完你會有一份 CSV，以及一條神經元的骨架檔。</p>
 
   <ol>
     <li><b>打開 medulla 的頁面。</b>網址：<a href="https://virtualflybrain.org/reports/FBbt_00003748">virtualflybrain.org/reports/FBbt_00003748</a>。<br><b>去哪裡確認你到對地方了</b>：檢視器（<code>v2.virtualflybrain.org</code>）的 <b>Term Info</b> 分頁，<code>Name</code> 欄寫著 <code>medulla [FBbt_00003748]</code>。</li>
@@ -252,9 +283,11 @@
     <li><b>跑出清單，然後篩一次。</b>點 <i>Neurons with some part in medulla</i>。<br><b>看到什麼算對</b>：畫面上方換成結果表，標題是 <code>471 Neurons with some part in medulla</code>，表頭五欄依序是 <code>Name</code>、<code>Gross_Type</code>、<code>Template_Space</code>、<code>Imaging_Technique</code>、<code>Images</code>。<br>接著在表格上方的 <b><code>Filter Results</code></b> 框裡打 <code>Cm7</code>，看著列數變少——<b>然後回頭看標題</b>，它還是 471。<a href="#s4">第 4 節</a>說的就是這件事。</li>
 
     <li><b>把一列放進檢視器，再把清單帶走。</b>先看一眼 <b><code>Layers</code></b> 面板：現在只有 <i>JRC2018Unisex</i> 一列。接著在結果表裡勾選任一列右下角的方框。<br><b>看到什麼算對</b>：<code>Layers</code> 多出一列，名字長得像 <i>Cm7_L (MaleCNS:41280)</i>——那是一條真的神經元，不是一個種類。<br>最後按結果表底下的 <b><i>Download results (CSV)</i></b>。<br><b>看到什麼算對</b>：檔名是 <code>471_Neurons_with_some_part_in_medulla.csv</code>，裡面有 <b>471 列</b>——<b>不是你第 3 步篩剩的那一列</b>。<a href="#s6">第 6 節</a>說的就是這件事：篩選是看的，下載是全部。</li>
+
+    <li><b>把剛剛勾的那一個打包帶走。</b>不要關掉畫面——<b>上一步勾進 <code>Layers</code> 的那一個還在</b>。按頂列的 <b><code>Download Contents</code></b> 圖示。<br><b>看到什麼算對</b>：對話框標題是 <code>Download Data</code>；第一段有四個方框（<code>OBJ</code>、<code>SWC</code>、<code>NRRD</code>、<code>References</code>），<b>第二段列出來的正好就是 <code>Layers</code> 面板上那兩樣</b>——那顆標準腦，以及你剛剛勾的那一條神經元。<br>勾 <code>SWC</code> 與那條神經元，按 <code>DOWNLOAD</code>。<b>拿到的就是 <a href="part5-nblast.html#s4">PART 5 第 4 節</a>拿去跟原始資料比對的那份骨架。</b></li>
   </ol>
 
-  <p class="figsrc">這一節每一步指名的欄位名、徽章數字與畫面上的字串，都由 <code>scripts/browser_probe.py</code> 在 2026-09-14 用真的瀏覽器把這四步做過一遍拍下來，原始輸出在 <code>out/ui/</code>（<code>terminfo_v2_region.json</code>、<code>query_results.json</code>、<code>viewer_state.json</code>）。</p>
+  <p class="figsrc">這一節每一步指名的欄位名、徽章數字與畫面上的字串，都由 <code>scripts/browser_probe.py</code> 在 2026-09-14 用真的瀏覽器把這四步做過一遍拍下來，原始輸出在 <code>out/ui/</code>（<code>terminfo_v2_region.json</code>、<code>query_results.json</code>、<code>viewer_state.json</code>、<code>bulk_download.json</code>）。</p>
 
   <div class="note">
     <b>數字跟你看到的不一樣是正常的。</b>本頁的徽章數字是 2026 年 9 月 14 日抓的。連線資料集會換版、新的重建會進來，這些數目就跟著變——<a href="#s2">第 2 節</a>那些包含關係與重疊則不會。要確認自己看到的是哪一版，就看該筆資料 <code>Source</code> 欄裡的資料集名稱，名字裡帶著版本。
