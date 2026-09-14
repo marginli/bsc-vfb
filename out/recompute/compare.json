@@ -3,13 +3,25 @@
   "instance": {
    "matched": 753,
    "of": 778,
-   "rate_pct": 96.8
+   "rate_pct": 96.8,
+   "denominator_is": "論文表的 instance 列（帶側別）"
   },
   "class": {
    "matched": 547,
    "of": 732,
-   "rate_pct": 74.7
+   "rate_pct": 74.7,
+   "denominator_is": "論文表的 cell type（不帶側別）"
   }
+ },
+ "key_choice_same_denominator": {
+  "denominator": 732,
+  "denominator_is": "論文的 cell type 數，兩種鍵都降到型這一層",
+  "instance": 711,
+  "class": 547,
+  "instance_pct": 97.1,
+  "class_pct": 74.7,
+  "gap_pct": 22.4,
+  "note": "降到型這一層會讓 instance 那一側少掉左右的區分，所以它的分子跟上面那個 753 不一樣——那 753 數的是列。"
  },
  "only_in_vfb_cells": 221,
  "only_in_paper_explained_by_split": 7,

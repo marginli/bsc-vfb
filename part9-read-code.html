@@ -42,15 +42,15 @@
   <p><a class="dl" href="downloads/vfb-recompute.zip"><b>下載 vfb-recompute.zip</b>（三支程式、說明，以及那一輪的全部輸出）</a></p>
 
   <div class="filecard">
-    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　424 行</span><p>取論文的靶、取 VFB 那一側、逐列比對</p></div>
+    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　452 行</span><p>取論文的靶、取 VFB 那一側、逐列比對</p></div>
     <div class="f"><span class="nm">cross_check.py</span><span class="role">旁證　168 行</span><p>同一個數字問三條路</p></div>
     <div class="f"><span class="nm">make_figure.py</span><span class="role">產圖　91 行</span><p>畫 PART 8 第 3 節那張圖</p></div>
   </div>
 
-  <p class="figsrc">三個行數出自 <code>out/recompute/run_meta.json</code> 的 <code>files</code>；合計 683 行與其中 138 行註解出自同檔的 <code>code_lines</code>（用 <code>tokenize</code> 數的，2026-09-14 實測）。</p>
+  <p class="figsrc">三個行數出自 <code>out/recompute/run_meta.json</code> 的 <code>files</code>；合計 711 行與其中 143 行註解出自同檔的 <code>code_lines</code>（用 <code>tokenize</code> 數的，2026-09-14 實測）。</p>
 
   <div class="note">
-    <b>三支加起來 683 行，其中 138 行是註解或說明字串（兩成）。</b>這不是為了好看——<a href="part7-agent-prompts.html#s4">指令 10</a> 明寫「每個檔案開頭用註解寫清楚它做什麼」。<b>一份研究用的程式，註解不是裝飾，是它唯一的說明書。</b>
+    <b>三支加起來 711 行，其中 143 行是註解或說明字串（兩成）。</b>這不是為了好看——<a href="part7-agent-prompts.html#s4">指令 10</a> 明寫「每個檔案開頭用註解寫清楚它做什麼」。<b>一份研究用的程式，註解不是裝飾，是它唯一的說明書。</b>
   </div>
 
   <div class="callout">
@@ -117,8 +117,9 @@ PARAMS = {
 ② 取 VFB 那一側…
    53,402 顆　類別 844（泛稱 23、末端 821）
 ③ 逐列比對…
-   鍵=instance  對得上 753/778　96.8%
-   鍵=class     對得上 547/732　74.7%
+   鍵=instance  對得上 753/778　96.8%　（分母：論文表的 instance 列（帶側別））
+   鍵=class     對得上 547/732　74.7%　（分母：論文表的 cell type（不帶側別））
+   放到同一個分母（732 個型）：instance 97.1% vs class 74.7%　差 22.4 個百分點
    顆數相同 732　不同 21（最大差 202）
    只在論文 25　只在 VFB 184</pre>
 
@@ -176,6 +177,8 @@ PARAMS = {
     else:
         got = vfb["keys_class"]
         ...</pre>
+
+  <p><b>而每一個比率都要把分母印出來。</b>上面那三行輸出裡，<code>753/778</code> 的分母是<b>列</b>、<code>547/732</code> 的分母是<b>型</b>——<b>兩個百分比的分母不一樣，並排看就會誤導</b>。所以程式除了各自的比率，還會把兩者<b>放到同一個分母</b>再算一次（都降到型這一層）。<b>一支會產出百分比的程式，最該檢查的就是它有沒有告訴你分母是什麼。</b></p>
 
   <p>注意那句註解的後半：<b>換鍵的時候，兩邊都要換。</b>VFB 那側換成類別標籤，論文那側就得從 <code>instance</code> 欄換到 <code>cell type</code> 欄——不然一邊有左右（<code>Dm15_R</code>）、另一邊沒有（<code>Dm15</code>），比出來的命中率會低得莫名其妙，<b>而且你會以為是資料的問題。</b></p>
 

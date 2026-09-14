@@ -323,7 +323,30 @@ def compare(target: dict, vfb: dict) -> dict:
             hit = ptypes & set(got)
             denom = len(ptypes)
         out["key_choice"][key] = {"matched": len(hit), "of": denom,
-                                  "rate_pct": round(len(hit) / denom * 100, 1)}
+                                  "rate_pct": round(len(hit) / denom * 100, 1),
+                                  "denominator_is": ("論文表的 instance 列（帶側別）"
+                                                     if key == "instance"
+                                                     else "論文表的 cell type（不帶側別）")}
+
+    # **上面兩個比率的分母不一樣**，因為兩種鍵的粒度不同：
+    # VFB 的個體標籤帶側別（Dm20_R），類別標籤不帶（Dm15）。
+    # 各自只能跟論文表對應的那一欄比。
+    # 並排放兩個分母不同的百分比會誤導，所以再算一次同分母的版本：
+    # 兩邊都降到「型」這一層，分母統一用論文的 732 個 cell type。
+    ptypes = {v["cell_type"] for v in target["by_instance"].values()}
+    side = re.compile(r"_[LR]$")
+    inst_as_types = {side.sub("", k) for k in vfb["keys_instance"]}
+    out["key_choice_same_denominator"] = {
+        "denominator": len(ptypes),
+        "denominator_is": "論文的 cell type 數，兩種鍵都降到型這一層",
+        "instance": len(ptypes & inst_as_types),
+        "class": len(ptypes & set(vfb["keys_class"])),
+        "instance_pct": round(len(ptypes & inst_as_types) / len(ptypes) * 100, 1),
+        "class_pct": round(len(ptypes & set(vfb["keys_class"])) / len(ptypes) * 100, 1),
+        "gap_pct": round((len(ptypes & inst_as_types)
+                          - len(ptypes & set(vfb["keys_class"]))) / len(ptypes) * 100, 1),
+        "note": "降到型這一層會讓 instance 那一側少掉左右的區分，"
+                "所以它的分子跟上面那個 753 不一樣——那 753 數的是列。"}
 
     # 這裡才是 PARAMS["match_key"] 真正生效的地方。
     # 選 class 的時候，論文那一側也要換成 cell type 欄，否則比的是兩種東西。
@@ -402,7 +425,12 @@ def main() -> int:
     print("③ 逐列比對…")
     cmp = compare(target, vfb)
     for k, v in cmp["key_choice"].items():
-        print(f"   鍵={k:9s} 對得上 {v['matched']}/{v['of']}　{v['rate_pct']}%")
+        print(f"   鍵={k:9s} 對得上 {v['matched']}/{v['of']}　{v['rate_pct']}%"
+              f"　（分母：{v['denominator_is']}）")
+    d = cmp["key_choice_same_denominator"]
+    print(f"   放到同一個分母（{d['denominator']} 個型）："
+          f"instance {d['instance_pct']}% vs class {d['class_pct']}%"
+          f"　差 {d['gap_pct']} 個百分點")
     print(f"   顆數相同 {cmp['same_count']}　不同 {cmp['different_count']}"
           f"（最大差 {cmp['delta_max']}）")
     print(f"   只在論文 {len(cmp['only_in_paper'])}　只在 VFB {len(cmp['only_in_vfb'])}")

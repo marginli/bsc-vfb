@@ -110,7 +110,7 @@
     <tr><th></th><th>論文</th><th>VFB（<code>Nern2024</code>）</th></tr>
     <tr><th>神經元</th><td>52,827 顆（補充表逐列加總）</td><td>53,402 顆</td></tr>
     <tr><th>「型」</th><td>732 個 cell type，分成 778 列（同一個型可以有左右兩列）</td><td>844 個類別，其中泛稱 23 個、<b>末端類別 821 個</b></td></tr>
-    <tr><th>比對鍵</th><td colspan="2">神經元自己的標籤取括號前那一段（<code>Dm20_R</code>），命中 753／778 ＝ <b>96.8%</b><br>改用類別標籤的最後一個詞，只剩 547／732 ＝ <b>74.7%</b></td></tr>
+    <tr><th>比對鍵</th><td colspan="2">兩種都試過，命中率差 22 個百分點。<b>細節見下面那張表</b>——兩種鍵的分母不一樣，不能直接並排看</td></tr>
   </table>
   </div>
 
@@ -155,7 +155,20 @@
 
   <div class="gap">
     <h4>那個 22 個百分點的差距，是這一輪最實用的一個發現</h4>
-    <p>兩種鍵的差距（96.8% 對 74.7%）不是細節。<b>如果只試了後面那一種，你會看到四分之一的型對不上，然後以為是資料本身對不起來。</b>實際上是鍵挑錯了——VFB 的類別標籤是全名（<i>distal medullary amacrine neuron Dm15</i>），而神經元自己的標籤才是論文在用的那種簡寫（<code>Dm15_R</code>）。這正是 <a href="part2-names.html#s4">PART 2 第 4 節</a>那件事（同一個東西有三個名字）在這裡變成一個百分比。</p>
+    <p><b>先講清楚分子分母各是什麼</b>——兩種鍵<b>各自的自然分母不一樣</b>，所以不能把兩個百分比並排就當成可比：</p>
+    <div class="tblwrap">
+    <table>
+      <tr><th>拿什麼當鍵</th><th>分子</th><th>分母</th><th>命中率</th></tr>
+      <tr><td><b>神經元自己的標籤</b><br>取括號前那一段（<code>Dm20_R</code>）</td><td><b>753</b><br>論文的 instance 名在 VFB 的個體標籤裡找得到的</td><td><b>778</b><br>論文表的 instance <b>列</b>（帶側別）</td><td><b>96.8%</b></td></tr>
+      <tr><td><b>類別標籤的最後一個詞</b><br>（<code>Dm15</code>）</td><td><b>547</b><br>論文的 cell type 名在 VFB 的類別標籤裡找得到的</td><td><b>732</b><br>論文表的 cell <b>type</b>（不帶側別）</td><td><b>74.7%</b></td></tr>
+    </table>
+    </div>
+    <p><b>為什麼分母不同：兩種鍵的粒度不同。</b>VFB 的個體標籤<b>帶側別</b>（<code>Dm20_R</code>），只能跟論文的 <code>instance</code> 欄比——那是 778 列；VFB 的類別標籤<b>不帶側別</b>（<code>Dm15</code>），只能跟論文的 <code>cell type</code> 欄比——那是 732 個。<b>換鍵的時候兩邊都得跟著換</b>，不然比的是兩種東西。</p>
+    <p><b>要真的並排比，得先放到同一個分母上。</b>把兩種鍵都降到「型」這一層（個體標籤去掉 <code>_L</code>／<code>_R</code>），分母統一用論文的 732 個型：</p>
+    <div class="formula">用個體標籤　<b>711 / 732 ＝ 97.1%</b>　　　用類別標籤　<b>547 / 732 ＝ 74.7%</b>　　　差 <b>22.4</b> 個百分點</div>
+    <p>（<b>711 不是上面那個 753</b>——753 數的是<b>列</b>，711 數的是<b>型</b>；降到型這一層就沒有左右的區分了。）</p>
+    <p class="figsrc">上表兩個分子分母出自 <code>out/recompute/compare.json</code> 的 <code>key_choice</code>（含 <code>denominator_is</code> 一欄，寫明各自的分母是什麼）；同分母那一組 711／547／732 與 22.4 出自同檔的 <code>key_choice_same_denominator</code>。兩組都由 <code>recompute/recompute.py</code> 於 2026-09-14 產生，執行時也會印在畫面上。</p>
+    <p><b>結論不受影響，而且更乾淨：差距就是 22 個百分點。</b>如果只試了後面那一種，你會看到四分之一的型對不上，然後以為是資料本身對不起來。<b>實際上是鍵挑錯了</b>——VFB 的類別標籤是全名（<i>distal medullary amacrine neuron Dm15</i>），而神經元自己的標籤才是論文在用的那種簡寫（<code>Dm15_R</code>）。這正是 <a href="part2-names.html#s4">PART 2 第 4 節</a>那件事（同一個東西有三個名字）在這裡變成一個百分比。</p>
   </div>
 
   <!-- ══════════════════════════════════════════════════════ -->
@@ -400,7 +413,7 @@
   <p>照<a href="part7-agent-prompts.html#s4">指令 10</a>整理出來的，是三支程式加一份說明：</p>
 
   <div class="filecard">
-    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　424 行</span><p>取論文的靶、取 VFB 那一側、逐列比對。<b>所有自己決定的參數集中在開頭的 <code>PARAMS</code></b></p></div>
+    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　452 行</span><p>取論文的靶、取 VFB 那一側、逐列比對。<b>所有自己決定的參數集中在開頭的 <code>PARAMS</code></b></p></div>
     <div class="f"><span class="nm">make_figure.py</span><span class="role">產圖　91 行</span><p>畫<a href="#s3">第 3 節</a>那張圖</p></div>
     <div class="f"><span class="nm">cross_check.py</span><span class="role">旁證　168 行</span><p>同一個數字問三條路，把不一樣的地方攤開</p></div>
   </div>
