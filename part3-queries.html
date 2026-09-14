@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PART 3 從腦區找到神經元｜VFB 專題課程</title>
+<link rel="stylesheet" href="assets/vfb.css">
+</head>
+<body>
+<div class="crumb"><a href="index.html">VFB 專題課程</a> ／ PART 3</div>
+<header class="hero">
+  <p class="eyebrow">PART 3</p>
+  <h1>從腦區找到神經元</h1>
+  <p class="subtitle">目標很具體：做出一份可以拿去用的神經元清單——而這件事的第一個難處，是決定「清單上放什麼」</p>
+</header>
+
+<div class="wrap">
+
+  <div class="pager top">
+    <a href="part2-names.html">← PART 2　把一個名字問清楚</a>
+    <span>PART 4　連線體（尚未發布）</span>
+  </div>
+
+  <nav class="toc">
+    <h2>本頁章節</h2>
+    <ol>
+      <li><a href="#s1">目標：做出一份可以用的神經元清單</a></li>
+      <li><a href="#s2">挑哪一支查詢</a></li>
+      <li><a href="#s3">結果表的每一欄是什麼</a></li>
+      <li><a href="#s4">篩選與排序</a></li>
+      <li><a href="#s5">三維與切片檢視：你看到的是什麼</a></li>
+      <li><a href="#s6">匯出</a></li>
+      <li><a href="#s7">動手做</a></li>
+    </ol>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s1"><span class="pt">1</span>目標：做出一份可以用的神經元清單</h2>
+
+  <p>這一部分只做一件事：<b>給定一個腦區，產出一份神經元清單</b>，而且這份清單要能拿去做下一步——寫進論文的方法段、丟給程式批次處理、或當成挑分析對象的名單。</p>
+
+  <p>聽起來像是點一個按鈕的事。實際上你在 <a href="part2-names.html">PART 2</a> 那個腦區的資訊面板上，會看到三個數字同時擺在一起：</p>
+
+  <div class="statgrid">
+    <div class="stat"><div class="v">471</div><div class="k">Neurons with some part in medulla</div></div>
+    <div class="stat"><div class="v">226,524</div><div class="k">Images of neurons with some part in medulla</div></div>
+    <div class="stat"><div class="v">4</div><div class="k">List all available images of medulla</div></div>
+  </div>
+
+  <p><b>這三個數字都對，而且它們回答的是三個不同的問題。</b>差別正是 PART 2 那條線——類別與個體：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>這一支查詢回的是</th><th>編號長什麼樣</th><th>例子</th></tr>
+    <tr><td><b>神經元的種類</b>（類別）</td><td><code>FBbt_…</code></td><td><i>Cm7</i>、<i>Tm18</i>、<i>Dm8b</i></td></tr>
+    <tr><td><b>一條一條重建出來的神經元</b>（個體）</td><td><code>VFB_…</code></td><td><i>Cm7_L (MaleCNS:41280)</i></td></tr>
+    <tr><td><b>這個腦區自己被畫出來的那幾塊</b>（個體）</td><td><code>VFB_…</code></td><td><i>ME on JRC2018Unisex adult brain</i></td></tr>
+  </table>
+  </div>
+
+  <div class="note">
+    <b>所以「我要 medulla 的神經元」這句話，在 VFB 上有三種意思。</b>清單做出來之前，要先答一個問題：<b>你要的是幾種神經元，還是幾條神經元？</b>前者是分類學的問題（這個腦區裡有哪些型），後者是資料的問題（我手上能拿到幾份重建）。兩個都合法，但它們的數字差了將近五百倍（226,524 ÷ 471 ≈ 481），而且後面每一步都不一樣。
+  </div>
+
+  <p class="figsrc">三個數字出自 <code>out/counts_region.json</code>（<code>scripts/vfb_probe.py</code>，2026-09-14）；例子取自 <code>out/ui/query_results.json</code> 與 <code>out/terminfo_individual.json</code>。本頁一律以 <i>medulla</i>（<code>FBbt_00003748</code>）為例，跟 PART 2 同一個。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s2"><span class="pt">2</span>挑哪一支查詢</h2>
+
+  <p>一個腦區的資訊面板上，<code>Query For</code> 那一區列著十支<b>現成查詢</b>——意思是「VFB 已經替這個腦區寫好、你只要點一下就會跑」的查詢。每一支前面有一個數字徽章，就是它會回幾列：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>徽章</th><th>查詢</th><th>它在問什麼</th></tr>
+    <tr><td>4</td><td><i>List all available images of medulla</i></td><td>這個腦區自己被畫在哪幾套標準腦上</td></tr>
+    <tr><td>471</td><td><i>Neurons with some part in medulla</i></td><td>有任何一部分長在這裡的神經元<b>種類</b></td></tr>
+    <tr><td>464</td><td><i>Neurons with synaptic terminals in medulla</i></td><td>在這裡有突觸終端的種類</td></tr>
+    <tr><td>262</td><td><i>Neurons with presynaptic terminals in medulla</i></td><td>在這裡有<b>前</b>突觸終端的種類</td></tr>
+    <tr><td>333</td><td><i>Neurons with postsynaptic terminals in medulla</i></td><td>在這裡有<b>後</b>突觸終端的種類</td></tr>
+    <tr><td>28</td><td><i>Parts of medulla</i></td><td>這個腦區底下的次分區</td></tr>
+    <tr><td>3</td><td><i>Tracts/nerves innervating medulla</i></td><td>進出這裡的神經束與神經</td></tr>
+    <tr><td>7</td><td><i>Lineage clones found in medulla</i></td><td>在這裡找得到的譜系選殖</td></tr>
+    <tr><td>226k</td><td><i>Images of neurons with some part in medulla</i></td><td>同上第二列，但回的是<b>個體</b>不是種類</td></tr>
+    <tr><td>2k</td><td><i>Transgene expression in medulla</i></td><td>在這裡有表現的轉殖基因</td></tr>
+  </table>
+  </div>
+
+  <h3>數字一個比一個小，但不能相加</h3>
+
+  <p>那四支「神經元」查詢的數字看起來像一層層篩下去。<b>包含關係確實成立</b>——我們把四支的編號全部取回來做過集合運算：</p>
+
+  <div class="plain">
+    <b>前突觸 ⊆ 有突觸終端 ⊆ 有一部分在裡面。</b>後突觸也一樣。三個包含關係都逐一驗證過，沒有例外。
+  </div>
+
+  <p><b>但這不表示數字可以加減。</b>兩件事讓算術失效：</p>
+
+  <ol>
+    <li><b>前突觸與後突觸大量重疊。</b>262 ＋ 333 ＝ 595，可是兩邊都有的就有 <b>230 種</b>——同一個種類在這個腦區裡既接收也輸出，很常見。實際的聯集只有 <b>365 種</b>。</li>
+    <li><b>而 365 還是小於 464。</b>有 <b>99 種</b>被算進「有突觸終端」，卻既不在前突觸也不在後突觸那一組——它們在這個腦區有突觸，但<b>沒有標出是前是後</b>。</li>
+  </ol>
+
+  <p>最外圈那 471 減掉 464，剩下 <b>7 種</b>只是路過：有一部分長在這個腦區裡，但沒有在這裡形成突觸。<b>這一次減得成立</b>，因為 464 那一組確實整個包含在 471 裡面——上面那個包含關係就是拿來判斷「哪些減法可以做」的。</p>
+
+  <div class="danger">
+    <b>要寫進方法段的話，一定要寫明是哪一支查詢。</b>「medulla 有 471 種神經元」跟「medulla 有 464 種神經元」是兩個不同的敘述，而它們的差別不是誤差，是定義。<b>本課往後凡是給一個腦區的神經元數目，都會附上是哪一支查詢問出來的。</b>
+  </div>
+
+  <p class="figsrc">十支查詢與它們的徽章數字出自 <code>out/queries_for_region.json</code> 與 <code>out/counts_region.json</code>；包含關係與重疊數（595、230、365、99、7）出自 <code>out/query_overlaps.json</code>——那一支把四支查詢的編號全部取回（各自取回的列數都等於它自己報的數字，沒有被翻頁上限截斷）再做集合運算。皆由 <code>scripts/vfb_probe.py</code> 於 2026-09-14 抓取。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s3"><span class="pt">3</span>結果表的每一欄是什麼</h2>
+
+  <p>點下 <i>Neurons with some part in medulla</i> 之後，畫面上方換成一整張結果表，標題寫著 <code>471 Neurons with some part in medulla</code>。表頭有五欄：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>欄名</th><th>裡面是什麼</th><th>要注意的</th></tr>
+    <tr><td><code>Name</code></td><td>這個<b>種類</b>的名字，例如 <i>Cm7</i></td><td>一列 ＝ 一個種類，不是一條神經元</td></tr>
+    <tr><td><code>Gross_Type</code></td><td>幾個分類標籤，例如 <i>Visual_system</i>、<i>Neuron</i>、<i>GABAergic</i></td><td>同一列可以有好幾個</td></tr>
+    <tr><td><code>Template_Space</code></td><td>這份影像對位到哪一套標準腦，例如 <code>JRC2018U</code></td><td>寫的是<b>短名</b>（<a href="part2-names.html#s4">PART 2 第 4 節</a>那個 <code>Symbol</code>），不是編號</td></tr>
+    <tr><td><code>Imaging_Technique</code></td><td>這份影像怎麼拍的，例如 <i>serial block face SEM (SBFSEM)</i></td><td>同一個種類可能有好幾種來源</td></tr>
+    <tr><td><code>Images ▼</code></td><td>縮圖，左右各一個箭頭</td><td><b>這一欄是一個輪播</b>，見下一段</td></tr>
+  </table>
+  </div>
+
+  <h3>最後那一欄，是 471 與 226,524 接起來的地方</h3>
+
+  <p><code>Images</code> 那一欄不是一張圖，是<b>可以左右翻的一疊圖</b>。翻的時候，圖上方那一行字會跟著換——<i>Cm7</i> 那一列顯示的是：</p>
+
+  <div class="callout">
+    <code>Cm7_L (MaleCNS:41280) aligned to JRC2018U</code>
+  </div>
+
+  <p>讀法：<b>這一列是「Cm7 這個種類」，而這一疊圖是屬於它的那些個體</b>——每一個都是某套連線資料裡一條真的重建出來的神經元（這裡是 male-CNS 那一套裡編號 41280 的那條，左側）。<a href="#s2">第 2 節</a>那個 226,524 就是把所有種類的這一疊全部攤平來數。</p>
+
+  <div class="note">
+    <b>兩個提醒。</b>第一，<b>畫面上的欄名跟程式介面回的欄位名不是同一組</b>：介面回的鍵是 <code>id</code>、<code>label</code>、<code>tags</code>、<code>template</code>、<code>technique</code>，照那組去畫面上找，一欄都對不到。第二，<code>Template_Space</code> 那一欄寫短名這件事，跟 <a href="part1-templates.html#s7">PART 1 作業單</a>的 <code>Aligned To</code> 欄是同一個習慣——<b>VFB 的表格慣例是給人看的名字，不是編號。</b>
+  </div>
+
+  <p class="figsrc">欄名、標題列與 <code>Images</code> 欄的內容，由 <code>scripts/browser_probe.py</code> 在 2026-09-14 用真的瀏覽器跑完這支查詢後拍下，原始輸出在 <code>out/ui/query_results.json</code>；介面回的鍵名出自 <code>out/counts_region.json</code> 的 <code>columns</code>。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s4"><span class="pt">4</span>篩選與排序</h2>
+
+  <p>結果表上方（仍然在 <code>v2.virtualflybrain.org</code> 這個檢視器裡）有一個 <code>Filter Results</code> 輸入框，欄頭 <code>Images ▼</code> 的那個三角是排序方向。兩件事都很直覺，但<b>篩選有一個性質會影響你怎麼用它</b>。</p>
+
+  <p>我們實測過：在那個框裡打 <code>Cm7</code>，畫面上的列<b>從 10 列變成 1 列</b>，而整個過程<b>沒有送出任何一個網路請求</b>。</p>
+
+  <div class="plain">
+    <b>意思是：它篩的是已經回來的那些，不是回去重問一次。</b>所以篩選很快，也不會漏掉任何東西——因為該回的都已經在你手上了。
+  </div>
+
+  <p>但緊接著是那個要注意的地方：<b>篩完之後，標題上的數字不會跟著變。</b>畫面上只剩一列的時候，標題仍然寫著 <code>471 Neurons with some part in medulla</code>。</p>
+
+  <div class="danger">
+    <b>所以標題那個數字，永遠是「這支查詢回了幾列」，不是「你現在看到幾列」。</b>要報告篩選後的數量，不能抄標題——那是整份結果的數字。這是 <a href="part2-names.html#s5">PART 2 第 5 節</a>那條規矩在結果表上的長相：<b>畫面上的數字，要先問它在回答哪一個問題。</b>
+  </div>
+
+  <p class="figsrc">篩選的實測（打 <code>Cm7</code>、列數 10 → 1、期間 0 個請求、標題不變）由 <code>scripts/browser_probe.py</code> 於 2026-09-14 量得，原始輸出在 <code>out/ui/query_results.json</code> 的 <code>filter_test</code>。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s5"><span class="pt">5</span>三維與切片檢視：你看到的是什麼</h2>
+
+  <p>同一個檢視器（<code>v2.virtualflybrain.org</code>）的畫面左半邊，有 <code>Slice Viewer</code> 與 <code>3D Viewer</code> 兩個分頁。這一節不教怎麼轉、怎麼縮放——那些按鈕會改版；<b>要教的是一件不會改版的事：你看到的東西是怎麼來的。</b></p>
+
+  <p>答案在 <code>Layers</code> 那個面板上。<b>它列的就是「檢視器裡現在有什麼」</b>，而它的內容比你想的少：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>這個時候</th><th><code>Layers</code> 面板上有什麼</th></tr>
+    <tr><td>剛打開腦區的頁面</td><td>只有 <i>JRC2018Unisex</i> 一列（那顆標準腦）</td></tr>
+    <tr><td>跑完查詢、結果表滿滿一整頁</td><td><b>還是只有 <i>JRC2018Unisex</i> 一列</b></td></tr>
+    <tr><td>在結果表裡勾選一列之後</td><td>多了一列：<i>Cm7_L (MaleCNS:41280)</i></td></tr>
+  </table>
+  </div>
+
+  <div class="note">
+    <b>所以結果表上的縮圖，不等於載入。</b>那些縮圖是預覽；<b>勾選</b>才會把東西放進檢視器。這件事一開始會讓人以為「我明明看到很多神經元了」，其實三維檢視裡只有一顆空的標準腦。<b>要判斷檢視器裡有什麼，看 <code>Layers</code>，不要看縮圖。</b>
+  </div>
+
+  <p>另外一件要知道的事：<code>Layers</code> 的每一列都有自己的控制項，其中一個是 <b>顏色</b>——<b>每一列的顏色都可以自己換</b>。由此推得一件對截圖很重要的事：<b>畫面上的顏色不是資料的一部分</b>，它不編碼細胞類型、不編碼訊號強度、也不編碼任何量。截圖放進論文或簡報時，這件事要寫在圖說裡，否則讀者會去解讀那些顏色。</p>
+
+  <p class="figsrc">三個時間點的 <code>Layers</code> 內容，由 <code>scripts/browser_probe.py</code> 在 2026-09-14 依序拍下（載入 → 跑查詢 → 勾選一列），原始輸出在 <code>out/ui/viewer_state.json</code>。顏色控制項出自同一支探針拍到的每一列控制按鈕。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s6"><span class="pt">6</span>匯出</h2>
+
+  <p>清單做好了要帶走。結果表底下有四個動作：<i>Refine query</i>、<i>New query</i>、<i>Delete results</i>、<b><i>Download results (CSV)</i></b>。最後那個就是把整份清單存成檔案。</p>
+
+  <div class="callout">
+    <b>CSV 裡是結果表那幾欄，不是影像。</b>你拿到的是名字、分類標籤、對位到哪套標準腦、拍攝方式——一份可以貼進試算表、可以給程式讀的清單。<b>影像要另外一顆一顆下載。</b>
+  </div>
+
+  <p>單一顆神經元的檔案在它自己的資訊面板底下，<code>Downloads</code> 那一區：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>檔案</th><th>是什麼</th></tr>
+    <tr><td><code>Mesh (OBJ)</code></td><td>表面網格，拿來畫圖、做三維呈現</td></tr>
+    <tr><td><code>Skeleton (SWC)</code></td><td>骨架，拿來算形態、做形態比對</td></tr>
+    <tr><td><code>Signal (NRRD)</code></td><td>原始的影像訊號</td></tr>
+    <tr><td><code>Slices (Woolz)</code></td><td>切片格式</td></tr>
+    <tr><td><code>citations.bibtex</code></td><td>該引用什麼</td></tr>
+  </table>
+  </div>
+
+  <div class="danger">
+    <b>那一區底下有一句話：「The license shown above applies to this data.」</b>——授權是<b>逐筆</b>的，寫在同一個面板的 <code>License</code> 欄裡，而它每一筆可能不一樣（<a href="part2-names.html#s3">PART 2 第 3 節</a>）。<b>下載之前看一眼那一欄，並且照 <code>citations.bibtex</code> 引用原始資料的論文</b>，不是引用 VFB。同一個面板的 <code>Source</code> 欄會告訴你這筆資料出自哪一套、哪一版。
+  </div>
+
+  <p class="figsrc">四個動作按鈕出自 <code>out/ui/query_results.json</code>；<code>Downloads</code> 區的檔案清單與那句授權說明，出自 <code>out/ui/terminfo_v2_neuron.json</code>。兩者皆由 <code>scripts/browser_probe.py</code> 於 2026-09-14 拍攝。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s7"><span class="pt">7</span>動手做</h2>
+
+  <p>四步，不用安裝也不用登入。做完你會有一份 CSV。</p>
+
+  <ol>
+    <li><b>打開 medulla 的頁面。</b>網址：<a href="https://virtualflybrain.org/reports/FBbt_00003748">virtualflybrain.org/reports/FBbt_00003748</a>。<br><b>去哪裡確認你到對地方了</b>：檢視器（<code>v2.virtualflybrain.org</code>）的 <b>Term Info</b> 分頁，<code>Name</code> 欄寫著 <code>medulla [FBbt_00003748]</code>。</li>
+
+    <li><b>比較兩支查詢的數字。</b>在同一個面板往下找 <b><code>Query For</code></b> 區。<br><b>看到什麼算對</b>：<i>Neurons with some part in medulla</i> 前面的徽章是 <b>471</b>，而 <i>Images of neurons with some part in medulla</i> 前面是 <b>226k</b>。<b>先想一遍你要哪一個</b>，再往下做——這一步就是<a href="#s1">第 1 節</a>那個問題。</li>
+
+    <li><b>跑出清單，然後篩一次。</b>點 <i>Neurons with some part in medulla</i>。<br><b>看到什麼算對</b>：畫面上方換成結果表，標題是 <code>471 Neurons with some part in medulla</code>，表頭五欄依序是 <code>Name</code>、<code>Gross_Type</code>、<code>Template_Space</code>、<code>Imaging_Technique</code>、<code>Images</code>。<br>接著在表格上方的 <b><code>Filter Results</code></b> 框裡打 <code>Cm7</code>，看著列數變少——<b>然後回頭看標題</b>，它還是 471。<a href="#s4">第 4 節</a>說的就是這件事。</li>
+
+    <li><b>把一列放進檢視器，再把清單帶走。</b>先看一眼 <b><code>Layers</code></b> 面板：現在只有 <i>JRC2018Unisex</i> 一列。接著在結果表裡勾選任一列右下角的方框。<br><b>看到什麼算對</b>：<code>Layers</code> 多出一列，名字長得像 <i>Cm7_L (MaleCNS:41280)</i>——那是一條真的神經元，不是一個種類。<br>最後按結果表底下的 <b><i>Download results (CSV)</i></b>，拿到你的清單。</li>
+  </ol>
+
+  <p class="figsrc">這一節每一步指名的欄位名、徽章數字與畫面上的字串，都由 <code>scripts/browser_probe.py</code> 在 2026-09-14 用真的瀏覽器把這四步做過一遍拍下來，原始輸出在 <code>out/ui/</code>（<code>terminfo_v2_region.json</code>、<code>query_results.json</code>、<code>viewer_state.json</code>）。</p>
+
+  <div class="note">
+    <b>數字跟你看到的不一樣是正常的。</b>本頁的徽章數字是 2026 年 9 月 14 日抓的。連線資料集會換版、新的重建會進來，這些數目就跟著變——<a href="#s2">第 2 節</a>那些包含關係與重疊則不會。要確認自己看到的是哪一版，就看該筆資料 <code>Source</code> 欄裡的資料集名稱，名字裡帶著版本。
+  </div>
+
+  <div class="pager">
+    <a href="part2-names.html">← PART 2　把一個名字問清楚</a>
+    <span>PART 4　連線體（尚未發布）</span>
+  </div>
+</div>
+
+<div class="foot">
+  VFB 專題課程　PART 3　·　本頁引用的 VFB 資料與畫面皆於 2026-09-14 讀取　·　
+  頁面上每個數字都對得回 <code>out/</code> 底下的探針輸出
+</div>
+</body>
+</html>

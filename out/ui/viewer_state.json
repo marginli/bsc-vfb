@@ -1,0 +1,37 @@
+{
+  "probe": "viewer_state",
+  "part": "PART 3",
+  "question": "把結果表裡的一列載進檢視器之後，畫面上究竟疊著哪幾樣東西",
+  "site": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto",
+  "region": "FBbt_00003748",
+  "query_label": "Neurons with some part in medulla",
+  "layers_on_load": [
+    "Controls\tName\tType\tThumbnail",
+    "JRC2018Unisex",
+    "adult brain",
+    "Nervous system",
+    "Adult"
+  ],
+  "layers_after_running_query": [
+    "Controls\tName\tType\tThumbnail",
+    "JRC2018Unisex",
+    "adult brain",
+    "Nervous system",
+    "Adult"
+  ],
+  "ticked_a_row": true,
+  "layers_after_ticking_one_row": [
+    "Controls\tName\tType\tThumbnail",
+    "JRC2018Unisex",
+    "adult brain",
+    "Nervous system",
+    "Adult",
+    "Cm7_L (MaleCNS:41280)",
+    "adult central medulla intrinsic neuron Cm7",
+    "Visual system",
+    "Nervous system",
+    "Glutamatergic",
+    "Adult"
+  ],
+  "note": "Layers 面板列的就是「檢視器裡現在有什麼」。跑完查詢它不會變——**結果表的縮圖不等於載入**；勾選之後才多一列。"
+}

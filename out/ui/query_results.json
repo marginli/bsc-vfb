@@ -1,0 +1,72 @@
+{
+  "probe": "query_results",
+  "part": "PART 3",
+  "question": "跑一支現成查詢，結果表長什麼樣：幾欄、欄名、列裡有什麼、底下有哪些動作",
+  "site": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto",
+  "region": "FBbt_00003748",
+  "query_label": "Neurons with some part in medulla",
+  "url": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto?id=FBbt_00003748",
+  "title_bar": "471 Neurons with some part in medulla",
+  "filter_test": {
+    "typed": "Cm7",
+    "requests_fired_while_filtering": 0,
+    "visible_result_rows_before": 10,
+    "visible_result_rows_after": 1,
+    "title_bar_while_filtering": "471 Neurons with some part in medulla",
+    "note": "打字期間送出的請求數 = 0，就表示篩選是在本地做的——篩的是**已經回來的那些**，不是回去重問。"
+  },
+  "columns_on_screen": [
+    "Name",
+    "Gross_Type",
+    "Template_Space",
+    "Imaging_Technique",
+    "Images ▼"
+  ],
+  "all_header_texts": [
+    "Controls",
+    "Name",
+    "Type",
+    "Thumbnail",
+    "Name",
+    "Gross_Type",
+    "Template_Space",
+    "Imaging_Technique",
+    "Images ▼",
+    "Cm7",
+    "JRC2018U",
+    "Cm6",
+    "JRC2018U",
+    "Cm4",
+    "JRC2018U",
+    "Cm32",
+    "JRC2018U",
+    "Cm31a",
+    "JRC2018U",
+    "Cm3",
+    "JRC2018U",
+    "Cm29",
+    "JRC2018U",
+    "Cm28",
+    "JRC2018U",
+    "Cm27",
+    "JRC2018U",
+    "Cm26",
+    "JRC2018U"
+  ],
+  "actions_at_bottom": [
+    "Refine query",
+    "New query",
+    "Delete results",
+    "Download results (CSV)"
+  ],
+  "images_cells_first_rows": [
+    "Cm7_L (MaleCNS:41280) aligned to JRC2018U",
+    "Cm6_L (MaleCNS:78138) aligned to JRC2018U",
+    "Cm4_R (MaleCNS:142170) aligned to JRC2018U",
+    "Cm32_L (MaleCNS:12527) aligned to JRC2018U",
+    "Cm31a_L (MaleCNS:11059) aligned to JRC2018U",
+    "Cm3_R (MaleCNS:77308) aligned to JRC2018U"
+  ],
+  "n_carousel_elements": 15,
+  "has_filter_box": true
+}

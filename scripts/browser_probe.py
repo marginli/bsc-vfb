@@ -85,6 +85,7 @@ EX_NEURON = "VFB_00005010"     # Cha-F-100205；PART 1 作業單第 4 步
 EX_REGION_NAME = "medulla"     # PART 2 的主例
 EX_REGION = "FBbt_00003748"    # medulla 這個「類別」本身（跟 vfb_probe.py 同一個例子）
 EX_REGION_INDIV = "VFB_00102107"  # 它畫在 JRC2018Unisex 上的那一個「個體」
+QUERY_LABEL = "Neurons with some part in medulla"   # PART 3 主要示範的那一支現成查詢
 
 PROBES: dict[str, dict] = {}
 
@@ -433,6 +434,198 @@ def _terminfo_v2_neuron(pw):
             "field_order_on_screen": [ln for ln in lines if ln in names],
             "fields": fields_from_lines(lines, names),
             "all_lines": lines,
+        }
+    finally:
+        b.close()
+
+
+@probe("query_results", "PART 3",
+       "跑一支現成查詢，結果表長什麼樣：幾欄、欄名、列裡有什麼、底下有哪些動作")
+def _query_results(pw):
+    """PART 3 的主體。這一支要回答的是「結果表怎麼讀」，而那是畫面的事——
+    API 回的 `headers` 鍵名（id／label／tags／template／technique）
+    **跟畫面上的欄名不是同一組**（畫面是 Name／Gross_Type／Template_Space／
+    Imaging_Technique／Images）。照 API 寫欄名，學員在畫面上一欄都對不到。
+    """
+    b, pg = new_page(pw, 1700, 1050)
+    try:
+        pg.goto(f"{V2}?id={EX_REGION}", wait_until="domcontentloaded", timeout=90000)
+        pg.wait_for_timeout(32000)
+        # 這一列在 Term Info 面板裡，Playwright 的可見性判定會卡住
+        # （面板有捲動容器），所以捲進畫面後用 JS 直接派送 click。
+        clicked = pg.evaluate(
+            """(label) => {
+                const el = [...document.querySelectorAll('*')].filter(
+                    e => e.children.length === 0 && (e.innerText || '').trim().includes(label));
+                if (!el.length) return false;
+                const e = el[el.length - 1];
+                e.scrollIntoView({block: 'center'}); e.click(); return true; }""",
+            QUERY_LABEL)
+        if not clicked:
+            raise RuntimeError(f"找不到查詢「{QUERY_LABEL}」——Query For 區的標籤可能改了")
+        pg.wait_for_timeout(22000)
+        shot(pg, "query_results")
+
+        title = pg.evaluate(
+            """() => { const e = [...document.querySelectorAll('*')].find(
+                x => x.getClientRects().length
+                  && /^[0-9]+ Neurons with some part/.test((x.innerText||'').trim()));
+               return e ? e.innerText.trim().split(String.fromCharCode(10))[0] : null; }""")
+        cols = pg.evaluate(
+            """() => [...document.querySelectorAll('th,[class*=griddle-header],[class*=column]')]
+                 .filter(e => e.getClientRects().length)
+                 .map(e => (e.innerText || '').trim())
+                 .filter(t => t && t.length < 30)""")
+        actions = pg.evaluate(
+            """() => [...document.querySelectorAll('*')]
+                 .filter(e => e.getClientRects().length && e.children.length === 0)
+                 .map(e => (e.innerText || '').trim())
+                 .filter(t => /Refine|New query|Delete results|Download/.test(t))""")
+        # 結果表最關鍵的一件事：**一列是一個「種類」，而 Images 那一欄是一個輪播**，
+        # 裡面是好幾個「個體」（一張一張重建出來的神經元）。
+        # 這正是 471 與 226,524 在畫面上接起來的地方，所以要專門把它抓出來。
+        images_cells = pg.evaluate(
+            """() => { const out = [], seen = new Set();
+                const NL = String.fromCharCode(10);
+                for (const e of document.querySelectorAll('*')) {
+                    if (!e.getClientRects().length) continue;
+                    // 這一格的文字被拆在好幾個子節點裡，所以不能要求 children.length === 0；
+                    // 改成「整個元素只有一行」來擋掉祖先。
+                    const t = (e.innerText || '').trim();
+                    if (!t || t.indexOf(NL) >= 0 || t.length > 90) continue;
+                    if (t.indexOf('aligned to') < 0) continue;
+                    if (seen.has(t)) continue; seen.add(t); out.push(t);
+                    if (out.length >= 6) break; }
+                return out; }""")
+        carousel = pg.evaluate(
+            """() => document.querySelectorAll('[class*=carousel],[class*=slider]').length""")
+        # 篩選是在本地篩已經回來的那些，還是回去問伺服器？這件事決定了
+        # 「篩完剩下的數字」能不能拿來當結論，所以要量，不要猜：
+        # 打字前後各數一次網路請求。
+        net: list[str] = []
+        pg.on("request", lambda r: net.append(r.url))
+        n_before = len(net)
+        count_rows = """() => { const NL = String.fromCharCode(10); let k = 0;
+            const seen = new Set();
+            for (const e of document.querySelectorAll('*')) {
+                if (!e.getClientRects().length) continue;
+                const t = (e.innerText || '').trim();
+                if (!t || t.indexOf(NL) >= 0 || t.length > 90) continue;
+                if (t.indexOf('aligned to') < 0 || seen.has(t)) continue;
+                seen.add(t); k++; }
+            return k; }"""
+        rows_before = pg.evaluate(count_rows)
+        # **要 `Filter Results`，不是 `Filter`**：Layers 面板也有一個 placeholder 是
+        # `Filter` 的輸入框，`placeholder*='Filter'` 會先抓到它，
+        # 於是量到「篩了沒變化」——那是篩錯框，不是篩選沒作用。
+        fbox = pg.locator("input[placeholder='Filter Results']").first
+        fbox.wait_for(state="visible", timeout=15000)
+        fbox.click()
+        fbox.type("Cm7", delay=180)      # 這個框吃的是按鍵事件，fill() 不會觸發篩選
+        assert fbox.input_value() == "Cm7", f"篩選框內容不符：{fbox.input_value()!r}"
+        pg.wait_for_timeout(7000)
+        n_after = len(net)
+        rows_after = pg.evaluate(count_rows)
+        filter_title = pg.evaluate(
+            """() => { const e = [...document.querySelectorAll('*')].find(
+                   x => x.getClientRects().length
+                     && /^[0-9]+ Neurons with some part/.test((x.innerText||'').trim()));
+               return e ? e.innerText.trim().split(String.fromCharCode(10))[0] : null; }""")
+        for _ in range(3):
+            fbox.press("Backspace")
+        pg.wait_for_timeout(3000)
+
+        return {
+            "site": V2, "region": EX_REGION, "query_label": QUERY_LABEL,
+            "url": f"{V2}?id={EX_REGION}",
+            "title_bar": title,
+            "filter_test": {
+                "typed": "Cm7",
+                "requests_fired_while_filtering": n_after - n_before,
+                "visible_result_rows_before": rows_before,
+                "visible_result_rows_after": rows_after,
+                "title_bar_while_filtering": filter_title,
+                "note": ("打字期間送出的請求數 = 0，就表示篩選是在本地做的"
+                         "——篩的是**已經回來的那些**，不是回去重問。"),
+            },
+            # cols 裡的 Name 會出現兩次（一次來自結果表、一次來自 Layers 面板），去重
+            "columns_on_screen": list(dict.fromkeys(
+                c for c in cols if c in ("Name", "Gross_Type", "Template_Space",
+                                         "Imaging_Technique", "Images ▼", "Images"))),
+            "all_header_texts": cols,
+            "actions_at_bottom": actions,
+            "images_cells_first_rows": images_cells,
+            "n_carousel_elements": carousel,
+            "has_filter_box": pg.evaluate(
+                """() => [...document.querySelectorAll('input')].some(
+                     e => /Filter/i.test(e.placeholder || ''))"""),
+        }
+    finally:
+        b.close()
+
+
+@probe("viewer_state", "PART 3",
+       "把結果表裡的一列載進檢視器之後，畫面上究竟疊著哪幾樣東西")
+def _viewer_state(pw):
+    """§「三維／切片檢視」那一節只教一件事：**你看到的是什麼**。
+
+    而「看到什麼」在這個介面上有一個可以逐字比對的答案——`Layers` 面板。
+    它列出目前載入檢視器的每一樣東西，所以拿它來驗「疊著什麼」比描述畫面可靠。
+
+    這一支同時回答「縮圖與實際載入是兩件事」：結果表裡每一列都有縮圖，
+    但 `Layers` 只會多出你**勾選**的那一個。
+    """
+    b, pg = new_page(pw, 1700, 1050)
+
+    def layers():
+        """只取 Layers 面板本身。**不要用「第一個含 Controls 的元素」**——
+        那會抓到祖先，把整頁都收進來（實測 14 KB 的雜訊）。取最小的那一個。"""
+        return pg.evaluate(
+            """() => { const c = [...document.querySelectorAll('div,table,tbody')].filter(x => {
+                   const t = x.innerText || '';
+                   return x.getClientRects().length && t.length < 700
+                          && t.indexOf('Controls') >= 0 && t.indexOf('Thumbnail') >= 0; });
+               if (!c.length) return null;
+               c.sort((a, b) => a.innerText.length - b.innerText.length);
+               return c[0].innerText.split(String.fromCharCode(10))
+                        .map(s => s.trim()).filter(Boolean); }""")
+
+    try:
+        pg.goto(f"{V2}?id={EX_REGION}", wait_until="domcontentloaded", timeout=90000)
+        pg.wait_for_timeout(32000)
+        before = layers()
+        clicked = pg.evaluate(
+            """(label) => {
+                const el = [...document.querySelectorAll('*')].filter(
+                    e => e.children.length === 0 && (e.innerText || '').trim().includes(label));
+                if (!el.length) return false;
+                const e = el[el.length - 1];
+                e.scrollIntoView({block: 'center'}); e.click(); return true; }""",
+            QUERY_LABEL)
+        if not clicked:
+            raise RuntimeError(f"找不到查詢「{QUERY_LABEL}」")
+        pg.wait_for_timeout(22000)
+        mid = layers()
+
+        # 勾第一列。Playwright 的 check() 判定這些方塊不可見（它們疊在縮圖上），
+        # 所以用 JS 直接勾並派送 change 事件。
+        ticked = pg.evaluate(
+            """() => { const cb = [...document.querySelectorAll('input[type=checkbox]')]
+                        .filter(e => e.getClientRects().length && !e.checked);
+                if (!cb.length) return false;
+                cb[0].click(); return true; }""")
+        pg.wait_for_timeout(25000)
+        after = layers()
+        shot(pg, "viewer_state")
+        return {
+            "site": V2, "region": EX_REGION, "query_label": QUERY_LABEL,
+            "layers_on_load": before,
+            "layers_after_running_query": mid,
+            "ticked_a_row": ticked,
+            "layers_after_ticking_one_row": after,
+            "note": ("Layers 面板列的就是「檢視器裡現在有什麼」。"
+                     "跑完查詢它不會變——**結果表的縮圖不等於載入**；"
+                     "勾選之後才多一列。"),
         }
     finally:
         b.close()

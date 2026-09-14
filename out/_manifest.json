@@ -1,6 +1,6 @@
 {
   "base": "https://v3-cached.virtualflybrain.org",
-  "run_at": "2026-09-14T03:39:23+00:00",
+  "run_at": "2026-09-14T04:34:14+00:00",
   "probes": {
     "templates": {
       "sha256": "e45b3e7cdd6c8087",
@@ -121,6 +121,12 @@
       "seconds": 4.2,
       "fetched_at": "2026-09-14T03:38:45+00:00",
       "bytes": 5026
+    },
+    "query_overlaps": {
+      "sha256": "1d5c50bfe6da73af",
+      "seconds": 9.8,
+      "fetched_at": "2026-09-14T04:34:14+00:00",
+      "bytes": 2108
     }
   }
 }

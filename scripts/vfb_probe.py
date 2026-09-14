@@ -737,6 +737,55 @@ def _counts_region():
             "note": "count 是這支查詢的總列數。注意它是列數不是個數——見 flycircuit_images。"}
 
 
+@probe("query_overlaps", "PART 3",
+       "那幾支「神經元」查詢回的是同一群東西嗎？能不能相加？",
+       needs=("counts_region",))
+def _query_overlaps():
+    """PART 3 的核心警告：**這幾支查詢是巢狀的，但不能相加。**
+
+    站上把它們並排列在同一個 Query For 區，數字一個比一個小。
+    實測的包含關係確實成立（前突觸、後突觸 ⊆ 有突觸終端 ⊆ 有一部分在裡面），
+    **但這不表示可以把數字加減來回**：前突觸與後突觸重疊 230 種，
+    而且兩者合起來也填不滿「有突觸終端」——還差 99 種。
+
+    **一律用集合運算，不要用加減法。** 這一支把每一支的 id 全部取回來算好，
+    頁面直接引用結果。
+    """
+    Q = ["NeuronsPartHere", "NeuronsSynaptic",
+         "NeuronsPresynapticHere", "NeuronsPostsynapticHere"]
+    sets, urls, counts, trunc_any = {}, {}, {}, False
+    for q in Q:
+        url, count, rows, trunc = paged("/run_query",
+                                        {"id": EX_REGION, "query_type": q}, page=2000)
+        urls[q] = url
+        counts[q] = count
+        trunc_any = trunc_any or trunc
+        sets[q] = {strip_markup(r.get("id", "")) for r in rows}
+        # 取回的列數要等於它自己報的 count，否則下面的集合運算是在半份資料上做的
+        assert len(rows) == count, f"{q}：取回 {len(rows)} 列，但 count 說 {count}"
+
+    part, syn = sets["NeuronsPartHere"], sets["NeuronsSynaptic"]
+    pre, post = sets["NeuronsPresynapticHere"], sets["NeuronsPostsynapticHere"]
+    return {"url": urls, "data": {
+        "counts": counts,
+        "truncated": trunc_any,
+        "n_unique": {q: len(sets[q]) for q in Q},
+        "pre_plus_post_naive_sum": len(pre) + len(post),
+        "in_both_pre_and_post": len(pre & post),
+        "union_pre_post": len(pre | post),
+        "synaptic_minus_union_pre_post": len(syn - pre - post),
+        "part_minus_synaptic": len(part - syn),
+        "synaptic_is_subset_of_part": syn <= part,
+        "pre_is_subset_of_synaptic": pre <= syn,
+        "post_is_subset_of_synaptic": post <= syn,
+        "example_ids_part_not_synaptic": sorted(part - syn)[:8],
+        "example_ids_synaptic_not_pre_or_post": sorted(syn - pre - post)[:8],
+    }, "note": (
+        "包含關係成立（見 *_is_subset_of_*），但數字不能相加："
+        "前突觸與後突觸重疊 230 種，兩者聯集 365 也小於「有突觸終端」的 464。"
+        "頁面上凡是講『多少種神經元』的句子，都要說明是哪一支查詢問出來的。")}
+
+
 # ── PART 4：連線體 ──────────────────────────────────────────────
 @probe("connectome_datasets", "PART 4", "VFB 現在有哪幾套連線資料？版本是多少？")
 def _connectome_datasets():

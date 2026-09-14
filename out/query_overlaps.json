@@ -1,0 +1,54 @@
+{
+  "probe": "query_overlaps",
+  "part": "PART 3",
+  "question": "那幾支「神經元」查詢回的是同一群東西嗎？能不能相加？",
+  "url": {
+    "NeuronsPartHere": "https://v3-cached.virtualflybrain.org/run_query?id=FBbt_00003748&query_type=NeuronsPartHere&limit=2000&offset=0",
+    "NeuronsSynaptic": "https://v3-cached.virtualflybrain.org/run_query?id=FBbt_00003748&query_type=NeuronsSynaptic&limit=2000&offset=0",
+    "NeuronsPresynapticHere": "https://v3-cached.virtualflybrain.org/run_query?id=FBbt_00003748&query_type=NeuronsPresynapticHere&limit=2000&offset=0",
+    "NeuronsPostsynapticHere": "https://v3-cached.virtualflybrain.org/run_query?id=FBbt_00003748&query_type=NeuronsPostsynapticHere&limit=2000&offset=0"
+  },
+  "note": "包含關係成立（見 *_is_subset_of_*），但數字不能相加：前突觸與後突觸重疊 230 種，兩者聯集 365 也小於「有突觸終端」的 464。頁面上凡是講『多少種神經元』的句子，都要說明是哪一支查詢問出來的。",
+  "data": {
+    "counts": {
+      "NeuronsPartHere": 471,
+      "NeuronsSynaptic": 464,
+      "NeuronsPresynapticHere": 262,
+      "NeuronsPostsynapticHere": 333
+    },
+    "truncated": false,
+    "n_unique": {
+      "NeuronsPartHere": 471,
+      "NeuronsSynaptic": 464,
+      "NeuronsPresynapticHere": 262,
+      "NeuronsPostsynapticHere": 333
+    },
+    "pre_plus_post_naive_sum": 595,
+    "in_both_pre_and_post": 230,
+    "union_pre_post": 365,
+    "synaptic_minus_union_pre_post": 99,
+    "part_minus_synaptic": 7,
+    "synaptic_is_subset_of_part": true,
+    "pre_is_subset_of_synaptic": true,
+    "post_is_subset_of_synaptic": true,
+    "example_ids_part_not_synaptic": [
+      "FBbt_00003788",
+      "FBbt_00003811",
+      "FBbt_00003812",
+      "FBbt_00007433",
+      "FBbt_00013788",
+      "FBbt_00013789",
+      "FBbt_00048135"
+    ],
+    "example_ids_synaptic_not_pre_or_post": [
+      "FBbt_00003767",
+      "FBbt_00003775",
+      "FBbt_00003817",
+      "FBbt_00003824",
+      "FBbt_00003832",
+      "FBbt_00003835",
+      "FBbt_00003836",
+      "FBbt_00003837"
+    ]
+  }
+}
