@@ -138,16 +138,23 @@
 
   <div class="gap">
     <h4>什麼是「泛稱」、什麼是「末端類別」</h4>
-    <p><b>VFB 的類別不是一張平表，是一棵由粗到細的樹</b>——往下每一層都是<b>更細的分法</b>。這 844 個類別不在同一層：</p>
+    <p><b>VFB 的類別不是一張平表，是一棵由粗到細的樹</b>——往下每一層都是<b>更細的分法</b>。</p>
 
-<pre>adult neuron                              <span class="cm">最粗</span>
-   └─ adult optic lobe intrinsic neuron
+    <p><b>先講清楚那 844 個是怎麼來的</b>：它<b>不是</b>本體論裡的所有節點，而是<b>「至少有一顆神經元被直接標成它」的類別</b>。所以樹上會有一些節點<b>根本不參與計數</b>。底下是實際的一小段樹，每個節點都套一次規則（數字是<b>直接標成它</b>的神經元顆數）：</p>
+
+<pre>adult neuron                            1 顆   <span class="cm">← <b>泛稱</b>（底下還有 840 個）</span>
+   └─ adult optic lobe intrinsic neuron 1 顆   <span class="cm">← <b>泛稱</b>（底下還有 217 個）</span>
         └─ distal medullary amacrine neuron
-<span class="hl">             ├─ Dm15   <span class="cm">← 底下沒東西了，再也分不下去 → <b>末端類別</b>（＝一個細胞型）</span></span>
-             └─ Dm3    <span class="cm">← 底下還站著更細的 → <b>泛稱</b></span>
-                  ├─ Dm3a   <span class="cm">601 顆</span>
-                  ├─ Dm3b   <span class="cm">571 顆</span>
-                  └─ Dm3c   <span class="cm">0 顆（這套資料裡沒有）</span></pre>
+                                        0 顆   <span class="cm">← <b>不算</b>：沒有神經元直接標成它</span>
+<span class="hl">             ├─ Dm15                  242 顆   <span class="cm">← <b>末端類別</b>，底下沒東西了</span></span>
+             └─ Dm3                   401 顆   <span class="cm">← <b>泛稱</b>（底下還有 2 個）</span>
+<span class="hl">                  ├─ Dm3a             601 顆   <span class="cm">← <b>末端類別</b></span></span>
+<span class="hl">                  ├─ Dm3b             571 顆   <span class="cm">← <b>末端類別</b></span></span>
+                  └─ Dm3c               0 顆   <span class="cm">← <b>不算</b>：這套資料裡一顆都沒有</span></pre>
+
+    <p><b>這 8 個節點裡，只有 6 個進得了 844</b>——<b>3 個泛稱</b>（<code>adult neuron</code>、<code>adult optic lobe intrinsic neuron</code>、<code>Dm3</code>）、<b>3 個末端類別</b>（<code>Dm15</code>、<code>Dm3a</code>、<code>Dm3b</code>）。另外兩個一顆神經元都沒有，<b>連進場的資格都沒有</b>。</p>
+
+    <p><b>另外注意 <code>Dm3</code> 那 401 顆。</b>泛稱身上也可以直接掛著神經元——那是<b>「只被標到這麼細，沒有再細分到 a／b」的那些</b>。所以「泛稱」不等於「空的中間層」。</p>
 
     <ul>
       <li><b>末端類別（821 個）</b>——<b>再也分不下去的那一層</b>：在這 844 個裡，沒有任何一個更細的類別掛在它底下。<b>這才是「一個細胞型」</b>，例如 <code>Dm15</code>、<code>Mi1</code>、<code>LC6</code>。</li>
@@ -167,7 +174,7 @@
     <p><b>我們這條規則自己也有一個邊界要講明：</b>判斷「底下有沒有別的類別」時<b>只看這 844 個之內</b>。某個類別在整個 VFB 本體論裡還有下位，但那些下位在這套資料裡一顆神經元都沒有，它在這裡仍算末端。<b>這是我們的選擇，不是資料告訴我們的。</b></p>
   </div>
 
-  <p class="figsrc">23 個泛稱的完整清單、各自底下有幾個類別、以及各自直接掛了幾顆，出自 <code>out/recompute/vfb.json</code> 的 <code>generic_classes</code>；配對總數 59,739 出自同檔的 <code>instanceof_pairs</code>。樹狀圖裡的子類、每個型的顆數、<code>Dm3</code> 與 <code>Dm3a／Dm3b</code> 的重疊數（<b>0</b>）、以及 4,063／<code>Mi10_R</code> 那個例子，出自 <code>out/recompute/class_tree_examples.json</code>（同一支唯讀知識庫查來）。2026-09-14。</p>
+  <p class="figsrc">23 個泛稱的完整清單、各自底下有幾個類別、以及各自直接掛了幾顆，出自 <code>out/recompute/vfb.json</code> 的 <code>generic_classes</code>；配對總數 59,739 出自同檔的 <code>instanceof_pairs</code>。樹上每個節點的顆數、在不在 844 裡、底下還有幾個、以及判定，出自 <code>out/recompute/class_tree_examples.json</code> 的 <code>tree_nodes</code>（連同 <code>what_the_844_are</code> 那一句）；<code>Dm3</code> 與 <code>Dm3a／Dm3b</code> 的重疊數（<b>0</b>）與 4,063／<code>Mi10_R</code> 那個例子出自同檔。全部由 <code>recompute/recompute.py</code> 的 <code>class_tree_examples()</code> 向同一支唯讀知識庫查來。2026-09-14。</p>
 
   <div class="gap">
     <h4>那個 22 個百分點的差距，是這一輪最實用的一個發現</h4>
@@ -417,7 +424,7 @@
   <p>照<a href="part7-agent-prompts.html#s4">指令 10</a>整理出來的，是三支程式加一份說明：</p>
 
   <div class="filecard">
-    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　505 行</span><p>取論文的靶、取 VFB 那一側、逐列比對。<b>所有自己決定的參數集中在開頭的 <code>PARAMS</code></b></p></div>
+    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　534 行</span><p>取論文的靶、取 VFB 那一側、逐列比對。<b>所有自己決定的參數集中在開頭的 <code>PARAMS</code></b></p></div>
     <div class="f"><span class="nm">make_figure.py</span><span class="role">產圖　91 行</span><p>畫<a href="#s3">第 3 節</a>那張圖</p></div>
     <div class="f"><span class="nm">cross_check.py</span><span class="role">旁證　168 行</span><p>同一個數字問三條路，把不一樣的地方攤開</p></div>
   </div>

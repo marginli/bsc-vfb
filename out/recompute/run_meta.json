@@ -1,10 +1,10 @@
 {
  "what": "PART 8 那一輪實跑的環境與計時",
  "files": {
-  "recompute.py": 505,
+  "recompute.py": 534,
   "make_figure.py": 91,
   "cross_check.py": 168,
-  "README.md": 52
+  "README.md": 53
  },
  "clean_run": {
   "where": "從 downloads/vfb-recompute.zip 解到一個空資料夾、刪掉 out/ 之後重跑",
@@ -37,9 +37,9 @@
   "only_in_vfb": 192
  },
  "code_lines": {
-  "total_py": 764,
-  "comment_or_docstring": 149,
-  "pct": 20,
+  "total_py": 793,
+  "comment_or_docstring": 152,
+  "pct": 19,
   "how": "tokenize 數 COMMENT 與 docstring 佔掉的行；三支 .py 合計，不含 README.md"
  }
 }

@@ -324,7 +324,36 @@ def class_tree_examples() -> dict:
     DM15, LC10, CM11 = "FBbt_00111276", "FBbt_00100482", "FBbt_20007247"
     NT = ["FBbt_00058205", "FBbt_00058207", "FBbt_00058208"]   # 三種傳導物質泛稱
 
+    # PART 8 那張樹上的每一個節點，逐個套一次規則。
+    # **重點**：844 個不是本體論的所有節點，是「至少有一顆神經元被直接標成它」
+    # 的類別。樹上有兩個節點一顆都沒有，所以根本不參與計數。
+    in_set = {c for c, in [(r[0],) for r in cypher(
+        "MATCH (n:Individual)-[:has_source]->(:DataSet {short_form:'%s'}) "
+        "MATCH (n)-[:INSTANCEOF]->(c:Class) RETURN DISTINCT c.short_form" % ds)]}
+    tree_nodes = []
+    for label, sf in (("adult neuron", "FBbt_00047095"),
+                      ("adult optic lobe intrinsic neuron", "FBbt_00007577"),
+                      ("distal medullary amacrine neuron", "FBbt_00003767"),
+                      ("Dm15", DM15), ("Dm3", DM3),
+                      ("Dm3a", DM3A), ("Dm3b", DM3B), ("Dm3c", DM3C)):
+        here = cells(sf)
+        below = [r[0] for r in cypher(
+            "MATCH (:Class {short_form:'%s'})<-[:SUBCLASSOF*1..8]-(b:Class) "
+            "RETURN DISTINCT b.short_form" % sf)]
+        below_here = [b for b in below if b in in_set]
+        tree_nodes.append({
+            "label": label, "short_form": sf,
+            "cells_directly_here": here,
+            "in_the_844": sf in in_set,
+            "subclasses_within_the_844": len(below_here),
+            "verdict": ("泛稱" if (sf in in_set and below_here)
+                        else "末端類別" if sf in in_set
+                        else "不在這 844 個裡（沒有神經元直接標成它）")})
+
     return {
+        "what_the_844_are": "有至少一顆神經元被直接標成它的類別；"
+                            "不是本體論裡的所有節點。",
+        "tree_nodes": tree_nodes,
         "Dm3": kids(DM3), "LC10": kids(LC10), "Cm11": kids(CM11),
         "Dm15_has_no_subclass": not kids(DM15),
         "Dm15_parents": [r[1] for r in cypher(
