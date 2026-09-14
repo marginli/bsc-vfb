@@ -16,6 +16,8 @@
 | `part5-nblast.html` | PART 5　形態比對：NBLAST 與 FlyCircuit |
 | `part6-api.html` | PART 6　接到程式與 AI |
 | `part7-agent-prompts.html` | PART 7　要怎麼交代 AI Agent |
+| `part8-agent-run.html` | PART 8　真的讓它跑一遍 |
+| `part9-read-code.html` | PART 9　讀懂它寫出來的程式 |
 | `assets/` | 共用樣式與所有圖檔 |
 | `scripts/vfb_probe.py` | **API 探針**：把教材用到的查詢向 VFB 跑一遍，存進 `out/` |
 | `scripts/browser_probe.py` | **畫面探針**：用真的瀏覽器把學員會看到的畫面拍一遍，存進 `out/ui/` |
@@ -24,8 +26,11 @@
 | `scripts/paper_target.py` | PART 7–9 的「靶」：抓 Nern et al. 2025 的補充表，算出要重算的那組數字 |
 | `scripts/three_layers.py` | PART 6 的三層對照：同一個問題用滑鼠／`vfb-connect`／MCP 各問一次（需 `pip install --user vfb-connect`） |
 | `scripts/*_audit.py` | 七道稽核 |
+| `recompute/` | **PART 8／9 的產物**：三支程式（`recompute.py`、`cross_check.py`、`make_figure.py`）＋說明。<br>只用 VFB 的資料重算 Nern et al. 2025 的細胞型普查。**不部署**——同一份已包在 `downloads/` 的 zip 裡 |
+| `downloads/vfb-recompute.zip` | 上面那一包，給讀者下載。改了 `recompute/` 之後要重打包 |
 | `out/` | 探針的原始輸出。**頁面上每個數字都對得回這裡** |
 | `out/ui/` | 畫面探針的輸出。**頁面上每個介面名字都對得回這裡** |
+| `out/recompute/` | `recompute/out/` 的副本。**PART 8／9 的數字對回這裡**（稽核只掃 `out/`） |
 | `_notes/` | 修正紀錄（給教材設計者，不部署） |
 
 ## 這門課的兩條規矩
@@ -81,6 +86,18 @@ python3 scripts/quote_audit.py          # 英文引文逐條對回 VFB 說明文
 python3 scripts/svg_audit.py *.html     # SVG 元素有沒有超出 viewBox
 python3 scripts/content_audit.py terms part1-templates.html
 python3 scripts/content_audit.py refs  part3-queries.html   # 指涉詞有沒有指名對象
+```
+
+PART 8／9 那一包要重跑或改動時：
+
+```bash
+cd recompute
+python3 recompute.py && python3 make_figure.py    # 主流程＋圖，約 20 秒
+python3 cross_check.py                             # 三條路的旁證，約 55 秒
+cp out/*.json out/fetched_at.txt ../out/recompute/ # 同步給稽核用
+cd .. && rm -f downloads/vfb-recompute.zip
+cd recompute && zip -qr ../downloads/vfb-recompute.zip \
+    recompute.py make_figure.py cross_check.py README.md out/
 ```
 
 ## 資料來源與授權

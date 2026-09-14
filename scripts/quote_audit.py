@@ -37,6 +37,10 @@ DOCS = {
     "bridging": "https://www.virtualflybrain.org/docs/concepts/bridging/",
     "templates": "https://www.virtualflybrain.org/docs/concepts/templates/",
     "overview": "https://www.virtualflybrain.org/docs/overview/",
+    # PART 8 引的是論文，不是說明文件。用 Europe PMC 的全文 XML——
+    # PMC 網頁版會擋自動存取（回 reCAPTCHA 頁），這一條不會。
+    "nern2025": ("https://www.ebi.ac.uk/europepmc/webservices/rest/"
+                 "PMC12119369/fullTextXML"),
 }
 
 

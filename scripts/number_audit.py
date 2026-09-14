@@ -43,6 +43,10 @@ EXEMPT = {
            "引文（見該段的出處行），不是探針抓的數字，所以 out/ 裡沒有。",
     "1.65": "886 ÷ 536 ＝ 1.65 倍。兩個被除數都在 out/part1_figures.json 的 "
             "frames.*.labelled_extent_um 裡，比值是頁面上當場算的。",
+    "100,000": "PART 9 第 6 節引的是 recompute.py 裡那個門檻 `len(blob) < 100_000`"
+               "——程式裡的字面值，不是查來的數字。",
+    "526": "267 ＋ 168 ＋ 91 ＝ 526（三支程式的行數合計）。三個被加數都在 "
+           "out/recompute/run_meta.json 的 files 裡，合計是頁面上當場算的。",
     "30": "PART 7 指令 7 裡「超過 30 筆就給前 30 筆」——那是我們自己訂的回報上限，"
           "不是查來的數字。",
     "15,457": "80,003 − 64,546 ＝ 15,457（BANC 兩個版本的差）。兩個被減數都在 "
@@ -115,7 +119,8 @@ def haystack():
     # （學員螢幕上有什麼）。**兩者都是這一課的「原文」**，所以兩邊都要掃——
     # PART 2 講的「同一個字串在三個框給三種筆數」，那些數字只在 out/ui/ 裡。
     for f in (sorted(glob.glob(os.path.join(D, "out", "*.json")))
-              + sorted(glob.glob(os.path.join(D, "out", "ui", "*.json")))):
+              + sorted(glob.glob(os.path.join(D, "out", "ui", "*.json")))
+              + sorted(glob.glob(os.path.join(D, "out", "recompute", "*.json")))):
         tag = os.path.basename(f)
         if os.path.basename(os.path.dirname(f)) == "ui":
             tag = "ui/" + tag

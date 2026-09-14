@@ -46,6 +46,12 @@ D = "/home/wanjuli/claude_linux/BSC_plan/specific_topics/VFB"
 
 # ── 對不回畫面探針但確定沒問題的字串：一筆一個理由 ──────────────────────
 EXEMPT = {
+    "page_size": "PART 9 第 2 節講的就是「這個參數已經被刪掉了」——"
+                 "它現在哪裡都找不到，正是那一段要說的事。",
+    "PARAMS": "PART 8／9：這是我們自己寫的那支 recompute.py 裡的變數名，"
+              "不是 VFB 介面上的東西。",
+    "openpyxl": "PART 8／9：Python 套件名，不是 VFB 介面上的東西。",
+    "matplotlib": "PART 8／9：Python 套件名，不是 VFB 介面上的東西。",
     "Painted domains": "這是查詢標籤的前半，頁面上完整寫的是 "
                        "`Painted domains for JRC2018U`／`for JFRC2`，"
                        "兩個完整字串都對得回 out/ui/painted_domains.json。",
@@ -71,9 +77,11 @@ def haystack(sub):
     sub="ui" 是畫面探針（學員螢幕上有什麼），sub="api" 是 API 探針（資料庫裡有什麼）。
     **兩份要分開**，因為「這個名字只有 API 有」本身就是一個要看的訊號。
     """
-    pat = ("out/ui/*.json" if sub == "ui" else "out/*.json")
+    pats = (["out/ui/*.json"] if sub == "ui"
+            else ["out/*.json", "out/recompute/*.json"])
     blobs = {}
-    for f in sorted(glob.glob(os.path.join(D, *pat.split("/")))):
+    for f in sorted(sum((glob.glob(os.path.join(D, *p.split("/")))
+                         for p in pats), [])):
         if os.path.basename(f) == "_manifest.json":
             continue
         chunks = []

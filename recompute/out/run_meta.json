@@ -1,0 +1,45 @@
+{
+ "what": "PART 8 那一輪實跑的環境與計時",
+ "files": {
+  "recompute.py": 267,
+  "make_figure.py": 91,
+  "cross_check.py": 168,
+  "README.md": 51
+ },
+ "clean_run": {
+  "where": "從 downloads/vfb-recompute.zip 解到一個空資料夾、刪掉 out/ 之後重跑",
+  "recompute_plus_figure_seconds": 18,
+  "cross_check_seconds": 50,
+  "outputs_identical_to_original": true,
+  "identical_files": [
+   "target.json",
+   "vfb.json",
+   "compare.json",
+   "figure.json",
+   "cross_check.json"
+  ]
+ },
+ "dependencies": [
+  "openpyxl",
+  "matplotlib"
+ ],
+ "python": "Python 3.11.7",
+ "match_key_class_variant": {
+  "what": "把 PARAMS['match_key'] 從 instance 改成 class，其餘不動，重跑一次的結果",
+  "why": "用來示範一個參數會把結論改成什麼樣子",
+  "matched": 547,
+  "same_count": 535,
+  "different_count": 12,
+  "delta_max": 118,
+  "total_cells_paper": 52827,
+  "total_cells_vfb": 53402,
+  "only_in_paper": 185,
+  "only_in_vfb": 192
+ },
+ "code_lines": {
+  "total_py": 526,
+  "comment_or_docstring": 104,
+  "pct": 20,
+  "how": "tokenize 數 COMMENT 與 docstring 佔掉的行；三支 .py 合計，不含 README.md"
+ }
+}

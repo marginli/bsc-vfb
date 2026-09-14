@@ -1,0 +1,30 @@
+{
+ "asked": "資料集 Nern2024 底下有幾顆神經元",
+ "when": "2026-09-14T08:16:59+00:00",
+ "kb_cypher": {
+  "neurons": 53402,
+  "distinct_labels": 53402,
+  "classes": 844,
+  "instanceof_pairs": 59739,
+  "neurons_by_n_classes": {
+   "1": 47555,
+   "2": 5357,
+   "3": 490
+  },
+  "individual_class_template_triples": 59739
+ },
+ "rest_run_query": {
+  "count_reported": 60002,
+  "rows_retrieved": 50000,
+  "distinct_ids_in_rows": 44510,
+  "truncated": true
+ },
+ "mcp_get_term_info": {
+  "server": "1.11.2",
+  "queries": {
+   "DatasetImages": 53402
+  },
+  "dataset_images": 53402
+ },
+ "note": "①③ 一致，② 不一致。② 多出來的不是神經元，是列：DatasetImages 每一個（個體, 類別）配對給一列，而一顆神經元可以同時屬於好幾個類別（例如 Dm15_R 既是 Dm15，也是麩胺酸性神經元），所以列數本來就會比顆數多。知識庫算出的配對數是 59739，② 報的是 60002，還差 263 列查不出來——**這一條沒有解掉，不要把它寫成已經解掉**。另外 ② 在五萬列處被截斷，回來的列裡不重複的 id 只有 44510 個。結論：要寫「幾顆神經元」就不能用 ②。"
+}

@@ -1,0 +1,14 @@
+{
+ "source": "Nern et al. 2025 全文，經 Europe PMC 的 fullTextXML 取得（PMC12119369）",
+ "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12119369/fullTextXML",
+ "pmcid": "PMC12119369",
+ "fetched": "2026-09-14",
+ "n_types": "We classified around 53,000 visual system neurons into 732 cell types",
+ "undercount": "A few cell types are undercounted (estimated 2,777 cells from the lamina and 459 R7 and R8 photoreceptors, see Methods for details).",
+ "pale_yellow": "Step 3: R7 cells are classified as pale (R7p) or yellow (R7y) using connectivity with Dm8a/b and Tm5a/b and anatomical markers; cells that could not be confidently assigned are labelled as ‘R7_unclear’.",
+ "undercount_numbers": {
+  "lamina_cells": 2777,
+  "r7_r8_photoreceptors": 459
+ },
+ "check": "三條引文都在上面那份全文裡逐字對得到（本檔產生時逐條 in 比對過）"
+}

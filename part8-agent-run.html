@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PART 8 真的讓它跑一遍｜VFB 專題課程</title>
+<link rel="stylesheet" href="assets/vfb.css">
+</head>
+<body>
+<div class="crumb"><a href="index.html">VFB 專題課程</a> ／ PART 8</div>
+<header class="hero">
+  <p class="eyebrow">PART 8</p>
+  <h1>真的讓它跑一遍</h1>
+  <p class="subtitle">把 <a href="part7-agent-prompts.html">PART 7</a> 那十條指令實際執行一次：對出來的結果、對不上的三類，以及中途冒出來、到現在還沒解掉的一個矛盾</p>
+</header>
+
+<div class="wrap">
+
+  <div class="pager top">
+    <a href="part7-agent-prompts.html">← PART 7　要怎麼交代 AI Agent</a>
+    <a href="part9-read-code.html">PART 9　讀懂它寫出來的程式 →</a>
+  </div>
+
+  <nav class="toc">
+    <h2>本頁章節</h2>
+    <ol>
+      <li><a href="#s1">先講清楚：哪些數字是預先知道的</a></li>
+      <li><a href="#s2">結論：對出來的結果</a></li>
+      <li><a href="#s3">那 21 筆差在哪裡</a></li>
+      <li><a href="#s4">對不上的三類</a></li>
+      <li><a href="#s5">換一條路再問一次：一個沒解掉的矛盾</a></li>
+      <li><a href="#s6">十條指令的逐條紀錄</a></li>
+      <li><a href="#s7">帶得走的東西</a></li>
+    </ol>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s1"><span class="pt">1</span>先講清楚：哪些數字是預先知道的</h2>
+
+  <div class="danger">
+    <b>這一頁不是一次盲測。</b><a href="part7-agent-prompts.html">PART 7</a> 那十條指令能寫得出來，是因為<b>寫它們之前已經先跑過一次可行性查證</b>——不先確認「這件事做得出來」，沒有人會把十條指令寫成那個樣子。所以底下有一部分數字，<b>在這一輪開始之前就已經知道答案了。</b>
+  </div>
+
+  <p>把它攤開來講，是因為這門課從 <a href="part1-templates.html">PART 1</a> 開始的規矩就是<b>數字要說得出從哪裡來</b>；而「這個數字是不是獨立算出來的」跟「這個數字對不對」同樣重要。下面這張表逐項交代：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>數字</th><th>這一輪之前就知道嗎</th><th>憑據</th></tr>
+    <tr><td>論文那一側的靶：<b>778</b> 列、<b>732</b> 個型、<b>52,827</b> 顆，以及四個分組的顆數</td><td><b>是</b></td><td>PART 7 發布時就引著 <code>out/nern2025_target.json</code>——那支程式是為了寫指令 1 而寫的</td></tr>
+    <tr><td>VFB 那一側的神經元總數 <b>53,402</b></td><td><b>是</b></td><td>寫十條之前試算過，但<b>沒有存成檔案</b>，所以 PART 7 上看不到它</td></tr>
+    <tr><td>兩種比對鍵的命中率 <b>96.8%</b> 與 <b>74.7%</b></td><td><b>是</b></td><td>同上。指令 5 會寫成「至少做兩種」，正是因為試算時看到這個差距</td></tr>
+    <tr><td>逐列比對的 <b>753</b> ／ <b>732</b> ／ <b>21</b></td><td><b>是</b></td><td>同上</td></tr>
+    <tr><td>指令 8 換第二條路得到的 <b>60,002</b> 與那個沒解掉的 <b>263</b>（<a href="#s5">第 5 節</a>）</td><td><b>否</b></td><td>這一輪第一次跑，而且結果出乎意料</td></tr>
+    <tr><td>指令 9 那張圖，以及圖上落在對角線的點數</td><td><b>否</b></td><td>這一輪才畫</td></tr>
+    <tr><td>指令 10 的乾淨重跑：<b>18</b> 秒、<b>50</b> 秒、五個輸出檔逐位元組相同</td><td><b>否</b></td><td>這一輪才做</td></tr>
+  </table>
+  </div>
+
+  <p class="figsrc">表中「是」的四列，出自 <code>out/nern2025_target.json</code>（PART 7 即引用）與本輪重跑的 <code>out/recompute/target.json</code>、<code>out/recompute/vfb.json</code>、<code>out/recompute/compare.json</code>；「否」的三列出自 <code>out/recompute/cross_check.json</code>、<code>out/recompute/figure.json</code>、<code>out/recompute/run_meta.json</code>。皆為 2026-09-14 取得。</p>
+
+  <div class="callout">
+    <b>所以這一頁能證明什麼、不能證明什麼。</b><br>
+    <b>能</b>：這條流程跑得起來，從一個空資料夾重跑會得到同一組數字，而且每一個數字都指得出來源。<br>
+    <b>不能</b>：不能證明「一個沒看過答案的 AI Agent 照這十條做，也會得到同一組數字」。<b>那件事要另外做一次才算數</b>，而它不在這一頁裡。
+  </div>
+
+  <div class="note">
+    <b>那為什麼還要寫這一頁？</b>因為<a href="#s6">第 6 節</a>那十條裡，真正有意思的不是數字對不對，是<b>哪幾條指令實際跑起來以後不夠用</b>。那一部分沒有預先知道的答案——指令要改成什麼樣子，是跑完才看得出來的。
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s2"><span class="pt">2</span>結論：對出來的結果</h2>
+
+  <p>論文正文那一句是：</p>
+  <p lang="en">We classified around 53,000 visual system neurons into 732 cell types</p>
+
+  <p>只用 VFB 上的資料重算一次，逐型跟論文的補充表對起來，結果是：</p>
+
+  <div class="statgrid">
+    <div class="stat"><div class="v">753</div><div class="k">兩邊名字對得上的型（論文共 778 列）</div></div>
+    <div class="stat"><div class="v">732</div><div class="k">其中<b>顆數也完全相同</b>的</div></div>
+    <div class="stat"><div class="v">21</div><div class="k">對得上、但顆數不同的</div></div>
+    <div class="stat"><div class="v">575</div><div class="k">兩邊總顆數的差（53,402 − 52,827）</div></div>
+  </div>
+
+  <p class="figsrc">四個數字出自 <code>out/recompute/compare.json</code> 的 <code>matched</code>、<code>same_count</code>、<code>different_count</code>、<code>total_cells_delta</code>，由 <code>recompute/recompute.py</code> 於 2026-09-14 產生。</p>
+
+  <div class="callout">
+    <b>一句話的結論：<span style="white-space:nowrap">732 這個數字對得起來，但不是用「數出 732 個型」的方式對起來的。</span></b><br>
+    我們沒有從 VFB 直接數出 732——VFB 那一側末端類別有 <b>821</b> 個。<b>對得起來的是「逐型的顆數」</b>：論文列出的 778 列裡，有 732 列的顆數跟 VFB 算出來的一模一樣。<b>兩個 732 是巧合嗎？</b>不是，但也不是同一件事：前者是論文的分型數，後者是逐列比對後顆數相同的列數。<b>它們碰巧相等，而把它們混為一談就是這一整頁在防的錯。</b>
+  </div>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th></th><th>論文</th><th>VFB（<code>Nern2024</code>）</th></tr>
+    <tr><th>神經元</th><td>52,827 顆（補充表逐列加總）</td><td>53,402 顆</td></tr>
+    <tr><th>「型」</th><td>732 個 cell type，分成 778 列（同一個型可以有左右兩列）</td><td>844 個類別，其中泛稱 23 個、<b>末端類別 821 個</b></td></tr>
+    <tr><th>比對鍵</th><td colspan="2">神經元自己的標籤取括號前那一段（<code>Dm20_R</code>），命中 753／778 ＝ <b>96.8%</b><br>改用類別標籤的最後一個詞，只剩 547／732 ＝ <b>74.7%</b></td></tr>
+  </table>
+  </div>
+
+  <p class="figsrc">論文側出自 <code>out/recompute/target.json</code>；VFB 側的 <code>neurons</code>、<code>classes_all</code>、<code>classes_generic</code>、<code>classes_leaf</code> 出自 <code>out/recompute/vfb.json</code>；兩個命中率出自 <code>out/recompute/compare.json</code> 的 <code>key_choice</code>。2026-09-14。</p>
+
+  <div class="gap">
+    <h4>那個 22 個百分點的差距，是這一輪最實用的一個發現</h4>
+    <p>兩種鍵的差距（96.8% 對 74.7%）不是細節。<b>如果只試了後面那一種，你會看到四分之一的型對不上，然後以為是資料本身對不起來。</b>實際上是鍵挑錯了——VFB 的類別標籤是全名（<i>distal medullary amacrine neuron Dm15</i>），而神經元自己的標籤才是論文在用的那種簡寫（<code>Dm15_R</code>）。這正是 <a href="part2-names.html#s4">PART 2 第 4 節</a>那件事（同一個東西有三個名字）在這裡變成一個百分比。</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s3"><span class="pt">3</span>那 21 筆差在哪裡</h2>
+
+  <figure class="fig">
+    <img src="assets/p8-scatter.png" alt="左：逐型的顆數散點圖，兩軸都是對數，絕大多數點落在對角線上；右：21 筆差異的大小，兩筆約 200、六筆 2、十三筆 1">
+    <figcaption><b>左</b>：一個點是一個型，橫軸是論文的顆數、縱軸是用 VFB 重算的顆數。空心點是兩邊完全相同的 <b>732</b> 個，實心點是不同的 <b>21</b> 個。<b>兩軸都用對數</b>，因為顆數從 1 跨到兩千多；這裡不必處理 0，因為對得上的型兩邊都至少有 1 顆。<b>右</b>：那 21 筆差異由大到小。<b>差距不是連續分布的，而是斷成三段</b>：兩筆約 200、六筆 2、十三筆 1。</figcaption>
+  </figure>
+
+  <p class="figsrc">圖由 <code>recompute/make_figure.py</code> 畫，資料出自 <code>out/recompute/compare.json</code>；圖上的點數存在 <code>out/recompute/figure.json</code>（<code>on_diagonal</code>＝732、<code>off_diagonal</code>＝21、<code>largest</code>＝202）。2026-09-14。</p>
+
+  <p><b>右邊那張圖的形狀，本身就是答案的一部分。</b>差 1 顆、差 2 顆的那十九筆，看起來像是逐顆判定的邊界差異——一顆神經元算不算進這個型，兩邊的判斷偶爾不一樣。<b>而最左邊那兩根，是另外一回事：</b></p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>型</th><th>論文</th><th>VFB</th><th>差</th></tr>
+    <tr><td><code>R7p_R</code></td><td>95</td><td>297</td><td><b>＋202</b></td></tr>
+    <tr><td><code>R8p_R</code></td><td>95</td><td>294</td><td><b>＋199</b></td></tr>
+    <tr><td><code>R7y_R</code></td><td>244</td><td>246</td><td>＋2</td></tr>
+    <tr><td><code>R8y_R</code></td><td>245</td><td>244</td><td>−1</td></tr>
+    <tr><td><code>R7d_R</code></td><td>42</td><td>42</td><td>0</td></tr>
+    <tr><td><code>R8d_R</code></td><td>41</td><td>41</td><td>0</td></tr>
+    <tr><td colspan="3">六列合計</td><td><b>＋402</b></td></tr>
+  </table>
+  </div>
+
+  <p class="figsrc">六列出自 <code>out/recompute/compare.json</code> 的 <code>photoreceptor_rows</code>，合計出自同檔的 <code>photoreceptor_delta_total</code>。2026-09-14。</p>
+
+  <div class="callout">
+    <b>而這件事論文自己講了。</b>圖 1 的說明裡有一句：
+    <p lang="en">A few cell types are undercounted (estimated 2,777 cells from the lamina and 459 R7 and R8 photoreceptors, see Methods for details).</p>
+    <b>論文明說 R7／R8 被少算了，估計是 459 顆。</b>我們算出來的差是 402 顆，落在同一個量級。<b>這不是我們算錯，也不是論文算錯——是論文自己標註過的一個已知缺口，而 VFB 那一版把其中一部分補上了。</b>
+  </div>
+
+  <div class="gap">
+    <h4>再往下挖一層：那 200 顆為什麼全部落在「pale」那一列</h4>
+    <p>論文的方法段描述了分型的步驟：</p>
+    <p lang="en">Step 3: R7 cells are classified as pale (R7p) or yellow (R7y) using connectivity with Dm8a/b and Tm5a/b and anatomical markers; cells that could not be confidently assigned are labelled as ‘R7_unclear’.</p>
+    <p><b>論文有一個 <code>R7_unclear</code> 的標籤，但補充表裡沒有這一列</b>——把補充表裡的每一列都掃過一遍，沒有任何一列的名字帶 <code>unclear</code>。而 VFB 那一側也沒有任何標籤帶 <code>unclear</code>；VFB 的 <code>R7p_R</code> 那 297 顆全部掛在同一個類別 <code>FBbt_02000006</code>（<i>photoreceptor cell R7 of pale ommatidium</i>）底下。</p>
+    <p><b>看起來最像的解釋是</b>：論文判不出來、標成 <code>R7_unclear</code> 的那些細胞，在 VFB 這一版被歸進了 pale。<b>但這是推測，不是查證過的結論。</b>要確定，得直接去問論文用的那份 neuPrint 資料庫裡 <code>R7_unclear</code> 有幾顆——<b>那件事我們沒做，所以這一條就停在這裡。</b></p>
+  </div>
+
+  <p class="figsrc">兩條引文出自 <code>out/recompute/paper_quotes.json</code>（全文經 Europe PMC 的 <code>fullTextXML</code> 取得，PMC12119369，2026-09-14，逐字比對過）。「補充表裡沒有 unclear」與「VFB 沒有 unclear、297 顆同屬一個類別」出自對 <code>out/recompute/target.json</code> 的搜尋與一次知識庫查詢（<code>recompute/cross_check.py</code> 同一支介面）。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s4"><span class="pt">4</span>對不上的三類</h2>
+
+  <p><a href="part7-agent-prompts.html#s4">指令 7</a> 要求把對不上的部分<b>列完，不要只給數量</b>。結果是三類：</p>
+
+  <div class="cases">
+    <div class="case"><span class="badge one">A</span><div class="bd">
+      <b>只在論文補充表裡：25 列</b>
+      其中 <b>7 列</b>解釋得掉——論文把 <code>LC39</code>、<code>Li11</code>、<code>LoVP90</code> 三個型各自拆成 a／b／c，而 <b>VFB 這一版還是合在一起的</b>（未拆的名字在 VFB 那邊找得到）。<b>剩下 18 列查不出來</b>，裡面有 <code>PLP_TBD1_R</code>、<code>VLP_TBD1_R</code>、<code>aMe_TBD1_R</code> 這種名字裡帶 <i>TBD</i>（待定）的，也有 <code>AN09A005</code>、<code>DNc02</code> 這類上行／下行神經元。
+    </div></div>
+    <div class="case"><span class="badge two">B</span><div class="bd">
+      <b>只在 VFB 這邊：184 個名字，共 221 顆</b>
+      名字的前綴幾乎都是<b>中腦的腦區代號</b>：<code>AVLP</code> 35 個、<code>PLP</code> 29 個、<code>SLP</code> 14 個、<code>PVLP</code> 12 個、<code>LHAV</code> 11 個、<code>DNg</code> 9 個、<code>DNge</code> 8 個、<code>PS</code> 7 個。抽三個去查，查到的是<i>adult serotonergic PLP neuron</i> 與 <i>adult anterior optic tubercle neuron 050／065</i> 這類東西。<b>判斷：這一類比較像「兩邊收錄的範圍本來就不同」</b>——VFB 的資料集連帶收了一些伸進視葉的中腦神經元，而論文補充表的範圍是視覺系統的型錄。<b>這是推測，我們只查了三個。</b>
+    </div></div>
+    <div class="case"><span class="badge hub">C</span><div class="bd">
+      <b>兩邊都有、顆數不同：21 列</b>
+      就是<a href="#s3">第 3 節〈那 21 筆差在哪裡〉</a>那 21 筆。兩筆是論文自己標註過的光受器缺口，其餘十九筆差 1 到 2 顆。
+    </div></div>
+  </div>
+
+  <p class="figsrc">三類的筆數與清單出自 <code>out/recompute/compare.json</code>：<code>only_in_paper</code>（25）、<code>only_in_paper_explained_by_split</code>（7）、<code>only_in_paper_unexplained</code>（18）、<code>only_in_vfb</code>（184）、<code>only_in_vfb_cells</code>（221）、<code>only_in_vfb_prefix_top</code>、<code>paper_split_vfb_did_not</code>。2026-09-14。</p>
+
+  <div class="note">
+    <b>A 類那個「論文拆、VFB 沒拆」，正是 <a href="part7-agent-prompts.html#s3">PART 7 第 3 節</a>那個②號決定的真面目。</b>「什麼算一個細胞型」不是一個哲學問題——它在這裡具體成三個名字：論文認為 <code>LoVP90</code> 應該分成三型，VFB 這一版還記成一型。<b>兩邊都沒錯，只是分型的版本不同。</b>而如果我們只報一個「命中率 96.8%」，這件事就完全看不見了。
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s5"><span class="pt">5</span>換一條路再問一次：一個沒解掉的矛盾</h2>
+
+  <p><a href="part7-agent-prompts.html#s4">指令 8</a> 的要求是：<b>前面每一個關鍵數字都是同一條路算出來的，換一條路再算一次。</b>同一個問題——「資料集 <code>Nern2024</code> 底下有幾顆神經元」——問三條路：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>路</th><th>問法</th><th>回答</th></tr>
+    <tr><td><b>①</b> 知識庫</td><td><code>pdb.virtualflybrain.org</code> 的 Cypher</td><td><b>53,402</b> 顆　類別 844 個</td></tr>
+    <tr><td><b>②</b> REST</td><td><code>v3-cached.virtualflybrain.org/run_query</code> 的 <code>DatasetImages</code></td><td>自己報 <b>count＝60,002</b>，實際只翻回 <b>50,000</b> 列，<b>被截斷</b></td></tr>
+    <tr><td><b>③</b> MCP</td><td><code>vfb3-mcp.virtualflybrain.org</code> 的 <code>get_term_info</code></td><td><b>53,402</b>（與①一致）</td></tr>
+  </table>
+  </div>
+
+  <p class="figsrc">三列出自 <code>out/recompute/cross_check.json</code>，由 <code>recompute/cross_check.py</code> 於 2026-09-14 產生（MCP 伺服器版本 1.11.2）。</p>
+
+  <div class="danger">
+    <b>②那個 50,000 就是 <a href="part7-agent-prompts.html#s4">指令 3</a> 預先警告過的坑</b>——翻頁到某個位移之後它停下來，<b>不報錯、只回空陣列</b>。如果指令 3 沒寫那一句，這一輪會拿到一個看起來很正常的五萬筆清單，然後往下做。
+  </div>
+
+  <p><b>但更要緊的是 60,002 跟 53,402 差了六千多。</b>往下追，找到了機制：<code>DatasetImages</code> 是<b>每一個「（個體, 類別）配對」給一列</b>，而一顆神經元可以同時屬於好幾個類別。<code>Dm15_R</code> 就同時是 <i>Dm15</i> 與 <i>adult glutamatergic neuron</i>，所以它在結果裡出現兩次。</p>
+
+  <div class="statgrid">
+    <div class="stat"><div class="v">47,555</div><div class="k">只屬於 1 個類別的神經元</div></div>
+    <div class="stat"><div class="v">5,357</div><div class="k">屬於 2 個類別的</div></div>
+    <div class="stat"><div class="v">490</div><div class="k">屬於 3 個類別的</div></div>
+    <div class="stat"><div class="v">59,739</div><div class="k">配對總數＝53,402＋5,357＋2×490</div></div>
+  </div>
+
+  <div class="gap">
+    <h4>機制對了，數字還是差 263 —— 這一條沒解掉</h4>
+    <p>知識庫算出來的配對數是 <b>59,739</b>，而 REST 報的是 <b>60,002</b>。<b>還差 263 列，我們查不出來是什麼。</b></p>
+    <p>查過但排除掉的一個可能：同一顆神經元對到不只一個模板座標框（那樣也會多出列來）。實際查的結果是<b>每一顆都只對到一個模板</b>，所以（個體, 類別, 模板）三元組的數量跟配對數一樣是 59,739，不是差異的來源。</p>
+    <p><b>這一條就停在這裡，不編解釋。</b>照 <a href="part7-agent-prompts.html#s4">指令 7</a> 最後那句話——「我寧可你說『這一類我查不出來』」——它現在是一筆明講的未解項，寫在 <code>out/recompute/cross_check.json</code> 的 <code>note</code> 欄裡。</p>
+  </div>
+
+  <p class="figsrc">四個配對數出自一次知識庫查詢（與 <code>recompute/cross_check.py</code> 同一支介面，2026-09-14）；<code>instanceof_pairs</code>＝59,739 與未解的 263 存在 <code>out/recompute/cross_check.json</code>。</p>
+
+  <div class="callout">
+    <b>指令 8 的價值在這裡整個顯現出來。</b>如果只走①那一條路，這一頁會有一個乾淨的 53,402，而且它<b>是對的</b>——但我們不會知道站上還有一支介面對同一個問題回答 60,002，也不會知道它會在五萬列悄悄停下來。<b>一個數字只問過一條路，你不會知道自己站在哪一邊。</b>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s6"><span class="pt">6</span>十條指令的逐條紀錄</h2>
+
+  <p>上面是結論。這一節是過程——<b>每一條實際跑起來的樣子，以及跑完之後我要怎麼改它</b>。</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>指令</th><th>實跑</th><th>跑完之後要改的地方</th></tr>
+    <tr><td><b>1</b>　拿到論文的靶</td><td>成功，但<b>第一個下載網址是死的</b></td><td><b>要改。</b>PMC 那條路回 HTTP 200、檔案只有 1.8 KB——是個空殼，不是錯誤。指令裡那句「說明你是從哪個網址拿到的」救了這一條，但不夠：<b>應該再加一句「回報檔案大小，太小就停下來」</b></td></tr>
+    <tr><td><b>2</b>　選資料集並記下版本</td><td>成功</td><td>不用改</td></tr>
+    <tr><td><b>3</b>　取回全部並證明沒被截斷</td><td>成功，而且<b>警告確實命中</b></td><td>不用改。這一條是十條裡回報最高的一句</td></tr>
+    <tr><td><b>4</b>　定義什麼算一個型</td><td>成功：844 個類別裡有 23 個是泛稱，末端類別 821 個</td><td>不用改</td></tr>
+    <tr><td><b>5</b>　選比對鍵</td><td>成功，兩種鍵差 22 個百分點</td><td>不用改。這一條的設計（逼它做兩種）是十條裡最划算的</td></tr>
+    <tr><td><b>6</b>　逐列比對</td><td>成功</td><td>不用改</td></tr>
+    <tr><td><b>7</b>　列出對不上的三類</td><td>成功，但<b>第 2 項「挑三筆去查」太少</b></td><td><b>要改。</b>B 類有 184 個名字，抽三個查完就下判斷，證據太薄。<b>應該改成「按前綴分組，每一組抽一個」</b>——那樣才看得出 184 個是不是同一回事</td></tr>
+    <tr><td><b>8</b>　換第二條路</td><td><b>冒出一個沒解掉的矛盾</b>（<a href="#s5">第 5 節</a>）</td><td>不用改，但要補一句：<b>「如果兩條路差很多，先確認兩邊數的是不是同一種東西」</b>——這裡就是列數對個數</td></tr>
+    <tr><td><b>9</b>　畫圖並說明</td><td>成功。落在對角線上的是 732 點，跟指令 6 報的一致</td><td>不用改。「點數要跟指令 6 對得上」這個檢查是有效的</td></tr>
+    <tr><td><b>10</b>　整理成帶得走的東西</td><td>成功。乾淨資料夾重跑，五個輸出檔<b>逐位元組相同</b></td><td>不用改</td></tr>
+  </table>
+  </div>
+
+  <p class="figsrc">指令 4 的 844／23／821 出自 <code>out/recompute/vfb.json</code>；指令 9 的 732 出自 <code>out/recompute/figure.json</code>；指令 10 的重跑結果出自 <code>out/recompute/run_meta.json</code>。指令 1 那個 1.8 KB 的空殼是 <code>scripts/paper_target.py</code> 的註解裡記著的實測結果。2026-09-14。</p>
+
+  <div class="callout">
+    <b>十條裡有兩條要改，而兩條都是同一個毛病：檢查訂得不夠嚴。</b><br>
+    指令 1 要它「說明網址」，但沒要它<b>看一眼檔案有多大</b>；指令 7 要它「挑三筆去查」，但沒說<b>三筆要怎麼挑</b>。<b>這兩處都不是 AI 做錯，是我沒寫清楚。</b>而這正是 <a href="part7-agent-prompts.html#s5">PART 7 第 5 節</a>那句話的實例——你漏寫的每一件事，它都會自己決定。
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s7"><span class="pt">7</span>帶得走的東西</h2>
+
+  <p>照<a href="part7-agent-prompts.html#s4">指令 10</a>整理出來的，是三支程式加一份說明：</p>
+
+  <div class="filecard">
+    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　267 行</span><p>取論文的靶、取 VFB 那一側、逐列比對。<b>所有自己決定的參數集中在開頭的 <code>PARAMS</code></b></p></div>
+    <div class="f"><span class="nm">make_figure.py</span><span class="role">產圖　91 行</span><p>畫<a href="#s3">第 3 節</a>那張圖</p></div>
+    <div class="f"><span class="nm">cross_check.py</span><span class="role">旁證　168 行</span><p>同一個數字問三條路，把不一樣的地方攤開</p></div>
+  </div>
+
+  <p class="figsrc">行數出自 <code>out/recompute/run_meta.json</code> 的 <code>files</code>（2026-09-14 實測）。</p>
+
+  <p><b>從一個空資料夾重跑過了</b>：解壓縮、刪掉 <code>out/</code>、只裝 <code>openpyxl</code> 與 <code>matplotlib</code>，主流程加產圖 <b>18 秒</b>、旁證 <b>50 秒</b>，五個輸出檔跟原本的逐位元組相同（唯一不同的是記錄抓取時間的那個文字檔）。</p>
+
+  <p><a class="dl" href="downloads/vfb-recompute.zip"><b>下載這一包</b>（含三支程式、說明、以及這一輪的全部輸出）</a></p>
+
+  <div class="note">
+    <b>裡面的 JSON 就是這一頁每個數字的出處。</b>頁面上寫的每一個數，都對得回 <code>out/target.json</code>、<code>out/vfb.json</code>、<code>out/compare.json</code>、<code>out/cross_check.json</code> 其中一支。<b>不想跑程式也可以直接讀那幾個檔案。</b>
+  </div>
+
+  <div class="draft">
+    <b>還沒解的，列在這裡：</b>
+    <ul>
+      <li>REST 報的 60,002 與知識庫算出的 59,739 差 <b>263</b> 列——機制找到了，餘數沒找到。</li>
+      <li>A 類裡有 <b>18</b> 個型只在論文表裡、在 VFB 找不到，沒有解釋。</li>
+      <li><code>R7p</code> 那多出來的 200 顆是不是論文的 <code>R7_unclear</code>——像，但沒查證。</li>
+      <li>B 類那 184 個名字只抽查了 3 個。</li>
+    </ul>
+    <b>四條都寫在這裡，不寫進結論。</b>
+  </div>
+
+  <p class="figsrc">四條裡的每一個數字，前面都已經出過一次：60,002、59,739、263 出自 <code>out/recompute/cross_check.json</code>（<a href="#s5">第 5 節</a>），18 與 184 出自 <code>out/recompute/compare.json</code>（<a href="#s4">第 4 節</a>），<code>R7p</code> 那 200 顆的原始兩列在 <a href="#s3">第 3 節</a>的表裡（297 − 95）。2026-09-14。</p>
+
+  <p><b>下一部分把這三支程式讀完。</b><a href="part9-read-code.html">PART 9</a> 不教 Python 語法——它問的是另一組問題：哪幾行是「自己決定的」、哪幾行換一個人寫會不一樣、以及如果這份程式是別人交給你的，你要先看哪裡。</p>
+
+  <div class="pager">
+    <a href="part7-agent-prompts.html">← PART 7　要怎麼交代 AI Agent</a>
+    <a href="part9-read-code.html">PART 9　讀懂它寫出來的程式 →</a>
+  </div>
+</div>
+
+<div class="foot">
+  VFB 專題課程　PART 8　·　論文為 Nern et al., 2025, <i>Nature</i> 641(8065): 1225–1237（CC-BY）　·　
+  VFB 資料集 <code>Nern2024</code>，數字於 2026-09-14 取得
+</div>
+</body>
+</html>

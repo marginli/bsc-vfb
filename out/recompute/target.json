@@ -1,0 +1,3897 @@
+{
+ "rows": 778,
+ "distinct_cell_types": 732,
+ "total_cells": 52827,
+ "by_instance": {
+  "5-HTPMPV03_R": {
+   "cell_type": "5-HTPMPV03",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "5thsLNv_LNd6_R": {
+   "cell_type": "5thsLNv_LNd6",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "Am1_R": {
+   "cell_type": "Am1",
+   "cells": 1,
+   "group": "ONCN"
+  },
+  "aMe_TBD1_R": {
+   "cell_type": "aMe_TBD1",
+   "cells": 1,
+   "group": "other"
+  },
+  "aMe1_R": {
+   "cell_type": "aMe1",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "aMe2_R": {
+   "cell_type": "aMe2",
+   "cells": 4,
+   "group": "VCN"
+  },
+  "aMe3_R": {
+   "cell_type": "aMe3",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "aMe4_R": {
+   "cell_type": "aMe4",
+   "cells": 9,
+   "group": "VCN"
+  },
+  "aMe5_R": {
+   "cell_type": "aMe5",
+   "cells": 17,
+   "group": "VPN"
+  },
+  "aMe6a_R": {
+   "cell_type": "aMe6a",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "aMe6b_R": {
+   "cell_type": "aMe6b",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "aMe6c_R": {
+   "cell_type": "aMe6c",
+   "cells": 1,
+   "group": "ONCN"
+  },
+  "aMe8_R": {
+   "cell_type": "aMe8",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "aMe9_R": {
+   "cell_type": "aMe9",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "aMe10_R": {
+   "cell_type": "aMe10",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "aMe12_R": {
+   "cell_type": "aMe12",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "aMe13_R": {
+   "cell_type": "aMe13",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "aMe15_R": {
+   "cell_type": "aMe15",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "aMe17a_R": {
+   "cell_type": "aMe17a",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "aMe17b_R": {
+   "cell_type": "aMe17b",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "aMe17c_R": {
+   "cell_type": "aMe17c",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "aMe17e_R": {
+   "cell_type": "aMe17e",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "aMe20_R": {
+   "cell_type": "aMe20",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "aMe22_R": {
+   "cell_type": "aMe22",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "aMe23_R": {
+   "cell_type": "aMe23",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "aMe24_R": {
+   "cell_type": "aMe24",
+   "cells": 1,
+   "group": "other"
+  },
+  "aMe25_R": {
+   "cell_type": "aMe25",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "aMe26_R": {
+   "cell_type": "aMe26",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "aMe30_R": {
+   "cell_type": "aMe30",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "AN09A005_R": {
+   "cell_type": "AN09A005",
+   "cells": 2,
+   "group": "other"
+  },
+  "AN27X013_R": {
+   "cell_type": "AN27X013",
+   "cells": 2,
+   "group": "other"
+  },
+  "AOTU045_R": {
+   "cell_type": "AOTU045",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "AOTU056_R": {
+   "cell_type": "AOTU056",
+   "cells": 5,
+   "group": "other"
+  },
+  "AOTU058_R": {
+   "cell_type": "AOTU058",
+   "cells": 2,
+   "group": "other"
+  },
+  "C2_R": {
+   "cell_type": "C2",
+   "cells": 874,
+   "group": "ONCN"
+  },
+  "C3_R": {
+   "cell_type": "C3",
+   "cells": 892,
+   "group": "ONCN"
+  },
+  "CL125_R": {
+   "cell_type": "CL125",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "Cm-DRA_R": {
+   "cell_type": "Cm-DRA",
+   "cells": 3,
+   "group": "ONIN"
+  },
+  "Cm1_R": {
+   "cell_type": "Cm1",
+   "cells": 231,
+   "group": "ONIN"
+  },
+  "Cm2_R": {
+   "cell_type": "Cm2",
+   "cells": 203,
+   "group": "ONIN"
+  },
+  "Cm3_R": {
+   "cell_type": "Cm3",
+   "cells": 167,
+   "group": "ONIN"
+  },
+  "Cm4_R": {
+   "cell_type": "Cm4",
+   "cells": 126,
+   "group": "ONIN"
+  },
+  "Cm5_R": {
+   "cell_type": "Cm5",
+   "cells": 109,
+   "group": "ONIN"
+  },
+  "Cm6_R": {
+   "cell_type": "Cm6",
+   "cells": 106,
+   "group": "ONIN"
+  },
+  "Cm7_R": {
+   "cell_type": "Cm7",
+   "cells": 93,
+   "group": "ONIN"
+  },
+  "Cm8_R": {
+   "cell_type": "Cm8",
+   "cells": 90,
+   "group": "ONIN"
+  },
+  "Cm9_R": {
+   "cell_type": "Cm9",
+   "cells": 73,
+   "group": "ONIN"
+  },
+  "Cm10_R": {
+   "cell_type": "Cm10",
+   "cells": 45,
+   "group": "ONIN"
+  },
+  "Cm11a_R": {
+   "cell_type": "Cm11a",
+   "cells": 40,
+   "group": "ONIN"
+  },
+  "Cm11b_R": {
+   "cell_type": "Cm11b",
+   "cells": 30,
+   "group": "ONIN"
+  },
+  "Cm11c_R": {
+   "cell_type": "Cm11c",
+   "cells": 23,
+   "group": "ONIN"
+  },
+  "Cm11d_R": {
+   "cell_type": "Cm11d",
+   "cells": 9,
+   "group": "ONIN"
+  },
+  "Cm12_R": {
+   "cell_type": "Cm12",
+   "cells": 35,
+   "group": "ONIN"
+  },
+  "Cm13_R": {
+   "cell_type": "Cm13",
+   "cells": 27,
+   "group": "ONIN"
+  },
+  "Cm14_R": {
+   "cell_type": "Cm14",
+   "cells": 23,
+   "group": "ONIN"
+  },
+  "Cm15_R": {
+   "cell_type": "Cm15",
+   "cells": 22,
+   "group": "ONIN"
+  },
+  "Cm16_R": {
+   "cell_type": "Cm16",
+   "cells": 17,
+   "group": "ONIN"
+  },
+  "Cm17_R": {
+   "cell_type": "Cm17",
+   "cells": 16,
+   "group": "ONIN"
+  },
+  "Cm18_R": {
+   "cell_type": "Cm18",
+   "cells": 14,
+   "group": "ONIN"
+  },
+  "Cm19_R": {
+   "cell_type": "Cm19",
+   "cells": 14,
+   "group": "ONIN"
+  },
+  "Cm20_R": {
+   "cell_type": "Cm20",
+   "cells": 13,
+   "group": "ONIN"
+  },
+  "Cm21_R": {
+   "cell_type": "Cm21",
+   "cells": 13,
+   "group": "ONIN"
+  },
+  "Cm22_R": {
+   "cell_type": "Cm22",
+   "cells": 10,
+   "group": "ONIN"
+  },
+  "Cm23_R": {
+   "cell_type": "Cm23",
+   "cells": 8,
+   "group": "ONIN"
+  },
+  "Cm24_R": {
+   "cell_type": "Cm24",
+   "cells": 5,
+   "group": "ONIN"
+  },
+  "Cm25_R": {
+   "cell_type": "Cm25",
+   "cells": 3,
+   "group": "ONIN"
+  },
+  "Cm26_R": {
+   "cell_type": "Cm26",
+   "cells": 6,
+   "group": "ONIN"
+  },
+  "Cm27_R": {
+   "cell_type": "Cm27",
+   "cells": 5,
+   "group": "ONIN"
+  },
+  "Cm28_R": {
+   "cell_type": "Cm28",
+   "cells": 6,
+   "group": "ONIN"
+  },
+  "Cm29_R": {
+   "cell_type": "Cm29",
+   "cells": 3,
+   "group": "ONIN"
+  },
+  "Cm30_R": {
+   "cell_type": "Cm30",
+   "cells": 2,
+   "group": "ONIN"
+  },
+  "Cm31a_R": {
+   "cell_type": "Cm31a",
+   "cells": 2,
+   "group": "ONIN"
+  },
+  "Cm31b_R": {
+   "cell_type": "Cm31b",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "Cm32_R": {
+   "cell_type": "Cm32",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "Cm33_R": {
+   "cell_type": "Cm33",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "Cm34_R": {
+   "cell_type": "Cm34",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "Cm35_R": {
+   "cell_type": "Cm35",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "dCal1_R": {
+   "cell_type": "dCal1",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "Dm-DRA1_R": {
+   "cell_type": "Dm-DRA1",
+   "cells": 26,
+   "group": "ONIN"
+  },
+  "Dm-DRA2_R": {
+   "cell_type": "Dm-DRA2",
+   "cells": 18,
+   "group": "ONIN"
+  },
+  "Dm1_R": {
+   "cell_type": "Dm1",
+   "cells": 39,
+   "group": "ONIN"
+  },
+  "Dm2_R": {
+   "cell_type": "Dm2",
+   "cells": 726,
+   "group": "ONIN"
+  },
+  "Dm3a_R": {
+   "cell_type": "Dm3a",
+   "cells": 601,
+   "group": "ONIN"
+  },
+  "Dm3b_R": {
+   "cell_type": "Dm3b",
+   "cells": 571,
+   "group": "ONIN"
+  },
+  "Dm3c_R": {
+   "cell_type": "Dm3c",
+   "cells": 401,
+   "group": "ONIN"
+  },
+  "Dm4_R": {
+   "cell_type": "Dm4",
+   "cells": 48,
+   "group": "ONIN"
+  },
+  "Dm6_R": {
+   "cell_type": "Dm6",
+   "cells": 29,
+   "group": "ONIN"
+  },
+  "Dm8a_R": {
+   "cell_type": "Dm8a",
+   "cells": 285,
+   "group": "ONIN"
+  },
+  "Dm8b_R": {
+   "cell_type": "Dm8b",
+   "cells": 265,
+   "group": "ONIN"
+  },
+  "Dm9_R": {
+   "cell_type": "Dm9",
+   "cells": 135,
+   "group": "ONIN"
+  },
+  "Dm10_R": {
+   "cell_type": "Dm10",
+   "cells": 311,
+   "group": "ONIN"
+  },
+  "Dm11_R": {
+   "cell_type": "Dm11",
+   "cells": 82,
+   "group": "ONIN"
+  },
+  "Dm12_R": {
+   "cell_type": "Dm12",
+   "cells": 137,
+   "group": "ONIN"
+  },
+  "Dm13_R": {
+   "cell_type": "Dm13",
+   "cells": 28,
+   "group": "ONIN"
+  },
+  "Dm14_R": {
+   "cell_type": "Dm14",
+   "cells": 16,
+   "group": "ONIN"
+  },
+  "Dm15_R": {
+   "cell_type": "Dm15",
+   "cells": 242,
+   "group": "ONIN"
+  },
+  "Dm16_R": {
+   "cell_type": "Dm16",
+   "cells": 75,
+   "group": "ONIN"
+  },
+  "Dm17_R": {
+   "cell_type": "Dm17",
+   "cells": 4,
+   "group": "ONIN"
+  },
+  "Dm18_R": {
+   "cell_type": "Dm18",
+   "cells": 27,
+   "group": "ONIN"
+  },
+  "Dm19_R": {
+   "cell_type": "Dm19",
+   "cells": 15,
+   "group": "ONIN"
+  },
+  "Dm20_R": {
+   "cell_type": "Dm20",
+   "cells": 48,
+   "group": "ONIN"
+  },
+  "DN1a_R": {
+   "cell_type": "DN1a",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "DNc01_R": {
+   "cell_type": "DNc01",
+   "cells": 1,
+   "group": "other"
+  },
+  "DNp11_R": {
+   "cell_type": "DNp11",
+   "cells": 1,
+   "group": "other"
+  },
+  "DNp27_R": {
+   "cell_type": "DNp27",
+   "cells": 1,
+   "group": "other"
+  },
+  "DNp30_R": {
+   "cell_type": "DNp30",
+   "cells": 1,
+   "group": "other"
+  },
+  "DNpe053_R": {
+   "cell_type": "DNpe053",
+   "cells": 1,
+   "group": "other"
+  },
+  "H1_R": {
+   "cell_type": "H1",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "H2_R": {
+   "cell_type": "H2",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "HBeyelet_R": {
+   "cell_type": "HBeyelet",
+   "cells": 3,
+   "group": "ONIN"
+  },
+  "HSE_R": {
+   "cell_type": "HSE",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "HSN_R": {
+   "cell_type": "HSN",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "HSS_R": {
+   "cell_type": "HSS",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "HST_R": {
+   "cell_type": "HST",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "KCg-s1_R": {
+   "cell_type": "KCg-s1",
+   "cells": 1,
+   "group": "other"
+  },
+  "l-LNv_R": {
+   "cell_type": "l-LNv",
+   "cells": 4,
+   "group": "VPN"
+  },
+  "L1_R": {
+   "cell_type": "L1",
+   "cells": 892,
+   "group": "ONCN"
+  },
+  "L2_R": {
+   "cell_type": "L2",
+   "cells": 893,
+   "group": "ONCN"
+  },
+  "L3_R": {
+   "cell_type": "L3",
+   "cells": 892,
+   "group": "ONCN"
+  },
+  "L4_R": {
+   "cell_type": "L4",
+   "cells": 891,
+   "group": "ONCN"
+  },
+  "L5_R": {
+   "cell_type": "L5",
+   "cells": 898,
+   "group": "ONCN"
+  },
+  "Lai_R": {
+   "cell_type": "Lai",
+   "cells": 48,
+   "group": "ONIN"
+  },
+  "LAL047_R": {
+   "cell_type": "LAL047",
+   "cells": 1,
+   "group": "other"
+  },
+  "LAL048_R": {
+   "cell_type": "LAL048",
+   "cells": 2,
+   "group": "other"
+  },
+  "Lat1_R": {
+   "cell_type": "Lat1",
+   "cells": 4,
+   "group": "VCN"
+  },
+  "Lat2_R": {
+   "cell_type": "Lat2",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "Lat3_R": {
+   "cell_type": "Lat3",
+   "cells": 4,
+   "group": "ONCN"
+  },
+  "Lat4_R": {
+   "cell_type": "Lat4",
+   "cells": 1,
+   "group": "ONCN"
+  },
+  "Lat5_R": {
+   "cell_type": "Lat5",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "Lawf1_R": {
+   "cell_type": "Lawf1",
+   "cells": 184,
+   "group": "ONCN"
+  },
+  "Lawf2_R": {
+   "cell_type": "Lawf2",
+   "cells": 188,
+   "group": "ONCN"
+  },
+  "LC4_R": {
+   "cell_type": "LC4",
+   "cells": 55,
+   "group": "VPN"
+  },
+  "LC6_R": {
+   "cell_type": "LC6",
+   "cells": 65,
+   "group": "VPN"
+  },
+  "LC9_R": {
+   "cell_type": "LC9",
+   "cells": 115,
+   "group": "VPN"
+  },
+  "LC10a_R": {
+   "cell_type": "LC10a",
+   "cells": 140,
+   "group": "VPN"
+  },
+  "LC10b_R": {
+   "cell_type": "LC10b",
+   "cells": 48,
+   "group": "VPN"
+  },
+  "LC10c-1_R": {
+   "cell_type": "LC10c-1",
+   "cells": 66,
+   "group": "VPN"
+  },
+  "LC10c-2_R": {
+   "cell_type": "LC10c-2",
+   "cells": 66,
+   "group": "VPN"
+  },
+  "LC10d_R": {
+   "cell_type": "LC10d",
+   "cells": 106,
+   "group": "VPN"
+  },
+  "LC10e_R": {
+   "cell_type": "LC10e",
+   "cells": 48,
+   "group": "VPN"
+  },
+  "LC11_R": {
+   "cell_type": "LC11",
+   "cells": 75,
+   "group": "VPN"
+  },
+  "LC12_R": {
+   "cell_type": "LC12",
+   "cells": 242,
+   "group": "VPN"
+  },
+  "LC13_R": {
+   "cell_type": "LC13",
+   "cells": 94,
+   "group": "VPN"
+  },
+  "LC14a-1_R": {
+   "cell_type": "LC14a-1",
+   "cells": 15,
+   "group": "VPN"
+  },
+  "LC14a-2_R": {
+   "cell_type": "LC14a-2",
+   "cells": 8,
+   "group": "VPN"
+  },
+  "LC14b_R": {
+   "cell_type": "LC14b",
+   "cells": 22,
+   "group": "VPN"
+  },
+  "LC15_R": {
+   "cell_type": "LC15",
+   "cells": 65,
+   "group": "VPN"
+  },
+  "LC16_R": {
+   "cell_type": "LC16",
+   "cells": 94,
+   "group": "VPN"
+  },
+  "LC17_R": {
+   "cell_type": "LC17",
+   "cells": 175,
+   "group": "VPN"
+  },
+  "LC18_R": {
+   "cell_type": "LC18",
+   "cells": 104,
+   "group": "VPN"
+  },
+  "LC19_R": {
+   "cell_type": "LC19",
+   "cells": 8,
+   "group": "VPN"
+  },
+  "LC20a_R": {
+   "cell_type": "LC20a",
+   "cells": 30,
+   "group": "VPN"
+  },
+  "LC20b_R": {
+   "cell_type": "LC20b",
+   "cells": 40,
+   "group": "VPN"
+  },
+  "LC21_R": {
+   "cell_type": "LC21",
+   "cells": 78,
+   "group": "VPN"
+  },
+  "LC22_R": {
+   "cell_type": "LC22",
+   "cells": 35,
+   "group": "VPN"
+  },
+  "LC23_R": {
+   "cell_type": "LC23",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "LC24_R": {
+   "cell_type": "LC24",
+   "cells": 54,
+   "group": "VPN"
+  },
+  "LC25_R": {
+   "cell_type": "LC25",
+   "cells": 27,
+   "group": "VPN"
+  },
+  "LC26_R": {
+   "cell_type": "LC26",
+   "cells": 37,
+   "group": "VPN"
+  },
+  "LC27_R": {
+   "cell_type": "LC27",
+   "cells": 23,
+   "group": "VPN"
+  },
+  "LC28_R": {
+   "cell_type": "LC28",
+   "cells": 31,
+   "group": "VPN"
+  },
+  "LC29_R": {
+   "cell_type": "LC29",
+   "cells": 19,
+   "group": "VPN"
+  },
+  "LC30_R": {
+   "cell_type": "LC30",
+   "cells": 30,
+   "group": "VPN"
+  },
+  "LC31a_R": {
+   "cell_type": "LC31a",
+   "cells": 16,
+   "group": "VPN"
+  },
+  "LC31b_R": {
+   "cell_type": "LC31b",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "LC33_R": {
+   "cell_type": "LC33",
+   "cells": 16,
+   "group": "VPN"
+  },
+  "LC34_R": {
+   "cell_type": "LC34",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "LC35a_R": {
+   "cell_type": "LC35a",
+   "cells": 5,
+   "group": "VPN"
+  },
+  "LC35b_R": {
+   "cell_type": "LC35b",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LC36_R": {
+   "cell_type": "LC36",
+   "cells": 16,
+   "group": "VPN"
+  },
+  "LC37_R": {
+   "cell_type": "LC37",
+   "cells": 8,
+   "group": "VPN"
+  },
+  "LC39a_R": {
+   "cell_type": "LC39a",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "LC39b_R": {
+   "cell_type": "LC39b",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LC40_R": {
+   "cell_type": "LC40",
+   "cells": 15,
+   "group": "VPN"
+  },
+  "LC41_R": {
+   "cell_type": "LC41",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "LC43_R": {
+   "cell_type": "LC43",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "LC44_R": {
+   "cell_type": "LC44",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "LC46b_R": {
+   "cell_type": "LC46b",
+   "cells": 5,
+   "group": "VPN"
+  },
+  "Li11a_R": {
+   "cell_type": "Li11a",
+   "cells": 2,
+   "group": "ONIN"
+  },
+  "Li11b_R": {
+   "cell_type": "Li11b",
+   "cells": 2,
+   "group": "ONIN"
+  },
+  "Li12_R": {
+   "cell_type": "Li12",
+   "cells": 2,
+   "group": "ONIN"
+  },
+  "Li13_R": {
+   "cell_type": "Li13",
+   "cells": 33,
+   "group": "ONIN"
+  },
+  "Li14_R": {
+   "cell_type": "Li14",
+   "cells": 112,
+   "group": "ONIN"
+  },
+  "Li15_R": {
+   "cell_type": "Li15",
+   "cells": 21,
+   "group": "ONIN"
+  },
+  "Li16_R": {
+   "cell_type": "Li16",
+   "cells": 2,
+   "group": "ONIN"
+  },
+  "Li17_R": {
+   "cell_type": "Li17",
+   "cells": 10,
+   "group": "ONIN"
+  },
+  "Li18a_R": {
+   "cell_type": "Li18a",
+   "cells": 23,
+   "group": "ONIN"
+  },
+  "Li18b_R": {
+   "cell_type": "Li18b",
+   "cells": 17,
+   "group": "ONIN"
+  },
+  "Li19_R": {
+   "cell_type": "Li19",
+   "cells": 26,
+   "group": "ONIN"
+  },
+  "Li20_R": {
+   "cell_type": "Li20",
+   "cells": 21,
+   "group": "ONIN"
+  },
+  "Li21_R": {
+   "cell_type": "Li21",
+   "cells": 105,
+   "group": "ONIN"
+  },
+  "Li22_R": {
+   "cell_type": "Li22",
+   "cells": 119,
+   "group": "ONIN"
+  },
+  "Li23_R": {
+   "cell_type": "Li23",
+   "cells": 60,
+   "group": "ONIN"
+  },
+  "Li25_R": {
+   "cell_type": "Li25",
+   "cells": 60,
+   "group": "ONIN"
+  },
+  "Li26_R": {
+   "cell_type": "Li26",
+   "cells": 18,
+   "group": "ONIN"
+  },
+  "Li27_R": {
+   "cell_type": "Li27",
+   "cells": 58,
+   "group": "ONIN"
+  },
+  "Li28_R": {
+   "cell_type": "Li28",
+   "cells": 6,
+   "group": "ONIN"
+  },
+  "Li29_R": {
+   "cell_type": "Li29",
+   "cells": 4,
+   "group": "ONIN"
+  },
+  "Li30_R": {
+   "cell_type": "Li30",
+   "cells": 6,
+   "group": "ONIN"
+  },
+  "Li31_R": {
+   "cell_type": "Li31",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "Li32_R": {
+   "cell_type": "Li32",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "Li33_R": {
+   "cell_type": "Li33",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "Li34a_R": {
+   "cell_type": "Li34a",
+   "cells": 34,
+   "group": "ONIN"
+  },
+  "Li34b_R": {
+   "cell_type": "Li34b",
+   "cells": 30,
+   "group": "ONIN"
+  },
+  "Li35_R": {
+   "cell_type": "Li35",
+   "cells": 13,
+   "group": "ONIN"
+  },
+  "Li36_R": {
+   "cell_type": "Li36",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "Li37_R": {
+   "cell_type": "Li37",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "LLPC1_R": {
+   "cell_type": "LLPC1",
+   "cells": 142,
+   "group": "VPN"
+  },
+  "LLPC2_R": {
+   "cell_type": "LLPC2",
+   "cells": 125,
+   "group": "VPN"
+  },
+  "LLPC3_R": {
+   "cell_type": "LLPC3",
+   "cells": 112,
+   "group": "VPN"
+  },
+  "LLPC4_R": {
+   "cell_type": "LLPC4",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "LOLP1_R": {
+   "cell_type": "LOLP1",
+   "cells": 32,
+   "group": "ONCN"
+  },
+  "LoVC2_R": {
+   "cell_type": "LoVC2",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVC4_R": {
+   "cell_type": "LoVC4",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVC5_R": {
+   "cell_type": "LoVC5",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVC6_R": {
+   "cell_type": "LoVC6",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVC7_R": {
+   "cell_type": "LoVC7",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVC13_R": {
+   "cell_type": "LoVC13",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVC15_R": {
+   "cell_type": "LoVC15",
+   "cells": 3,
+   "group": "VCN"
+  },
+  "LoVC16_R": {
+   "cell_type": "LoVC16",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "LoVC17_R": {
+   "cell_type": "LoVC17",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "LoVC18_R": {
+   "cell_type": "LoVC18",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "LoVC19_R": {
+   "cell_type": "LoVC19",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "LoVC24_R": {
+   "cell_type": "LoVC24",
+   "cells": 3,
+   "group": "VCN"
+  },
+  "LoVC26_R": {
+   "cell_type": "LoVC26",
+   "cells": 3,
+   "group": "VCN"
+  },
+  "LoVCLo1_R": {
+   "cell_type": "LoVCLo1",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVCLo2_R": {
+   "cell_type": "LoVCLo2",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVCLo3_R": {
+   "cell_type": "LoVCLo3",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVP1_R": {
+   "cell_type": "LoVP1",
+   "cells": 27,
+   "group": "VPN"
+  },
+  "LoVP2_R": {
+   "cell_type": "LoVP2",
+   "cells": 23,
+   "group": "VPN"
+  },
+  "LoVP3_R": {
+   "cell_type": "LoVP3",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "LoVP4_R": {
+   "cell_type": "LoVP4",
+   "cells": 5,
+   "group": "VPN"
+  },
+  "LoVP5_R": {
+   "cell_type": "LoVP5",
+   "cells": 12,
+   "group": "VPN"
+  },
+  "LoVP6_R": {
+   "cell_type": "LoVP6",
+   "cells": 11,
+   "group": "VPN"
+  },
+  "LoVP7_R": {
+   "cell_type": "LoVP7",
+   "cells": 12,
+   "group": "VPN"
+  },
+  "LoVP8_R": {
+   "cell_type": "LoVP8",
+   "cells": 9,
+   "group": "VPN"
+  },
+  "LoVP9_R": {
+   "cell_type": "LoVP9",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "LoVP10_R": {
+   "cell_type": "LoVP10",
+   "cells": 9,
+   "group": "VPN"
+  },
+  "LoVP11_R": {
+   "cell_type": "LoVP11",
+   "cells": 4,
+   "group": "VPN"
+  },
+  "LoVP12_R": {
+   "cell_type": "LoVP12",
+   "cells": 19,
+   "group": "VPN"
+  },
+  "LoVP13_R": {
+   "cell_type": "LoVP13",
+   "cells": 24,
+   "group": "VPN"
+  },
+  "LoVP14_R": {
+   "cell_type": "LoVP14",
+   "cells": 9,
+   "group": "VPN"
+  },
+  "LoVP16_R": {
+   "cell_type": "LoVP16",
+   "cells": 5,
+   "group": "VPN"
+  },
+  "LoVP17_R": {
+   "cell_type": "LoVP17",
+   "cells": 4,
+   "group": "VPN"
+  },
+  "LoVP18_R": {
+   "cell_type": "LoVP18",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "LoVP19_R": {
+   "cell_type": "LoVP19",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP20_R": {
+   "cell_type": "LoVP20",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP21_R": {
+   "cell_type": "LoVP21",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LoVP22_R": {
+   "cell_type": "LoVP22",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LoVP23_R": {
+   "cell_type": "LoVP23",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "LoVP24_R": {
+   "cell_type": "LoVP24",
+   "cells": 4,
+   "group": "VPN"
+  },
+  "LoVP25_R": {
+   "cell_type": "LoVP25",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "LoVP26_R": {
+   "cell_type": "LoVP26",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "LoVP27_R": {
+   "cell_type": "LoVP27",
+   "cells": 5,
+   "group": "VPN"
+  },
+  "LoVP28_R": {
+   "cell_type": "LoVP28",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP29_R": {
+   "cell_type": "LoVP29",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP30_R": {
+   "cell_type": "LoVP30",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP31_R": {
+   "cell_type": "LoVP31",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP32_R": {
+   "cell_type": "LoVP32",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "LoVP33_R": {
+   "cell_type": "LoVP33",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "LoVP34_R": {
+   "cell_type": "LoVP34",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP35_R": {
+   "cell_type": "LoVP35",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP36_R": {
+   "cell_type": "LoVP36",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP37_R": {
+   "cell_type": "LoVP37",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP38_R": {
+   "cell_type": "LoVP38",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LoVP39_R": {
+   "cell_type": "LoVP39",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LoVP40_R": {
+   "cell_type": "LoVP40",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP41_R": {
+   "cell_type": "LoVP41",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP42_R": {
+   "cell_type": "LoVP42",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP43_R": {
+   "cell_type": "LoVP43",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP44_R": {
+   "cell_type": "LoVP44",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP45_R": {
+   "cell_type": "LoVP45",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP46_R": {
+   "cell_type": "LoVP46",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP47_R": {
+   "cell_type": "LoVP47",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP48_R": {
+   "cell_type": "LoVP48",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP49_R": {
+   "cell_type": "LoVP49",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP50_R": {
+   "cell_type": "LoVP50",
+   "cells": 4,
+   "group": "VPN"
+  },
+  "LoVP51_R": {
+   "cell_type": "LoVP51",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP52_R": {
+   "cell_type": "LoVP52",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP53_R": {
+   "cell_type": "LoVP53",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP54_R": {
+   "cell_type": "LoVP54",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP55_R": {
+   "cell_type": "LoVP55",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LoVP56_R": {
+   "cell_type": "LoVP56",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP57_R": {
+   "cell_type": "LoVP57",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP58_R": {
+   "cell_type": "LoVP58",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP59_R": {
+   "cell_type": "LoVP59",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP60_R": {
+   "cell_type": "LoVP60",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP61_R": {
+   "cell_type": "LoVP61",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LoVP62_R": {
+   "cell_type": "LoVP62",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LoVP63_R": {
+   "cell_type": "LoVP63",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP64_R": {
+   "cell_type": "LoVP64",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP65_R": {
+   "cell_type": "LoVP65",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP66_R": {
+   "cell_type": "LoVP66",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP67_R": {
+   "cell_type": "LoVP67",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP68_R": {
+   "cell_type": "LoVP68",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP69_R": {
+   "cell_type": "LoVP69",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP70_R": {
+   "cell_type": "LoVP70",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP71_R": {
+   "cell_type": "LoVP71",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LoVP72_R": {
+   "cell_type": "LoVP72",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP73_R": {
+   "cell_type": "LoVP73",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP74_R": {
+   "cell_type": "LoVP74",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LoVP75_R": {
+   "cell_type": "LoVP75",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "LoVP76_R": {
+   "cell_type": "LoVP76",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LoVP77_R": {
+   "cell_type": "LoVP77",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP78_R": {
+   "cell_type": "LoVP78",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP79_R": {
+   "cell_type": "LoVP79",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP80_R": {
+   "cell_type": "LoVP80",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LoVP81_R": {
+   "cell_type": "LoVP81",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LoVP82_R": {
+   "cell_type": "LoVP82",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LoVP83_R": {
+   "cell_type": "LoVP83",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "LoVP84_R": {
+   "cell_type": "LoVP84",
+   "cells": 4,
+   "group": "VPN"
+  },
+  "LoVP85_R": {
+   "cell_type": "LoVP85",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP86_R": {
+   "cell_type": "LoVP86",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP88_R": {
+   "cell_type": "LoVP88",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP89_R": {
+   "cell_type": "LoVP89",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LoVP90a_R": {
+   "cell_type": "LoVP90a",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP90b_R": {
+   "cell_type": "LoVP90b",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP90c_R": {
+   "cell_type": "LoVP90c",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP91_R": {
+   "cell_type": "LoVP91",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP92_R": {
+   "cell_type": "LoVP92",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "LoVP93_R": {
+   "cell_type": "LoVP93",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "LoVP94_R": {
+   "cell_type": "LoVP94",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP95_R": {
+   "cell_type": "LoVP95",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP96_R": {
+   "cell_type": "LoVP96",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP97_R": {
+   "cell_type": "LoVP97",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP98_R": {
+   "cell_type": "LoVP98",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP99_R": {
+   "cell_type": "LoVP99",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP100_R": {
+   "cell_type": "LoVP100",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP101_R": {
+   "cell_type": "LoVP101",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP102_R": {
+   "cell_type": "LoVP102",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP103_R": {
+   "cell_type": "LoVP103",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP105_R": {
+   "cell_type": "LoVP105",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP106_R": {
+   "cell_type": "LoVP106",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP107_R": {
+   "cell_type": "LoVP107",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LoVP108_R": {
+   "cell_type": "LoVP108",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LPC1_R": {
+   "cell_type": "LPC1",
+   "cells": 109,
+   "group": "VPN"
+  },
+  "LPC2_R": {
+   "cell_type": "LPC2",
+   "cells": 78,
+   "group": "VPN"
+  },
+  "LPi2b_R": {
+   "cell_type": "LPi2b",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "LPi2c_R": {
+   "cell_type": "LPi2c",
+   "cells": 27,
+   "group": "ONIN"
+  },
+  "LPi2d_R": {
+   "cell_type": "LPi2d",
+   "cells": 26,
+   "group": "ONIN"
+  },
+  "LPi2e_R": {
+   "cell_type": "LPi2e",
+   "cells": 46,
+   "group": "ONIN"
+  },
+  "LPi3a_R": {
+   "cell_type": "LPi3a",
+   "cells": 63,
+   "group": "ONIN"
+  },
+  "LPi3b_R": {
+   "cell_type": "LPi3b",
+   "cells": 22,
+   "group": "ONIN"
+  },
+  "LPi3c_R": {
+   "cell_type": "LPi3c",
+   "cells": 6,
+   "group": "ONIN"
+  },
+  "LPi4a_R": {
+   "cell_type": "LPi4a",
+   "cells": 17,
+   "group": "ONIN"
+  },
+  "LPi4b_R": {
+   "cell_type": "LPi4b",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "LPi12_R": {
+   "cell_type": "LPi12",
+   "cells": 2,
+   "group": "ONIN"
+  },
+  "LPi14_R": {
+   "cell_type": "LPi14",
+   "cells": 16,
+   "group": "ONIN"
+  },
+  "LPi21_R": {
+   "cell_type": "LPi21",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "LPi34_R": {
+   "cell_type": "LPi34",
+   "cells": 58,
+   "group": "ONIN"
+  },
+  "LPi43_R": {
+   "cell_type": "LPi43",
+   "cells": 33,
+   "group": "ONIN"
+  },
+  "LPi3412_R": {
+   "cell_type": "LPi3412",
+   "cells": 57,
+   "group": "ONIN"
+  },
+  "LPLC1_R": {
+   "cell_type": "LPLC1",
+   "cells": 66,
+   "group": "VPN"
+  },
+  "LPLC2_R": {
+   "cell_type": "LPLC2",
+   "cells": 91,
+   "group": "VPN"
+  },
+  "LPLC4_R": {
+   "cell_type": "LPLC4",
+   "cells": 49,
+   "group": "VPN"
+  },
+  "LPT21_R": {
+   "cell_type": "LPT21",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LPT22_R": {
+   "cell_type": "LPT22",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LPT23_R": {
+   "cell_type": "LPT23",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "LPT26_R": {
+   "cell_type": "LPT26",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LPT27_R": {
+   "cell_type": "LPT27",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LPT28_R": {
+   "cell_type": "LPT28",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LPT29_R": {
+   "cell_type": "LPT29",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LPT30_R": {
+   "cell_type": "LPT30",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LPT31_R": {
+   "cell_type": "LPT31",
+   "cells": 4,
+   "group": "VPN"
+  },
+  "LPT49_R": {
+   "cell_type": "LPT49",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LPT50_R": {
+   "cell_type": "LPT50",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LPT51_R": {
+   "cell_type": "LPT51",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LPT52_R": {
+   "cell_type": "LPT52",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LPT53_R": {
+   "cell_type": "LPT53",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LPT54_R": {
+   "cell_type": "LPT54",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LPT60_R": {
+   "cell_type": "LPT60",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LPT100_R": {
+   "cell_type": "LPT100",
+   "cells": 19,
+   "group": "VPN"
+  },
+  "LPT101_R": {
+   "cell_type": "LPT101",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "LPT110_R": {
+   "cell_type": "LPT110",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LPT111_R": {
+   "cell_type": "LPT111",
+   "cells": 51,
+   "group": "VCN"
+  },
+  "LPT112_R": {
+   "cell_type": "LPT112",
+   "cells": 20,
+   "group": "VCN"
+  },
+  "LPT113_R": {
+   "cell_type": "LPT113",
+   "cells": 12,
+   "group": "VCN"
+  },
+  "LPT114_R": {
+   "cell_type": "LPT114",
+   "cells": 11,
+   "group": "VCN"
+  },
+  "LPT115_R": {
+   "cell_type": "LPT115",
+   "cells": 3,
+   "group": "VCN"
+  },
+  "LPT116_R": {
+   "cell_type": "LPT116",
+   "cells": 5,
+   "group": "VCN"
+  },
+  "LT1a_R": {
+   "cell_type": "LT1a",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT1b_R": {
+   "cell_type": "LT1b",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT1c_R": {
+   "cell_type": "LT1c",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT1d_R": {
+   "cell_type": "LT1d",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT11_R": {
+   "cell_type": "LT11",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT34_R": {
+   "cell_type": "LT34",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LT37_R": {
+   "cell_type": "LT37",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LT39_R": {
+   "cell_type": "LT39",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LT40_R": {
+   "cell_type": "LT40",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LT41_R": {
+   "cell_type": "LT41",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LT42_R": {
+   "cell_type": "LT42",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LT43_R": {
+   "cell_type": "LT43",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LT47_R": {
+   "cell_type": "LT47",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT51_R": {
+   "cell_type": "LT51",
+   "cells": 11,
+   "group": "VPN"
+  },
+  "LT52_R": {
+   "cell_type": "LT52",
+   "cells": 17,
+   "group": "VPN"
+  },
+  "LT54_R": {
+   "cell_type": "LT54",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT55_R": {
+   "cell_type": "LT55",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT56_R": {
+   "cell_type": "LT56",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LT58_R": {
+   "cell_type": "LT58",
+   "cells": 1,
+   "group": "ONCN"
+  },
+  "LT59_R": {
+   "cell_type": "LT59",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT60_R": {
+   "cell_type": "LT60",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT61a_R": {
+   "cell_type": "LT61a",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT61b_R": {
+   "cell_type": "LT61b",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT62_R": {
+   "cell_type": "LT62",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT63_R": {
+   "cell_type": "LT63",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LT64_R": {
+   "cell_type": "LT64",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT65_R": {
+   "cell_type": "LT65",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT66_R": {
+   "cell_type": "LT66",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT67_R": {
+   "cell_type": "LT67",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT68_R": {
+   "cell_type": "LT68",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LT69_R": {
+   "cell_type": "LT69",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT70_R": {
+   "cell_type": "LT70",
+   "cells": 6,
+   "group": "VCN"
+  },
+  "LT72_R": {
+   "cell_type": "LT72",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT73_R": {
+   "cell_type": "LT73",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LT74_R": {
+   "cell_type": "LT74",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "LT75_R": {
+   "cell_type": "LT75",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT76_R": {
+   "cell_type": "LT76",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT77_R": {
+   "cell_type": "LT77",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "LT78_R": {
+   "cell_type": "LT78",
+   "cells": 4,
+   "group": "VPN"
+  },
+  "LT79_R": {
+   "cell_type": "LT79",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT80_R": {
+   "cell_type": "LT80",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LT81_R": {
+   "cell_type": "LT81",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "LT82a_R": {
+   "cell_type": "LT82a",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "LT82b_R": {
+   "cell_type": "LT82b",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT83_R": {
+   "cell_type": "LT83",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT84_R": {
+   "cell_type": "LT84",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT85_R": {
+   "cell_type": "LT85",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT86_R": {
+   "cell_type": "LT86",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT87_R": {
+   "cell_type": "LT87",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT88_R": {
+   "cell_type": "LT88",
+   "cells": 1,
+   "group": "ONCN"
+  },
+  "MeLo1_R": {
+   "cell_type": "MeLo1",
+   "cells": 63,
+   "group": "ONCN"
+  },
+  "MeLo2_R": {
+   "cell_type": "MeLo2",
+   "cells": 71,
+   "group": "ONCN"
+  },
+  "MeLo3a_R": {
+   "cell_type": "MeLo3a",
+   "cells": 57,
+   "group": "ONCN"
+  },
+  "MeLo3b_R": {
+   "cell_type": "MeLo3b",
+   "cells": 40,
+   "group": "ONCN"
+  },
+  "MeLo4_R": {
+   "cell_type": "MeLo4",
+   "cells": 34,
+   "group": "ONCN"
+  },
+  "MeLo5_R": {
+   "cell_type": "MeLo5",
+   "cells": 19,
+   "group": "ONCN"
+  },
+  "MeLo6_R": {
+   "cell_type": "MeLo6",
+   "cells": 30,
+   "group": "ONCN"
+  },
+  "MeLo7_R": {
+   "cell_type": "MeLo7",
+   "cells": 48,
+   "group": "ONCN"
+  },
+  "MeLo8_R": {
+   "cell_type": "MeLo8",
+   "cells": 23,
+   "group": "ONCN"
+  },
+  "MeLo9_R": {
+   "cell_type": "MeLo9",
+   "cells": 42,
+   "group": "ONCN"
+  },
+  "MeLo10_R": {
+   "cell_type": "MeLo10",
+   "cells": 30,
+   "group": "ONCN"
+  },
+  "MeLo11_R": {
+   "cell_type": "MeLo11",
+   "cells": 27,
+   "group": "ONCN"
+  },
+  "MeLo12_R": {
+   "cell_type": "MeLo12",
+   "cells": 25,
+   "group": "ONCN"
+  },
+  "MeLo13_R": {
+   "cell_type": "MeLo13",
+   "cells": 37,
+   "group": "ONCN"
+  },
+  "MeLo14_R": {
+   "cell_type": "MeLo14",
+   "cells": 20,
+   "group": "ONCN"
+  },
+  "MeTu1_R": {
+   "cell_type": "MeTu1",
+   "cells": 124,
+   "group": "VPN"
+  },
+  "MeTu2a_R": {
+   "cell_type": "MeTu2a",
+   "cells": 36,
+   "group": "VPN"
+  },
+  "MeTu2b_R": {
+   "cell_type": "MeTu2b",
+   "cells": 16,
+   "group": "VPN"
+  },
+  "MeTu3a_R": {
+   "cell_type": "MeTu3a",
+   "cells": 18,
+   "group": "VPN"
+  },
+  "MeTu3b_R": {
+   "cell_type": "MeTu3b",
+   "cells": 42,
+   "group": "VPN"
+  },
+  "MeTu3c_R": {
+   "cell_type": "MeTu3c",
+   "cells": 91,
+   "group": "VPN"
+  },
+  "MeTu4a_R": {
+   "cell_type": "MeTu4a",
+   "cells": 49,
+   "group": "VPN"
+  },
+  "MeTu4b_R": {
+   "cell_type": "MeTu4b",
+   "cells": 16,
+   "group": "VPN"
+  },
+  "MeTu4c_R": {
+   "cell_type": "MeTu4c",
+   "cells": 41,
+   "group": "VPN"
+  },
+  "MeTu4d_R": {
+   "cell_type": "MeTu4d",
+   "cells": 20,
+   "group": "VPN"
+  },
+  "MeTu4e_R": {
+   "cell_type": "MeTu4e",
+   "cells": 25,
+   "group": "VPN"
+  },
+  "MeTu4f_R": {
+   "cell_type": "MeTu4f",
+   "cells": 28,
+   "group": "VPN"
+  },
+  "MeVC20_R": {
+   "cell_type": "MeVC20",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "MeVC21_R": {
+   "cell_type": "MeVC21",
+   "cells": 3,
+   "group": "VCN"
+  },
+  "MeVC22_R": {
+   "cell_type": "MeVC22",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "MeVC23_R": {
+   "cell_type": "MeVC23",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "MeVC24_R": {
+   "cell_type": "MeVC24",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "MeVC25_R": {
+   "cell_type": "MeVC25",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "MeVCMe1_R": {
+   "cell_type": "MeVCMe1",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "MeVP1_R": {
+   "cell_type": "MeVP1",
+   "cells": 59,
+   "group": "VPN"
+  },
+  "MeVP2_R": {
+   "cell_type": "MeVP2",
+   "cells": 36,
+   "group": "VPN"
+  },
+  "MeVP3_R": {
+   "cell_type": "MeVP3",
+   "cells": 35,
+   "group": "VPN"
+  },
+  "MeVP4_R": {
+   "cell_type": "MeVP4",
+   "cells": 22,
+   "group": "VPN"
+  },
+  "MeVP5_R": {
+   "cell_type": "MeVP5",
+   "cells": 9,
+   "group": "VPN"
+  },
+  "MeVP6_R": {
+   "cell_type": "MeVP6",
+   "cells": 49,
+   "group": "VPN"
+  },
+  "MeVP7_R": {
+   "cell_type": "MeVP7",
+   "cells": 12,
+   "group": "VPN"
+  },
+  "MeVP8_R": {
+   "cell_type": "MeVP8",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "MeVP9_R": {
+   "cell_type": "MeVP9",
+   "cells": 5,
+   "group": "VPN"
+  },
+  "MeVP10_R": {
+   "cell_type": "MeVP10",
+   "cells": 33,
+   "group": "VPN"
+  },
+  "MeVP11_R": {
+   "cell_type": "MeVP11",
+   "cells": 30,
+   "group": "VPN"
+  },
+  "MeVP12_R": {
+   "cell_type": "MeVP12",
+   "cells": 18,
+   "group": "VPN"
+  },
+  "MeVP14_R": {
+   "cell_type": "MeVP14",
+   "cells": 17,
+   "group": "VPN"
+  },
+  "MeVP15_R": {
+   "cell_type": "MeVP15",
+   "cells": 11,
+   "group": "VPN"
+  },
+  "MeVP16_R": {
+   "cell_type": "MeVP16",
+   "cells": 4,
+   "group": "VPN"
+  },
+  "MeVP17_R": {
+   "cell_type": "MeVP17",
+   "cells": 7,
+   "group": "VPN"
+  },
+  "MeVP18_R": {
+   "cell_type": "MeVP18",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "MeVP20_R": {
+   "cell_type": "MeVP20",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "MeVP21_R": {
+   "cell_type": "MeVP21",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "MeVP22_R": {
+   "cell_type": "MeVP22",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "MeVP23_R": {
+   "cell_type": "MeVP23",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP24_R": {
+   "cell_type": "MeVP24",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP25_R": {
+   "cell_type": "MeVP25",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP26_R": {
+   "cell_type": "MeVP26",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP27_R": {
+   "cell_type": "MeVP27",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP28_R": {
+   "cell_type": "MeVP28",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP29_R": {
+   "cell_type": "MeVP29",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP30_R": {
+   "cell_type": "MeVP30",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP31_R": {
+   "cell_type": "MeVP31",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP32_R": {
+   "cell_type": "MeVP32",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP33_R": {
+   "cell_type": "MeVP33",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP34_R": {
+   "cell_type": "MeVP34",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "MeVP35_R": {
+   "cell_type": "MeVP35",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP36_R": {
+   "cell_type": "MeVP36",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP38_R": {
+   "cell_type": "MeVP38",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP39_R": {
+   "cell_type": "MeVP39",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP40_R": {
+   "cell_type": "MeVP40",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP41_R": {
+   "cell_type": "MeVP41",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP42_R": {
+   "cell_type": "MeVP42",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP43_R": {
+   "cell_type": "MeVP43",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP45_R": {
+   "cell_type": "MeVP45",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP46_R": {
+   "cell_type": "MeVP46",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "MeVP47_R": {
+   "cell_type": "MeVP47",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP48_R": {
+   "cell_type": "MeVP48",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP49_R": {
+   "cell_type": "MeVP49",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP50_R": {
+   "cell_type": "MeVP50",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP51_R": {
+   "cell_type": "MeVP51",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP52_R": {
+   "cell_type": "MeVP52",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP53_R": {
+   "cell_type": "MeVP53",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP54_R": {
+   "cell_type": "MeVP54",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "MeVP55_R": {
+   "cell_type": "MeVP55",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "MeVP56_R": {
+   "cell_type": "MeVP56",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP57_R": {
+   "cell_type": "MeVP57",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP58_R": {
+   "cell_type": "MeVP58",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "MeVP59_R": {
+   "cell_type": "MeVP59",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "MeVP60_R": {
+   "cell_type": "MeVP60",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP61_R": {
+   "cell_type": "MeVP61",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP62_R": {
+   "cell_type": "MeVP62",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "MeVP63_R": {
+   "cell_type": "MeVP63",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVP64_R": {
+   "cell_type": "MeVP64",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPaMe1_R": {
+   "cell_type": "MeVPaMe1",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPaMe2_R": {
+   "cell_type": "MeVPaMe2",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPLo1_R": {
+   "cell_type": "MeVPLo1",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "MeVPLo2_R": {
+   "cell_type": "MeVPLo2",
+   "cells": 7,
+   "group": "VPN"
+  },
+  "MeVPLp1_R": {
+   "cell_type": "MeVPLp1",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPLp2_R": {
+   "cell_type": "MeVPLp2",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPMe1_R": {
+   "cell_type": "MeVPMe1",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "MeVPMe2_R": {
+   "cell_type": "MeVPMe2",
+   "cells": 5,
+   "group": "VPN"
+  },
+  "MeVPMe3_R": {
+   "cell_type": "MeVPMe3",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPMe4_R": {
+   "cell_type": "MeVPMe4",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPMe5_R": {
+   "cell_type": "MeVPMe5",
+   "cells": 10,
+   "group": "VPN"
+  },
+  "MeVPMe6_R": {
+   "cell_type": "MeVPMe6",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPMe7_R": {
+   "cell_type": "MeVPMe7",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPMe8_R": {
+   "cell_type": "MeVPMe8",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "MeVPMe9_R": {
+   "cell_type": "MeVPMe9",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "MeVPMe10_R": {
+   "cell_type": "MeVPMe10",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "MeVPMe11_R": {
+   "cell_type": "MeVPMe11",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPMe12_R": {
+   "cell_type": "MeVPMe12",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "MeVPMe13_R": {
+   "cell_type": "MeVPMe13",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPOL1_R": {
+   "cell_type": "MeVPOL1",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "Mi1_R": {
+   "cell_type": "Mi1",
+   "cells": 887,
+   "group": "ONIN"
+  },
+  "Mi2_R": {
+   "cell_type": "Mi2",
+   "cells": 492,
+   "group": "ONIN"
+  },
+  "Mi4_R": {
+   "cell_type": "Mi4",
+   "cells": 889,
+   "group": "ONIN"
+  },
+  "Mi9_R": {
+   "cell_type": "Mi9",
+   "cells": 889,
+   "group": "ONIN"
+  },
+  "Mi10_R": {
+   "cell_type": "Mi10",
+   "cells": 222,
+   "group": "ONIN"
+  },
+  "Mi13_R": {
+   "cell_type": "Mi13",
+   "cells": 453,
+   "group": "ONIN"
+  },
+  "Mi14_R": {
+   "cell_type": "Mi14",
+   "cells": 155,
+   "group": "ONIN"
+  },
+  "Mi15_R": {
+   "cell_type": "Mi15",
+   "cells": 582,
+   "group": "ONIN"
+  },
+  "Mi16_R": {
+   "cell_type": "Mi16",
+   "cells": 101,
+   "group": "ONIN"
+  },
+  "Mi17_R": {
+   "cell_type": "Mi17",
+   "cells": 97,
+   "group": "ONIN"
+  },
+  "Mi18_R": {
+   "cell_type": "Mi18",
+   "cells": 36,
+   "group": "ONIN"
+  },
+  "Mi19_R": {
+   "cell_type": "Mi19",
+   "cells": 5,
+   "group": "ONIN"
+  },
+  "Mi20_R": {
+   "cell_type": "Mi20",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "Nod1_R": {
+   "cell_type": "Nod1",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "Nod2_R": {
+   "cell_type": "Nod2",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "Nod3_R": {
+   "cell_type": "Nod3",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "Nod4_R": {
+   "cell_type": "Nod4",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "Nod5_R": {
+   "cell_type": "Nod5",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "OA-AL2i1_R": {
+   "cell_type": "OA-AL2i1",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "OA-AL2i2_R": {
+   "cell_type": "OA-AL2i2",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "OA-AL2i3_R": {
+   "cell_type": "OA-AL2i3",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "OA-AL2i4_R": {
+   "cell_type": "OA-AL2i4",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "OA-ASM1_R": {
+   "cell_type": "OA-ASM1",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "OLVC1_R": {
+   "cell_type": "OLVC1",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "OLVC5_R": {
+   "cell_type": "OLVC5",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "PLP_TBD1_R": {
+   "cell_type": "PLP_TBD1",
+   "cells": 1,
+   "group": "other"
+  },
+  "PLP021_R": {
+   "cell_type": "PLP021",
+   "cells": 2,
+   "group": "other"
+  },
+  "PLP032_R": {
+   "cell_type": "PLP032",
+   "cells": 1,
+   "group": "other"
+  },
+  "PLP036_R": {
+   "cell_type": "PLP036",
+   "cells": 1,
+   "group": "other"
+  },
+  "PLP069_R": {
+   "cell_type": "PLP069",
+   "cells": 2,
+   "group": "other"
+  },
+  "PLP080_R": {
+   "cell_type": "PLP080",
+   "cells": 1,
+   "group": "other"
+  },
+  "PLP150_R": {
+   "cell_type": "PLP150",
+   "cells": 6,
+   "group": "other"
+  },
+  "PLP211_R": {
+   "cell_type": "PLP211",
+   "cells": 1,
+   "group": "other"
+  },
+  "PLP231_R": {
+   "cell_type": "PLP231",
+   "cells": 2,
+   "group": "other"
+  },
+  "Pm1_R": {
+   "cell_type": "Pm1",
+   "cells": 121,
+   "group": "ONIN"
+  },
+  "Pm2a_R": {
+   "cell_type": "Pm2a",
+   "cells": 109,
+   "group": "ONIN"
+  },
+  "Pm2b_R": {
+   "cell_type": "Pm2b",
+   "cells": 65,
+   "group": "ONIN"
+  },
+  "Pm3_R": {
+   "cell_type": "Pm3",
+   "cells": 36,
+   "group": "ONIN"
+  },
+  "Pm4_R": {
+   "cell_type": "Pm4",
+   "cells": 85,
+   "group": "ONIN"
+  },
+  "Pm5_R": {
+   "cell_type": "Pm5",
+   "cells": 94,
+   "group": "ONIN"
+  },
+  "Pm6_R": {
+   "cell_type": "Pm6",
+   "cells": 24,
+   "group": "ONIN"
+  },
+  "Pm7_R": {
+   "cell_type": "Pm7",
+   "cells": 14,
+   "group": "ONIN"
+  },
+  "Pm8_R": {
+   "cell_type": "Pm8",
+   "cells": 20,
+   "group": "ONIN"
+  },
+  "Pm9_R": {
+   "cell_type": "Pm9",
+   "cells": 27,
+   "group": "ONIN"
+  },
+  "Pm10_R": {
+   "cell_type": "Pm10",
+   "cells": 37,
+   "group": "ONIN"
+  },
+  "Pm11_R": {
+   "cell_type": "Pm11",
+   "cells": 2,
+   "group": "ONIN"
+  },
+  "Pm12_R": {
+   "cell_type": "Pm12",
+   "cells": 2,
+   "group": "ONIN"
+  },
+  "Pm13_R": {
+   "cell_type": "Pm13",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "PS272_R": {
+   "cell_type": "PS272",
+   "cells": 2,
+   "group": "other"
+  },
+  "PVLP046_R": {
+   "cell_type": "PVLP046",
+   "cells": 5,
+   "group": "other"
+  },
+  "R1-R6_R": {
+   "cell_type": "R1-R6",
+   "cells": 2265,
+   "group": "ONIN"
+  },
+  "R7d_R": {
+   "cell_type": "R7d",
+   "cells": 42,
+   "group": "ONIN"
+  },
+  "R7p_R": {
+   "cell_type": "R7p",
+   "cells": 95,
+   "group": "ONIN"
+  },
+  "R7y_R": {
+   "cell_type": "R7y",
+   "cells": 244,
+   "group": "ONIN"
+  },
+  "R8d_R": {
+   "cell_type": "R8d",
+   "cells": 41,
+   "group": "ONIN"
+  },
+  "R8p_R": {
+   "cell_type": "R8p",
+   "cells": 95,
+   "group": "ONIN"
+  },
+  "R8y_R": {
+   "cell_type": "R8y",
+   "cells": 245,
+   "group": "ONIN"
+  },
+  "s-LNv_R": {
+   "cell_type": "s-LNv",
+   "cells": 4,
+   "group": "VPN"
+  },
+  "SLP249_R": {
+   "cell_type": "SLP249",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "SLP250_R": {
+   "cell_type": "SLP250",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "SLP359_R": {
+   "cell_type": "SLP359",
+   "cells": 1,
+   "group": "other"
+  },
+  "SMP200_R": {
+   "cell_type": "SMP200",
+   "cells": 1,
+   "group": "other"
+  },
+  "SMP217_R": {
+   "cell_type": "SMP217",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "SMP528_R": {
+   "cell_type": "SMP528",
+   "cells": 1,
+   "group": "other"
+  },
+  "T1_R": {
+   "cell_type": "T1",
+   "cells": 892,
+   "group": "ONCN"
+  },
+  "T2_R": {
+   "cell_type": "T2",
+   "cells": 822,
+   "group": "ONCN"
+  },
+  "T2a_R": {
+   "cell_type": "T2a",
+   "cells": 939,
+   "group": "ONCN"
+  },
+  "T3_R": {
+   "cell_type": "T3",
+   "cells": 976,
+   "group": "ONCN"
+  },
+  "T4a_R": {
+   "cell_type": "T4a",
+   "cells": 849,
+   "group": "ONCN"
+  },
+  "T4b_R": {
+   "cell_type": "T4b",
+   "cells": 846,
+   "group": "ONCN"
+  },
+  "T4c_R": {
+   "cell_type": "T4c",
+   "cells": 883,
+   "group": "ONCN"
+  },
+  "T4d_R": {
+   "cell_type": "T4d",
+   "cells": 859,
+   "group": "ONCN"
+  },
+  "T5a_R": {
+   "cell_type": "T5a",
+   "cells": 838,
+   "group": "ONCN"
+  },
+  "T5b_R": {
+   "cell_type": "T5b",
+   "cells": 852,
+   "group": "ONCN"
+  },
+  "T5c_R": {
+   "cell_type": "T5c",
+   "cells": 858,
+   "group": "ONCN"
+  },
+  "T5d_R": {
+   "cell_type": "T5d",
+   "cells": 808,
+   "group": "ONCN"
+  },
+  "Tlp11_R": {
+   "cell_type": "Tlp11",
+   "cells": 32,
+   "group": "ONCN"
+  },
+  "Tlp12_R": {
+   "cell_type": "Tlp12",
+   "cells": 68,
+   "group": "ONCN"
+  },
+  "Tlp13_R": {
+   "cell_type": "Tlp13",
+   "cells": 58,
+   "group": "ONCN"
+  },
+  "Tlp14_R": {
+   "cell_type": "Tlp14",
+   "cells": 30,
+   "group": "ONCN"
+  },
+  "Tm1_R": {
+   "cell_type": "Tm1",
+   "cells": 890,
+   "group": "ONCN"
+  },
+  "Tm2_R": {
+   "cell_type": "Tm2",
+   "cells": 883,
+   "group": "ONCN"
+  },
+  "Tm3_R": {
+   "cell_type": "Tm3",
+   "cells": 1037,
+   "group": "ONCN"
+  },
+  "Tm4_R": {
+   "cell_type": "Tm4",
+   "cells": 833,
+   "group": "ONCN"
+  },
+  "Tm5Y_R": {
+   "cell_type": "Tm5Y",
+   "cells": 463,
+   "group": "ONCN"
+  },
+  "Tm5a_R": {
+   "cell_type": "Tm5a",
+   "cells": 307,
+   "group": "ONCN"
+  },
+  "Tm5b_R": {
+   "cell_type": "Tm5b",
+   "cells": 262,
+   "group": "ONCN"
+  },
+  "Tm5c_R": {
+   "cell_type": "Tm5c",
+   "cells": 374,
+   "group": "ONCN"
+  },
+  "Tm6_R": {
+   "cell_type": "Tm6",
+   "cells": 770,
+   "group": "ONCN"
+  },
+  "Tm9_R": {
+   "cell_type": "Tm9",
+   "cells": 887,
+   "group": "ONCN"
+  },
+  "Tm12_R": {
+   "cell_type": "Tm12",
+   "cells": 494,
+   "group": "ONCN"
+  },
+  "Tm16_R": {
+   "cell_type": "Tm16",
+   "cells": 197,
+   "group": "ONCN"
+  },
+  "Tm20_R": {
+   "cell_type": "Tm20",
+   "cells": 876,
+   "group": "ONCN"
+  },
+  "Tm23_R": {
+   "cell_type": "Tm23",
+   "cells": 16,
+   "group": "ONIN"
+  },
+  "Tm24_R": {
+   "cell_type": "Tm24",
+   "cells": 115,
+   "group": "ONIN"
+  },
+  "Tm26_R": {
+   "cell_type": "Tm26",
+   "cells": 50,
+   "group": "ONCN"
+  },
+  "Tm29_R": {
+   "cell_type": "Tm29",
+   "cells": 276,
+   "group": "ONCN"
+  },
+  "Tm30_R": {
+   "cell_type": "Tm30",
+   "cells": 61,
+   "group": "ONCN"
+  },
+  "Tm31_R": {
+   "cell_type": "Tm31",
+   "cells": 55,
+   "group": "ONCN"
+  },
+  "Tm32_R": {
+   "cell_type": "Tm32",
+   "cells": 59,
+   "group": "ONCN"
+  },
+  "Tm33_R": {
+   "cell_type": "Tm33",
+   "cells": 139,
+   "group": "ONCN"
+  },
+  "Tm34_R": {
+   "cell_type": "Tm34",
+   "cells": 88,
+   "group": "ONCN"
+  },
+  "Tm35_R": {
+   "cell_type": "Tm35",
+   "cells": 43,
+   "group": "ONCN"
+  },
+  "Tm36_R": {
+   "cell_type": "Tm36",
+   "cells": 77,
+   "group": "ONCN"
+  },
+  "Tm37_R": {
+   "cell_type": "Tm37",
+   "cells": 268,
+   "group": "ONCN"
+  },
+  "Tm38_R": {
+   "cell_type": "Tm38",
+   "cells": 116,
+   "group": "ONCN"
+  },
+  "Tm39_R": {
+   "cell_type": "Tm39",
+   "cells": 200,
+   "group": "ONCN"
+  },
+  "Tm40_R": {
+   "cell_type": "Tm40",
+   "cells": 83,
+   "group": "ONCN"
+  },
+  "TmY3_R": {
+   "cell_type": "TmY3",
+   "cells": 409,
+   "group": "ONCN"
+  },
+  "TmY4_R": {
+   "cell_type": "TmY4",
+   "cells": 288,
+   "group": "ONCN"
+  },
+  "TmY5a_R": {
+   "cell_type": "TmY5a",
+   "cells": 678,
+   "group": "ONCN"
+  },
+  "TmY9a_R": {
+   "cell_type": "TmY9a",
+   "cells": 230,
+   "group": "ONCN"
+  },
+  "TmY9b_R": {
+   "cell_type": "TmY9b",
+   "cells": 266,
+   "group": "ONCN"
+  },
+  "TmY10_R": {
+   "cell_type": "TmY10",
+   "cells": 278,
+   "group": "ONCN"
+  },
+  "TmY13_R": {
+   "cell_type": "TmY13",
+   "cells": 211,
+   "group": "ONCN"
+  },
+  "TmY14_R": {
+   "cell_type": "TmY14",
+   "cells": 234,
+   "group": "ONCN"
+  },
+  "TmY15_R": {
+   "cell_type": "TmY15",
+   "cells": 110,
+   "group": "ONCN"
+  },
+  "TmY16_R": {
+   "cell_type": "TmY16",
+   "cells": 80,
+   "group": "ONCN"
+  },
+  "TmY17_R": {
+   "cell_type": "TmY17",
+   "cells": 200,
+   "group": "ONCN"
+  },
+  "TmY18_R": {
+   "cell_type": "TmY18",
+   "cells": 694,
+   "group": "ONCN"
+  },
+  "TmY19a_R": {
+   "cell_type": "TmY19a",
+   "cells": 43,
+   "group": "ONCN"
+  },
+  "TmY19b_R": {
+   "cell_type": "TmY19b",
+   "cells": 17,
+   "group": "ONCN"
+  },
+  "TmY20_R": {
+   "cell_type": "TmY20",
+   "cells": 167,
+   "group": "ONCN"
+  },
+  "TmY21_R": {
+   "cell_type": "TmY21",
+   "cells": 189,
+   "group": "ONCN"
+  },
+  "vCal1_R": {
+   "cell_type": "vCal1",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "vCal2_R": {
+   "cell_type": "vCal2",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "vCal3_R": {
+   "cell_type": "vCal3",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "VLP_TBD1_R": {
+   "cell_type": "VLP_TBD1",
+   "cells": 1,
+   "group": "other"
+  },
+  "VS_R": {
+   "cell_type": "VS",
+   "cells": 9,
+   "group": "VPN"
+  },
+  "VSm_R": {
+   "cell_type": "VSm",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "VST1_R": {
+   "cell_type": "VST1",
+   "cells": 3,
+   "group": "VPN"
+  },
+  "VST2_R": {
+   "cell_type": "VST2",
+   "cells": 4,
+   "group": "VPN"
+  },
+  "Y3_R": {
+   "cell_type": "Y3",
+   "cells": 322,
+   "group": "ONCN"
+  },
+  "Y11_R": {
+   "cell_type": "Y11",
+   "cells": 76,
+   "group": "ONCN"
+  },
+  "Y12_R": {
+   "cell_type": "Y12",
+   "cells": 89,
+   "group": "ONCN"
+  },
+  "Y13_R": {
+   "cell_type": "Y13",
+   "cells": 99,
+   "group": "ONCN"
+  },
+  "Y14_R": {
+   "cell_type": "Y14",
+   "cells": 104,
+   "group": "ONCN"
+  },
+  "5-HTPMPV01_L": {
+   "cell_type": "5-HTPMPV01",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "5-HTPMPV03_L": {
+   "cell_type": "5-HTPMPV03",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "aMe9_L": {
+   "cell_type": "aMe9",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "aMe10_L": {
+   "cell_type": "aMe10",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "aMe12_L": {
+   "cell_type": "aMe12",
+   "cells": 4,
+   "group": "VPN"
+  },
+  "AN09A005_L": {
+   "cell_type": "AN09A005",
+   "cells": 2,
+   "group": "other"
+  },
+  "AN27X013_L": {
+   "cell_type": "AN27X013",
+   "cells": 2,
+   "group": "other"
+  },
+  "CL357_L": {
+   "cell_type": "CL357",
+   "cells": 1,
+   "group": "other"
+  },
+  "CT1_L": {
+   "cell_type": "CT1",
+   "cells": 1,
+   "group": "ONCN"
+  },
+  "dCal1_L": {
+   "cell_type": "dCal1",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "DCH_L": {
+   "cell_type": "DCH",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "DNc01_L": {
+   "cell_type": "DNc01",
+   "cells": 1,
+   "group": "other"
+  },
+  "DNc02_L": {
+   "cell_type": "DNc02",
+   "cells": 1,
+   "group": "other"
+  },
+  "DNp27_L": {
+   "cell_type": "DNp27",
+   "cells": 1,
+   "group": "other"
+  },
+  "DNp30_L": {
+   "cell_type": "DNp30",
+   "cells": 1,
+   "group": "other"
+  },
+  "DNpe053_L": {
+   "cell_type": "DNpe053",
+   "cells": 1,
+   "group": "other"
+  },
+  "H1_L": {
+   "cell_type": "H1",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "l-LNv_L": {
+   "cell_type": "l-LNv",
+   "cells": 4,
+   "group": "VPN"
+  },
+  "LC14a-1_L": {
+   "cell_type": "LC14a-1",
+   "cells": 15,
+   "group": "VPN"
+  },
+  "LC14a-2_L": {
+   "cell_type": "LC14a-2",
+   "cells": 7,
+   "group": "VPN"
+  },
+  "LC14b_L": {
+   "cell_type": "LC14b",
+   "cells": 21,
+   "group": "VPN"
+  },
+  "Li38_L": {
+   "cell_type": "Li38",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "Li39_L": {
+   "cell_type": "Li39",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "LoVC1_L": {
+   "cell_type": "LoVC1",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVC3_L": {
+   "cell_type": "LoVC3",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVC9_L": {
+   "cell_type": "LoVC9",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVC11_L": {
+   "cell_type": "LoVC11",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVC12_L": {
+   "cell_type": "LoVC12",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVC14_L": {
+   "cell_type": "LoVC14",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVC20_L": {
+   "cell_type": "LoVC20",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVC21_L": {
+   "cell_type": "LoVC21",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVC22_L": {
+   "cell_type": "LoVC22",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "LoVC23_L": {
+   "cell_type": "LoVC23",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "LoVC25_L": {
+   "cell_type": "LoVC25",
+   "cells": 9,
+   "group": "VCN"
+  },
+  "LoVC27_L": {
+   "cell_type": "LoVC27",
+   "cells": 5,
+   "group": "VCN"
+  },
+  "LoVC28_L": {
+   "cell_type": "LoVC28",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "LoVC29_L": {
+   "cell_type": "LoVC29",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "LoVCLo1_L": {
+   "cell_type": "LoVCLo1",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVCLo2_L": {
+   "cell_type": "LoVCLo2",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LoVCLo3_L": {
+   "cell_type": "LoVCLo3",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LPT50_L": {
+   "cell_type": "LPT50",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LPT57_L": {
+   "cell_type": "LPT57",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LPT59_L": {
+   "cell_type": "LPT59",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LT33_L": {
+   "cell_type": "LT33",
+   "cells": 1,
+   "group": "ONIN"
+  },
+  "LT35_L": {
+   "cell_type": "LT35",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LT36_L": {
+   "cell_type": "LT36",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LT46_L": {
+   "cell_type": "LT46",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "LT54_L": {
+   "cell_type": "LT54",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT55_L": {
+   "cell_type": "LT55",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "LT66_L": {
+   "cell_type": "LT66",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "mALD1_L": {
+   "cell_type": "mALD1",
+   "cells": 1,
+   "group": "other"
+  },
+  "MeVC1_L": {
+   "cell_type": "MeVC1",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "MeVC2_L": {
+   "cell_type": "MeVC2",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "MeVC3_L": {
+   "cell_type": "MeVC3",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "MeVC4a_L": {
+   "cell_type": "MeVC4a",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "MeVC4b_L": {
+   "cell_type": "MeVC4b",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "MeVC5_L": {
+   "cell_type": "MeVC5",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "MeVC6_L": {
+   "cell_type": "MeVC6",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "MeVC7a_L": {
+   "cell_type": "MeVC7a",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "MeVC7b_L": {
+   "cell_type": "MeVC7b",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "MeVC8_L": {
+   "cell_type": "MeVC8",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "MeVC9_L": {
+   "cell_type": "MeVC9",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "MeVC10_L": {
+   "cell_type": "MeVC10",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "MeVC11_L": {
+   "cell_type": "MeVC11",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "MeVC12_L": {
+   "cell_type": "MeVC12",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "MeVC26_L": {
+   "cell_type": "MeVC26",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "MeVC27_L": {
+   "cell_type": "MeVC27",
+   "cells": 3,
+   "group": "VCN"
+  },
+  "MeVCMe1_L": {
+   "cell_type": "MeVCMe1",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "MeVPaMe1_L": {
+   "cell_type": "MeVPaMe1",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPaMe2_L": {
+   "cell_type": "MeVPaMe2",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPLo1_L": {
+   "cell_type": "MeVPLo1",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "MeVPLo2_L": {
+   "cell_type": "MeVPLo2",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "MeVPLp1_L": {
+   "cell_type": "MeVPLp1",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPLp2_L": {
+   "cell_type": "MeVPLp2",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPMe1_L": {
+   "cell_type": "MeVPMe1",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "MeVPMe2_L": {
+   "cell_type": "MeVPMe2",
+   "cells": 5,
+   "group": "VPN"
+  },
+  "MeVPMe3_L": {
+   "cell_type": "MeVPMe3",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPMe4_L": {
+   "cell_type": "MeVPMe4",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "MeVPMe5_L": {
+   "cell_type": "MeVPMe5",
+   "cells": 9,
+   "group": "VPN"
+  },
+  "MeVPMe6_L": {
+   "cell_type": "MeVPMe6",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPMe7_L": {
+   "cell_type": "MeVPMe7",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPMe8_L": {
+   "cell_type": "MeVPMe8",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPMe9_L": {
+   "cell_type": "MeVPMe9",
+   "cells": 6,
+   "group": "VPN"
+  },
+  "MeVPMe10_L": {
+   "cell_type": "MeVPMe10",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "MeVPMe11_L": {
+   "cell_type": "MeVPMe11",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPMe12_L": {
+   "cell_type": "MeVPMe12",
+   "cells": 2,
+   "group": "VPN"
+  },
+  "MeVPMe13_L": {
+   "cell_type": "MeVPMe13",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "MeVPOL1_L": {
+   "cell_type": "MeVPOL1",
+   "cells": 1,
+   "group": "VPN"
+  },
+  "OA-ASM1_L": {
+   "cell_type": "OA-ASM1",
+   "cells": 2,
+   "group": "VCN"
+  },
+  "OLVC2_L": {
+   "cell_type": "OLVC2",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "OLVC3_L": {
+   "cell_type": "OLVC3",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "OLVC4_L": {
+   "cell_type": "OLVC4",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "OLVC6_L": {
+   "cell_type": "OLVC6",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "OLVC7_L": {
+   "cell_type": "OLVC7",
+   "cells": 3,
+   "group": "VCN"
+  },
+  "PVLP046_L": {
+   "cell_type": "PVLP046",
+   "cells": 6,
+   "group": "other"
+  },
+  "V1_L": {
+   "cell_type": "V1",
+   "cells": 1,
+   "group": "VCN"
+  },
+  "VCH_L": {
+   "cell_type": "VCH",
+   "cells": 1,
+   "group": "VCN"
+  }
+ }
+}

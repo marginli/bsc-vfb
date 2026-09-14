@@ -217,3 +217,9 @@ blockquote .figsrc{margin-top:8px}
 .figpair figcaption b{display:inline}
 .figpair figcaption > b:first-child{display:block; color:var(--ink);
   font-size:15px; margin-bottom:1px}
+
+/* ── PART 8：下載連結 ── */
+a.dl{display:inline-block; border:1px solid var(--accent); border-radius:10px;
+  padding:11px 20px; margin:6px 0 2px; text-decoration:none; color:var(--accent);
+  background:var(--accent-soft); font-size:15px}
+a.dl:hover{background:var(--accent); color:#fff}

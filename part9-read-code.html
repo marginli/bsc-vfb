@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PART 9 讀懂它寫出來的程式｜VFB 專題課程</title>
+<link rel="stylesheet" href="assets/vfb.css">
+</head>
+<body>
+<div class="crumb"><a href="index.html">VFB 專題課程</a> ／ PART 9</div>
+<header class="hero">
+  <p class="eyebrow">PART 9</p>
+  <h1>讀懂它寫出來的程式</h1>
+  <p class="subtitle">把 <a href="part8-agent-run.html">PART 8</a> 那三支程式讀完——不教 Python 語法，教的是「別人交給你一份程式，你要先看哪裡」</p>
+</header>
+
+<div class="wrap">
+
+  <div class="pager top">
+    <a href="part8-agent-run.html">← PART 8　真的讓它跑一遍</a>
+    <a href="index.html">回課程首頁</a>
+  </div>
+
+  <nav class="toc">
+    <h2>本頁章節</h2>
+    <ol>
+      <li><a href="#s1">先拿到它：三支程式與一份說明</a></li>
+      <li><a href="#s2">第一個要看的地方：自己決定的參數</a></li>
+      <li><a href="#s3">讀主流程：三段，各解決一件事</a></li>
+      <li><a href="#s4">讀旁證那一支：程式怎麼證明自己</a></li>
+      <li><a href="#s5">讀畫圖那一支：三個不寫出來就沒人知道的決定</a></li>
+      <li><a href="#s6">五個問題：拿到任何一份這種程式都先問</a></li>
+      <li><a href="#s7">收尾：這門課到底在教什麼</a></li>
+    </ol>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s1"><span class="pt">1</span>先拿到它：三支程式與一份說明</h2>
+
+  <p><a href="part8-agent-run.html">PART 8</a> 那一輪的產物是一包檔案。先下載下來，這一頁講的每一段都在裡面：</p>
+
+  <p><a class="dl" href="downloads/vfb-recompute.zip"><b>下載 vfb-recompute.zip</b>（三支程式、說明，以及那一輪的全部輸出）</a></p>
+
+  <div class="filecard">
+    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　267 行</span><p>取論文的靶、取 VFB 那一側、逐列比對</p></div>
+    <div class="f"><span class="nm">cross_check.py</span><span class="role">旁證　168 行</span><p>同一個數字問三條路</p></div>
+    <div class="f"><span class="nm">make_figure.py</span><span class="role">產圖　91 行</span><p>畫 PART 8 第 3 節那張圖</p></div>
+  </div>
+
+  <p class="figsrc">三個行數出自 <code>out/recompute/run_meta.json</code> 的 <code>files</code>；合計 526 行與其中 104 行註解出自同檔的 <code>code_lines</code>（用 <code>tokenize</code> 數的，2026-09-14 實測）。</p>
+
+  <div class="note">
+    <b>三支加起來 526 行，其中 104 行是註解或說明字串（兩成）。</b>這不是為了好看——<a href="part7-agent-prompts.html#s4">指令 10</a> 明寫「每個檔案開頭用註解寫清楚它做什麼」。<b>一份研究用的程式，註解不是裝飾，是它唯一的說明書。</b>
+  </div>
+
+  <div class="callout">
+    <b>不會 Python 也讀得下去。</b>這一頁不解釋 <code>for</code> 迴圈或字典是什麼。它要你看的是另一種東西：<b>哪幾行代表一個決定</b>。決定是看得懂的，語法可以跳過。
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s2"><span class="pt">2</span>第一個要看的地方：自己決定的參數</h2>
+
+  <p>讀 <code>recompute.py</code> 的時候，第一眼不要看它怎麼抓資料。<b>看開頭那一段。</b></p>
+
+<pre><span class="cm"># ══════════════════════════════════════════════════════════════════
+# 自己決定的參數：全部集中在這裡。改動這一段就會改動結論。
+# ══════════════════════════════════════════════════════════════════</span>
+PARAMS = {
+    <span class="cm"># 用 VFB 的哪一套資料。換一套，下面每個數字都會變。</span>
+    <b>"vfb_dataset": "Nern2024",</b>
+
+    <span class="cm"># 拿什麼當比對的鍵。兩個選擇實測命中率差很多：
+    #   "instance" → 用神經元自己的標籤，取括號前那一段（例如 Dm20_R）
+    #   "class"    → 用它所屬類別的標籤，取最後一個詞（例如 Tm3）
+    # 預設用 instance；理由與兩者的命中率見 out/compare.json 的 key_choice。</span>
+    <b>"match_key": "instance",</b>
+
+    <span class="cm"># 「什麼算一個細胞型」：只算沒有下位類別的類別（末端類別）。
+    # 設成 False 會把泛稱（例如「膽鹼性神經元」）也算成一個型，
+    # 而那會讓型底下的顆數加總超過神經元總數。</span>
+    <b>"leaf_classes_only": True,</b>
+}</pre>
+
+  <p><b>三行。</b>而 <a href="part7-agent-prompts.html#s3">PART 7 第 3 節</a>列的那六個「必須自己決定的事」，有三個就在這裡——①用哪一套資料、②什麼算一個細胞型、③拿什麼當比對的鍵。</p>
+
+  <div class="gap">
+    <h4>改一個字，結論就變了——這不是比喻</h4>
+    <p>把 <code>match_key</code> 從 <code>instance</code> 改成 <code>class</code>，其他完全不動，重跑一次：</p>
+    <div class="tblwrap">
+    <table>
+      <tr><th></th><th><code>instance</code>（預設）</th><th><code>class</code></th></tr>
+      <tr><th>名字對得上的</th><td>753</td><td>547</td></tr>
+      <tr><th>顆數也相同的</th><td><b>732</b></td><td><b>535</b></td></tr>
+      <tr><th>顆數不同的</th><td>21</td><td>12</td></tr>
+      <tr><th>只在論文那一側</th><td>25</td><td>185</td></tr>
+      <tr><th>只在 VFB 那一側</th><td>184</td><td>192</td></tr>
+    </table>
+    </div>
+    <p><b>同一份資料、同一支程式、同一天跑的，結論從 732 變成 535。</b>如果這份程式把這個選擇藏在第 180 行的某個判斷式裡，讀的人根本不會知道有這個選擇存在——<b>他會以為 732 是資料告訴他的。</b></p>
+  </div>
+
+  <p class="figsrc">右欄五個數字出自 <code>out/recompute/run_meta.json</code> 的 <code>match_key_class_variant</code>（把參數改掉重跑一次存下來的）；左欄出自 <code>out/recompute/compare.json</code>。2026-09-14。</p>
+
+  <div class="danger">
+    <b>順手抓到的一個真的毛病：參數表裡本來有第四個，而它根本沒被用到。</b><br>
+    原本還有一個 <code>page_size</code>（「每頁取幾列」），看起來很重要，實際上這支程式走的是知識庫、一次就取完，<b>從頭到尾沒有任何一行讀它</b>。<b>而 <code>match_key</code> 原本也只是註解</b>——比對那一段寫死了用 <code>instance</code>，改它不會有任何效果。兩個都在寫這一頁的時候才發現：<code>page_size</code> 刪掉，<code>match_key</code> 補成真的會生效。<br>
+    <b>所以「檢查參數表」的第一步不是讀它寫什麼，是查每一個到底有沒有被用到。</b>一個不生效的參數，比沒有這個參數更糟——它讓人以為自己控制得住某件事。
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s3"><span class="pt">3</span>讀主流程：三段，各解決一件事</h2>
+
+  <p><code>recompute.py</code> 的主流程只有三步，印出來就是 <a href="part8-agent-run.html#s2">PART 8 第 2 節</a>那些數字：</p>
+
+<pre>① 取論文的靶…
+   778 列　732 個型　52,827 顆
+② 取 VFB 那一側…
+   53,402 顆　類別 844（泛稱 23、末端 821）
+③ 逐列比對…
+   鍵=instance  對得上 753/778　96.8%
+   鍵=class     對得上 547/732　74.7%
+   顆數相同 732　不同 21（最大差 202）
+   只在論文 25　只在 VFB 184</pre>
+
+  <p class="figsrc">這是實際的執行輸出，每一個數字都同時寫進 <code>out/recompute/target.json</code>、<code>out/recompute/vfb.json</code>、<code>out/recompute/compare.json</code>。2026-09-14。</p>
+
+  <h3>① 取靶：一個 <code>if</code> 擋住了一整類災難</h3>
+
+<pre>def paper_target() -&gt; dict:
+    <span class="cm">"""論文那一側：下載補充表，算出要比對的靶。
+
+    **下載網址有坑**：PMC 那條路回 200 但只有 1.8 KB，是空殼。
+    要從出版社的靜態內容站抓。抓到的東西太小就直接停，不要往下做。
+    """</span>
+    import openpyxl
+    req = urllib.request.Request(SUPP, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=300) as r:
+        blob = r.read()
+<span class="hl">    if len(blob) &lt; 100_000:
+        raise SystemExit(f"補充表只抓到 {len(blob)} 位元組，八成是空殼")</span></pre>
+
+  <div class="ask">
+    <p class="q">為什麼要有那兩行？</p>
+    <p>因為 <b>HTTP 200 不代表你拿到了東西</b>。PMC 那個網址回應正常、內容型態正常，檔案只有 1.8 KB——是一個空殼。沒有那兩行，程式會一路跑到解壓縮那一步才中斷，而錯誤訊息會指向壓縮檔壞了，<b>完全看不出真正的問題是網址挑錯了</b>。</p>
+    <p><b>這就是 <a href="part8-agent-run.html#s6">PART 8 第 6 節</a>說指令 1 要改的地方。</b>那條指令只要求「說明你是從哪個網址拿到的」，沒要求看一眼檔案有多大。</p>
+  </div>
+
+  <h3>② 取 VFB 那一側：「泛稱」是怎麼被找出來的</h3>
+
+  <p>這一段解決的是<a href="part7-agent-prompts.html#s3">那六個決定</a>裡的第②個：<b>什麼算一個細胞型。</b></p>
+
+<pre>    <span class="cm"># 哪些類別是「泛稱」（底下還有別的類別，而那個別的類別也在這一組裡）</span>
+    lit = "[" + ",".join(f"'{c}'" for c in classes) + "]"
+<span class="hl">    generic = {r[0] for r in cypher(
+        "MATCH (a:Class)&lt;-[:SUBCLASSOF*1..8]-(b:Class) "
+        "WHERE a.short_form IN %s AND b.short_form IN %s "
+        "RETURN DISTINCT a.short_form" % (lit, lit))}</span>
+    leaf = {c: lab for c, lab in classes.items() if c not in generic}</pre>
+
+  <div class="ask">
+    <p class="q">這幾行在問什麼？</p>
+    <p>用白話講：<b>「在我這一組類別裡，有誰的下面還站著另一個也在我這一組裡的類別？」</b>——有的話，那個就是泛稱。<code>SUBCLASSOF*1..8</code> 是「往下找一到八層」。</p>
+    <p>結果是 844 個類別裡有 <b>23</b> 個是泛稱，<b>821</b> 個是末端。<a href="part2-names.html#s3">PART 2 第 3 節</a>講的「VFB 查的是本體論裡的詞」，在這裡具體成了四行程式。</p>
+  </div>
+
+  <div class="note">
+    <b>那個 <code>1..8</code> 是一個沒被寫進 <code>PARAMS</code> 的決定。</b>為什麼是八層不是五層或二十層？<b>沒有理由，就是夠深。</b>這種數字在任何一份研究程式裡都找得到——它不影響這一次的結果（最深的鏈遠不到八層），但<b>它是一個決定，而它躲在程式中間</b>。讀別人的程式時，這種數字要逐一挑出來問一次。
+  </div>
+
+  <h3>③ 比對：兩個鍵都算，因為差距本身是結果</h3>
+
+<pre>    <span class="cm"># 這裡才是 PARAMS["match_key"] 真正生效的地方。
+    # 選 class 的時候，論文那一側也要換成 cell type 欄，否則比的是兩種東西。</span>
+    if PARAMS["match_key"] == "instance":
+        got = vfb["keys_instance"]
+    else:
+        got = vfb["keys_class"]
+        ...</pre>
+
+  <p>注意那句註解的後半：<b>換鍵的時候，兩邊都要換。</b>VFB 那側換成類別標籤，論文那側就得從 <code>instance</code> 欄換到 <code>cell type</code> 欄——不然一邊有左右（<code>Dm15_R</code>）、另一邊沒有（<code>Dm15</code>），比出來的命中率會低得莫名其妙，<b>而且你會以為是資料的問題。</b></p>
+
+  <div class="callout">
+    <b>這種「成對的修改」是讀程式時最容易漏的東西。</b>一個參數改了，通常有第二個地方要跟著改；而那第二個地方往往離得很遠。<b>看到一個參數，先找它被讀到的每一個位置</b>——這比讀懂它做什麼更要緊。
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s4"><span class="pt">4</span>讀旁證那一支：程式怎麼證明自己</h2>
+
+  <p><code>cross_check.py</code> 存在的理由，整個寫在它的開頭：</p>
+
+<pre><span class="cm">"""cross_check.py — 同一個數字，換三條路各問一次。
+
+  ① 知識庫 Cypher       pdb.virtualflybrain.org        recompute.py 用的就是這條
+  ② REST 的 run_query   v3-cached.virtualflybrain.org  網站自己在用的那條
+  ③ MCP 的 get_term_info vfb3-mcp.virtualflybrain.org  給 AI 工具用的那條
+
+**這支程式的重點不是「確認三條一樣」，是把不一樣的地方攤開。**
+"""</span></pre>
+
+  <p>而它抓到的，是 <a href="part8-agent-run.html#s5">PART 8 第 5 節</a>那個矛盾：①③ 都說 53,402，② 說 60,002 而且在五萬列被截斷。<b>查下去發現②數的是「（個體, 類別）配對」，不是神經元</b>——一顆神經元同時屬於兩個類別，它就出現兩次。</p>
+
+<pre>    <span class="cm"># 一顆神經元可以同時屬於好幾個類別（例如「Dm15」與「麩胺酸性神經元」）。
+    # pairs 就是（個體, 類別）配對的數量——下面第二條路數的其實是這個。</span>
+<span class="hl">    <span class="cm"># 也確認一件事：一顆是不是只對到一個模板座標框（若不是，列數還有第二個來源）</span>
+    triples = ...</span></pre>
+
+  <div class="ask">
+    <p class="q">那個 <code>triples</code> 為什麼要算？</p>
+    <p>因為<b>「找到一個解釋」跟「確認沒有第二個解釋」是兩件事</b>。列數比顆數多，除了「一顆屬於多個類別」，還可能是「一顆有多個座標框的影像」。所以多算一次（個體, 類別, 模板）三元組——<b>結果跟配對數一樣是 59,739，代表模板不是第二個來源。</b></p>
+    <p>而配對數 59,739 跟 ② 報的 60,002 還差 <b>263</b>。<b>那 263 到現在沒解掉</b>，就寫在輸出檔的 <code>note</code> 欄裡，一個字都不修飾。</p>
+  </div>
+
+  <p class="figsrc">三條路的回答、<code>instanceof_pairs</code>＝59,739、三元組數與那句 <code>note</code>，全部出自 <code>out/recompute/cross_check.json</code>（<code>cross_check.py</code> 產生，2026-09-14）。</p>
+
+  <div class="danger">
+    <b>這是整包程式裡最值得學的一段——而它不是在算答案，是在挑自己的毛病。</b><br>
+    一份研究程式如果只有「算出結果」的部分，你沒辦法判斷它對不對；<b>有一段專門拿來反駁自己的，你才有東西可看。</b>這件事跟用不用 AI 無關，<a href="part1-templates.html#s3">PART 1</a> 那兩批錯也是這樣抓出來的。
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s5"><span class="pt">5</span>讀畫圖那一支：三個不寫出來就沒人知道的決定</h2>
+
+  <p><code>make_figure.py</code> 只有 91 行，但它做了三個會影響讀者怎麼看那張圖的決定，<b>三個都寫在註解裡</b>：</p>
+
+<pre><span class="cm">"""**兩格都用對數軸**。理由：每型顆數從 1 跨到 4,000，線性軸會把九成的點
+擠在左下角一團，看不出「絕大多數落在對角線上」這件事——而那正是結論。
+對數軸畫不了 0，但這裡沒有 0（對得上的型兩邊都至少 1 顆），所以不用特別處理。
+
+圖內不放文字說明，只留座標軸標籤，其餘寫在 HTML 的 figcaption 裡。
+"""</span></pre>
+
+  <div class="terms">
+    <div class="term"><span class="w">決定一：用對數軸<span class="en">and say why</span></span>
+      <p>不是為了好看。<b>線性軸會讓「絕大多數點落在對角線上」這個結論看不見</b>——而那是整張圖唯一要講的事。</p></div>
+    <div class="term"><span class="w">決定二：講清楚 0 怎麼處理<span class="en">and confirm there are none</span></span>
+      <p>對數軸畫不了 0，這是個真的坑。<b>但這裡沒有 0</b>——對得上的型兩邊都至少 1 顆。<b>「沒有 0」是查過才敢寫的，不是假設的。</b></p></div>
+    <div class="term"><span class="w">決定三：圖裡不放文字<span class="en">caption carries the words</span></span>
+      <p>圖上只有座標軸標籤。<b>所有說明寫在圖說裡</b>，因為圖裡的文字沒辦法被稽核程式檢查，圖說裡的可以。</p></div>
+  </div>
+
+  <div class="note">
+    <b>這三個決定合起來，是「一張圖要能被別人檢查」的最低條件。</b>而檢查的方式很具體：圖上落在對角線的點數，必須等於 <code>compare.json</code> 裡「顆數相同」的筆數——兩個都是 <b>732</b>。<b>對不上就代表圖跟數字來自不同的計算</b>，那是嚴重的問題。這正是 <a href="part7-agent-prompts.html#s4">指令 9</a> 最後要求回報點數的原因。
+  </div>
+
+  <p class="figsrc">「圖上落在對角線 732 點」出自 <code>out/recompute/figure.json</code> 的 <code>on_diagonal</code>；「顆數相同 732 筆」出自 <code>out/recompute/compare.json</code> 的 <code>same_count</code>。2026-09-14。</p>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s6"><span class="pt">6</span>五個問題：拿到任何一份這種程式都先問</h2>
+
+  <p>把前面幾節的讀法抽出來，就是五個問題。<b>它們跟這篇論文、這個資料庫都沒有關係</b>——不管是 AI 寫的、學生寫的、還是合作者寄來的，拿到就這樣問一次：</p>
+
+  <div class="cases">
+    <div class="case"><span class="badge one">1</span><div class="bd">
+      <b>自己決定的東西在哪裡？有幾個？</b>
+      集中在一處最好。<b>散在程式各處，等於沒交代。</b>找到之後，逐一問「這個真的有被用到嗎」——我們自己這一份就抓到一個沒用到的、一個寫了不生效的。
+    </div></div>
+    <div class="case"><span class="badge two">2</span><div class="bd">
+      <b>哪些數字是「決定」偽裝成的？</b>
+      <code>SUBCLASSOF*1..8</code> 的那個 8、「小於 100,000 位元組就停」的那個門檻——<b>這些不在參數表裡，但它們都是決定。</b>逐一挑出來問一次為什麼。
+    </div></div>
+    <div class="case"><span class="badge hub">3</span><div class="bd">
+      <b>它有沒有一段是拿來反駁自己的？</b>
+      沒有的話，你手上只有一個答案，沒有判斷它對不對的材料。<b>有的話，先讀那一段。</b>
+    </div></div>
+    <div class="case"><span class="badge one">4</span><div class="bd">
+      <b>它把「沒解決的事」寫在哪裡？</b>
+      一份查不出任何問題的程式，通常不是沒問題，是沒查。<b>找得到「這一條我不知道」的地方，這份程式才可信。</b>
+    </div></div>
+    <div class="case"><span class="badge two">5</span><div class="bd">
+      <b>從空資料夾跑得起來嗎？</b>
+      這是唯一一個不能用讀的、只能實際做的。<b>解壓縮、刪掉輸出、重跑一次，看數字一不一樣。</b><a href="part8-agent-run.html#s7">PART 8 第 7 節</a>那一輪是 18 秒加 50 秒，五個輸出檔逐位元組相同。
+    </div></div>
+  </div>
+
+  <p class="figsrc">第 1、2 點提到的參數與門檻在 <code>recompute/recompute.py</code> 裡（<code>PARAMS</code>、<code>SUBCLASSOF*1..8</code>、<code>len(blob) &lt; 100_000</code>）；第 5 點的 18 秒、50 秒與「五個輸出檔逐位元組相同」出自 <code>out/recompute/run_meta.json</code> 的 <code>clean_run</code>（2026-09-14 實測）。</p>
+
+  <div class="callout">
+    <b>五個問題裡，只有一個需要看得懂程式碼。</b>其餘四個問的是「這份東西有沒有交代清楚」，而那件事跟語法無關——<b>你在審一份研究計畫、一篇論文的方法段時問的，其實是同樣五件事。</b>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s7"><span class="pt">7</span>收尾：這門課到底在教什麼</h2>
+
+  <p>從 <a href="part1-templates.html">PART 1</a> 到這裡，表面上講的是 Virtual Fly Brain 怎麼用。但每一個部分真正卡住的地方，都不是操作：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th></th><th>表面上在講</th><th>實際上卡住的地方</th></tr>
+    <tr><td><a href="part1-templates.html">1</a></td><td>模板與對位</td><td>別人的資料憑什麼跟你的疊在一起</td></tr>
+    <tr><td><a href="part2-names.html">2</a></td><td>搜尋框怎麼用</td><td>同一個東西有三個名字，而你要數的是哪一種</td></tr>
+    <tr><td><a href="part3-queries.html">3</a></td><td>十支查詢</td><td>它們為什麼不能相加</td></tr>
+    <tr><td><a href="part4-connectomes.html">4</a></td><td>八套連線資料</td><td>你說的那個 N 是從哪一套、哪一版來的</td></tr>
+    <tr><td><a href="part5-nblast.html">5</a></td><td>相似度分數</td><td>它底下那份骨架到底是什麼</td></tr>
+    <tr><td><a href="part6-api.html">6</a></td><td>三種問法</td><td>三個答案不一樣，差別全在預設值</td></tr>
+    <tr><td><a href="part7-agent-prompts.html">7</a></td><td>怎麼寫指令給 AI</td><td>你有哪六件事還沒想清楚</td></tr>
+    <tr><td><a href="part8-agent-run.html">8</a></td><td>實際跑一遍</td><td>哪些數字是預先知道的，哪些不是</td></tr>
+    <tr><td>9</td><td>讀程式</td><td>哪幾行是決定，而它有沒有被寫出來</td></tr>
+  </table>
+  </div>
+
+  <div class="plain">
+    <b>整門課只有一件事：把「你自己決定了什麼」講出來。</b><br>
+    交給 AI 的時候要講（<a href="part7-agent-prompts.html">PART 7</a>），跑完之後要講（<a href="part8-agent-run.html">PART 8</a>），寫進程式裡也要講（這一頁）。<b>而不講的代價一直是同一個</b>：別人拿到你的數字，沒辦法判斷它對不對——<b>包括三個月後的你自己。</b>
+  </div>
+
+  <div class="draft">
+    <b>這一整包裡還沒解掉的四條，列在 <a href="part8-agent-run.html#s7">PART 8 第 7 節</a>。</b>它們留在那裡不是因為忘了處理，<b>是因為第 4 個問題的答案要找得到地方放。</b>
+  </div>
+
+  <div class="pager">
+    <a href="part8-agent-run.html">← PART 8　真的讓它跑一遍</a>
+    <a href="index.html">回課程首頁</a>
+  </div>
+</div>
+
+<div class="foot">
+  VFB 專題課程　PART 9　·　程式與輸出以 <a href="downloads/vfb-recompute.zip">vfb-recompute.zip</a> 提供　·　
+  論文為 Nern et al., 2025, <i>Nature</i>（CC-BY）　·　數字於 2026-09-14 取得
+</div>
+</body>
+</html>

@@ -25,8 +25,10 @@ jobs:
       - uses: actions/configure-pages@v5
       # _notes/ 是修正紀錄、out/_quotes 是說明文件的快取、計畫書是內部文件，
       # 這幾樣都不對外發布。out/ 裡的探針輸出則刻意保留——
-      # 頁面上的數字要對得回它們。
-      - run: rm -rf _notes out/_quotes vfb_plan.docx make_vfb_plan.py
+      # 頁面上的數字要對得回它們（含 out/recompute/，那是 PART 8／9 的出處）。
+      # recompute/ 本身不發布：同一份東西已經包在 downloads/vfb-recompute.zip 裡，
+      # 發布兩份只會讓讀者不知道該拿哪一份。
+      - run: rm -rf _notes out/_quotes vfb_plan.docx make_vfb_plan.py recompute
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .

@@ -1,0 +1,5 @@
+抓取時間 2026-09-14T08:20:22+00:00（UTC）
+參數 {"vfb_dataset": "Nern2024", "match_key": "instance", "leaf_classes_only": true}
+論文 732 型 / 52827 顆
+VFB  53402 顆 / 末端類別 821
+對得上 753　顆數相同 732
