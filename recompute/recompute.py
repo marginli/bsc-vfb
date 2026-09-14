@@ -253,6 +253,33 @@ def resolve_by_body_id(target: dict, vfb: dict, only_paper: list,
 
     # 改名之後，VFB 那一側的名字就不該再算成「只在 VFB」
     merged = collections.Counter(v["vfb_name"] for v in renamed.values())
+
+    # ── 把全部 778 列都對一次，可以直接驗論文〈Versions of the dataset〉那一段 ──
+    # VFB 收的是 optic-lobe:v1.0.1，論文補充表是 v1.1。論文說 v1.1 相對 v1.0.1
+    # 「5 個型被拆成 11 個新型」——這裡用編號獨立還原一次，看數字對不對得上。
+    all_map, absent_all = {}, []
+    for inst, d in paper.items():
+        lab = by_body.get(d.get("body"))
+        (all_map.__setitem__(inst, lab) if lab else absent_all.append(inst))
+    back = collections.defaultdict(list)
+    for inst, lab in all_map.items():
+        back[lab].append(inst)
+    splits = {k: sorted(v) for k, v in back.items() if len(v) > 1}
+    version = {
+        "vfb_release": "optic-lobe:v1.0.1（VFB 自己的資料集描述就這樣寫）",
+        "paper_table_release": "optic-lobe:v1.1（論文正文與資料可用性都指這一版）",
+        "paper_says": "5 types were split into a total of 11 new types "
+                      "and 2 types were merged into a single type",
+        "splits_recovered": splits,
+        "n_v101_types_split": len(splits),
+        "n_v11_types_produced": sum(len(v) for v in splits.values()),
+        "rows_not_in_v101": sorted(absent_all),
+        "groups_of_rows_not_in_v101": dict(collections.Counter(
+            paper[i]["group"] for i in absent_all)),
+        "caveat": "補充表的 bodyId 欄只給「圖裡用的那一顆」，所以這是型層級的對照，"
+                  "不是逐顆對照。論文說的『2 個型併成 1 個』用這個方法驗不出來——"
+                  "被併掉的那一個在 v1.1 沒有自己的列，沒有代表編號可查。",
+    }
     return {"renamed": renamed, "absent": absent,
             "n_renamed": len(renamed), "n_absent": len(absent),
             "cells_absent": sum(v["paper_cells"] for v in absent.values()),
@@ -260,6 +287,7 @@ def resolve_by_body_id(target: dict, vfb: dict, only_paper: list,
             "vfb_names_taking_more_than_one_paper_row":
                 {k: v for k, v in merged.items() if v > 1},
             # 這些 VFB 名字其實就是論文那幾列，不該再算成「只在 VFB」
+            "version_gap": version,
             "vfb_names_no_longer_only_in_vfb":
                 sorted({v["vfb_name"] for v in renamed.values()} & set(only_vfb)),
             "only_in_vfb_after": len(set(only_vfb)

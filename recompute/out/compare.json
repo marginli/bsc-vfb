@@ -563,6 +563,49 @@
    "LoVP90_R": 3,
    "VT_R": 2
   },
+  "version_gap": {
+   "vfb_release": "optic-lobe:v1.0.1（VFB 自己的資料集描述就這樣寫）",
+   "paper_table_release": "optic-lobe:v1.1（論文正文與資料可用性都指這一版）",
+   "paper_says": "5 types were split into a total of 11 new types and 2 types were merged into a single type",
+   "splits_recovered": {
+    "DNc01_R": [
+     "DNc01_L",
+     "DNc01_R"
+    ],
+    "Li11_R": [
+     "Li11a_R",
+     "Li11b_R"
+    ],
+    "LoVP70_R": [
+     "LoVP51_R",
+     "LoVP70_R"
+    ],
+    "LoVP90_R": [
+     "LoVP90a_R",
+     "LoVP90b_R",
+     "LoVP90c_R"
+    ],
+    "VT_R": [
+     "VST1_R",
+     "VST2_R"
+    ]
+   },
+   "n_v101_types_split": 5,
+   "n_v11_types_produced": 11,
+   "rows_not_in_v101": [
+    "AN09A005_L",
+    "AN09A005_R",
+    "AN27X013_L",
+    "AN27X013_R",
+    "PLP_TBD1_R",
+    "VLP_TBD1_R",
+    "aMe_TBD1_R"
+   ],
+   "groups_of_rows_not_in_v101": {
+    "other": 7
+   },
+   "caveat": "補充表的 bodyId 欄只給「圖裡用的那一顆」，所以這是型層級的對照，不是逐顆對照。論文說的『2 個型併成 1 個』用這個方法驗不出來——被併掉的那一個在 v1.1 沒有自己的列，沒有代表編號可查。"
+  },
   "vfb_names_no_longer_only_in_vfb": [
    "DNc02_R",
    "HS4_R",

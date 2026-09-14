@@ -45,7 +45,7 @@ EXEMPT = {
             "frames.*.labelled_extent_um 裡，比值是頁面上當場算的。",
     "100,000": "PART 9 第 6 節引的是 recompute.py 裡那個門檻 `len(blob) < 100_000`"
                "——程式裡的字面值，不是查來的數字。",
-    "655": "396 ＋ 168 ＋ 91 ＝ 655（三支程式的行數合計）。三個被加數都在 "
+    "683": "424 ＋ 168 ＋ 91 ＝ 683（三支程式的行數合計）。三個被加數都在 "
            "out/recompute/run_meta.json 的 files 裡，合計是頁面上當場算的。",
     "6,337": "59,739 − 53,402 ＝ 6,337（配對數減神經元數）。兩個被減數都在 "
              "out/recompute/vfb.json 裡（instanceof_pairs 與 neurons），"

@@ -29,6 +29,7 @@
       <li><a href="#s3">那 21 筆差在哪裡</a></li>
       <li><a href="#s4">對不上的三類</a></li>
       <li><a href="#s4b">換一個鍵：用 bodyId 把 A 類追到底</a></li>
+      <li><a href="#s4c">那 7 列為什麼沒收：兩邊差了一個版本</a></li>
       <li><a href="#s5">換一條路再問一次：一個沒解掉的矛盾</a></li>
       <li><a href="#s6">十條指令的逐條紀錄</a></li>
       <li><a href="#s7">帶得走的東西</a></li>
@@ -54,7 +55,7 @@
     <tr><td>指令 8 換第二條路得到的 <b>60,002</b> 與那個沒解掉的 <b>263</b>（<a href="#s5">第 5 節</a>）</td><td><b>否</b></td><td>這一輪第一次跑，而且結果出乎意料</td></tr>
     <tr><td>指令 9 那張圖，以及圖上落在對角線的點數</td><td><b>否</b></td><td>這一輪才畫</td></tr>
     <tr><td>指令 10 的乾淨重跑：<b>18</b> 秒、<b>50</b> 秒、五個輸出檔逐位元組相同</td><td><b>否</b></td><td>這一輪才做</td></tr>
-    <tr><td>用 <code>bodyId</code> 把 A 類追到底的結果（<a href="#s4b">第 4b 節</a>）</td><td><b>否</b></td><td>這一頁發布之後才做的補查，而且<b>推翻了原先用名字猜出來的一個結論</b></td></tr>
+    <tr><td>用 <code>bodyId</code> 把 A 類追到底的結果（<a href="#s4b">第 4b</a>、<a href="#s4c">4c 節</a>）</td><td><b>否</b></td><td>這一頁發布之後才做的補查。它<b>推翻了兩個原先靠猜的結論</b>，也把「對不上的三類」收斂成一句話：<b>兩邊差了一個版本</b></td></tr>
   </table>
   </div>
 
@@ -183,7 +184,7 @@
     <p>論文的方法段描述了分型的步驟：</p>
     <p lang="en">Step 3: R7 cells are classified as pale (R7p) or yellow (R7y) using connectivity with Dm8a/b and Tm5a/b and anatomical markers; cells that could not be confidently assigned are labelled as ‘R7_unclear’.</p>
     <p><b>論文有一個 <code>R7_unclear</code> 的標籤，但補充表裡沒有這一列</b>——把補充表裡的每一列都掃過一遍，沒有任何一列的名字帶 <code>unclear</code>。而 VFB 那一側也沒有任何標籤帶 <code>unclear</code>；VFB 的 <code>R7p_R</code> 那 297 顆全部掛在同一個類別 <code>FBbt_02000006</code>（<i>photoreceptor cell R7 of pale ommatidium</i>）底下。</p>
-    <p><b>看起來最像的解釋是</b>：論文判不出來、標成 <code>R7_unclear</code> 的那些細胞，在 VFB 這一版被歸進了 pale。<b>但這是推測，不是查證過的結論。</b>要確定，得直接去問論文用的那份 neuPrint 資料庫裡 <code>R7_unclear</code> 有幾顆——<b>那件事我們沒做，所以這一條就停在這裡。</b></p>
+    <p><b>我們一度以為</b>：論文判不出來、標成 <code>R7_unclear</code> 的那些細胞，在 VFB 這一版被歸進了 pale。<b>那只是個猜測，而後來找到了有出處的答案</b>——兩邊差了一個資料集版本，而論文的版本註記明寫 v1.1 調整了個別細胞的分型、幾乎全是 R7 與 R8。<b>見<a href="#s4c">第 4c 節</a>。</b></p>
   </div>
 
   <p class="figsrc">兩條引文出自 <code>out/recompute/paper_quotes.json</code>（全文經 Europe PMC 的 <code>fullTextXML</code> 取得，PMC12119369，2026-09-14，逐字比對過）。「補充表裡沒有 unclear」與「VFB 沒有 unclear、297 顆同屬一個類別」出自對 <code>out/recompute/target.json</code> 的搜尋與一次知識庫查詢（<code>recompute/cross_check.py</code> 同一支介面）。</p>
@@ -221,7 +222,7 @@
     <tr><td><b>①</b> 一對一改名</td><td>10</td><td>同一顆、顆數也相同，只是名字不同：<code>HST_R</code>→<code>HS4_R</code>、<code>LAL047_R</code>→<code>LoVC8_R</code>、<code>LC35a_R</code>→<code>LoVP15_R</code>、<code>LC35b_R</code>→<code>LoVP104_R</code>、<code>LT85_R</code>→<code>LoVP87_R</code>、<code>V1_L</code>→<code>LPT58_L</code>、<code>mALD1_L</code>→<code>LoVC10_L</code>…</td></tr>
     <tr><td><b>②</b> 側別標到另一邊</td><td>1</td><td><code>DNc01_L</code> 在 VFB 併進了 <code>DNc01_R</code>——所以 VFB 那一列是 2 顆而論文是 1 顆。<b>這同時解釋掉<a href="#s3">第 3 節</a>那 21 筆差異裡的一筆。</b></td></tr>
     <tr><td><b>③</b> 論文拆、VFB 併</td><td>7</td><td><code>Li11a＋Li11b</code>→<code>Li11_R</code>（2＋2＝4）、<code>LoVP90a／b／c</code>→<code>LoVP90_R</code>（1＋1＋1＝3）、<code>VST1＋VST2</code>→<code>VT_R</code>（3＋4＝<b>7</b>）。<b>三組的加總都跟 VFB 那一列的顆數完全相等。</b></td></tr>
-    <tr><td><b>④</b> VFB 沒有收</td><td>7</td><td>共 <b>11 顆</b>。編號在 VFB 的 <code>JRC_OpticLobe</code> 命名空間裡<b>完全不存在</b>：<code>AN09A005</code>（左右各一列）、<code>AN27X013</code>（左右各一列），以及三個名字帶 <i>TBD</i>（待定）的 <code>PLP_TBD1_R</code>、<code>VLP_TBD1_R</code>、<code>aMe_TBD1_R</code>。這五個名字在 VFB 只出現在<b>另一套資料集</b> <code>Berg2025</code> 裡。</td></tr>
+    <tr><td><b>④</b> VFB 沒有收</td><td>7</td><td>共 <b>11 顆</b>。編號在 VFB 的 <code>JRC_OpticLobe</code> 命名空間裡<b>完全不存在</b>：<code>AN09A005</code>（左右各一列）、<code>AN27X013</code>（左右各一列），以及三個名字帶 <i>TBD</i>（待定）的。<b>為什麼沒收，見<a href="#s4c">下一節</a></b>——原因跟①②③其實是同一個。</td></tr>
   </table>
   </div>
 
@@ -239,6 +240,76 @@
   <!-- ══════════════════════════════════════════════════════ -->
   <div class="note">
     <b>A 類那個「論文拆、VFB 沒拆」，正是 <a href="part7-agent-prompts.html#s3">PART 7 第 3 節</a>那個②號決定的真面目。</b>「什麼算一個細胞型」不是一個哲學問題——它在這裡具體成三個名字：論文認為 <code>LoVP90</code> 應該分成三型，VFB 這一版還記成一型。<b>兩邊都沒錯，只是分型的版本不同。</b>而如果我們只報一個「命中率 96.8%」，這件事就完全看不見了。
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <h2 id="s4c"><span class="pt">4c</span>那 7 列為什麼沒收：兩邊差了一個版本</h2>
+
+  <p><a href="#s4b">上一節</a>把 25 列分成四堆，看起來是四個獨立的現象。<b>其實是同一件事。</b></p>
+
+  <div class="callout">
+    <b>VFB 收的是 <code>optic-lobe:v1.0.1</code>，論文補充表是 <code>optic-lobe:v1.1</code>。</b><br>
+    這不是猜的——<b>VFB 自己的資料集描述就寫著</b>：<i>Optic Lobe connectome neurons from optic_lobe:v1.0.1, Nern et al., 2024.</i> 而論文的資料可用性指向 <code>?dataset=optic-lobe:v1.1</code>。
+  </div>
+
+  <p>論文有一整節叫〈Versions of the dataset〉，開頭就是：</p>
+  <p lang="en">Two releases of the optic lobe dataset are available: the initial release (optic-lobe:v1.0.1) and the current version of the dataset (optic-lobe:v1.1).</p>
+
+  <h3>先驗一件事：這個說法站得住嗎</h3>
+
+  <p>那一節還寫了一句可以直接拿來對答案的話：</p>
+  <p lang="en">We also revised some cell-type definitions (5 types were split into a total of 11 new types and 2 types were merged into a single type).</p>
+
+  <p><b>那就把全部 778 列都用 <code>bodyId</code> 對一次，看能不能自己數出「5 個型拆成 11 個」。</b>結果：</p>
+
+  <div class="tblwrap">
+  <table>
+    <tr><th>v1.0.1 的型（VFB 這一側）</th><th>在 v1.1 變成（論文那一側）</th></tr>
+    <tr><td><code>VT_R</code></td><td><code>VST1_R</code>、<code>VST2_R</code></td></tr>
+    <tr><td><code>Li11_R</code></td><td><code>Li11a_R</code>、<code>Li11b_R</code></td></tr>
+    <tr><td><code>LoVP90_R</code></td><td><code>LoVP90a_R</code>、<code>LoVP90b_R</code>、<code>LoVP90c_R</code></td></tr>
+    <tr><td><code>LoVP70_R</code></td><td><code>LoVP51_R</code>、<code>LoVP70_R</code></td></tr>
+    <tr><td><code>DNc01_R</code></td><td><code>DNc01_L</code>、<code>DNc01_R</code></td></tr>
+    <tr><th>5 個</th><th>11 個</th></tr>
+  </table>
+  </div>
+
+  <p class="figsrc">五組的還原出自 <code>out/recompute/compare.json</code> 的 <code>by_body_id.version_gap</code>（<code>splits_recovered</code>、<code>n_v101_types_split</code>、<code>n_v11_types_produced</code>），由 <code>recompute/recompute.py</code> 把 778 列逐列用 <code>bodyId</code> 對到 VFB 那一側算出；論文的五條原句出自 <code>out/recompute/paper_quotes.json</code>（全文經 Europe PMC 取得，逐字比對過）。2026-09-14。</p>
+
+  <div class="note">
+    <b>5 個型、11 個新型——跟論文寫的一個字不差。</b>而我們算這個數字的時候<b>沒有看論文那句話</b>，用的只有兩邊的編號。<b>這就是「第二條路」該長的樣子</b>（<a href="part7-agent-prompts.html#s4">指令 8</a>）：不是換個 API 問同一個數，是<b>用完全不同的證據把同一個結論再推一次</b>。
+  </div>
+
+  <h3>那 7 列的答案</h3>
+
+  <p>版本這件事站住了，7 列就有解釋了。同一節接著寫：</p>
+  <p lang="en">optic-lobe:v1.1 incorporates updates to the segmentation (mainly some merges of small, previously unconnected parts of reconstructed segments with these neurons); these changes collectively result in a small but detectable increase of reconstruction completeness</p>
+
+  <p><b>v1.1 把原本散落、沒接起來的片段併進了神經元，所以多出一些在 v1.0.1 裡根本還不成形的細胞。</b>那 7 列就是這樣來的——它們在 v1.0.1 沒有編號，因為在 v1.0.1 裡還不是一顆完整的神經元。</p>
+
+  <div class="gap">
+    <h4>三個對得上的旁證</h4>
+    <p><b>一、7 列全部落在同一群。</b>論文把細胞分成 VPN／VCN／ONIN／ONCN／other 五群，而這 7 列<b>全部是 <code>other</code></b>——778 列裡對不到 v1.0.1 的也就只有這 7 列。<code>other</code> 是什麼？論文說是「中腦與視葉都有突觸、但既不算 VPN 也不算 VCN」的那幾型，<b>也就是身體大半在重建範圍外的神經元</b>——正是最需要「把零散片段接起來」才會成形的那一類。</p>
+    <p><b>二、三個 <code>_TBD</code> 是論文自己說的三個。</b></p>
+    <p lang="en">In three cases, we applied a placeholder name, adding ‘_TBD’, because we anticipate that future central brain data will provide a more appropriate designation.</p>
+    <p><b>三、那五個名字在 VFB 另一套資料集裡是完整的。</b><code>AN09A005</code>、<code>AN27X013</code>、三個 <code>_TBD</code> 在 VFB 都找得到，但只出現在 <code>Berg2025</code>／<code>Berg2025a</code>——<b>Male CNS 全腦連線體</b>，跟視葉這套出自<b>同一份 EM 影像</b>（VFB 的描述寫著 <i>traced from part of the Male CNS EM volume</i>）。<b><code>AN</code> 是 ascending neuron，從腹神經索上行的。</b>在全 CNS 那一版裡它是完整的；在只切出視葉的這一版裡不是。</p>
+  </div>
+
+  <div class="danger">
+    <b>同一個版本差也解釋了<a href="#s3">第 3 節</a>那個最大的差異。</b>〈Versions of the dataset〉的同一段還寫著，v1.1 還<b>「調整了一些個別細胞的分型，其中幾乎全是 R7 與 R8 光受器」</b>：
+    <p lang="en">adjusted the typing of some individual cells (nearly all of these are R7 and R8 photoreceptors</p>
+    <b>所以 <code>R7p</code> 那 ＋202 與 <code>R8p</code> 的 ＋199，最可能的解釋是版本之間的重新分型，而不是我們先前猜的「<code>R7_unclear</code> 被歸進 pale」。</b>兩種說法指向的其實是同一批細胞（<a href="#s3">第 3 節</a>那段 Methods 描述的就是 v1.1 的分型流程），但<b>論文的版本註記是有出處的，而我們那個猜測沒有。</b>
+  </div>
+
+  <div class="callout">
+    <b>一句話收束整個第 4 節：那 25 列「對不上」，沒有一列是算錯，全部是「兩邊拿的不是同一版」。</b><br>
+    改名、拆型、側別、以及那 7 列多出來的細胞，<b>都寫在論文自己的〈Versions of the dataset〉裡</b>。<b>而這件事在 <a href="part4-connectomes.html#s4">PART 4 第 4 節</a>講過一次了</b>——「同一套資料有不同版本」；這裡是它第一次真的咬人。<br>
+    <b>還沒解的縮到一句話</b>：我們沒有 v1.1 的存取權，所以「這 11 顆就是那次合併產生的」是<b>推論</b>，不是查證。要坐實，得拿 v1.1 直接比對那 7 個編號。
+  </div>
+
+  <div class="note">
+    <b>論文那句話還有後半段我們驗不了：「2 個型被併成 1 個」。</b>補充表的 <code>bodyId</code> 欄只給「圖裡用的那一顆」，所以我們做的是<b>型層級</b>的對照。被併掉的那一個型在 v1.1 沒有自己的列，<b>也就沒有代表編號可查</b>。<b>這是方法的天花板，不是資料的問題</b>——寫出來，免得下一個人以為驗過了。
   </div>
 
   <!-- ══════════════════════════════════════════════════════ -->
@@ -317,7 +388,7 @@
   <p>照<a href="part7-agent-prompts.html#s4">指令 10</a>整理出來的，是三支程式加一份說明：</p>
 
   <div class="filecard">
-    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　396 行</span><p>取論文的靶、取 VFB 那一側、逐列比對。<b>所有自己決定的參數集中在開頭的 <code>PARAMS</code></b></p></div>
+    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　424 行</span><p>取論文的靶、取 VFB 那一側、逐列比對。<b>所有自己決定的參數集中在開頭的 <code>PARAMS</code></b></p></div>
     <div class="f"><span class="nm">make_figure.py</span><span class="role">產圖　91 行</span><p>畫<a href="#s3">第 3 節</a>那張圖</p></div>
     <div class="f"><span class="nm">cross_check.py</span><span class="role">旁證　168 行</span><p>同一個數字問三條路，把不一樣的地方攤開</p></div>
   </div>
@@ -336,8 +407,8 @@
     <b>還沒解的，列在這裡：</b>
     <ul>
       <li>REST 報的 60,002 與知識庫算出的 59,739 差 <b>263</b> 列——機制找到了，餘數沒找到。</li>
-      <li><s>A 類裡有 18 個型只在論文表裡、在 VFB 找不到，沒有解釋。</s><br><b>已解</b>（<a href="#s4b">第 4b 節</a>）：改用 <code>bodyId</code> 查，18 列全是同一顆被改了名。<b>剩下 7 列 11 顆是 VFB 真的沒收</b>，那 7 列的編號在 <code>JRC_OpticLobe</code> 命名空間裡不存在——<b>這一條才是還沒解的</b>：不知道為什麼沒收。</li>
-      <li><code>R7p</code> 那多出來的 200 顆是不是論文的 <code>R7_unclear</code>——像，但沒查證。</li>
+      <li><s>A 類裡有 18 個型只在論文表裡、在 VFB 找不到，沒有解釋。</s><br><b>已解</b>（<a href="#s4b">第 4b</a>、<a href="#s4c">4c 節</a>）：<b>兩邊差了一個版本</b>——VFB 是 <code>v1.0.1</code>、論文表是 <code>v1.1</code>。改名、拆型、以及那 7 列，全寫在論文自己的〈Versions of the dataset〉裡。<b>剩下的只有一句</b>：我們沒有 v1.1 的存取權，所以「那 11 顆是 v1.1 併出來的」是推論不是查證。</li>
+      <li><s><code>R7p</code> 那多出來的 200 顆是不是論文的 <code>R7_unclear</code>。</s><br><b>有更好的答案了</b>（<a href="#s4c">第 4c 節</a>）：論文的版本註記明寫 v1.1 調整了個別細胞的分型、<b>而且幾乎全是 R7 與 R8</b>。<b>那個 <code>R7_unclear</code> 的猜測就此作廢</b>——它沒有出處，版本註記有。</li>
       <li>B 類扣掉改名的之後還有 <b>172</b> 個名字，只抽查了 3 個。</li>
     </ul>
     <b>四條都寫在這裡，不寫進結論。</b>

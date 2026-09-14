@@ -11,5 +11,10 @@
   "r7_r8_photoreceptors": 459
  },
  "check": "三條引文都在上面那份全文裡逐字對得到（本檔產生時逐條 in 比對過）",
- "vcn": "We identified 104 VCN types across about 270 cells"
+ "vcn": "We identified 104 VCN types across about 270 cells",
+ "versions": "Two releases of the optic lobe dataset are available: the initial release (optic-lobe:v1.0.1) and the current version of the dataset (optic-lobe:v1.1).",
+ "split_merge": "We also revised some cell-type definitions (5 types were split into a total of 11 new types and 2 types were merged into a single type).",
+ "completeness": "optic-lobe:v1.1 incorporates updates to the segmentation (mainly some merges of small, previously unconnected parts of reconstructed segments with these neurons); these changes collectively result in a small but detectable increase of reconstruction completeness",
+ "retyping": "adjusted the typing of some individual cells (nearly all of these are R7 and R8 photoreceptors",
+ "tbd": "In three cases, we applied a placeholder name, adding ‘_TBD’, because we anticipate that future central brain data will provide a more appropriate designation."
 }
