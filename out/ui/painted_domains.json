@@ -1,0 +1,45 @@
+{
+  "probe": "painted_domains",
+  "part": "PART 1 作業單第 2–3 步",
+  "question": "作業單叫學員點的那兩支 Painted domains 查詢：標籤、徽章、以及真的點下去回幾列",
+  "site": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto",
+  "by_template": {
+    "VFB_00101567": {
+      "symbol": "JRC2018U",
+      "query_label": "Painted domains for JRC2018U",
+      "badge_line_in_query_for": "46Painted domains for JRC2018U",
+      "results_title_after_clicking": "46 List all painted anatomy available for JRC2018Unisex",
+      "title_matches_query_label": false,
+      "result_columns": [
+        "Controls",
+        "Name",
+        "Type",
+        "Thumbnail",
+        "Name",
+        "Type",
+        "Definition",
+        "Images ▼"
+      ],
+      "url": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto?id=VFB_00101567"
+    },
+    "VFB_00017894": {
+      "symbol": "JFRC2",
+      "query_label": "Painted domains for JFRC2",
+      "badge_line_in_query_for": "58Painted domains for JFRC2",
+      "results_title_after_clicking": "58 List all painted anatomy available for adult brain template JFRC2",
+      "title_matches_query_label": false,
+      "result_columns": [
+        "Controls",
+        "Name",
+        "Type",
+        "Thumbnail",
+        "Name",
+        "Type",
+        "Definition",
+        "Images ▼"
+      ],
+      "url": "https://v2.virtualflybrain.org/org.geppetto.frontend/geppetto?id=VFB_00017894"
+    }
+  },
+  "note": "這一支是「作業單每一步都要有人照著做一次」那條規矩的執行者：它不只讀徽章，而是真的把查詢點下去，再讀結果表的標題。"
+}

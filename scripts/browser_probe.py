@@ -631,6 +631,81 @@ def _viewer_state(pw):
         b.close()
 
 
+@probe("painted_domains", "PART 1 作業單第 2–3 步",
+       "作業單叫學員點的那兩支 Painted domains 查詢：標籤、徽章、以及真的點下去回幾列")
+def _painted_domains(pw):
+    """PART 1 作業單第 2、3 步一直只驗到「徽章上寫幾」，**沒有人真的點過**
+    （_notes 第 31 條掛到第 43 條的那條待辦）。這一支就是去點。
+
+    兩步一起做，因為它們是同一個形狀：開 template 的頁面 → 在 `Query For` 區
+    找到 `Painted domains for <短名>` → 點它 → 看結果表標題寫幾列。
+
+    **注意查詢標籤用的是 `Symbol`（短名）**，不是 `Name`：
+    JRC2018Unisex 那一套的查詢叫 `Painted domains for JRC2018U`。
+    """
+    out = {}
+    for tid, symbol in (("VFB_00101567", "JRC2018U"), ("VFB_00017894", "JFRC2")):
+        label = f"Painted domains for {symbol}"
+        b, pg = new_page(pw, 1700, 1050)
+        try:
+            pg.goto(f"{V2}?id={tid}", wait_until="domcontentloaded", timeout=90000)
+            pg.wait_for_timeout(32000)
+            # 徽章與標籤黏在同一段文字裡（例如 "58Painted domains for JFRC2"）
+            # 徽章數字跟標籤在同一段文字裡，但**不在同一個葉節點**
+            # （Term Info 的 innerText 會黏成 "58Painted domains for JFRC2"）。
+            # 所以要找「最小的、整段文字剛好是 數字＋標籤」的那個元素。
+            badge_line = pg.evaluate(
+                """(label) => { const NL = String.fromCharCode(10);
+                   const c = [...document.querySelectorAll('*')].filter(x => {
+                       if (!x.getClientRects().length) return false;
+                       const t = (x.innerText || '').trim();
+                       return t.indexOf(NL) < 0 && t.endsWith(label) && t !== label; });
+                   if (!c.length) return null;
+                   c.sort((a, b) => a.innerText.trim().length - b.innerText.trim().length);
+                   return c[0].innerText.trim(); }""", label)
+            clicked = pg.evaluate(
+                """(label) => { const el = [...document.querySelectorAll('*')].filter(
+                       e => e.children.length === 0 && (e.innerText || '').trim().includes(label));
+                   if (!el.length) return false;
+                   const e = el[el.length - 1];
+                   e.scrollIntoView({block: 'center'}); e.click(); return true; }""", label)
+            if not clicked:
+                raise RuntimeError(f"{tid}：Query For 區找不到「{label}」")
+            pg.wait_for_timeout(22000)
+            shot(pg, f"painted_domains_{symbol}")
+            # 點下去之後，結果表的標題**不是查詢的標籤**，是另一句話
+            # （`Painted domains for JFRC2` → `58 List all painted anatomy available…`）。
+            # 所以不能拿標籤去比對，只能找「數字 ＋ 空格 ＋ 一句話」的那一行。
+            title = pg.evaluate(
+                """() => { const NL = String.fromCharCode(10);
+                   const c = [...document.querySelectorAll('*')].filter(x => {
+                       if (!x.getClientRects().length) return false;
+                       const t = (x.innerText || '').trim().split(NL)[0];
+                       return /^[0-9]+ [A-Z]/.test(t) && t.length < 90
+                              && t.toLowerCase().indexOf('painted') >= 0; });
+                   if (!c.length) return null;
+                   c.sort((a, b) => a.innerText.length - b.innerText.length);
+                   return c[0].innerText.trim().split(NL)[0]; }""")
+            out[tid] = {
+                "symbol": symbol,
+                "query_label": label,
+                "badge_line_in_query_for": badge_line,
+                "results_title_after_clicking": title,
+                "title_matches_query_label": bool(title) and label in (title or ""),
+                "result_columns": pg.evaluate(
+                    """() => [...document.querySelectorAll('[class*=griddle-header],th')]
+                         .filter(e => e.getClientRects().length)
+                         .map(e => (e.innerText || '').trim())
+                         .filter(t => t && t.length < 30)"""),
+                "url": f"{V2}?id={tid}",
+            }
+        finally:
+            b.close()
+    return {"site": V2, "by_template": out,
+            "note": ("這一支是「作業單每一步都要有人照著做一次」那條規矩的執行者："
+                     "它不只讀徽章，而是真的把查詢點下去，再讀結果表的標題。")}
+
+
 @probe("search_v3", "PART 2",
        "v3 的 `Find something...` 搜尋框：送出什麼、畫面上出現什麼")
 def _search_v3(pw):
