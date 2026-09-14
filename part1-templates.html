@@ -340,7 +340,7 @@
   <p>這一份不用安裝任何東西，也不用登入。每一步都直接給網址，貼到瀏覽器就會開在 VFB 的檢視器裡。</p>
 
   <div class="callout">
-    <b>不要從搜尋框開始。</b>VFB 有好幾個搜尋框，<b>各自屬於不同的網站、行為也不一樣</b>，而且其中一個<b>根本找不到這一頁要用的東西</b>（第 5 步會讓你親眼看一次）。所以下面每一步都給網址，貼上去就到；搜尋框留到第 5 步當<b>選做</b>。
+    <b>每一步都給網址，不要用搜尋框找。</b>VFB 有好幾個搜尋框，各自屬於不同的網站、行為也不一樣，其中一個還找不到這一頁要用的東西。下面的網址貼到瀏覽器就到。
   </div>
 
   <ol>
@@ -348,17 +348,9 @@
     <li><b>看它的分區。</b><b>去哪裡找</b>：同一個 Term Info 面板往下捲，有一區叫 <b><code>Queries</code></b>（跟這個東西有關的現成查詢）。在那裡找到名為 <i>Painted domains for JRC2018U</i> 的查詢並執行它。回傳的每一列都是畫在這顆標準腦上的一個腦區，<b>一共 46 列</b>——跟第 3 節那張表對得上。</li>
     <li><b>換一套 template，同樣做一次。</b><a href="https://virtualflybrain.org/reports/VFB_00017894">reports/VFB_00017894</a> 是 JFRC2。一樣在 Term Info 的 <code>Queries</code> 區，這次的查詢叫 <i>Painted domains for JFRC2</i>，回 <b>58 列</b>，跟上一套的 46 不一樣——<b>不同的 template 畫的分區本來就不同</b>，這正是第 3 節那張表那一欄的意思。</li>
     <li><b>看一顆神經元掛在哪幾套 template 上。</b>打開 FlyCircuit 的一顆神經元 <a href="https://virtualflybrain.org/reports/VFB_00005010">Cha-F-100205（reports/VFB_00005010）</a>。<br><b>去哪裡看</b>：Term Info 裡有一欄叫 <b><code>Aligned to</code></b>（v3 介面寫成 <code>Aligned To</code>），列的就是這顆神經元對位到哪幾套 template。這一顆會列出<b>兩套</b>：<code>VFB_00017894</code>（JFRC2）與 <code>VFB_00101567</code>（JRC2018Unisex）。<br><b>第二套就是第 6 節說的橋接產物</b>——這顆神經元只拍過一次，另一套是算出來的。順帶一提，這一欄列的是<b>編號</b>；編號要對回名字，就是第 3 節那張表的用途。</li>
-    <li><b>（選做）看一下搜尋框為什麼幫不上忙。</b>先分清楚<b>有兩個不同的搜尋框，分屬不同網站</b>：<code>virtualflybrain.org</code> 那個寫著「Search VFB — pages, neurons, brain regions…」的框，是<b>說明網站</b>的；第 1 步打開的檢視器在另一個網站上（<code>v2.virtualflybrain.org</code>），那裡的搜尋是另一個。<br>在說明網站那個框裡打 <code>JRC2018Unisex</code>：它只會給你 <b>8 筆</b>，而且<b>這 8 筆沒有一個是 template 本身</b>——名字全長成「某某 <b>on</b> JRC2018Unisex adult brain」，那些是<b>畫在</b>這顆標準腦上的分區。<b>你要找的那一套不在裡面。</b><br>這一步要帶走的只有一句話：<b>認得出「on … 」那一段，就知道那不是 template</b>；而要打開 template 本身，用第 1 步那個網址，不要在這個框裡繞。</li>
   </ol>
 
-  <div class="note">
-    <b>為什麼搜尋一個 template 的名字，回來的大多不是 template？</b>因為畫在它上面的每一塊，名字裡都帶著它的名字——「bulb <b>on JRC2018Unisex adult brain</b>」。搜尋比對的是名字，所以它們全部命中。這不是搜尋壞了，是<b>第 2 節那句「template 是兩件事」的直接後果</b>：一套 template 底下掛著一整份分區地圖，而那份地圖的每一塊都以它命名。認名字的訣竅只有一條——<b>看有沒有「on … 」那一段</b>：有的是分區，沒有的才是 template 本身。
-  </div>
-
-  <div class="callout">
-    <b>為什麼這一節一律給網址，不叫你用搜尋框。</b>因為「你會看到幾筆」根本不是資料的性質，<b>是那個框的性質</b>。光是 VFB 就有好幾個搜尋框，各自問不同的服務、拿不同的筆數、用不同的規則排序：說明網站首頁那個<b>只顯示 8 筆</b>，而本課探針打的那支公開介面，同一個字串回 <b>103 列</b>（其實只有 48 個不重複的詞）。<b>這些數字沒有一個能拿來當「你應該看到什麼」。</b>
-    <br>所以與其教你在那個框裡怎麼找，不如給網址。<b>這也是第 5 節那條「筆數不是個數」的同一個毛病換了個地方出現</b>：你看到的數字往往是<b>介面</b>的產物，不是資料的產物——想知道資料本身有幾個，得繞過介面直接問資料庫，那是 PART 6 的事。
-  </div>
+  <p class="figsrc">這一節的分區數（46、58）、查詢的名稱與 Term Info 各欄的內容，都由 <code>scripts/vfb_probe.py</code> 的 <code>worksheet</code> 探針查得（2026-09-14），原始輸出在 <code>out/worksheet.json</code>。</p>
 
   <div class="note">
     <b>如果你看到的跟這裡寫的不一樣，先別急著懷疑自己。</b>本頁的數字是 2026 年 9 月 13 日抓的。VFB 的資料會更新，分區可能重畫、資料集會換版，數目因此改變是正常的。要確認自己看到的是哪一版，就看該筆資料 Term Info 的 <code>Licenses</code> 欄——它除了授權，也標出這筆影像出自哪一個資料集，<b>資料集的名字裡帶著版本</b>（例如上面那顆神經元標的是「FlyCircuit 1.0 - single neurons (Chiang2010)」）。<b>會變的是數目，不會變的是這一頁講的那些關係</b>：template 是平均腦、對位是照參考頻道做的、位置是估計值、重疊不是接觸、每一次橋接都要付誤差。
