@@ -59,7 +59,7 @@
   </table>
   </div>
 
-  <p class="figsrc">表中「是」的四列，出自 <code>out/nern2025_target.json</code>（PART 7 即引用）與本輪重跑的 <code>out/recompute/target.json</code>、<code>out/recompute/vfb.json</code>、<code>out/recompute/compare.json</code>；「否」的三列出自 <code>out/recompute/cross_check.json</code>、<code>out/recompute/figure.json</code>、<code>out/recompute/run_meta.json</code>。皆為 2026-09-14 取得。</p>
+  <p class="figsrc">表中「是」的四列，出自 <code>out/nern2025_target.json</code>（PART 7 即引用）與本輪重跑的 <code>out/recompute/target.json</code>、<code>out/recompute/vfb.json</code>、<code>out/recompute/compare.json</code>；「否」的三列出自 <code>out/recompute/cross_check.json</code>、<code>out/recompute/figure.json</code>、<code>out/recompute/run_meta.json</code>。皆為 2026-09-15 取得。</p>
 
   <div class="callout">
     <b>所以這一頁能證明什麼、不能證明什麼。</b><br>
@@ -86,7 +86,7 @@
     <div class="stat"><div class="v">575</div><div class="k">兩邊總顆數的差（53,402 − 52,827）</div></div>
   </div>
 
-  <p class="figsrc">四個數字出自 <code>out/recompute/compare.json</code> 的 <code>matched</code>、<code>same_count</code>、<code>different_count</code>、<code>total_cells_delta</code>，由 <code>recompute/recompute.py</code> 於 2026-09-14 產生。</p>
+  <p class="figsrc">四個數字出自 <code>out/recompute/compare.json</code> 的 <code>matched</code>、<code>same_count</code>、<code>different_count</code>、<code>total_cells_delta</code>，由 <code>recompute/recompute.py</code> 於 2026-09-15 產生。</p>
 
   <div class="callout">
     <b>一句話的結論：<span style="white-space:nowrap">真正對上的不是 732 這個型數，是「逐型的顆數」。</span></b><br>
@@ -114,7 +114,7 @@
   </table>
   </div>
 
-  <p class="figsrc">論文側出自 <code>out/recompute/target.json</code>；VFB 側的 <code>neurons</code>、<code>classes_all</code>、<code>classes_generic</code>、<code>classes_leaf</code> 出自 <code>out/recompute/vfb.json</code>；兩個命中率出自 <code>out/recompute/compare.json</code> 的 <code>key_choice</code>。2026-09-14。</p>
+  <p class="figsrc">論文側出自 <code>out/recompute/target.json</code>；VFB 側的 <code>neurons</code>、<code>classes_all</code>、<code>classes_generic</code>、<code>classes_leaf</code> 出自 <code>out/recompute/vfb.json</code>；兩個命中率出自 <code>out/recompute/compare.json</code> 的 <code>key_choice</code>。2026-09-15。</p>
 
   <div class="gap">
     <h4>為什麼是 778 列卻只有 732 個型</h4>
@@ -133,28 +133,33 @@
     <p><b>ONIN 一個都沒有兩側</b>，這正合定義——視葉內在神經元的突觸不出視葉，所以只有右側那一群進得了這份重建。會出現在左側的全是跨側的那幾類（<code>H1</code>、<code>DNp27</code>、<code>AN09A005</code>、<code>5-HTPMPV03</code>）。</p>
   </div>
 
-  <p class="figsrc">側別的分解出自 <code>out/recompute/target.json</code> 的 <code>sides</code>（<code>rows_per_type</code>、<code>types_by_side</code>、<code>rows_contributed_by_side</code>、<code>groups_by_side</code>）與 <code>instance_side</code>。2026-09-14。</p>
+  <p class="figsrc">側別的分解出自 <code>out/recompute/target.json</code> 的 <code>sides</code>（<code>rows_per_type</code>、<code>types_by_side</code>、<code>rows_contributed_by_side</code>、<code>groups_by_side</code>）與 <code>instance_side</code>。2026-09-15。</p>
 
 
   <div class="gap">
     <h4>什麼是「泛稱」、什麼是「末端類別」</h4>
     <p><b>VFB 的類別不是一張平表，是一棵由粗到細的樹</b>——往下每一層都是<b>更細的分法</b>。</p>
 
-    <p><b>先講清楚那 844 個是怎麼來的</b>：它<b>不是</b>本體論裡的所有節點，而是<b>「至少有一顆神經元被直接標成它」的類別</b>。所以樹上會有一些節點<b>根本不參與計數</b>。底下是實際的一小段樹，每個節點都套一次規則（數字是<b>直接標成它</b>的神經元顆數）：</p>
+    <p><b>先講清楚那 844 個是怎麼來的</b>：它<b>不是</b>本體論裡的所有節點，而是<b>「至少有一顆神經元被直接標成它」的類別</b>。所以樹上會有一些節點<b>根本不參與計數</b>。底下是實際的一小段樹，每個節點都套一次規則。<b>每一列有兩個數字，別讀混了</b>——左邊是<b>直接標成這個類別</b>的顆數，右邊是<b>這一叢（它自己＋底下全部）總共</b>幾顆：</p>
 
-<pre>adult neuron                            1 顆   <span class="cm">← <b>泛稱</b>（底下還有 840 個）</span>
-   └─ adult optic lobe intrinsic neuron 1 顆   <span class="cm">← <b>泛稱</b>（底下還有 217 個）</span>
+<pre>                                       直接／這一叢共
+adult neuron                             1 / 53,402   <span class="cm">← <b>泛稱</b>（底下還有 840 個）</span>
+   └─ adult optic lobe intrinsic neuron  1 / 44,750   <span class="cm">← <b>泛稱</b>（底下還有 217 個）</span>
         └─ distal medullary amacrine neuron
-                                        0 顆   <span class="cm">← <b>不算</b>：沒有神經元直接標成它</span>
-<span class="hl">             ├─ Dm15                  242 顆   <span class="cm">← <b>末端類別</b>，底下沒東西了</span></span>
-             └─ Dm3                   401 顆   <span class="cm">← <b>泛稱</b>（底下還有 2 個）</span>
-<span class="hl">                  ├─ Dm3a             601 顆   <span class="cm">← <b>末端類別</b></span></span>
-<span class="hl">                  ├─ Dm3b             571 顆   <span class="cm">← <b>末端類別</b></span></span>
-                  └─ Dm3c               0 顆   <span class="cm">← <b>不算</b>：這套資料裡一顆都沒有</span></pre>
+                                         0 /  4,131   <span class="cm">← <b>不算</b>：沒有神經元直接標成它</span>
+<span class="hl">             ├─ Dm15                   242 /    242   <span class="cm">← <b>末端類別</b>，底下沒東西了</span></span>
+             └─ Dm3                    401 /  1,573   <span class="cm">← <b>泛稱</b>（底下還有 2 個）</span>
+<span class="hl">                  ├─ Dm3a              601 /    601   <span class="cm">← <b>末端類別</b></span></span>
+<span class="hl">                  ├─ Dm3b              571 /    571   <span class="cm">← <b>末端類別</b></span></span>
+                  └─ Dm3c                0 /      0   <span class="cm">← <b>不算</b>：這套資料裡一顆都沒有</span></pre>
 
     <p><b>這 8 個節點裡，只有 6 個進得了 844</b>——<b>3 個泛稱</b>（<code>adult neuron</code>、<code>adult optic lobe intrinsic neuron</code>、<code>Dm3</code>）、<b>3 個末端類別</b>（<code>Dm15</code>、<code>Dm3a</code>、<code>Dm3b</code>）。另外兩個一顆神經元都沒有，<b>連進場的資格都沒有</b>。</p>
 
-    <p><b>另外注意 <code>Dm3</code> 那 401 顆。</b>泛稱身上也可以直接掛著神經元——那是<b>「只被標到這麼細，沒有再細分到 a／b」的那些</b>。所以「泛稱」不等於「空的中間層」。</p>
+    <p><b>兩個數字的關係，就是那條加法</b>：<code>Dm3</code> 這一叢的 1,573 顆 ＝ 直接掛在 <code>Dm3</code> 的 <b>401</b> ＋ <code>Dm3a</code> 的 <b>601</b> ＋ <code>Dm3b</code> 的 <b>571</b>。<b>三者互不重疊</b>——實際查過，<b>沒有任何一顆</b>同時掛在 <code>Dm3</code> 與 <code>Dm3a</code>／<code>Dm3b</code> 底下（重疊 <b>0</b>）。</p>
+
+    <p><b>所以 <code>Dm3</code> 那 401 顆不是矛盾，是一種身分</b>：泛稱身上也可以直接掛著神經元——那是<b>「只被標到這麼細，沒有再細分到 a／b」的那些</b>。<b>「泛稱」不等於「空的中間層」。</b></p>
+
+    <p><b>反過來的例子也在圖上</b>：<code>distal medullary amacrine neuron</code> 直接掛 <b>0</b> 顆，但這一叢有 <b>4,131</b> 顆。<b>「沒有神經元直接標成它」不代表這一支是空的</b>——它只是不參與計數，底下的類別照樣算。</p>
 
     <ul>
       <li><b>末端類別（821 個）</b>——<b>再也分不下去的那一層</b>：在這 844 個裡，沒有任何一個更細的類別掛在它底下。<b>這才是「一個細胞型」</b>，例如 <code>Dm15</code>、<code>Mi1</code>、<code>LC6</code>。</li>
@@ -174,7 +179,7 @@
     <p><b>我們這條規則自己也有一個邊界要講明：</b>判斷「底下有沒有別的類別」時<b>只看這 844 個之內</b>。某個類別在整個 VFB 本體論裡還有下位，但那些下位在這套資料裡一顆神經元都沒有，它在這裡仍算末端。<b>這是我們的選擇，不是資料告訴我們的。</b></p>
   </div>
 
-  <p class="figsrc">23 個泛稱的完整清單、各自底下有幾個類別、以及各自直接掛了幾顆，出自 <code>out/recompute/vfb.json</code> 的 <code>generic_classes</code>；配對總數 59,739 出自同檔的 <code>instanceof_pairs</code>。樹上每個節點的顆數、在不在 844 裡、底下還有幾個、以及判定，出自 <code>out/recompute/class_tree_examples.json</code> 的 <code>tree_nodes</code>（連同 <code>what_the_844_are</code> 那一句）；<code>Dm3</code> 與 <code>Dm3a／Dm3b</code> 的重疊數（<b>0</b>）與 4,063／<code>Mi10_R</code> 那個例子出自同檔。全部由 <code>recompute/recompute.py</code> 的 <code>class_tree_examples()</code> 向同一支唯讀知識庫查來。2026-09-14。</p>
+  <p class="figsrc">23 個泛稱的完整清單、各自底下有幾個類別、以及各自直接掛了幾顆，出自 <code>out/recompute/vfb.json</code> 的 <code>generic_classes</code>；配對總數 59,739 出自同檔的 <code>instanceof_pairs</code>。樹上每個節點的兩個顆數（<code>cells_directly_here</code> 與 <code>cells_in_subtree</code>）、在不在 844 裡、底下還有幾個、以及判定，出自 <code>out/recompute/class_tree_examples.json</code> 的 <code>tree_nodes</code>（連同 <code>what_the_844_are</code> 那一句）；<code>Dm3</code> 與 <code>Dm3a／Dm3b</code> 的重疊數（<b>0</b>）與 4,063／<code>Mi10_R</code> 那個例子出自同檔。全部由 <code>recompute/recompute.py</code> 的 <code>class_tree_examples()</code> 向同一支唯讀知識庫查來。2026-09-15。</p>
 
   <div class="gap">
     <h4>那個 22 個百分點的差距，是這一輪最實用的一個發現</h4>
@@ -190,7 +195,7 @@
     <p><b>要真的並排比，得先放到同一個分母上。</b>把兩種鍵都降到「型」這一層（個體標籤去掉 <code>_L</code>／<code>_R</code>），分母統一用論文的 732 個型：</p>
     <div class="formula">用個體標籤　<b>711 / 732 ＝ 97.1%</b>　　　用類別標籤　<b>547 / 732 ＝ 74.7%</b>　　　差 <b>22.4</b> 個百分點</div>
     <p>（<b>711 不是上面那個 753</b>——753 數的是<b>列</b>，711 數的是<b>型</b>；降到型這一層就沒有左右的區分了。）</p>
-    <p class="figsrc">上表兩個分子分母出自 <code>out/recompute/compare.json</code> 的 <code>key_choice</code>（含 <code>denominator_is</code> 一欄，寫明各自的分母是什麼）；同分母那一組 711／547／732 與 22.4 出自同檔的 <code>key_choice_same_denominator</code>。兩組都由 <code>recompute/recompute.py</code> 於 2026-09-14 產生，執行時也會印在畫面上。</p>
+    <p class="figsrc">上表兩個分子分母出自 <code>out/recompute/compare.json</code> 的 <code>key_choice</code>（含 <code>denominator_is</code> 一欄，寫明各自的分母是什麼）；同分母那一組 711／547／732 與 22.4 出自同檔的 <code>key_choice_same_denominator</code>。兩組都由 <code>recompute/recompute.py</code> 於 2026-09-15 產生，執行時也會印在畫面上。</p>
     <p><b>結論不受影響，而且更乾淨：差距就是 22 個百分點。</b>如果只試了後面那一種，你會看到四分之一的型對不上，然後以為是資料本身對不起來。<b>實際上是鍵挑錯了</b>——VFB 的類別標籤是全名（<i>distal medullary amacrine neuron Dm15</i>），而神經元自己的標籤才是論文在用的那種簡寫（<code>Dm15_R</code>）。這正是 <a href="part2-names.html#s4">PART 2 第 4 節</a>那件事（同一個東西有三個名字）在這裡變成一個百分比。</p>
   </div>
 
@@ -202,7 +207,7 @@
     <figcaption><b>左</b>：一個點是一個型，橫軸是論文的顆數、縱軸是用 VFB 重算的顆數。空心點是兩邊完全相同的 <b>732</b> 個，實心點是不同的 <b>21</b> 個。<b>兩軸都用對數</b>，因為顆數從 1 跨到兩千多；這裡不必處理 0，因為對得上的型兩邊都至少有 1 顆。<b>右</b>：那 21 筆差異由大到小。<b>差距不是連續分布的，而是斷成三段</b>：兩筆約 200、六筆 2、十三筆 1。</figcaption>
   </figure>
 
-  <p class="figsrc">圖由 <code>recompute/make_figure.py</code> 畫，資料出自 <code>out/recompute/compare.json</code>；圖上的點數存在 <code>out/recompute/figure.json</code>（<code>on_diagonal</code>＝732、<code>off_diagonal</code>＝21、<code>largest</code>＝202）。2026-09-14。</p>
+  <p class="figsrc">圖由 <code>recompute/make_figure.py</code> 畫，資料出自 <code>out/recompute/compare.json</code>；圖上的點數存在 <code>out/recompute/figure.json</code>（<code>on_diagonal</code>＝732、<code>off_diagonal</code>＝21、<code>largest</code>＝202）。2026-09-15。</p>
 
   <p><b>右邊那張圖的形狀，本身就是答案的一部分。</b>差 1 顆、差 2 顆的那十九筆，看起來像是逐顆判定的邊界差異——一顆神經元算不算進這個型，兩邊的判斷偶爾不一樣。<b>而最左邊那兩根，是另外一回事：</b></p>
 
@@ -219,7 +224,7 @@
   </table>
   </div>
 
-  <p class="figsrc">六列出自 <code>out/recompute/compare.json</code> 的 <code>photoreceptor_rows</code>，合計出自同檔的 <code>photoreceptor_delta_total</code>。2026-09-14。</p>
+  <p class="figsrc">六列出自 <code>out/recompute/compare.json</code> 的 <code>photoreceptor_rows</code>，合計出自同檔的 <code>photoreceptor_delta_total</code>。2026-09-15。</p>
 
   <div class="callout">
     <b>那兩筆大的是另一回事，而它有一個有出處的解釋。</b><code>R7p</code> 的 ＋202 與 <code>R8p</code> 的 ＋199，<b>不是誰算錯，是兩邊拿的資料差了一個版本</b>——論文的版本註記明寫，新版「調整了一些個別細胞的分型，其中幾乎全是 R7 與 R8 光受器」。<b>證據與推導都在<a href="#s4c">第 4c 節</a>。</b>
@@ -245,7 +250,7 @@
     </div></div>
   </div>
 
-  <p class="figsrc">三類的筆數與清單出自 <code>out/recompute/compare.json</code>：<code>only_in_paper</code>（25）、<code>only_in_paper_explained_by_split</code>（7）、<code>only_in_paper_unexplained</code>（18）、<code>only_in_vfb</code>（184）、<code>only_in_vfb_cells</code>（221）、<code>only_in_vfb_prefix_top</code>、<code>paper_split_vfb_did_not</code>。2026-09-14。</p>
+  <p class="figsrc">三類的筆數與清單出自 <code>out/recompute/compare.json</code>：<code>only_in_paper</code>（25）、<code>only_in_paper_explained_by_split</code>（7）、<code>only_in_paper_unexplained</code>（18）、<code>only_in_vfb</code>（184）、<code>only_in_vfb_cells</code>（221）、<code>only_in_vfb_prefix_top</code>、<code>paper_split_vfb_did_not</code>。2026-09-15。</p>
 
   <!-- ══════════════════════════════════════════════════════ -->
   <h2 id="s4b"><span class="pt">4b</span>換一個鍵：用 bodyId 把 A 類追到底</h2>
@@ -262,7 +267,7 @@
   </table>
   </div>
 
-  <p class="figsrc">四堆的分類與完整清單出自 <code>out/recompute/compare.json</code> 的 <code>by_body_id</code>（<code>kinds</code>、<code>absent</code>、<code>n_renamed</code>、<code>cells_absent</code>、<code>only_in_vfb_after</code>），由 <code>recompute/recompute.py</code> 的 <code>resolve_by_body_id()</code> 產生；「只出現在 <code>Berg2025</code>」出自一次知識庫查詢。2026-09-14。</p>
+  <p class="figsrc">四堆的分類與完整清單出自 <code>out/recompute/compare.json</code> 的 <code>by_body_id</code>（<code>kinds</code>、<code>absent</code>、<code>n_renamed</code>、<code>cells_absent</code>、<code>only_in_vfb_after</code>），由 <code>recompute/recompute.py</code> 的 <code>resolve_by_body_id()</code> 產生；「只出現在 <code>Berg2025</code>」出自一次知識庫查詢。2026-09-15。</p>
 
   <div class="danger">
     <b>為什麼非得用編號不可——光看名字會猜錯。</b>那 25 列裡有 <code>LC39a_R</code> 與 <code>LC39b_R</code>，看起來顯然是「<code>LC39</code> 被拆成 a 和 b」。<b>編號查出來不是這樣</b>：<code>LC39a_R</code> 確實對到 <code>LC39_R</code>，但 <code>LC39b_R</code> 對到的是 <b><code>LoVP51_R</code></b>——一個完全不同的名字。<b>字串猜得出形狀，猜不出身分</b>，而猜錯的那一個<b>不會自己舉手</b>：它照樣會被歸進「已經解釋掉了」那一堆。
@@ -311,7 +316,7 @@
   </table>
   </div>
 
-  <p class="figsrc">五組的還原出自 <code>out/recompute/compare.json</code> 的 <code>by_body_id.version_gap</code>（<code>splits_recovered</code>、<code>n_v101_types_split</code>、<code>n_v11_types_produced</code>），由 <code>recompute/recompute.py</code> 把 778 列逐列用 <code>bodyId</code> 對到 VFB 那一側算出；論文的五條原句出自 <code>out/recompute/paper_quotes.json</code>（全文經 Europe PMC 取得，逐字比對過）。2026-09-14。</p>
+  <p class="figsrc">五組的還原出自 <code>out/recompute/compare.json</code> 的 <code>by_body_id.version_gap</code>（<code>splits_recovered</code>、<code>n_v101_types_split</code>、<code>n_v11_types_produced</code>），由 <code>recompute/recompute.py</code> 把 778 列逐列用 <code>bodyId</code> 對到 VFB 那一側算出；論文的五條原句出自 <code>out/recompute/paper_quotes.json</code>（全文經 Europe PMC 取得，逐字比對過）。2026-09-15。</p>
 
   <div class="note">
     <b>5 個型、11 個新型——跟論文寫的一個字不差。</b>而我們算這個數字的時候<b>沒有看論文那句話</b>，用的只有兩邊的編號。<b>這就是「第二條路」該長的樣子</b>（<a href="part7-agent-prompts.html#s4">指令 8</a>）：不是換個 API 問同一個數，是<b>用完全不同的證據把同一個結論再推一次</b>。
@@ -362,7 +367,7 @@
   </table>
   </div>
 
-  <p class="figsrc">三列出自 <code>out/recompute/cross_check.json</code>，由 <code>recompute/cross_check.py</code> 於 2026-09-14 產生（MCP 伺服器版本 1.11.2）。</p>
+  <p class="figsrc">三列出自 <code>out/recompute/cross_check.json</code>，由 <code>recompute/cross_check.py</code> 於 2026-09-15 產生（MCP 伺服器版本 1.11.2）。</p>
 
   <div class="danger">
     <b>②那個 50,000 就是 <a href="part7-agent-prompts.html#s4">指令 3</a> 預先警告過的坑</b>——翻頁到某個位移之後它停下來，<b>不報錯、只回空陣列</b>。如果指令 3 沒寫那一句，這一輪會拿到一個看起來很正常的五萬筆清單，然後往下做。
@@ -384,7 +389,7 @@
     <p><b>這一條就停在這裡，不編解釋。</b>照 <a href="part7-agent-prompts.html#s4">指令 7</a> 最後那句話——「我寧可你說『這一類我查不出來』」——它現在是一筆明講的未解項，寫在 <code>out/recompute/cross_check.json</code> 的 <code>note</code> 欄裡。</p>
   </div>
 
-  <p class="figsrc">四個配對數出自一次知識庫查詢（與 <code>recompute/cross_check.py</code> 同一支介面，2026-09-14）；<code>instanceof_pairs</code>＝59,739 與未解的 263 存在 <code>out/recompute/cross_check.json</code>。</p>
+  <p class="figsrc">四個配對數出自一次知識庫查詢（與 <code>recompute/cross_check.py</code> 同一支介面，2026-09-15）；<code>instanceof_pairs</code>＝59,739 與未解的 263 存在 <code>out/recompute/cross_check.json</code>。</p>
 
   <div class="callout">
     <b>指令 8 的價值在這裡整個顯現出來。</b>如果只走①那一條路，這一頁會有一個乾淨的 53,402，而且它<b>是對的</b>——但我們不會知道站上還有一支介面對同一個問題回答 60,002，也不會知道它會在五萬列悄悄停下來。<b>一個數字只問過一條路，你不會知道自己站在哪一邊。</b>
@@ -411,7 +416,7 @@
   </table>
   </div>
 
-  <p class="figsrc">指令 4 的 844／23／821 出自 <code>out/recompute/vfb.json</code>；指令 9 的 732 出自 <code>out/recompute/figure.json</code>；指令 10 的重跑結果出自 <code>out/recompute/run_meta.json</code>。指令 1 那個 1.8 KB 的空殼是 <code>scripts/paper_target.py</code> 的註解裡記著的實測結果。2026-09-14。</p>
+  <p class="figsrc">指令 4 的 844／23／821 出自 <code>out/recompute/vfb.json</code>；指令 9 的 732 出自 <code>out/recompute/figure.json</code>；指令 10 的重跑結果出自 <code>out/recompute/run_meta.json</code>。指令 1 那個 1.8 KB 的空殼是 <code>scripts/paper_target.py</code> 的註解裡記著的實測結果。2026-09-15。</p>
 
   <div class="callout">
     <b>十條裡有兩條要改，而兩條都是同一個毛病：檢查訂得不夠嚴。</b><br>
@@ -424,14 +429,14 @@
   <p>照<a href="part7-agent-prompts.html#s4">指令 10</a>整理出來的，是三支程式加一份說明：</p>
 
   <div class="filecard">
-    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　534 行</span><p>取論文的靶、取 VFB 那一側、逐列比對。<b>所有自己決定的參數集中在開頭的 <code>PARAMS</code></b></p></div>
+    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　618 行</span><p>取論文的靶、取 VFB 那一側、逐列比對。<b>所有自己決定的參數集中在開頭的 <code>PARAMS</code></b></p></div>
     <div class="f"><span class="nm">make_figure.py</span><span class="role">產圖　91 行</span><p>畫<a href="#s3">第 3 節</a>那張圖</p></div>
-    <div class="f"><span class="nm">cross_check.py</span><span class="role">旁證　168 行</span><p>同一個數字問三條路，把不一樣的地方攤開</p></div>
+    <div class="f"><span class="nm">cross_check.py</span><span class="role">旁證　175 行</span><p>同一個數字問三條路，把不一樣的地方攤開</p></div>
   </div>
 
-  <p class="figsrc">行數出自 <code>out/recompute/run_meta.json</code> 的 <code>files</code>（2026-09-14 實測）。</p>
+  <p class="figsrc">行數出自 <code>out/recompute/run_meta.json</code> 的 <code>files</code>（2026-09-15 實測）。</p>
 
-  <p><b>從一個空資料夾重跑過了</b>：解壓縮、刪掉 <code>out/</code>、只裝 <code>openpyxl</code> 與 <code>matplotlib</code>，主流程加產圖 <b>18 秒</b>、旁證 <b>50 秒</b>，五個輸出檔跟原本的逐位元組相同（唯一不同的是記錄抓取時間的那個文字檔）。</p>
+  <p><b>從一個空資料夾重跑過了</b>：解壓縮、刪掉 <code>out/</code>、只裝 <code>openpyxl</code> 與 <code>matplotlib</code>，主流程加產圖 <b>63 秒</b>、旁證 <b>51 秒</b>，7 個輸出檔跟原本的逐位元組相同（唯一不同的是記錄抓取時間的那兩個文字檔）。</p>
 
   <p><a class="dl" href="downloads/vfb-recompute.zip"><b>下載這一包</b>（含三支程式、說明、以及這一輪的全部輸出）</a></p>
 
@@ -450,7 +455,7 @@
     <b>四條都寫在這裡，不寫進結論。</b>
   </div>
 
-  <p class="figsrc">四條裡的每一個數字，前面都已經出過一次：60,002、59,739、263 出自 <code>out/recompute/cross_check.json</code>（<a href="#s5">第 5 節</a>），18 與 184 出自 <code>out/recompute/compare.json</code>（<a href="#s4">第 4 節</a>），<code>R7p</code> 那 200 顆的原始兩列在 <a href="#s3">第 3 節</a>的表裡（297 − 95）。2026-09-14。</p>
+  <p class="figsrc">四條裡的每一個數字，前面都已經出過一次：60,002、59,739、263 出自 <code>out/recompute/cross_check.json</code>（<a href="#s5">第 5 節</a>），18 與 184 出自 <code>out/recompute/compare.json</code>（<a href="#s4">第 4 節</a>），<code>R7p</code> 那 200 顆的原始兩列在 <a href="#s3">第 3 節</a>的表裡（297 − 95）。2026-09-15。</p>
 
   <p><b>下一部分把這三支程式讀完。</b><a href="part9-read-code.html">PART 9</a> 不教 Python 語法——它問的是另一組問題：哪幾行是「自己決定的」、哪幾行換一個人寫會不一樣、以及如果這份程式是別人交給你的，你要先看哪裡。</p>
 
@@ -462,7 +467,7 @@
 
 <div class="foot">
   VFB 專題課程　PART 8　·　論文為 Nern et al., 2025, <i>Nature</i> 641(8065): 1225–1237（CC-BY）　·　
-  VFB 資料集 <code>Nern2024</code>，數字於 2026-09-14 取得<br>
+  VFB 資料集 <code>Nern2024</code>，數字於 2026-09-15 取得<br>
   <a href="https://marginli.github.io/bsc-topics/">回 BSC 專題課程首頁</a></div>
 </body>
 </html>

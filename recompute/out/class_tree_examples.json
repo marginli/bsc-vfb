@@ -5,6 +5,7 @@
    "label": "adult neuron",
    "short_form": "FBbt_00047095",
    "cells_directly_here": 1,
+   "cells_in_subtree": 53402,
    "in_the_844": true,
    "subclasses_within_the_844": 840,
    "verdict": "泛稱"
@@ -13,6 +14,7 @@
    "label": "adult optic lobe intrinsic neuron",
    "short_form": "FBbt_00007577",
    "cells_directly_here": 1,
+   "cells_in_subtree": 44750,
    "in_the_844": true,
    "subclasses_within_the_844": 217,
    "verdict": "泛稱"
@@ -21,6 +23,7 @@
    "label": "distal medullary amacrine neuron",
    "short_form": "FBbt_00003767",
    "cells_directly_here": 0,
+   "cells_in_subtree": 4131,
    "in_the_844": false,
    "subclasses_within_the_844": 23,
    "verdict": "不在這 844 個裡（沒有神經元直接標成它）"
@@ -29,6 +32,7 @@
    "label": "Dm15",
    "short_form": "FBbt_00111276",
    "cells_directly_here": 242,
+   "cells_in_subtree": 242,
    "in_the_844": true,
    "subclasses_within_the_844": 0,
    "verdict": "末端類別"
@@ -37,6 +41,7 @@
    "label": "Dm3",
    "short_form": "FBbt_00003770",
    "cells_directly_here": 401,
+   "cells_in_subtree": 1573,
    "in_the_844": true,
    "subclasses_within_the_844": 2,
    "verdict": "泛稱"
@@ -45,6 +50,7 @@
    "label": "Dm3a",
    "short_form": "FBbt_00052303",
    "cells_directly_here": 601,
+   "cells_in_subtree": 601,
    "in_the_844": true,
    "subclasses_within_the_844": 0,
    "verdict": "末端類別"
@@ -53,6 +59,7 @@
    "label": "Dm3b",
    "short_form": "FBbt_00052304",
    "cells_directly_here": 571,
+   "cells_in_subtree": 571,
    "in_the_844": true,
    "subclasses_within_the_844": 0,
    "verdict": "末端類別"
@@ -61,6 +68,7 @@
    "label": "Dm3c",
    "short_form": "FBbt_00053403",
    "cells_directly_here": 0,
+   "cells_in_subtree": 0,
    "in_the_844": false,
    "subclasses_within_the_844": 0,
    "verdict": "不在這 844 個裡（沒有神經元直接標成它）"

@@ -23,6 +23,7 @@
 from __future__ import annotations
 
 import collections
+import html
 import io
 import json
 import re
@@ -337,6 +338,15 @@ def class_tree_examples() -> dict:
                       ("Dm15", DM15), ("Dm3", DM3),
                       ("Dm3a", DM3A), ("Dm3b", DM3B), ("Dm3c", DM3C)):
         here = cells(sf)
+        # **兩個數字都要**：掛在樹上的節點旁邊只寫一個數字，讀者一定讀成子樹總數
+        #   （Dm3 401 顆底下站著 Dm3a 601 顆，看起來就是矛盾）。
+        # cells_directly_here 是「只被標到這麼細」的那些，cells_in_subtree 是
+        # 「這一叢總共幾顆」——DISTINCT 是必要的，一顆神經元可以掛好幾個類別。
+        subtree = cypher(
+            "MATCH (n:Individual)-[:has_source]->(:DataSet {short_form:'%s'}) "
+            "MATCH (n)-[:INSTANCEOF]->(:Class)-[:SUBCLASSOF*0..8]->"
+            "(:Class {short_form:'%s'}) "
+            "RETURN count(DISTINCT n)" % (ds, sf))[0][0]
         below = [r[0] for r in cypher(
             "MATCH (:Class {short_form:'%s'})<-[:SUBCLASSOF*1..8]-(b:Class) "
             "RETURN DISTINCT b.short_form" % sf)]
@@ -344,6 +354,7 @@ def class_tree_examples() -> dict:
         tree_nodes.append({
             "label": label, "short_form": sf,
             "cells_directly_here": here,
+            "cells_in_subtree": subtree,
             "in_the_844": sf in in_set,
             "subclasses_within_the_844": len(below_here),
             "verdict": ("泛稱" if (sf in in_set and below_here)
@@ -462,6 +473,15 @@ def compare(target: dict, vfb: dict) -> dict:
         if m:
             prefix[m.group(1)] += 1
 
+    # bodyId 那一步是**逐列**的（論文補充表的 bodyId 欄一列一個代表編號），
+    # 所以只有 match_key="instance" 時它才有對應的東西可查。
+    # 換成 class 的時候 only_paper 裝的是型名，不是列名——不硬做，明講跳過。
+    by_body_id = (resolve_by_body_id(target, vfb, only_paper, only_vfb)
+                  if PARAMS["match_key"] == "instance" else
+                  {"skipped": "只有 match_key='instance' 時才做：論文補充表的 "
+                              "bodyId 是逐列（逐個型, 側別）給的，"
+                              "換成 class 這一側就沒有可對的編號。"})
+
     d = [abs(x["delta"]) for x in diff]
     return {**out,
             "only_in_vfb_cells": sum(got[k] for k in only_vfb),
@@ -481,9 +501,66 @@ def compare(target: dict, vfb: dict) -> dict:
             "only_in_paper": only_paper,
             "only_in_vfb": only_vfb,
             "paper_split_vfb_did_not": {k: sorted(v) for k, v in split.items()},
-            "by_body_id": resolve_by_body_id(target, vfb, only_paper, only_vfb),
+            "by_body_id": by_body_id,
             "total_cells_paper": target["total_cells"],
             "total_cells_vfb": vfb["neurons"]}
+
+
+# 頁面上引用的論文原句。**每一句都要逐字對回全文**——
+# paper_quotes() 每次重跑都會重驗，對不上就停在那裡，不會悄悄產出一份假的。
+PAPER_QUOTES = {
+    "n_types": "We classified around 53,000 visual system neurons into 732 cell types",
+    "versions": "Two releases of the optic lobe dataset are available: the initial "
+                "release (optic-lobe:v1.0.1) and the current version of the dataset "
+                "(optic-lobe:v1.1).",
+    "split_merge": "We also revised some cell-type definitions (5 types were split "
+                   "into a total of 11 new types and 2 types were merged into a "
+                   "single type).",
+    "completeness": "optic-lobe:v1.1 incorporates updates to the segmentation "
+                    "(mainly some merges of small, previously unconnected parts of "
+                    "reconstructed segments with these neurons); these changes "
+                    "collectively result in a small but detectable increase of "
+                    "reconstruction completeness",
+    "retyping": "adjusted the typing of some individual cells (nearly all of these "
+                "are R7 and R8 photoreceptors",
+    "tbd": "In three cases, we applied a placeholder name, adding \u2018_TBD\u2019, "
+           "because we anticipate that future central brain data will provide a "
+           "more appropriate designation.",
+}
+
+EPMC = ("https://www.ebi.ac.uk/europepmc/webservices/rest/"
+        "PMC12119369/fullTextXML")
+
+
+def paper_quotes() -> dict:
+    """把頁面上引的論文原句逐條對回全文。
+
+    **為什麼走 Europe PMC**：PMC 的網頁版擋自動存取（回 reCAPTCHA 頁），
+    而 fullTextXML 這條給的是全文。這篇是 CC-BY。
+
+    **為什麼要有這一支**：這個檔案原本是臨時腳本產的，
+    於是「逐字比對過」這句宣稱沒有任何程式在維持——
+    乾淨重跑不會重驗，論文換版或引錯字也不會有人發現。現在對不上就直接停。
+    """
+    req = urllib.request.Request(EPMC, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=120) as r:
+        xml = r.read().decode("utf-8", errors="replace")
+    # 去標籤 → 還原實體 → 把換行壓成單一空白，才對得上跨行的句子
+    text = re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", xml)))
+
+    missing = [k for k, v in PAPER_QUOTES.items() if v not in text]
+    if missing:
+        raise SystemExit(f"這幾句在全文裡逐字對不到，不要往下做：{missing}")
+    return {
+        "source": "Nern et al. 2025 全文，經 Europe PMC 的 fullTextXML 取得（PMC12119369）",
+        "url": EPMC,
+        "pmcid": "PMC12119369",
+        "fetched": datetime.now(timezone.utc).date().isoformat(),
+        "check": f"{len(PAPER_QUOTES)} 條引文在上面那份全文裡逐字對得到"
+                 "（本檔每次重新產生時都重驗一次，對不上就中止）",
+        "full_text_chars": len(text),
+        **PAPER_QUOTES,
+    }
 
 
 def main() -> int:
@@ -515,9 +592,16 @@ def main() -> int:
     tree = class_tree_examples()
     print(f"   Dm3 與 Dm3a／Dm3b 的重疊：{tree['overlap_Dm3_with_Dm3ab']} 顆"
           f"（分類學上位不會重複數）")
+    _dm3 = next(n for n in tree["tree_nodes"] if n["label"] == "Dm3")
+    print(f"   Dm3 直接 {_dm3['cells_directly_here']} 顆 ／ 這一叢共 "
+          f"{_dm3['cells_in_subtree']} 顆（樹狀圖上兩個都要寫）")
+
+    print("⑤ 對論文原句…")
+    quotes = paper_quotes()
+    print(f"   {len(PAPER_QUOTES)} 條全部逐字對得到")
 
     for name, obj in (("target", target), ("vfb", vfb), ("compare", cmp),
-                      ("class_tree_examples", tree)):
+                      ("class_tree_examples", tree), ("paper_quotes", quotes)):
         (OUT / f"{name}.json").write_text(
             json.dumps(obj, ensure_ascii=False, indent=1) + "\n", "utf-8")
     (OUT / "fetched_at.txt").write_text(

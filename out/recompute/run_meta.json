@@ -1,23 +1,28 @@
 {
- "what": "PART 8 那一輪實跑的環境與計時",
+ "what": "PART 8 那一輪實跑的環境與計時。由 recompute/run_meta.py 產生。",
  "files": {
-  "recompute.py": 534,
+  "recompute.py": 618,
   "make_figure.py": 91,
-  "cross_check.py": 168,
+  "cross_check.py": 175,
   "README.md": 53
  },
  "clean_run": {
-  "where": "從 downloads/vfb-recompute.zip 解到一個空資料夾、刪掉 out/ 之後重跑",
-  "recompute_plus_figure_seconds": 18,
-  "cross_check_seconds": 50,
+  "where": "把 vfb-recompute.zip 解到一個空資料夾、刪掉 out/ 之後重跑",
+  "zip_contains": 15,
+  "recompute_plus_figure_seconds": 63,
+  "cross_check_seconds": 51,
   "outputs_identical_to_original": true,
   "identical_files": [
-   "target.json",
-   "vfb.json",
+   "class_tree_examples.json",
    "compare.json",
+   "cross_check.json",
    "figure.json",
-   "cross_check.json"
-  ]
+   "paper_quotes.json",
+   "target.json",
+   "vfb.json"
+  ],
+  "differing_files": [],
+  "not_regenerated": []
  },
  "dependencies": [
   "openpyxl",
@@ -37,9 +42,9 @@
   "only_in_vfb": 192
  },
  "code_lines": {
-  "total_py": 793,
-  "comment_or_docstring": 152,
-  "pct": 19,
-  "how": "tokenize 數 COMMENT 與 docstring 佔掉的行；三支 .py 合計，不含 README.md"
+  "total_py": 884,
+  "comment_or_docstring": 175,
+  "pct": 20,
+  "how": "COMMENT 用 tokenize 數、docstring 用 ast 抓（跨行的查詢字串不算）；3 支 .py 合計，不含 README.md，也不含 run_meta.py（它不在交付的那一包裡）"
  }
 }

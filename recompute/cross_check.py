@@ -136,8 +136,11 @@ def route_mcp() -> dict:
 
 def main() -> int:
     OUT.mkdir(exist_ok=True)
-    res = {"asked": f"資料集 {DS} 底下有幾顆神經元",
-           "when": datetime.now(timezone.utc).isoformat(timespec="seconds")}
+    # **時間戳不寫進這個 JSON**，另外寫一個檔案。
+    # 這一包的規矩是「時間只寫在 *_at.txt 裡，其餘檔案不含時間」——
+    # 否則重跑一次 git diff 全是時間，看不出哪個數字真的變了。
+    # （這一條原本只有 recompute.py 遵守，這裡漏了，乾淨重跑比對時才發現。）
+    res = {"asked": f"資料集 {DS} 底下有幾顆神經元"}
     for name, fn in (("kb_cypher", route_kb), ("rest_run_query", route_rest),
                      ("mcp_get_term_info", route_mcp)):
         try:
@@ -161,6 +164,10 @@ def main() -> int:
         "結論：要寫「幾顆神經元」就不能用 ②。")
     (OUT / "cross_check.json").write_text(
         json.dumps(res, ensure_ascii=False, indent=1) + "\n", "utf-8")
+    (OUT / "cross_check_at.txt").write_text(
+        f"旁證三條路的抓取時間 "
+        f"{datetime.now(timezone.utc).isoformat(timespec='seconds')}（UTC）\n",
+        "utf-8")
     return 0
 
 

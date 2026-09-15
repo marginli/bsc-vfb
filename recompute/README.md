@@ -13,9 +13,9 @@ Nern et al. (2025, *Nature* 641: 1225–1237) 那篇視覺系統普查的逐型�
 
 ```bash
 pip install openpyxl matplotlib        # 只需要這兩個
-python3 recompute.py                   # 主流程，約 20 秒
+python3 recompute.py                   # 主流程，約 60 秒
 python3 make_figure.py                 # 畫圖，約 2 秒（要先跑 recompute.py）
-python3 cross_check.py                 # 換兩條路再問一次，約 55 秒
+python3 cross_check.py                 # 換兩條路再問一次，約 50 秒
 ```
 
 不需要 API key，不需要登入。三支程式都可以單獨重跑。
@@ -31,9 +31,11 @@ python3 cross_check.py                 # 換兩條路再問一次，約 55 秒
 | `out/class_tree_examples.json` | 「末端類別」與「泛稱」的實例；含一條被查出來是錯的直覺 |
 | `out/scatter.png` | 逐型散點圖，以及 21 筆差異的大小 |
 | `out/cross_check.json` | 同一個數字問三條路的結果，以及**還沒解掉**的那一條 |
-| `out/fetched_at.txt` | 抓取時間與每一個關鍵數字 |
+| `out/paper_quotes.json` | 頁面上引的論文原句，以及它們逐字對回全文的結果 |
+| `out/fetched_at.txt` | 主流程的抓取時間與每一個關鍵數字 |
+| `out/cross_check_at.txt` | 旁證那一支的抓取時間 |
 
-**時間戳只寫在 `out/fetched_at.txt` 裡**，其餘檔案不含時間。
+**時間戳只寫在 `out/fetched_at.txt` 與 `out/cross_check_at.txt` 裡**，其餘檔案不含時間。
 這樣重跑一次之後，`git diff` 看得出來的就只有真正變掉的數字。
 
 ## 自己決定的參數

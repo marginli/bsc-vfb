@@ -1,6 +1,5 @@
 {
  "asked": "資料集 Nern2024 底下有幾顆神經元",
- "when": "2026-09-14T08:16:59+00:00",
  "kb_cypher": {
   "neurons": 53402,
   "distinct_labels": 53402,

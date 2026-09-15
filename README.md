@@ -27,6 +27,7 @@
 | `scripts/three_layers.py` | PART 6 的三層對照：同一個問題用滑鼠／`vfb-connect`／MCP 各問一次（需 `pip install --user vfb-connect`） |
 | `scripts/*_audit.py` | 七道稽核 |
 | `recompute/` | **PART 8／9 的產物**：三支程式（`recompute.py`、`cross_check.py`、`make_figure.py`）＋說明。<br>只用 VFB 的資料重算 Nern et al. 2025 的細胞型普查。**不部署**——同一份已包在 `downloads/` 的 zip 裡 |
+| `recompute/run_meta.py` | **量那一包自己**：行數、註解比例、換一個參數會怎樣、以及把 zip 解到空資料夾重跑一次。<br>**它不在交付的那一包裡**，產出直接寫到 `out/recompute/run_meta.json`——描述某個 zip 的檔案不能住在那個 zip 裡面 |
 | `downloads/vfb-recompute.zip` | 上面那一包，給讀者下載。改了 `recompute/` 之後要重打包 |
 | `out/` | 探針的原始輸出。**頁面上每個數字都對得回這裡** |
 | `out/ui/` | 畫面探針的輸出。**頁面上每個介面名字都對得回這裡** |
@@ -92,12 +93,13 @@ PART 8／9 那一包要重跑或改動時：
 
 ```bash
 cd recompute
-python3 recompute.py && python3 make_figure.py    # 主流程＋圖，約 20 秒
-python3 cross_check.py                             # 三條路的旁證，約 55 秒
-cp out/*.json out/fetched_at.txt ../out/recompute/ # 同步給稽核用
+python3 recompute.py && python3 make_figure.py    # 主流程＋圖，約 65 秒
+python3 cross_check.py                             # 三條路的旁證，約 50 秒
+cp out/*.json out/*.txt ../out/recompute/          # 同步給稽核用
 cd .. && rm -f downloads/vfb-recompute.zip
 cd recompute && zip -qr ../downloads/vfb-recompute.zip \
     recompute.py make_figure.py cross_check.py README.md out/
+python3 run_meta.py --zip ../downloads/vfb-recompute.zip   # 量行數＋乾淨重跑，約 2.5 分鐘
 ```
 
 ## 資料來源與授權

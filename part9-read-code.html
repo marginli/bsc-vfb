@@ -42,15 +42,15 @@
   <p><a class="dl" href="downloads/vfb-recompute.zip"><b>下載 vfb-recompute.zip</b>（三支程式、說明，以及那一輪的全部輸出）</a></p>
 
   <div class="filecard">
-    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　534 行</span><p>取論文的靶、取 VFB 那一側、逐列比對</p></div>
-    <div class="f"><span class="nm">cross_check.py</span><span class="role">旁證　168 行</span><p>同一個數字問三條路</p></div>
+    <div class="f"><span class="nm">recompute.py</span><span class="role">主流程　618 行</span><p>取論文的靶、取 VFB 那一側、逐列比對</p></div>
+    <div class="f"><span class="nm">cross_check.py</span><span class="role">旁證　175 行</span><p>同一個數字問三條路</p></div>
     <div class="f"><span class="nm">make_figure.py</span><span class="role">產圖　91 行</span><p>畫 PART 8 第 3 節那張圖</p></div>
   </div>
 
-  <p class="figsrc">三個行數出自 <code>out/recompute/run_meta.json</code> 的 <code>files</code>；合計 793 行與其中 152 行註解出自同檔的 <code>code_lines</code>（用 <code>tokenize</code> 數的，2026-09-14 實測）。</p>
+  <p class="figsrc">三個行數出自 <code>out/recompute/run_meta.json</code> 的 <code>files</code>；合計 884 行與其中 175 行註解出自同檔的 <code>code_lines</code>（註解用 <code>tokenize</code>、說明字串用 <code>ast</code> 數的，2026-09-15 實測）。</p>
 
   <div class="note">
-    <b>三支加起來 793 行，其中 152 行是註解或說明字串（近兩成）。</b>這不是為了好看——<a href="part7-agent-prompts.html#s4">指令 10</a> 明寫「每個檔案開頭用註解寫清楚它做什麼」。<b>一份研究用的程式，註解不是裝飾，是它唯一的說明書。</b>
+    <b>三支加起來 884 行，其中 175 行是註解或說明字串（20%）。</b>這不是為了好看——<a href="part7-agent-prompts.html#s4">指令 10</a> 明寫「每個檔案開頭用註解寫清楚它做什麼」。<b>一份研究用的程式，註解不是裝飾，是它唯一的說明書。</b>
   </div>
 
   <div class="callout">
@@ -99,7 +99,7 @@ PARAMS = {
     <p><b>同一份資料、同一支程式、同一天跑的，結論從 732 變成 535。</b>如果這份程式把這個選擇藏在第 180 行的某個判斷式裡，讀的人根本不會知道有這個選擇存在——<b>他會以為 732 是資料告訴他的。</b></p>
   </div>
 
-  <p class="figsrc">右欄五個數字出自 <code>out/recompute/run_meta.json</code> 的 <code>match_key_class_variant</code>（把參數改掉重跑一次存下來的）；左欄出自 <code>out/recompute/compare.json</code>。2026-09-14。</p>
+  <p class="figsrc">右欄五個數字出自 <code>out/recompute/run_meta.json</code> 的 <code>match_key_class_variant</code>（把參數改掉重跑一次存下來的）；左欄出自 <code>out/recompute/compare.json</code>。2026-09-15。</p>
 
   <div class="danger">
     <b>順手抓到的一個真的毛病：參數表裡本來有第四個，而它根本沒被用到。</b><br>
@@ -123,7 +123,7 @@ PARAMS = {
    顆數相同 732　不同 21（最大差 202）
    只在論文 25　只在 VFB 184</pre>
 
-  <p class="figsrc">這是實際的執行輸出，每一個數字都同時寫進 <code>out/recompute/target.json</code>、<code>out/recompute/vfb.json</code>、<code>out/recompute/compare.json</code>。2026-09-14。</p>
+  <p class="figsrc">這是實際的執行輸出，每一個數字都同時寫進 <code>out/recompute/target.json</code>、<code>out/recompute/vfb.json</code>、<code>out/recompute/compare.json</code>。2026-09-15。</p>
 
   <h3>① 取靶：一個 <code>if</code> 擋住了一整類災難</h3>
 
@@ -213,7 +213,7 @@ PARAMS = {
     <p>而配對數 59,739 跟 ② 報的 60,002 還差 <b>263</b>。<b>那 263 到現在沒解掉</b>，就寫在輸出檔的 <code>note</code> 欄裡，一個字都不修飾。</p>
   </div>
 
-  <p class="figsrc">三條路的回答、<code>instanceof_pairs</code>＝59,739、三元組數與那句 <code>note</code>，全部出自 <code>out/recompute/cross_check.json</code>（<code>cross_check.py</code> 產生，2026-09-14）。</p>
+  <p class="figsrc">三條路的回答、<code>instanceof_pairs</code>＝59,739、三元組數與那句 <code>note</code>，全部出自 <code>out/recompute/cross_check.json</code>（<code>cross_check.py</code> 產生，2026-09-15）。</p>
 
   <div class="danger">
     <b>這是整包程式裡最值得學的一段——而它不是在算答案，是在挑自己的毛病。</b><br>
@@ -245,7 +245,7 @@ PARAMS = {
     <b>這三個決定合起來，是「一張圖要能被別人檢查」的最低條件。</b>而檢查的方式很具體：圖上落在對角線的點數，必須等於 <code>compare.json</code> 裡「顆數相同」的筆數——兩個都是 <b>732</b>。<b>對不上就代表圖跟數字來自不同的計算</b>，那是嚴重的問題。這正是 <a href="part7-agent-prompts.html#s4">指令 9</a> 最後要求回報點數的原因。
   </div>
 
-  <p class="figsrc">「圖上落在對角線 732 點」出自 <code>out/recompute/figure.json</code> 的 <code>on_diagonal</code>；「顆數相同 732 筆」出自 <code>out/recompute/compare.json</code> 的 <code>same_count</code>。2026-09-14。</p>
+  <p class="figsrc">「圖上落在對角線 732 點」出自 <code>out/recompute/figure.json</code> 的 <code>on_diagonal</code>；「顆數相同 732 筆」出自 <code>out/recompute/compare.json</code> 的 <code>same_count</code>。2026-09-15。</p>
 
   <!-- ══════════════════════════════════════════════════════ -->
   <h2 id="s6"><span class="pt">6</span>五個問題：拿到任何一份這種程式都先問</h2>
@@ -271,11 +271,11 @@ PARAMS = {
     </div></div>
     <div class="case"><span class="badge two">5</span><div class="bd">
       <b>從空資料夾跑得起來嗎？</b>
-      這是唯一一個不能用讀的、只能實際做的。<b>解壓縮、刪掉輸出、重跑一次，看數字一不一樣。</b><a href="part8-agent-run.html#s7">PART 8 第 7 節</a>那一輪是 18 秒加 50 秒，五個輸出檔逐位元組相同。
+      這是唯一一個不能用讀的、只能實際做的。<b>解壓縮、刪掉輸出、重跑一次，看數字一不一樣。</b><a href="part8-agent-run.html#s7">PART 8 第 7 節</a>那一輪是 63 秒加 51 秒，7 個輸出檔逐位元組相同。
     </div></div>
   </div>
 
-  <p class="figsrc">第 1、2 點提到的參數與門檻在 <code>recompute/recompute.py</code> 裡（<code>PARAMS</code>、<code>SUBCLASSOF*1..8</code>、<code>len(blob) &lt; 100_000</code>）；第 5 點的 18 秒、50 秒與「五個輸出檔逐位元組相同」出自 <code>out/recompute/run_meta.json</code> 的 <code>clean_run</code>（2026-09-14 實測）。</p>
+  <p class="figsrc">第 1、2 點提到的參數與門檻在 <code>recompute/recompute.py</code> 裡（<code>PARAMS</code>、<code>SUBCLASSOF*1..8</code>、<code>len(blob) &lt; 100_000</code>）；第 5 點的 63 秒、51 秒與「7 個輸出檔逐位元組相同」出自 <code>out/recompute/run_meta.json</code> 的 <code>clean_run</code>（由 <code>recompute/run_meta.py --zip</code> 真的解開重跑產生，2026-09-15 實測）。</p>
 
   <div class="callout">
     <b>五個問題裡，只有一個需要看得懂程式碼。</b>其餘四個問的是「這份東西有沒有交代清楚」，而那件事跟語法無關——<b>你在審一份研究計畫、一篇論文的方法段時問的，其實是同樣五件事。</b>
@@ -318,7 +318,7 @@ PARAMS = {
 
 <div class="foot">
   VFB 專題課程　PART 9　·　程式與輸出以 <a href="downloads/vfb-recompute.zip">vfb-recompute.zip</a> 提供　·　
-  論文為 Nern et al., 2025, <i>Nature</i>（CC-BY）　·　數字於 2026-09-14 取得<br>
+  論文為 Nern et al., 2025, <i>Nature</i>（CC-BY）　·　數字於 2026-09-15 取得<br>
   <a href="https://marginli.github.io/bsc-topics/">回 BSC 專題課程首頁</a></div>
 </body>
 </html>
