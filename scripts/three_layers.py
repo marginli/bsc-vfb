@@ -140,7 +140,16 @@ def main() -> int:
                  for k, v in code.items()},
         "ai": ai,
         "agree_mouse_rest_ai": mouse["n"] == rest["n"] == ai["n"],
+        # **這是兩個不同的差，不要混**：
+        #   default − rest        程式預設 vs 滑鼠（頁面上那個「多了 N」）
+        #   default − cells_only  加一個參數排掉了什麼（頁面上那一列的 N）
+        # 一度在頁面上把前者的數字寫進後者那一列——兩個都對得回 out/，
+        # 所以 number_audit 放行了（它查「出現過沒有」，不查「在對的地方」）。
         "code_default_minus_rest": code["default"]["n"] - rest["n"],
+        "code_default_minus_cells_only": {
+            "n": code["default"]["n"] - code["cells_only"]["n"],
+            "what_cells_only_removes": describe(
+                sorted(set(code["default"]["ids"]) - set(code["cells_only"]["ids"])))},
         "code_cells_only_vs_rest": {
             "shared": len(c_ids & r_ids),
             "only_in_code": describe(only_code),

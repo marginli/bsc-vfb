@@ -188,12 +188,17 @@ def audit(path, hay, where=False):
         if tok in SKIP_TOKEN or any(re.search(p, before) for p, _ in SKIP_CONTEXT):
             continue
         checked += 1
-        if tok in EXEMPT:
-            seen.setdefault(tok, ("EXEMPT", {"（見 EXEMPT 的理由）"}))
-            continue
+        # **out/ 要先查，EXEMPT 是最後手段。**
+        # 反過來寫的話，一筆為某一頁寫的 EXEMPT 會把別頁同一個數字一起蓋掉：
+        # PART 3 的「481 倍」列了 EXEMPT，於是 PART 6 那個真的存在於
+        # out/three_layers.json 的 481（cells_only 的筆數）也被吞掉，
+        # --where 只印得出「EXEMPT」，看不出它其實有來源。（第 78 條同一型。）
         hit = found(tok, hay)
         if hit:
             seen.setdefault(tok, hit)
+            continue
+        if tok in EXEMPT:
+            seen.setdefault(tok, ("EXEMPT", {"（見 EXEMPT 的理由）"}))
             continue
         ctx = re.sub(r'\s+', ' ', txt[max(0, m.start() - 30):m.end() + 20])
         unmatched.setdefault(tok, ctx)

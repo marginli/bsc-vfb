@@ -146,11 +146,13 @@ vc.get_terms_by_region('medulla')</pre>
   <div class="tblwrap">
   <table>
     <tr><th>差別</th><th>多出來的是什麼</th><th>為什麼</th></tr>
-    <tr><td>510 → 481</td><td><b>39 個次分區</b>：<i>outer medulla</i>、<i>medulla layer M1</i>–<i>M10</i>、<i>inner medulla</i>⋯</td><td>函式叫 <code>get_terms_by_<b>region</b></code>，它回的是「跟這個腦區有關的<b>所有詞</b>」，不是只有神經元。加上 <code>cells_only=True</code> 就排掉了</td></tr>
+    <tr><td>510 → 481</td><td><b>排掉的都不是細胞</b>：<i>outer medulla</i>、<i>medulla layer M1</i>–<i>M10</i>、<i>inner medulla</i>⋯</td><td>函式叫 <code>get_terms_by_<b>region</b></code>，它回的是「跟這個腦區有關的<b>所有詞</b>」，不是只有神經元。加上 <code>cells_only=True</code> 就排掉了</td></tr>
     <tr><td>481 → 471</td><td><b>9 個膠細胞</b> ＋ <b>2 個神經元</b>（<i>Dm8a</i>、<i>Dm8b</i>）</td><td><b>cell 不等於 neuron</b>——膠細胞也是細胞。那兩個神經元見下一段</td></tr>
     <tr><td>反過來，471 裡有 1 個是程式那層沒有的</td><td><code>FBbt_00110069</code>，標籤是 <i>obsolete distal medullary amacrine neuron Dm8b</i></td><td><b>一個已棄用的詞。</b><code>vfb-connect</code> 預設 <code>include_deprecated=False</code> 會把它排掉，而站上那支查詢沒有這個預設</td></tr>
   </table>
   </div>
+
+  <p><b>三步接起來就是那個 39。</b><b>510</b> →（加 <code>cells_only=True</code>，排掉不是細胞的那些）→ <b>481</b> →（<b>9</b> 個膠細胞與 <b>2</b> 個神經元出去、<b>1</b> 個已棄用的詞進來）→ <b>471</b>。<b>頭尾差 39，而中間每一步都是一個預設值。</b></p>
 
   <p>最後那一列值得多看一眼：<b>站上那 471 種裡，有一種是已經棄用的詞</b>，而它的新版（<code>FBbt_00053638</code> 與 <code>FBbt_00053639</code>，<i>Dm8a</i> 與 <i>Dm8b</i>）反而只出現在程式那一層。同一個名字、兩個編號，一個作廢一個現行——這正是 <a href="part4-connectomes.html#s4">PART 4 第 4 節</a>講的棄用，出現在詞的層次上。</p>
 
@@ -191,7 +193,7 @@ vc.get_terms_by_region('medulla')</pre>
       <b>而你在 <a href="part3-queries.html">PART 3</a> 用滑鼠得到的是 471。</b>先停在這裡想一下為什麼。</li>
 
     <li><b>加一個參數再問一次。</b><pre class="ext">vc.get_terms_by_region('medulla', cells_only=True)</pre>
-      <b>看到什麼算對</b>：<b>481</b>。<br>兩個數字都不是 471，而<b>你一個字都沒改問題，只改了參數</b>。<a href="#s5">第 5 節</a>那張表逐項解釋那 39 個與那 10 個各是什麼。</li>
+      <b>看到什麼算對</b>：<b>481</b>。<br>兩個數字都不是 471，而<b>你一個字都沒改問題，只改了參數</b>。<a href="#s5">第 5 節</a>那張表把 <b>510 → 481 → 471</b> 這兩步逐項拆開，說明每一步排掉（或補回）的是什麼。</li>
 
     <li><b>接上 MCP，然後追問它。</b>照<a href="#s4">第 4 節</a>那一行把伺服器加進你的 AI 助理，用中文問：「medulla 裡有一部分在裡面的神經元有幾種？」<br><b>看到什麼算對</b>：它應該回你 <b>471</b>。<br><b>然後追問一句：「你用了哪一個工具、填了哪些參數？」</b>把它的回答跟<a href="#s5">第 5 節</a>那張表對一遍。<br><b>這一步才是這份作業單的重點</b>：不是讓 AI 給你答案，是讓它交代它怎麼得到那個答案的——因為那三個預設值，它一個都不會主動告訴你。</li>
   </ol>
