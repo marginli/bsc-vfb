@@ -193,11 +193,21 @@ def main():
             capture_output=True, text=True).stdout.strip()))
         print(f"   投影片 {i + 1}/{len(SLIDES)}　旁白 {durs[-1]:.1f} 秒")
 
+    # **每一段各自補 PAD 秒靜音，再串起來。**
+    # 影像軌每張投影片的長度是 d+PAD；音軌若只在整段串完之後補一次
+    # （`apad` 加在 concat 之後），就會每張快 PAD 秒、愈積愈多——
+    # 15 張到最後聲音領先影像 9 秒。實測音軌 701.1 秒對影像應有的 709.5 秒。
+    ext = "wav" if LOCAL else "mp3"
+    for i in range(len(durs)):
+        subprocess.run(["ffmpeg", "-y", "-i", f"{WORK}/aud/a{i:02d}.{ext}",
+                        "-af", f"apad=pad_dur={PAD}", "-ar", "24000", "-ac", "1",
+                        "-c:a", "pcm_s16le", f"{WORK}/aud/p{i:02d}.wav"],
+                       capture_output=True)
     with io.open(f"{WORK}/ca.txt", "w") as f:
         for i in range(len(durs)):
-            f.write(f"file 'aud/a{i:02d}.{'wav' if LOCAL else 'mp3'}'\n")
+            f.write(f"file 'aud/p{i:02d}.wav'\n")
     subprocess.run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", f"{WORK}/ca.txt",
-                    "-af", f"apad=pad_dur={PAD}", "-c:a", "aac", "-b:a", "128k",
+                    "-c:a", "aac", "-b:a", "128k",
                     f"{WORK}/voice.m4a"], capture_output=True, cwd=WORK)
     with io.open(f"{WORK}/cv.txt", "w") as f:
         for i, d in enumerate(durs):
