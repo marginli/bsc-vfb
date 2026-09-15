@@ -25,7 +25,7 @@
 | `scripts/make_part5_figures.py` | PART 5 的兩張骨架比對圖（本機 FlyCircuit vs VFB 下載） |
 | `scripts/paper_target.py` | PART 7–9 的「靶」：抓 Nern et al. 2025 的補充表，算出要重算的那組數字 |
 | `scripts/three_layers.py` | PART 6 的三層對照：同一個問題用滑鼠／`vfb-connect`／MCP 各問一次（需 `pip install --user vfb-connect`） |
-| `scripts/*_audit.py` | 八道稽核 |
+| `scripts/*_audit.py` | 九道稽核 |
 | `recompute/` | **PART 8／9 的產物**：三支程式（`recompute.py`、`cross_check.py`、`make_figure.py`）＋說明。<br>只用 VFB 的資料重算 Nern et al. 2025 的細胞型普查。**不部署**——同一份已包在 `downloads/` 的 zip 裡 |
 | `recompute/run_meta.py` | **量那一包自己**：行數、註解比例、換一個參數會怎樣、以及把 zip 解到空資料夾重跑一次。<br>**它不在交付的那一包裡**，產出直接寫到 `out/recompute/run_meta.json`——描述某個 zip 的檔案不能住在那個 zip 裡面 |
 | `downloads/vfb-recompute.zip` | 上面那一包，給讀者下載。改了 `recompute/` 之後要重打包 |
@@ -56,6 +56,11 @@ VFB 換版之後兩支都重跑，程式會列出哪些檔案的內容變了—�
   分成**畫面上有／只有 API 有／兩邊都沒有**三桶。**中間那桶是重點**——
   把 API 的欄位名當成畫面上的欄位名，是這個專題犯過最多次的錯（一輪六處）。
   **天花板**：跨版本的張冠李戴它抓不到（v2 叫 `License`、v3 叫 `Licenses`，兩個都在）。
+- **`value_audit.py`**：頁面上「資料集／站台／來源」的**值**，逐字對回探針。
+  **`field_audit` 查的是欄位名，這一道查的是欄位裡的值**——連兩頁犯過同一型的錯
+  （八個站台名有四個被縮寫、三個來源名有一個被縮寫），而前八道一道都抓不到。
+  判準是**從版本號定位**（`v1.0.1`、`v783`），因為改寫的人幾乎不會動版本號。
+  頁面自己的簡寫列在 `ACCEPTED`，一筆一個理由，**而且是最後才查**。
 - **`ui_claim_audit.py`**：介面描述無法自動驗真假，所以它只查
   **有沒有把讀者需要的座標寫出來**——在哪一個網域、去哪一個欄位看、這句話什麼時候成立。
   另外，**要寫畫面上的列數，那一節就得指名某一支 `out/….json` 並標擷取日期**；
@@ -85,6 +90,7 @@ python3 scripts/field_audit.py          # 介面名字對回 out/ui/（畫面上
 python3 scripts/field_audit.py --where part3-queries.html
 python3 scripts/quote_audit.py          # 英文引文逐條對回 VFB 說明文件
 python3 scripts/code_audit.py           # 頁面上引用的程式碼逐行對回原始碼
+python3 scripts/value_audit.py          # 資料集／站台／來源的「值」是不是逐字
 python3 scripts/svg_audit.py *.html     # SVG 元素有沒有超出 viewBox
 python3 scripts/content_audit.py terms part1-templates.html
 python3 scripts/content_audit.py refs  part3-queries.html   # 指涉詞有沒有指名對象
