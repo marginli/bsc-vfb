@@ -214,8 +214,8 @@
   <p>1,466 跟 506 這種數字，是<b>兩層放大</b>疊出來的。以 v3 為例：</p>
 
   <ol>
-    <li><b>查詢被展開成萬用字元。</b>你打 <i>medulla</i>，送出去的是「medulla 或 medulla 開頭 或 任何位置含 medulla」，所以 <i>medulla columnar neuron</i>、<i>accessory medulla</i> 這種全部符合，共 501 個詞。</li>
-    <li><b>拿回來的每個詞，再按別名拆開。</b>實際取回 150 個詞，畫面上卻排出 506 列：<i>medulla</i> 這一個詞，就因為 <code>m</code>、<code>ME</code>、<code>Med</code>、<i>optic medulla</i> 各自被拆成一列。</li>
+    <li><b>查詢被展開成萬用字元。</b>你打 <i>medulla</i>，送出去的是「medulla 或 medulla 開頭 或 任何位置含 medulla」，所以 <i>medulla columnar neuron</i>、<i>accessory medulla</i> 這種全部符合，共 <b>501</b> 個詞。<b>但這個框只向搜尋服務要 150 筆</b>——跟說明文件站那個框只要 40 筆是同一回事，只是上限寬得多（v2 那個框不設上限，所以它的 494 就是全部）。<b>排在 150 名之後的，畫面上等於不存在。</b></li>
+    <li><b>拿回來的每個詞，再按別名拆開。</b>取回的那 <b>150</b> 個詞，畫面上排出 <b>506</b> 列：<i>medulla</i> 這一個詞，就因為 <code>m</code>、<code>ME</code>、<code>Med</code>、<i>optic medulla</i> 各自被拆成一列。</li>
   </ol>
 
   <div class="callout">
