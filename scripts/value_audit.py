@@ -40,13 +40,16 @@ import sys
 
 D = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# 只看這些來源的名字（探針裡含這些字的字串值才當參考名）
-ANCHORS = ["Neuprint", "neuPrint", "FlyWire", "BANC", "CATMAID", "hemibrain",
-           "MANC", "male-cns", "JRC_", "FlyCircuit", "optic_lobe", "optic-lobe",
-           "FAFB", "L1 CNS"]
-
-# 版本 token：改寫的人幾乎不會動它，所以拿它當定位點
-VER = re.compile(r"(?<![\w.])v\d+(?:\.\d+)*(?![\w.])")
+# **定位點**：改寫的人幾乎不會動這些，所以拿它們去找「這裡在引一個名字」。
+#   v1.0.1 / v783      版本
+#   MaleCNS:41280      站台的編號
+#   VFB_00102107       VFB 的編號
+#   FBbt_00003748      本體論的編號
+# 一開始只有第一種，於是 PART 1–3 三頁「逐字 0 段」——那不是乾淨，是沒查到。
+# 版本號後面不能接 `-`，否則 `v3-cached.virtualflybrain.org` 的 v3 會被當成版本。
+VER = re.compile(r"(?<![\w.])v\d+(?:\.\d+)*(?![\w.\-])"
+                 r"|[A-Za-z][A-Za-z_\-]{2,}:\d+"
+                 r"|(?:VFB|FBbt|VFBc)_\d+")
 
 # 名字裡容許的字元。**破折號要收進來**——第一版漏了它，
 # 於是「Neuprint — X」被切成兩半，整個錯就看不見了。
@@ -77,7 +80,7 @@ def probe_names() -> set:
         elif isinstance(o, list):
             for v in o:
                 walk(v)
-        elif isinstance(o, str) and any(a in o for a in ANCHORS):
+        elif isinstance(o, str) and VER.search(o):
             out.add(" ".join(o.split()))
 
     for f in sorted(glob.glob(os.path.join(D, "out", "*.json"))
@@ -116,7 +119,9 @@ def main() -> int:
                 i -= 1
             while j < len(t) and re.match(NAME_CH, t[j]):
                 j += 1
-            sp = " ".join(t[i:j].split()).strip(" .,;:()")
+            # 兩端的破折號要剝掉——中文的「——」不是名字的一部分，
+            # 但名字中間的（`Neuprint — X`）要留著，所以只剝兩端。
+            sp = " ".join(t[i:j].split()).strip(" .,;:()\u2013\u2014-")
             if not sp or sp in seen:
                 continue
             seen.add(sp)
