@@ -211,7 +211,7 @@ adult neuron                             1 / 53,402   <span class="cm">← <b>�
 
   <p class="figsrc">圖由 <code>recompute/make_figure.py</code> 畫，資料出自 <code>out/recompute/compare.json</code>；圖上的點數存在 <code>out/recompute/figure.json</code>（<code>on_diagonal</code>＝732、<code>off_diagonal</code>＝21、<code>largest</code>＝202）。2026-09-15。</p>
 
-  <p><b>右邊那張圖的形狀，本身就是答案的一部分。</b>差 1 顆、差 2 顆的那十九列，看起來像是逐顆判定的邊界差異——一顆神經元算不算進這個型，兩邊的判斷偶爾不一樣。<b>而最左邊那兩根，是另外一回事：</b></p>
+  <p><b>右邊那張圖的形狀，本身就是答案的一部分。</b>差 2 顆的六列與差 1 顆的十三列，看起來像是逐顆判定的邊界差異——一顆神經元算不算進這個型，兩邊的判斷偶爾不一樣。<b>而最左邊那兩根，是另外一回事：</b></p>
 
   <div class="tblwrap">
   <table>
@@ -276,7 +276,7 @@ adult neuron                             1 / 53,402   <span class="cm">← <b>�
   </div>
 
   <div class="callout">
-    <b>所以 A 類真正「沒有解釋」的只有 7 列 11 顆。</b>而 B 類也跟著縮水：那 184 個「只在 VFB」的名字裡，有 <b>12 個</b>其實就是 A 類那幾列改了名，扣掉之後是 <b>172</b> 個。<br>
+    <b>所以 A 類真正「沒有解釋」的只有 ④ 那 7 列、11 顆。</b>而 B 類也跟著縮水：那 184 個「只在 VFB」的名字裡，有 <b>12 個</b>其實就是 A 類那幾列改了名，扣掉之後是 <b>172</b> 個。<br>
     <b>換一個鍵，兩類同時變小。</b>這件事回頭看 <a href="part7-agent-prompts.html#s4">指令 5</a>：它要求「至少兩種鍵、都回報數字」——<b>做對了方向，但兩種都選了名字。</b>真正該加的一句是<b>「有沒有一個兩邊共用的編號」</b>。
   </div>
 
@@ -301,7 +301,7 @@ adult neuron                             1 / 53,402   <span class="cm">← <b>�
 
   <h3>先驗一件事：這個說法站得住嗎</h3>
 
-  <p>那一節還寫了一句可以直接拿來對答案的話：</p>
+  <p>〈Versions of the dataset〉<b>那一節</b>還寫了一句可以直接拿來對答案的話：</p>
   <p lang="en">We also revised some cell-type definitions (5 types were split into a total of 11 new types and 2 types were merged into a single type).</p>
 
   <p><b>那就把全部 778 列都用 <code>bodyId</code> 對一次，看能不能自己數出「5 個型拆成 11 個」。</b>結果：</p>
@@ -321,7 +321,7 @@ adult neuron                             1 / 53,402   <span class="cm">← <b>�
   <p class="figsrc">五組的還原出自 <code>out/recompute/compare.json</code> 的 <code>by_body_id.version_gap</code>（<code>splits_recovered</code>、<code>n_v101_types_split</code>、<code>n_v11_types_produced</code>），由 <code>recompute/recompute.py</code> 把 778 列逐列用 <code>bodyId</code> 對到 VFB 那一側算出；論文的五條原句出自 <code>out/recompute/paper_quotes.json</code>（全文經 Europe PMC 取得，逐字比對過）。2026-09-15。</p>
 
   <div class="note">
-    <b>5 個型、11 個新型——跟論文寫的一個字不差。</b>而我們算這個數字的時候<b>沒有看論文那句話</b>，用的只有兩邊的編號。<b>這就是「第二條路」該長的樣子</b>（<a href="part7-agent-prompts.html#s4">指令 8</a>）：不是換個 API 問同一個數，是<b>用完全不同的證據把同一個結論再推一次</b>。
+    <b>5 個型、11 個新型——跟論文寫的一個字不差。</b>（<b>這個 11 數的是「型」</b>，跟上一節<b>④</b>那 7 列的 <b>11 顆</b>無關——剛好又是同一個數字。）而我們算這個數字的時候<b>沒有看論文那句話</b>，用的只有兩邊的編號。<b>這就是「第二條路」該長的樣子</b>（<a href="part7-agent-prompts.html#s4">指令 8</a>）：不是換個 API 問同一個數，是<b>用完全不同的證據把同一個結論再推一次</b>。
   </div>
 
   <h3>那 7 列的答案</h3>
@@ -348,7 +348,7 @@ adult neuron                             1 / 53,402   <span class="cm">← <b>�
   <div class="callout">
     <b>一句話收束整個第 4 節：那 25 列「對不上」，沒有一列是算錯，全部是「兩邊拿的不是同一版」。</b><br>
     改名、拆型、側別、以及那 7 列多出來的細胞，<b>都寫在論文自己的〈Versions of the dataset〉裡</b>。<b>而這件事在 <a href="part4-connectomes.html#s4">PART 4 第 4 節</a>講過一次了</b>——「同一套資料有不同版本」；這裡是它第一次真的咬人。<br>
-    <b>還沒解的縮到一句話</b>：我們沒有 v1.1 的存取權，所以「這 11 顆就是那次合併產生的」是<b>推論</b>，不是查證。要坐實，得拿 v1.1 直接比對那 7 個編號。
+    <b>還沒解的縮到一句話</b>：我們沒有 v1.1 的存取權，所以「<b>④</b> 那 7 列的 11 顆就是那次合併產生的」是<b>推論</b>，不是查證。要坐實，得拿 v1.1 直接比對那 7 個編號。
   </div>
 
   <div class="note">
@@ -450,7 +450,7 @@ adult neuron                             1 / 53,402   <span class="cm">← <b>�
     <b>還沒解的，列在這裡：</b>
     <ul>
       <li>REST 報的 <b>60,002</b> 與知識庫算出的 <b>59,739</b> 差 <b>263</b> 列（<a href="#s5">第 5 節</a>）——機制找到了，餘數沒找到。</li>
-      <li>我們<b>沒有 <code>v1.1</code> 的存取權</b>，所以「那 11 顆是 v1.1 併出來的」（<a href="#s4c">第 4c 節</a>）是<b>推論</b>，不是查證。要坐實，得拿 v1.1 直接比對那 7 個編號。</li>
+      <li>我們<b>沒有 <code>v1.1</code> 的存取權</b>，所以「VFB 沒收的那 7 列、11 顆是 v1.1 併出來的」（<a href="#s4c">第 4c 節</a>）是<b>推論</b>，不是查證。要坐實，得拿 v1.1 直接比對那 7 個編號。</li>
       <li>論文說的「<b>2 個型被併成 1 個</b>」我們<b>驗不出來</b>——補充表的 <code>bodyId</code> 欄只給一個代表，而被併掉的那個型在 v1.1 沒有自己的列。<b>這是方法的天花板，不是資料的問題。</b></li>
       <li>只在 VFB 那一側的 <b>172</b> 個名字（<a href="#s4">第 4 節</a> B 類扣掉改名後），<b>只抽查了 3 個</b>。</li>
     </ul>

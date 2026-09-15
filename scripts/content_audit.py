@@ -6,6 +6,7 @@
     11  列著多個可選值的表，有沒有標「我們用哪一個」    → tables
     12  口語與擬人的說法（判準：它在不在「白話」框裡）  → slang
      5  指涉詞有沒有指名對象                            → refs
+     5b 回指離它的出處有多遠（附帶：同一個數字有兩個意思）→ dist
 
   `refs` 是 2026-09-14 補的，來源是 _notes 第 45 條：使用者抓到
   「那四支『神經元』查詢」沒指名是哪四支——而**六道稽核一道都沒響**，
@@ -139,6 +140,48 @@ def refs(path):
           f"{'。這一種是錯，不是「給人看」' if bad else ''}）")
 
 
+def dist(path):
+    """每一處「那 N 單位」離上一次提到 N 有多遠，由遠到近排。
+
+    **來源是使用者 2026-09-15 的一句話**：「那 21 筆是哪 21 筆？
+    距離上次提到這 21 筆已經很遠了。」——`refs` 只會告訴你「這裡有一個回指」，
+    它不會告訴你**那個回指要讀者往回翻多遠**。而遠近正是這件事會不會出問題的關鍵。
+
+    **兩種要看的東西**：
+      距離很大  → 讀者早就忘了，要就地把它是什麼再講一次。
+      （全新）   → 這個數從來沒出現過，讀者根本找不到出處（例：「那十九列」）。
+
+    **還有一種它順手抓得到、但要人判斷的**：同一個數字在附近有兩個意思
+    （例：④ 那 7 列的「11 顆」對上論文的「11 個新型」）。距離很近卻指錯東西，
+    比距離很遠更難發現——所以印的是「上一次提到它的地方」的原文，不只是距離。
+    """
+    src = io.open(path, encoding="utf-8").read()
+    src = re.sub(r"<svg.*?</svg>", " ", src, flags=re.S)
+    src = re.sub(r'<p class="figsrc".*?</p>', " ", src, flags=re.S)   # 出處行不算正文
+    src = re.sub(r'<nav class="toc".*?</nav>', " ", src, flags=re.S)  # 目錄不算正文
+    t = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", src))
+
+    rows = []
+    for m in re.finditer(r"[那這]\s*(\d[\d,]*|[一二三四五六七八九十百兩]+)"
+                         r"\s*[支個張條節處筆列項顆組類堆]", t):
+        num = m.group(1)
+        if num in "一二兩":          # 「那一列」講的是剛剛那一列，不是回指一個量
+            continue
+        prev = [k.start() for k in re.finditer(re.escape(num), t[:m.start()])]
+        rows.append((m.start() - prev[-1] if prev else 10 ** 9, num, m.group(0),
+                     m.start(), prev[-1] if prev else None))
+    for d, num, g, pos, src_pos in sorted(rows, reverse=True)[:15]:
+        if src_pos is None:
+            print(f"（全新）{g}　這個數之前一次都沒出現過")
+            print(f"        …{t[max(0, pos - 55):pos + 55]}…\n")
+            continue
+        print(f"{d:>6} 字　{g}")
+        print(f"        上次 …{t[max(0, src_pos - 30):src_pos + len(num) + 25]}…")
+        print(f"        這裡 …{t[max(0, pos - 40):pos + 50]}…\n")
+    print("（由遠到近。問兩件事：讀者還記得它是什麼嗎？"
+          "以及——上次那個數，跟這裡講的是同一件事嗎？）")
+
+
 def nums(path):
     t = text_of(path)
     for m in re.finditer(r"(?<![\w.])(\d[\d,]*(?:\.\d+)?%?)", t):
@@ -154,4 +197,4 @@ if __name__ == "__main__":
     for f in files:
         print(f"══════ {os.path.basename(f)} ══════")
         {"terms": terms, "tables": tables, "slang": slang, "nums": nums,
-         "refs": refs}[mode](f)
+         "refs": refs, "dist": dist}[mode](f)
