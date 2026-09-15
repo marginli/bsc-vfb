@@ -73,11 +73,11 @@
 
   <p>VFB 官方的 Python 套件。裝一行：</p>
 
-  <pre>pip install vfb-connect</pre>
+  <pre class="ext">pip install vfb-connect</pre>
 
   <p>本課實測的是 <b>2.4.5</b> 版。用起來是三行：</p>
 
-  <pre>from vfb_connect import VfbConnect
+  <pre class="ext">from vfb_connect import VfbConnect
 vc = VfbConnect()
 vc.get_terms_by_region('medulla')</pre>
 
@@ -94,11 +94,11 @@ vc.get_terms_by_region('medulla')</pre>
 
   <p><b>MCP</b>（Model Context Protocol）是一套讓 AI 助理去呼叫外部工具的協定——這個詞本課第一次用，意思就是：<b>有人把一組工具包好、放在一個網址上，AI 助理連上去就能用。</b>VFB 自己架了一台：</p>
 
-  <pre>https://vfb3-mcp.virtualflybrain.org</pre>
+  <pre class="ext">https://vfb3-mcp.virtualflybrain.org</pre>
 
   <p><b>不需要認證、不需要 API key。</b>本課實測到的伺服器版本是 <code>vfb3-mcp-server 1.11.2</code>。以 Claude Code 為例，接上去是一行：</p>
 
-  <pre>claude mcp add --transport http virtual-fly-brain \
+  <pre class="ext">claude mcp add --transport http virtual-fly-brain \
        https://vfb3-mcp.virtualflybrain.org</pre>
 
   <p>接上之後，你就可以用中文問「medulla 裡有哪些神經元」，AI 會自己挑工具、自己填參數。</p>
@@ -183,14 +183,14 @@ vc.get_terms_by_region('medulla')</pre>
 
   <ol>
     <li><b>用程式問一次。</b>裝好之後跑<a href="#s3">第 3 節</a>那三行：
-      <pre>pip install vfb-connect</pre>
-      <pre>from vfb_connect import VfbConnect
+      <pre class="ext">pip install vfb-connect</pre>
+      <pre class="ext">from vfb_connect import VfbConnect
 vc = VfbConnect()
 vc.get_terms_by_region('medulla')</pre>
       <b>看到什麼算對</b>：回來的是一個 DataFrame。<b>先不要看內容，先看 <code>len()</code>——是 510。</b><br>
       <b>而你在 <a href="part3-queries.html">PART 3</a> 用滑鼠得到的是 471。</b>先停在這裡想一下為什麼。</li>
 
-    <li><b>加一個參數再問一次。</b><pre>vc.get_terms_by_region('medulla', cells_only=True)</pre>
+    <li><b>加一個參數再問一次。</b><pre class="ext">vc.get_terms_by_region('medulla', cells_only=True)</pre>
       <b>看到什麼算對</b>：<b>481</b>。<br>兩個數字都不是 471，而<b>你一個字都沒改問題，只改了參數</b>。<a href="#s5">第 5 節</a>那張表逐項解釋那 39 個與那 10 個各是什麼。</li>
 
     <li><b>接上 MCP，然後追問它。</b>照<a href="#s4">第 4 節</a>那一行把伺服器加進你的 AI 助理，用中文問：「medulla 裡有一部分在裡面的神經元有幾種？」<br><b>看到什麼算對</b>：它應該回你 <b>471</b>。<br><b>然後追問一句：「你用了哪一個工具、填了哪些參數？」</b>把它的回答跟<a href="#s5">第 5 節</a>那張表對一遍。<br><b>這一步才是這份作業單的重點</b>：不是讓 AI 給你答案，是讓它交代它怎麼得到那個答案的——因為那三個預設值，它一個都不會主動告訴你。</li>

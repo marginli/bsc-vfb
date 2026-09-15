@@ -110,9 +110,9 @@ PARAMS = {
   <!-- ══════════════════════════════════════════════════════ -->
   <h2 id="s3"><span class="pt">3</span>讀主流程：三段，各解決一件事</h2>
 
-  <p><code>recompute.py</code> 的主流程只有三步，印出來就是 <a href="part8-agent-run.html#s2">PART 8 第 2 節</a>那些數字：</p>
+  <p><code>recompute.py</code> 跑起來會印五步。<b>前三步是骨幹</b>——就是 <a href="part8-agent-run.html#s2">PART 8 第 2 節</a>那些數字，這一節逐段讀的也是它們；<b>④⑤ 是產給頁面用的</b>（樹狀圖的實例、以及把論文原句逐字對回全文）：</p>
 
-<pre>① 取論文的靶…
+<pre class="run">① 取論文的靶…
    778 列　732 個型　52,827 顆
 ② 取 VFB 那一側…
    53,402 顆　類別 844（泛稱 23、末端 821）
@@ -121,9 +121,14 @@ PARAMS = {
    鍵=class     對得上 547/732　74.7%　（分母：論文表的 cell type（不帶側別））
    放到同一個分母（732 個型）：instance 97.1% vs class 74.7%　差 22.4 個百分點
    顆數相同 732　不同 21（最大差 202）
-   只在論文 25　只在 VFB 184</pre>
+   只在論文 25　只在 VFB 184
+④ 取樹狀圖的實例…
+   Dm3 與 Dm3a／Dm3b 的重疊：0 顆（分類學上位不會重複數）
+   Dm3 直接 401 顆 ／ 這一叢共 1573 顆（樹狀圖上兩個都要寫）
+⑤ 對論文原句…
+   6 條全部逐字對得到</pre>
 
-  <p class="figsrc">這是實際的執行輸出，每一個數字都同時寫進 <code>out/recompute/target.json</code>、<code>out/recompute/vfb.json</code>、<code>out/recompute/compare.json</code>。2026-09-15。</p>
+  <p class="figsrc">這是實際的執行輸出（<code>python3 recompute.py</code>，逐字貼回來的），每一個數字都同時寫進 <code>out/recompute/target.json</code>、<code>out/recompute/vfb.json</code>、<code>out/recompute/compare.json</code>、<code>out/recompute/class_tree_examples.json</code>、<code>out/recompute/paper_quotes.json</code>。2026-09-15。</p>
 
   <h3>① 取靶：一個 <code>if</code> 擋住了一整類災難</h3>
 
@@ -150,12 +155,16 @@ PARAMS = {
 
   <p>這一段解決的是<a href="part7-agent-prompts.html#s3">那六個決定</a>裡的第②個：<b>什麼算一個細胞型。</b></p>
 
-<pre>    <span class="cm"># 哪些類別是「泛稱」（底下還有別的類別，而那個別的類別也在這一組裡）</span>
+<pre><span class="cm">    # 哪些類別是「泛稱」（底下還有別的類別，而那個別的類別也在這一組裡）</span>
     lit = "[" + ",".join(f"'{c}'" for c in classes) + "]"
-<span class="hl">    generic = {r[0] for r in cypher(
+<span class="cm">    # **只看這一組之內**：某個類別在整個 VFB 本體論裡還有下位，但那些下位</span>
+<span class="cm">    # 在這套資料裡沒有神經元，它在這裡仍算末端。這是我們的選擇，不是資料說的。</span>
+<span class="hl">    generic_rows = cypher(
         "MATCH (a:Class)&lt;-[:SUBCLASSOF*1..8]-(b:Class) "
         "WHERE a.short_form IN %s AND b.short_form IN %s "
-        "RETURN DISTINCT a.short_form" % (lit, lit))}</span>
+        "RETURN a.short_form, a.label, count(DISTINCT b) "
+        "ORDER BY count(DISTINCT b) DESC" % (lit, lit))
+    generic = {r[0] for r in generic_rows}</span>
     leaf = {c: lab for c, lab in classes.items() if c not in generic}</pre>
 
   <div class="ask">
@@ -178,7 +187,7 @@ PARAMS = {
         got = vfb["keys_class"]
         ...</pre>
 
-  <p><b>而每一個比率都要把分母印出來。</b>上面那三行輸出裡，<code>753/778</code> 的分母是<b>列</b>、<code>547/732</code> 的分母是<b>型</b>——<b>兩個百分比的分母不一樣，並排看就會誤導</b>。所以程式除了各自的比率，還會把兩者<b>放到同一個分母</b>再算一次（都降到型這一層）。<b>一支會產出百分比的程式，最該檢查的就是它有沒有告訴你分母是什麼。</b></p>
+  <p><b>而每一個比率都要把分母印出來。</b>上面 ③ 那段輸出裡印比率的三行，<code>753/778</code> 的分母是<b>列</b>、<code>547/732</code> 的分母是<b>型</b>——<b>兩個百分比的分母不一樣，並排看就會誤導</b>。（<b>這裡的 732 是論文的分型數</b>，跟「<b>顆數相同的 732 列</b>」是兩件事，只是剛好相等——<a href="part8-agent-run.html#s2">PART 8 第 2 節</a>把它拆開過。）所以程式除了各自的比率，還會把兩者<b>放到同一個分母</b>再算一次（都降到型這一層）。<b>一支會產出百分比的程式，最該檢查的就是它有沒有告訴你分母是什麼。</b></p>
 
   <p>注意那句註解的後半：<b>換鍵的時候，兩邊都要換。</b>VFB 那側換成類別標籤，論文那側就得從 <code>instance</code> 欄換到 <code>cell type</code> 欄——不然一邊有左右（<code>Dm15_R</code>）、另一邊沒有（<code>Dm15</code>），比出來的命中率會低得莫名其妙，<b>而且你會以為是資料的問題。</b></p>
 
@@ -223,14 +232,14 @@ PARAMS = {
   <!-- ══════════════════════════════════════════════════════ -->
   <h2 id="s5"><span class="pt">5</span>讀畫圖那一支 make_figure.py：三個不寫出來就沒人知道的決定</h2>
 
-  <p><code>make_figure.py</code> 只有 91 行，但它做了三個會影響讀者怎麼看那張圖的決定，<b>三個都寫在註解裡</b>：</p>
+  <p><code>make_figure.py</code> 只有 91 行，但它做了三個會影響讀者怎麼看那張圖的決定，<b>三個都寫在開頭那段 docstring 裡</b>（<b>節錄</b>，原文前面還有檔案說明與產出清單）：</p>
 
-<pre><span class="cm">"""**兩格都用對數軸**。理由：每型顆數從 1 跨到 4,000，線性軸會把九成的點
+<pre><span class="cm">**兩格都用對數軸**。理由：每型顆數從 1 跨到 4,000，線性軸會把九成的點
 擠在左下角一團，看不出「絕大多數落在對角線上」這件事——而那正是結論。
 對數軸畫不了 0，但這裡沒有 0（對得上的型兩邊都至少 1 顆），所以不用特別處理。
 
 圖內不放文字說明，只留座標軸標籤，其餘寫在 HTML 的 figcaption 裡。
-"""</span></pre>
+</span></pre>
 
   <div class="terms">
     <div class="term"><span class="w">決定一：用對數軸<span class="en">and say why</span></span>
@@ -242,10 +251,10 @@ PARAMS = {
   </div>
 
   <div class="note">
-    <b>這三個決定合起來，是「一張圖要能被別人檢查」的最低條件。</b>而檢查的方式很具體：圖上落在對角線的點數，必須等於 <code>compare.json</code> 裡「顆數相同」的筆數——兩個都是 <b>732</b>。<b>對不上就代表圖跟數字來自不同的計算</b>，那是嚴重的問題。這正是 <a href="part7-agent-prompts.html#s4">指令 9</a> 最後要求回報點數的原因。
+    <b>這三個決定合起來，是「一張圖要能被別人檢查」的最低條件。</b>而檢查的方式很具體：圖上落在對角線的點數，必須等於 <code>compare.json</code> 裡「顆數相同」的<b>列數</b>——兩個都是 <b>732</b>。<b>對不上就代表圖跟數字來自不同的計算</b>，那是嚴重的問題。這正是 <a href="part7-agent-prompts.html#s4">指令 9</a> 最後要求回報點數的原因。
   </div>
 
-  <p class="figsrc">「圖上落在對角線 732 點」出自 <code>out/recompute/figure.json</code> 的 <code>on_diagonal</code>；「顆數相同 732 筆」出自 <code>out/recompute/compare.json</code> 的 <code>same_count</code>。2026-09-15。</p>
+  <p class="figsrc">「圖上落在對角線 732 點」出自 <code>out/recompute/figure.json</code> 的 <code>on_diagonal</code>；「顆數相同 732 列」出自 <code>out/recompute/compare.json</code> 的 <code>same_count</code>。2026-09-15。</p>
 
   <!-- ══════════════════════════════════════════════════════ -->
   <h2 id="s6"><span class="pt">6</span>五個問題：拿到任何一份這種程式都先問</h2>
