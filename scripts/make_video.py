@@ -11,20 +11,20 @@
    產出：assets/vfb-overview.mp4、assets/vfb-overview.vtt、assets/poster.jpg
 
    **旁白有兩種來源，看 _voice/ 在不在：**
-     · `_voice/ref.wav` ＋ `_voice/ref.txt` 存在 → 用 F5-TTS 克隆那個聲音，
-       全程在本機 GPU 上跑，稿子不離開這台機器。
+     · `_voice/ref.wav` ＋ `_voice/ref.txt` 存在 → 用本機的 F5-TTS 合成，
+       全程在這台機器的 GPU 上跑，稿子不送出去。
        要用這條路得跑 venv 裡的 python：
            ~/.venvs/tts/bin/python scripts/make_video.py
      · 不存在 → 退回 edge-tts（微軟的語音服務，會把旁白文字送出去）。
 
-   **`_voice/` 不進版控**（.gitignore）——那是本人的聲音樣本，
-   不該躺在一個公開 repo 裡。要重跑的人自己放一段自己的。
+   **`_voice/` 不進版控**（.gitignore）：那是本機合成要用的參考音檔與它的逐字稿，
+   屬於這台機器的設定，不是教材的一部分。
 
-   **克隆的三個實測教訓**（2026-09-15）：
-     1. 參考片段的**頭尾都要落在停頓處**，否則最後幾個字會漏進合成音
+   **本機合成的三個實測教訓**（2026-09-15）：
+     1. 參考音檔的**頭尾都要落在停頓處**，否則它最後幾個字會漏進合成音
         （用 ffmpeg 的 silencedetect 找，不要用 whisper 的詞級時間戳——它幾乎沒有間隙）。
-     2. 合成速度跟著參考片段走。同一個人「邊想邊講」是 2.47 字/秒、
-        「照稿唸」是 3.99 字/秒——**樣本要用照稿唸的**，否則影片會長一倍。
+     2. **合成語速跟著參考音檔走**：一段隨口講的參考音檔量到 2.47 字/秒、
+        一段照稿唸的量到 3.99 字/秒，同一份旁白長度會差一倍。要照稿唸的那一種。
      3. **字母 V 唸不出來、四個以上的字母串會糊掉**（V F B → dfb、N B L A S T → 論幣咬AST）。
         M C P、R E S T、A P I、F B b t 沒問題。所以旁白改用中文說法，
         投影片照舊寫原名。`J R C 二零一八 Unisex` 可以（寫 2018 反而會掉字）。
@@ -40,7 +40,7 @@ OUT = os.path.join(ROOT, "assets")
 VOICE, RATE, PAD = "zh-TW-HsiaoChenNeural", "-8%", 0.6
 REF_WAV = os.path.join(os.path.dirname(HERE), "_voice", "ref.wav")
 REF_TXT = os.path.join(os.path.dirname(HERE), "_voice", "ref.txt")
-CLONE = os.path.exists(REF_WAV) and os.path.exists(REF_TXT)
+LOCAL = os.path.exists(REF_WAV) and os.path.exists(REF_TXT)
 # 旁白裡為了讓 TTS 逐字母唸而加的空白，字幕要還原回去。
 # **長的要排在前面**，否則 "A I" 會先把 "N B L A S T" 咬掉一段。
 FIX = [("J R C 二零一八 Unisex", "JRC2018Unisex"), ("v 1.0.1", "v1.0.1"), ("v 1.1", "v1.1"),
@@ -88,7 +88,7 @@ def slide_html(s, i, n):
 
 
 # ══════════════════════════════════════════════════════════════════
-# 克隆模型唸不出阿拉伯數字：471 會變成「for 71」、884 變成「N84」、
+# 本機這個模型唸不出阿拉伯數字：471 會變成「for 71」、884 變成「N84」、
 # 62 變成「Cinti2」。改成國字就完全正確（實測）。
 # **稿子裡仍然寫阿拉伯數字**——字幕、video_check、頁面對照全靠它；
 # 只在送進 TTS 之前轉一次。edge-tts 不需要這一步。
@@ -125,7 +125,7 @@ def _card(n: int) -> str:
     return out[1:] if out.startswith("一十") else out
 
 
-# 克隆模型跟 edge-tts 相反：**短縮寫不要拆字母**。
+# 本機這個模型跟 edge-tts 相反：**短縮寫不要拆字母**。
 #   M C P → 「MACP」、V F B → 「dfb」；不拆反而正確（MCP、API、REST 實測都對）。
 # 長一點的還是不行（NBLAST 拆不拆都糊），那些已經在稿子裡改成中文說法了。
 UNSPACE = ["A I", "A P I", "M C P", "R E S T", "B S C", "V F B", "F B b t", "B A N C"]
@@ -159,8 +159,8 @@ def ts(t):
     return f"{int(t // 3600):02d}:{int(t % 3600 // 60):02d}:{t % 60:06.3f}"
 
 
-def tts_clone():
-    """F5-TTS：模型只載入一次，15 段共用（每段各開一次 CLI 要多花十幾分鐘）。"""
+def tts_local():
+    """本機 F5-TTS：模型只載入一次，15 段共用（每段各開一次 CLI 要多花十幾分鐘）。"""
     from f5_tts.api import F5TTS
     return F5TTS(model="F5TTS_v1_Base")
 
@@ -168,9 +168,9 @@ def tts_clone():
 def main():
     os.makedirs(f"{WORK}/png", exist_ok=True)
     os.makedirs(f"{WORK}/aud", exist_ok=True)
-    tts = tts_clone() if CLONE else None
-    ref_text = io.open(REF_TXT, encoding="utf-8").read().strip() if CLONE else ""
-    print(f"旁白來源：{'本機克隆（F5-TTS）' if CLONE else 'edge-tts（微軟）'}")
+    tts = tts_local() if LOCAL else None
+    ref_text = io.open(REF_TXT, encoding="utf-8").read().strip() if LOCAL else ""
+    print(f"旁白來源：{'本機合成（F5-TTS）' if LOCAL else 'edge-tts（微軟）'}")
     durs = []
     for i, s in enumerate(SLIDES):
         p = f"{WORK}/s{i:02d}.html"
@@ -178,9 +178,9 @@ def main():
         subprocess.run(["google-chrome", "--headless=new", "--disable-gpu", "--no-sandbox",
                         "--hide-scrollbars", "--window-size=1920,1080", "--virtual-time-budget=3000",
                         f"--screenshot={WORK}/png/s{i:02d}.png", f"file://{p}"], capture_output=True)
-        a = f"{WORK}/aud/a{i:02d}." + ("wav" if CLONE else "mp3")
+        a = f"{WORK}/aud/a{i:02d}." + ("wav" if LOCAL else "mp3")
         if not os.path.exists(a):
-            if CLONE:
+            if LOCAL:
                 tts.infer(ref_file=REF_WAV, ref_text=ref_text,
                           gen_text=unspace(zh_num(s["say"])), file_wave=a,
                           remove_silence=False)
@@ -195,7 +195,7 @@ def main():
 
     with io.open(f"{WORK}/ca.txt", "w") as f:
         for i in range(len(durs)):
-            f.write(f"file 'aud/a{i:02d}.{'wav' if CLONE else 'mp3'}'\n")
+            f.write(f"file 'aud/a{i:02d}.{'wav' if LOCAL else 'mp3'}'\n")
     subprocess.run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", f"{WORK}/ca.txt",
                     "-af", f"apad=pad_dur={PAD}", "-c:a", "aac", "-b:a", "128k",
                     f"{WORK}/voice.m4a"], capture_output=True, cwd=WORK)
@@ -240,8 +240,8 @@ def main():
             "mm": int(total // 60), "ss": round(total % 60),
             "width": 1920, "height": 1080, "resolution": "1080p", "fps": 24,
             "say_chars": sum(len(s["say"]) for s in SLIDES),
-            "voice": ("F5-TTS 克隆（本機）" if CLONE else VOICE),
-            "rate": ("參考片段的自然語速" if CLONE else RATE),
+            "voice": ("本機合成（F5-TTS）" if LOCAL else VOICE),
+            "rate": ("參考音檔的語速" if LOCAL else RATE),
             "mb": round(os.path.getsize(f"{OUT}/vfb-overview.mp4") / 2**20, 1),
         }, ensure_ascii=False, indent=1) + "\n")
 

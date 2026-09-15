@@ -11,7 +11,7 @@
  "resolution": "1080p",
  "fps": 24,
  "say_chars": 3110,
- "voice": "F5-TTS 克隆（本機）",
- "rate": "參考片段的自然語速",
+ "voice": "本機合成（F5-TTS）",
+ "rate": "參考音檔的語速",
  "mb": 10.6
 }
