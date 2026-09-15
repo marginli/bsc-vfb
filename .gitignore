@@ -1,14 +1,14 @@
-__pycache__/
-*.pyc
+
 .DS_Store
-
-# 說明文件的本機快取，quote_audit.py 會自己重抓；也不適合把別人的整頁 HTML 放進公開 repo
-out/_quotes/
-
-# 內部規劃文件，不公開
-vfb_plan.docx
 make_vfb_plan.py
-
-# 介面截圖：每次重跑都會有幾個像素的差異，進版控只會製造雜訊。
+out/_quotes/
 # out/ui/*.json 則要進版控——頁面上的介面描述要對得回它們。
 out/ui/shots/
+*.pyc
+__pycache__/
+vfb_plan.docx
+_video/
+_voice/
+# 介面截圖：每次重跑都會有幾個像素的差異，進版控只會製造雜訊。
+# 內部規劃文件，不公開
+# 說明文件的本機快取，quote_audit.py 會自己重抓；也不適合把別人的整頁 HTML 放進公開 repo

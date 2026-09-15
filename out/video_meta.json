@@ -1,0 +1,17 @@
+{
+ "probe": "video_meta",
+ "what": "首頁那支說明影片的規格；由 scripts/make_video.py 在產生影片時一併寫出",
+ "file": "assets/vfb-overview.mp4",
+ "slides": 15,
+ "seconds": 701.1,
+ "mm": 11,
+ "ss": 41,
+ "width": 1920,
+ "height": 1080,
+ "resolution": "1080p",
+ "fps": 24,
+ "say_chars": 3110,
+ "voice": "F5-TTS 克隆（本機）",
+ "rate": "參考片段的自然語速",
+ "mb": 10.6
+}

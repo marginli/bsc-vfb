@@ -29,6 +29,21 @@
     <dd>頁面上每一個數字都是查回來、存成檔案的，圖說裡會標明抓取日期：<code>scripts/vfb_probe.py</code> 問 VFB 的公開介面（資料庫裡有什麼），<code>scripts/browser_probe.py</code> 用真的瀏覽器把畫面拍下來（學員螢幕上有什麼）。<b>這是兩件不同的事，數字也常常不一樣。</b>網站會更新，數字跟著會變——變了也查得出來是哪一個變了。</dd>
   </dl>
 
+  <h2 id="video"><span class="pt">十一分半</span>先看一遍整堂課</h2>
+
+  <p style="color:var(--soft);margin-bottom:14px">九個部分的內容濃縮成一段 <b>11 分 41 秒</b>的說明影片，15 張投影片：這門課的兩條規矩、座標系與跨座標系要付的代價、同一塊腦區的五種寫法、十支查詢為什麼不能相加、八套連線資料、相似度分數能說什麼、同一個問題的三種問法，以及用 VFB 的資料重算一篇 <i>Nature</i> 論文的十條指令、實跑結果與怎麼讀懂跑出來的程式。<b>影片裡的圖都是課程網頁裡的同一批圖；投影片上寫的每一點，旁白都會講到。</b></p>
+
+  <figure class="fig" style="margin:0 0 34px">
+    <video controls preload="metadata" poster="assets/poster.jpg"
+           style="display:block;width:100%;height:auto;border:1px solid var(--border);border-radius:12px;background:#000">
+      <source src="assets/vfb-overview.mp4" type="video/mp4">
+      <track kind="captions" src="assets/vfb-overview.vtt" srclang="zh-Hant" label="中文字幕" default>
+      你的瀏覽器不支援內嵌影片，<a href="assets/vfb-overview.mp4">可以直接下載這個 MP4</a>。
+    </video>
+    <figcaption><b>11 分 41 秒　·　1080p　·　附中文字幕（播放器右下角開啟）。</b>投影片由課程網頁的內容與圖自動產生。
+    <span class="figsrc">投影片要點與旁白稿在 <code>scripts/video_slides.py</code>，影片由 <code>scripts/make_video.py</code> 產生；<code>scripts/video_check.py</code> 檢查「投影片上寫的每一點，旁白有沒有講到」。影片本身也可以<a href="assets/vfb-overview.mp4">直接下載</a>。</span></figcaption>
+  </figure>
+
   <div class="btns">
     <a class="btn" href="part1-templates.html">
       <span class="no">PART 1</span>

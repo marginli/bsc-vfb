@@ -25,6 +25,9 @@
 | `scripts/make_part5_figures.py` | PART 5 的兩張骨架比對圖（本機 FlyCircuit vs VFB 下載） |
 | `scripts/paper_target.py` | PART 7–9 的「靶」：抓 Nern et al. 2025 的補充表，算出要重算的那組數字 |
 | `scripts/three_layers.py` | PART 6 的三層對照：同一個問題用滑鼠／`vfb-connect`／MCP 各問一次（需 `pip install --user vfb-connect`） |
+| `scripts/video_slides.py` | 首頁那支說明影片的**投影片要點＋旁白稿**（寫在同一個檔） |
+| `scripts/make_video.py` | 產生影片：Chrome 截圖 → 合成旁白 → ffmpeg 併成 mp4 ＋ WebVTT 字幕 |
+| `scripts/video_check.py` | 查「投影片上寫的每一點，旁白有沒有講到」 |
 | `scripts/*_audit.py` | 九道稽核 |
 | `recompute/` | **PART 8／9 的產物**：三支程式（`recompute.py`、`cross_check.py`、`make_figure.py`）＋說明。<br>只用 VFB 的資料重算 Nern et al. 2025 的細胞型普查。**不部署**——同一份已包在 `downloads/` 的 zip 裡 |
 | `recompute/run_meta.py` | **量那一包自己**：行數、註解比例、換一個參數會怎樣、以及把 zip 解到空資料夾重跑一次。<br>**它不在交付的那一包裡**，產出直接寫到 `out/recompute/run_meta.json`——描述某個 zip 的檔案不能住在那個 zip 裡面 |
@@ -91,6 +94,8 @@ python3 scripts/field_audit.py --where part3-queries.html
 python3 scripts/quote_audit.py          # 英文引文逐條對回 VFB 說明文件
 python3 scripts/code_audit.py           # 頁面上引用的程式碼逐行對回原始碼
 python3 scripts/value_audit.py          # 資料集／站台／來源的「值」是不是逐字
+python3 scripts/video_check.py          # 投影片上寫的每一點，旁白有沒有講到
+python3 scripts/make_video.py           # 重做首頁那支說明影片（改了投影片或旁白才要跑）
 python3 scripts/svg_audit.py *.html     # SVG 元素有沒有超出 viewBox
 python3 scripts/content_audit.py terms part1-templates.html
 python3 scripts/content_audit.py refs  part3-queries.html   # 指涉詞有沒有指名對象
