@@ -26,10 +26,10 @@
     <ol>
       <li><a href="#s1">先講清楚：哪些數字是預先知道的</a></li>
       <li><a href="#s2">結論：對出來的結果</a></li>
-      <li><a href="#s3">那 21 筆差在哪裡</a></li>
+      <li><a href="#s3">兩邊都有、顆數卻不同的 21 列</a></li>
       <li><a href="#s4">對不上的三類</a></li>
       <li><a href="#s4b">換一個鍵：用 bodyId 把 A 類追到底</a></li>
-      <li><a href="#s4c">那 7 列為什麼沒收：兩邊差了一個版本</a></li>
+      <li><a href="#s4c">VFB 完全沒收的 7 列：兩邊差了一個版本</a></li>
       <li><a href="#s5">換一條路再問一次：一個沒解掉的矛盾</a></li>
       <li><a href="#s6">十條指令的逐條紀錄</a></li>
       <li><a href="#s7">帶得走的東西</a></li>
@@ -200,16 +200,18 @@ adult neuron                             1 / 53,402   <span class="cm">← <b>�
   </div>
 
   <!-- ══════════════════════════════════════════════════════ -->
-  <h2 id="s3"><span class="pt">3</span>那 21 筆差在哪裡</h2>
+  <h2 id="s3"><span class="pt">3</span>兩邊都有、顆數卻不同的 21 列</h2>
+
+  <p><b>先接回上一節那條算式，這 21 列是怎麼來的。</b>論文的 <b>778</b> 列裡，有 <b>753</b> 列在 VFB 那一側找得到對得上的名字；這 753 列當中，<b>732</b> 列兩邊的顆數一模一樣，<b>剩下 21 列顆數不同</b>——<b>這一節講的就是那 21 列</b>。（另外 <b>25</b> 列在 VFB 那側完全找不到，那是<a href="#s4">第 4 節</a>的事。）</p>
 
   <figure class="fig">
-    <img src="assets/p8-scatter.png" alt="左：逐型的顆數散點圖，兩軸都是對數，絕大多數點落在對角線上；右：21 筆差異的大小，兩筆約 200、六筆 2、十三筆 1">
-    <figcaption><b>左</b>：一個點是一個型，橫軸是論文的顆數、縱軸是用 VFB 重算的顆數。空心點是兩邊完全相同的 <b>732</b> 個，實心點是不同的 <b>21</b> 個。<b>兩軸都用對數</b>，因為顆數從 1 跨到兩千多；這裡不必處理 0，因為對得上的型兩邊都至少有 1 顆。<b>右</b>：那 21 筆差異由大到小。<b>差距不是連續分布的，而是斷成三段</b>：兩筆約 200、六筆 2、十三筆 1。</figcaption>
+    <img src="assets/p8-scatter.png" alt="左：逐型的顆數散點圖，兩軸都是對數，絕大多數點落在對角線上；右：21 列差異的大小，兩列約 200、六列 2、十三列 1">
+    <figcaption><b>左</b>：一個點是一個型，橫軸是論文的顆數、縱軸是用 VFB 重算的顆數。空心點是兩邊完全相同的 <b>732</b> 個，實心點是不同的 <b>21</b> 個。<b>兩軸都用對數</b>，因為顆數從 1 跨到兩千多；這裡不必處理 0，因為對得上的型兩邊都至少有 1 顆。<b>右</b>：那 21 列差異由大到小。<b>差距不是連續分布的，而是斷成三段</b>：兩列約 200、六列 2、十三列 1。</figcaption>
   </figure>
 
   <p class="figsrc">圖由 <code>recompute/make_figure.py</code> 畫，資料出自 <code>out/recompute/compare.json</code>；圖上的點數存在 <code>out/recompute/figure.json</code>（<code>on_diagonal</code>＝732、<code>off_diagonal</code>＝21、<code>largest</code>＝202）。2026-09-15。</p>
 
-  <p><b>右邊那張圖的形狀，本身就是答案的一部分。</b>差 1 顆、差 2 顆的那十九筆，看起來像是逐顆判定的邊界差異——一顆神經元算不算進這個型，兩邊的判斷偶爾不一樣。<b>而最左邊那兩根，是另外一回事：</b></p>
+  <p><b>右邊那張圖的形狀，本身就是答案的一部分。</b>差 1 顆、差 2 顆的那十九列，看起來像是逐顆判定的邊界差異——一顆神經元算不算進這個型，兩邊的判斷偶爾不一樣。<b>而最左邊那兩根，是另外一回事：</b></p>
 
   <div class="tblwrap">
   <table>
@@ -227,7 +229,7 @@ adult neuron                             1 / 53,402   <span class="cm">← <b>�
   <p class="figsrc">六列出自 <code>out/recompute/compare.json</code> 的 <code>photoreceptor_rows</code>，合計出自同檔的 <code>photoreceptor_delta_total</code>。2026-09-15。</p>
 
   <div class="callout">
-    <b>那兩筆大的是另一回事，而它有一個有出處的解釋。</b><code>R7p</code> 的 ＋202 與 <code>R8p</code> 的 ＋199，<b>不是誰算錯，是兩邊拿的資料差了一個版本</b>——論文的版本註記明寫，新版「調整了一些個別細胞的分型，其中幾乎全是 R7 與 R8 光受器」。<b>證據與推導都在<a href="#s4c">第 4c 節</a>。</b>
+    <b>那兩列大的是另一回事，而它有一個有出處的解釋。</b><code>R7p</code> 的 ＋202 與 <code>R8p</code> 的 ＋199，<b>不是誰算錯，是兩邊拿的資料差了一個版本</b>——論文的版本註記明寫，新版「調整了一些個別細胞的分型，其中幾乎全是 R7 與 R8 光受器」。<b>證據與推導都在<a href="#s4c">第 4c 節</a>。</b>
   </div>
 
   <!-- ══════════════════════════════════════════════════════ -->
@@ -246,11 +248,11 @@ adult neuron                             1 / 53,402   <span class="cm">← <b>�
     </div></div>
     <div class="case"><span class="badge hub">C</span><div class="bd">
       <b>兩邊都有、顆數不同：21 列</b>
-      就是<a href="#s3">第 3 節〈那 21 筆差在哪裡〉</a>那 21 筆。兩筆是論文自己標註過的光受器缺口，其餘十九筆差 1 到 2 顆。
+      就是<a href="#s3">第 3 節〈兩邊都有、顆數卻不同的 21 列〉</a>那 21 列。兩列是論文自己標註過的光受器缺口，其餘十九列差 1 到 2 顆。
     </div></div>
   </div>
 
-  <p class="figsrc">三類的筆數與清單出自 <code>out/recompute/compare.json</code>：<code>only_in_paper</code>（25）、<code>only_in_paper_explained_by_split</code>（7）、<code>only_in_paper_unexplained</code>（18）、<code>only_in_vfb</code>（184）、<code>only_in_vfb_cells</code>（221）、<code>only_in_vfb_prefix_top</code>、<code>paper_split_vfb_did_not</code>。2026-09-15。</p>
+  <p class="figsrc">三類的數量與清單出自 <code>out/recompute/compare.json</code>：<code>only_in_paper</code>（25）、<code>only_in_paper_explained_by_split</code>（7）、<code>only_in_paper_unexplained</code>（18）、<code>only_in_vfb</code>（184）、<code>only_in_vfb_cells</code>（221）、<code>only_in_vfb_prefix_top</code>、<code>paper_split_vfb_did_not</code>。2026-09-15。</p>
 
   <!-- ══════════════════════════════════════════════════════ -->
   <h2 id="s4b"><span class="pt">4b</span>換一個鍵：用 bodyId 把 A 類追到底</h2>
@@ -261,7 +263,7 @@ adult neuron                             1 / 53,402   <span class="cm">← <b>�
   <table>
     <tr><th></th><th>幾列</th><th>是什麼</th></tr>
     <tr><td><b>①</b> 一對一改名</td><td>10</td><td>同一顆、顆數也相同，只是名字不同：<code>HST_R</code>→<code>HS4_R</code>、<code>LAL047_R</code>→<code>LoVC8_R</code>、<code>LC35a_R</code>→<code>LoVP15_R</code>、<code>LC35b_R</code>→<code>LoVP104_R</code>、<code>LT85_R</code>→<code>LoVP87_R</code>、<code>V1_L</code>→<code>LPT58_L</code>、<code>mALD1_L</code>→<code>LoVC10_L</code>…</td></tr>
-    <tr><td><b>②</b> 側別標到另一邊</td><td>1</td><td><code>DNc01_L</code> 在 VFB 併進了 <code>DNc01_R</code>——所以 VFB 那一列是 2 顆而論文是 1 顆。<b>這同時解釋掉<a href="#s3">第 3 節</a>那 21 筆差異裡的一筆。</b></td></tr>
+    <tr><td><b>②</b> 側別標到另一邊</td><td>1</td><td><code>DNc01_L</code> 在 VFB 併進了 <code>DNc01_R</code>——所以 VFB 那一列是 2 顆而論文是 1 顆。<b>這同時解釋掉<a href="#s3">第 3 節</a>那 21 列差異裡的一列。</b></td></tr>
     <tr><td><b>③</b> 論文拆、VFB 併</td><td>7</td><td><code>Li11a＋Li11b</code>→<code>Li11_R</code>（2＋2＝4）、<code>LoVP90a／b／c</code>→<code>LoVP90_R</code>（1＋1＋1＝3）、<code>VST1＋VST2</code>→<code>VT_R</code>（3＋4＝<b>7</b>）。<b>三組的加總都跟 VFB 那一列的顆數完全相等。</b></td></tr>
     <tr><td><b>④</b> VFB 沒有收</td><td>7</td><td>共 <b>11 顆</b>。編號在 VFB 的 <code>JRC_OpticLobe</code> 命名空間裡<b>完全不存在</b>：<code>AN09A005</code>（左右各一列）、<code>AN27X013</code>（左右各一列），以及三個名字帶 <i>TBD</i>（待定）的。<b>為什麼沒收，見<a href="#s4c">下一節</a></b>——原因跟①②③其實是同一個。</td></tr>
   </table>
@@ -285,7 +287,7 @@ adult neuron                             1 / 53,402   <span class="cm">← <b>�
 
 
   <!-- ══════════════════════════════════════════════════════ -->
-  <h2 id="s4c"><span class="pt">4c</span>那 7 列為什麼沒收：兩邊差了一個版本</h2>
+  <h2 id="s4c"><span class="pt">4c</span>VFB 完全沒收的 7 列：兩邊差了一個版本</h2>
 
   <p><a href="#s4b">上一節</a>把 25 列分成四堆，看起來是四個獨立的現象。<b>其實是同一件事。</b></p>
 
@@ -340,7 +342,7 @@ adult neuron                             1 / 53,402   <span class="cm">← <b>�
   <div class="danger">
     <b>同一個版本差也解釋了<a href="#s3">第 3 節</a>那個最大的差異。</b>〈Versions of the dataset〉的同一段還寫著，v1.1 還<b>「調整了一些個別細胞的分型，其中幾乎全是 R7 與 R8 光受器」</b>：
     <p lang="en">adjusted the typing of some individual cells (nearly all of these are R7 and R8 photoreceptors</p>
-    <b>所以 <code>R7p</code> 那 ＋202 與 <code>R8p</code> 的 ＋199，是版本之間的重新分型。</b>v1.0.1 歸在 pale 那一列的細胞，v1.1 把其中約兩百顆改判到別處——<b>而論文的補充表是 v1.1 的，所以那一列只剩 95。</b>這是這一頁上最大的一筆差異，<b>而它的解釋不在資料裡，在版本註記裡。</b>
+    <b>所以 <code>R7p</code> 那 ＋202 與 <code>R8p</code> 的 ＋199，是版本之間的重新分型。</b>v1.0.1 歸在 pale 那一列的細胞，v1.1 把其中約兩百顆改判到別處——<b>而論文的補充表是 v1.1 的，所以那一列只剩 95。</b>這是這一頁上最大的一列差異，<b>而它的解釋不在資料裡，在版本註記裡。</b>
   </div>
 
   <div class="callout">
